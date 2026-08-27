@@ -4,6 +4,7 @@ import { Core } from '@strapi/strapi'
 import { registerDocumentServiceMiddlewares } from './customizations/document-service-middlewares'
 import { bootstrapRevalidateWebhook } from './customizations/bootstrap-revalidate-webhook'
 import { customRbacConditions } from './customizations/custom-rbac-conditions'
+import { registerGraphqlExtensions } from './customizations/graphql-extensions'
 import { registerRegulationValidation } from './customizations/regulation-validation'
 
 export default {
@@ -16,6 +17,7 @@ export default {
 
   register({ strapi }: { strapi: Core.Strapi }) {
     registerDocumentServiceMiddlewares({ strapi })
+    registerGraphqlExtensions({ strapi })
     registerRegulationValidation({ strapi })
   },
 
