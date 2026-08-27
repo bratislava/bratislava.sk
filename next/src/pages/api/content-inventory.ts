@@ -7,6 +7,7 @@ import {
   parseAsStringLiteral,
 } from 'nuqs/server'
 
+import { environment } from '@/src/environment'
 import { getInventorySnapshot } from '@/src/services/content-inventory/snapshotCache'
 import {
   InventoryEntry,
@@ -64,6 +65,13 @@ const handler = async (
   request: NextApiRequest,
   response: NextApiResponse<InventoryResponse | { error: string }>,
 ) => {
+  // Off where the flag is not set, the same way the rss feed is - the endpoint is not public on production yet.
+  if (environment.featureFlagContentInventory !== 'true') {
+    response.status(404).json({ error: 'Not found' })
+
+    return
+  }
+
   if (request.method !== 'GET') {
     response.setHeader('Allow', 'GET')
     response.status(405).json({ error: 'Method not allowed' })

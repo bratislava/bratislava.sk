@@ -38,4 +38,8 @@ export const environment = {
     'NEXT_PUBLIC_FEATURE_FLAG_COOKIE_CONSENT_GATE',
     process.env.NEXT_PUBLIC_FEATURE_FLAG_COOKIE_CONSENT_GATE,
   ),
+  featureFlagContentInventory: assertEnv(
+    'NEXT_PUBLIC_FEATURE_FLAG_CONTENT_INVENTORY',
+    process.env.NEXT_PUBLIC_FEATURE_FLAG_CONTENT_INVENTORY,
+  ),
 }
