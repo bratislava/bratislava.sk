@@ -1186,6 +1186,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'sections.contacts-section',
         'sections.landing-page',
         'sections.newsletter',
+        'sections.page-cards',
         'sections.links',
         'sections.organizational-structure',
         'sections.opening-hours',

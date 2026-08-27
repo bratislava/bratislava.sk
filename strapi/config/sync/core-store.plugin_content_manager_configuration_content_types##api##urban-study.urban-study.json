@@ -273,13 +273,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "slug",
-        "year",
-        "updatedAt"
-      ],
+      "list": ["id", "title", "slug", "year", "updatedAt"],
       "edit": [
         [
           {

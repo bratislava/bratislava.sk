@@ -29,6 +29,7 @@ import NumericalListSection from '@/src/components/sections/NumericalListSection
 import OfficialBoardSection from '@/src/components/sections/OfficialBoardSection/OfficialBoardSection'
 import OpeningHoursSection from '@/src/components/sections/OpeningHoursSection'
 import OrganizationalStructureSection from '@/src/components/sections/OrganizationalStructureSection'
+import PageCardsSection from '@/src/components/sections/PageCardsSection/PageCardsSection'
 import PartnersSection from '@/src/components/sections/PartnersSection'
 import ProsAndConsSection from '@/src/components/sections/ProsAndConsSection'
 import RegulationsSection from '@/src/components/sections/RegulationsSection'
@@ -166,6 +167,9 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
 
     case 'ComponentSectionsLandingPage':
       return <LandingPageSection section={section} />
+
+    case 'ComponentSectionsPageCards':
+      return <PageCardsSection section={section} />
 
     default:
       return null

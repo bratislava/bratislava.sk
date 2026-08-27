@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_blocks_page_cards_item",
+  "info": {
+    "displayName": "page cards item"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": false
+    },
+    "subtext": {
+      "type": "text"
+    },
+    "buttonText": {
+      "type": "text"
+    },
+    "page": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::page.page"
+    }
+  },
+  "config": {}
+}

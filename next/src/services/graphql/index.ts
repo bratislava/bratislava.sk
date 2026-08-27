@@ -1227,6 +1227,33 @@ export type ComponentBlocksOpeningHoursItemInput = {
   value?: InputMaybe<Scalars['String']['input']>
 }
 
+export type ComponentBlocksPageCardsItem = {
+  __typename?: 'ComponentBlocksPageCardsItem'
+  buttonText?: Maybe<Scalars['String']['output']>
+  id: Scalars['ID']['output']
+  page?: Maybe<Page>
+  subtext?: Maybe<Scalars['String']['output']>
+  title?: Maybe<Scalars['String']['output']>
+}
+
+export type ComponentBlocksPageCardsItemFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentBlocksPageCardsItemFiltersInput>>>
+  buttonText?: InputMaybe<StringFilterInput>
+  not?: InputMaybe<ComponentBlocksPageCardsItemFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentBlocksPageCardsItemFiltersInput>>>
+  page?: InputMaybe<PageFiltersInput>
+  subtext?: InputMaybe<StringFilterInput>
+  title?: InputMaybe<StringFilterInput>
+}
+
+export type ComponentBlocksPageCardsItemInput = {
+  buttonText?: InputMaybe<Scalars['String']['input']>
+  id?: InputMaybe<Scalars['ID']['input']>
+  page?: InputMaybe<Scalars['ID']['input']>
+  subtext?: InputMaybe<Scalars['String']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
+}
+
 export type ComponentBlocksPageLink = {
   __typename?: 'ComponentBlocksPageLink'
   analyticsId?: Maybe<Scalars['String']['output']>
@@ -2899,6 +2926,39 @@ export type ComponentSectionsOrganizationalStructureInput = {
   title?: InputMaybe<Scalars['String']['input']>
 }
 
+export type ComponentSectionsPageCards = {
+  __typename?: 'ComponentSectionsPageCards'
+  cards?: Maybe<Array<Maybe<ComponentBlocksPageCardsItem>>>
+  description?: Maybe<Scalars['String']['output']>
+  id: Scalars['ID']['output']
+  showThumbnails?: Maybe<Scalars['Boolean']['output']>
+  title?: Maybe<Scalars['String']['output']>
+}
+
+export type ComponentSectionsPageCardsCardsArgs = {
+  filters?: InputMaybe<ComponentBlocksPageCardsItemFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ComponentSectionsPageCardsFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentSectionsPageCardsFiltersInput>>>
+  cards?: InputMaybe<ComponentBlocksPageCardsItemFiltersInput>
+  description?: InputMaybe<StringFilterInput>
+  not?: InputMaybe<ComponentSectionsPageCardsFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentSectionsPageCardsFiltersInput>>>
+  showThumbnails?: InputMaybe<BooleanFilterInput>
+  title?: InputMaybe<StringFilterInput>
+}
+
+export type ComponentSectionsPageCardsInput = {
+  cards?: InputMaybe<Array<InputMaybe<ComponentBlocksPageCardsItemInput>>>
+  description?: InputMaybe<Scalars['String']['input']>
+  id?: InputMaybe<Scalars['ID']['input']>
+  showThumbnails?: InputMaybe<Scalars['Boolean']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
+}
+
 export type ComponentSectionsPartners = {
   __typename?: 'ComponentSectionsPartners'
   id: Scalars['ID']['output']
@@ -4111,6 +4171,7 @@ export type GenericMorph =
   | ComponentBlocksNumericalListItem
   | ComponentBlocksOpeningHoursAlertMessage
   | ComponentBlocksOpeningHoursItem
+  | ComponentBlocksPageCardsItem
   | ComponentBlocksPageLink
   | ComponentBlocksPartner
   | ComponentBlocksProsAndConsCard
@@ -4161,6 +4222,7 @@ export type GenericMorph =
   | ComponentSectionsOfficialBoard
   | ComponentSectionsOpeningHours
   | ComponentSectionsOrganizationalStructure
+  | ComponentSectionsPageCards
   | ComponentSectionsPartners
   | ComponentSectionsProsAndConsSection
   | ComponentSectionsRegulations
@@ -5362,6 +5424,7 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsOfficialBoard
   | ComponentSectionsOpeningHours
   | ComponentSectionsOrganizationalStructure
+  | ComponentSectionsPageCards
   | ComponentSectionsPartners
   | ComponentSectionsProsAndConsSection
   | ComponentSectionsRegulations
@@ -8186,6 +8249,7 @@ export type AllFilesQuery = {
       | { __typename?: 'ComponentSectionsOfficialBoard' }
       | { __typename?: 'ComponentSectionsOpeningHours' }
       | { __typename?: 'ComponentSectionsOrganizationalStructure' }
+      | { __typename?: 'ComponentSectionsPageCards' }
       | {
           __typename?: 'ComponentSectionsPartners'
           partners: Array<{
@@ -12556,6 +12620,30 @@ export type PageEntityFragment = {
       }
     | { __typename: 'ComponentSectionsOrganizationalStructure'; title?: string | null }
     | {
+        __typename: 'ComponentSectionsPageCards'
+        description?: string | null
+        showThumbnails?: boolean | null
+        titlePageCardsSection?: string | null
+        cardsPageCardsSection?: Array<{
+          __typename?: 'ComponentBlocksPageCardsItem'
+          title?: string | null
+          subtext?: string | null
+          buttonText?: string | null
+          page?: {
+            __typename?: 'Page'
+            documentId: string
+            title: string
+            locale?: string | null
+            path?: string | null
+            pageBackgroundImage?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+            } | null
+          } | null
+        } | null> | null
+      }
+    | {
         __typename: 'ComponentSectionsPartners'
         title?: string | null
         text?: string | null
@@ -14374,6 +14462,30 @@ export type PageByPathQuery = {
           } | null
         }
       | { __typename: 'ComponentSectionsOrganizationalStructure'; title?: string | null }
+      | {
+          __typename: 'ComponentSectionsPageCards'
+          description?: string | null
+          showThumbnails?: boolean | null
+          titlePageCardsSection?: string | null
+          cardsPageCardsSection?: Array<{
+            __typename?: 'ComponentBlocksPageCardsItem'
+            title?: string | null
+            subtext?: string | null
+            buttonText?: string | null
+            page?: {
+              __typename?: 'Page'
+              documentId: string
+              title: string
+              locale?: string | null
+              path?: string | null
+              pageBackgroundImage?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+              } | null
+            } | null
+          } | null> | null
+        }
       | {
           __typename: 'ComponentSectionsPartners'
           title?: string | null
@@ -16204,6 +16316,30 @@ export type Dev_AllPagesQuery = {
           } | null
         }
       | { __typename: 'ComponentSectionsOrganizationalStructure'; title?: string | null }
+      | {
+          __typename: 'ComponentSectionsPageCards'
+          description?: string | null
+          showThumbnails?: boolean | null
+          titlePageCardsSection?: string | null
+          cardsPageCardsSection?: Array<{
+            __typename?: 'ComponentBlocksPageCardsItem'
+            title?: string | null
+            subtext?: string | null
+            buttonText?: string | null
+            page?: {
+              __typename?: 'Page'
+              documentId: string
+              title: string
+              locale?: string | null
+              path?: string | null
+              pageBackgroundImage?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+              } | null
+            } | null
+          } | null> | null
+        }
       | {
           __typename: 'ComponentSectionsPartners'
           title?: string | null
@@ -18199,6 +18335,42 @@ export type AssetsSectionFragment = {
   } | null>
 }
 
+export type PageCardsItemBlockFragment = {
+  __typename?: 'ComponentBlocksPageCardsItem'
+  title?: string | null
+  subtext?: string | null
+  buttonText?: string | null
+  page?: {
+    __typename?: 'Page'
+    documentId: string
+    title: string
+    locale?: string | null
+    path?: string | null
+    pageBackgroundImage?: { __typename?: 'UploadFile'; documentId: string; url: string } | null
+  } | null
+}
+
+export type PageCardsSectionFragment = {
+  __typename?: 'ComponentSectionsPageCards'
+  description?: string | null
+  showThumbnails?: boolean | null
+  titlePageCardsSection?: string | null
+  cardsPageCardsSection?: Array<{
+    __typename?: 'ComponentBlocksPageCardsItem'
+    title?: string | null
+    subtext?: string | null
+    buttonText?: string | null
+    page?: {
+      __typename?: 'Page'
+      documentId: string
+      title: string
+      locale?: string | null
+      path?: string | null
+      pageBackgroundImage?: { __typename?: 'UploadFile'; documentId: string; url: string } | null
+    } | null
+  } | null> | null
+}
+
 export type UrbanStudyCardEntityFragment = {
   __typename: 'UrbanStudy'
   year?: string | null
@@ -20061,6 +20233,27 @@ type Sections_ComponentSectionsOrganizationalStructure_Fragment = {
   title?: string | null
 }
 
+type Sections_ComponentSectionsPageCards_Fragment = {
+  __typename: 'ComponentSectionsPageCards'
+  description?: string | null
+  showThumbnails?: boolean | null
+  titlePageCardsSection?: string | null
+  cardsPageCardsSection?: Array<{
+    __typename?: 'ComponentBlocksPageCardsItem'
+    title?: string | null
+    subtext?: string | null
+    buttonText?: string | null
+    page?: {
+      __typename?: 'Page'
+      documentId: string
+      title: string
+      locale?: string | null
+      path?: string | null
+      pageBackgroundImage?: { __typename?: 'UploadFile'; documentId: string; url: string } | null
+    } | null
+  } | null> | null
+}
+
 type Sections_ComponentSectionsPartners_Fragment = {
   __typename: 'ComponentSectionsPartners'
   title?: string | null
@@ -20612,6 +20805,7 @@ export type SectionsFragment =
   | Sections_ComponentSectionsOfficialBoard_Fragment
   | Sections_ComponentSectionsOpeningHours_Fragment
   | Sections_ComponentSectionsOrganizationalStructure_Fragment
+  | Sections_ComponentSectionsPageCards_Fragment
   | Sections_ComponentSectionsPartners_Fragment
   | Sections_ComponentSectionsProsAndConsSection_Fragment
   | Sections_ComponentSectionsRegulations_Fragment
@@ -22688,6 +22882,28 @@ export const IframeTabsSectionFragmentDoc = gql`
     titleLevelIframeTabsSection: titleLevel
   }
 `
+export const PageCardsItemBlockFragmentDoc = gql`
+  fragment PageCardsItemBlock on ComponentBlocksPageCardsItem {
+    title
+    subtext
+    buttonText
+    page {
+      ...PageCardEntity
+    }
+  }
+  ${PageCardEntityFragmentDoc}
+`
+export const PageCardsSectionFragmentDoc = gql`
+  fragment PageCardsSection on ComponentSectionsPageCards {
+    titlePageCardsSection: title
+    description
+    cardsPageCardsSection: cards(pagination: { limit: -1 }) {
+      ...PageCardsItemBlock
+    }
+    showThumbnails
+  }
+  ${PageCardsItemBlockFragmentDoc}
+`
 export const SectionsFragmentDoc = gql`
   fragment Sections on PageSectionsDynamicZone {
     __typename
@@ -22805,6 +23021,9 @@ export const SectionsFragmentDoc = gql`
     ... on ComponentSectionsIframeTabs {
       ...IframeTabsSection
     }
+    ... on ComponentSectionsPageCards {
+      ...PageCardsSection
+    }
   }
   ${DividerSectionFragmentDoc}
   ${TextWithImageSectionFragmentDoc}
@@ -22844,6 +23063,7 @@ export const SectionsFragmentDoc = gql`
   ${AlertSectionFragmentDoc}
   ${JobOffersSectionFragmentDoc}
   ${IframeTabsSectionFragmentDoc}
+  ${PageCardsSectionFragmentDoc}
 `
 export const SidebarsFragmentDoc = gql`
   fragment Sidebars on PageSidebarDynamicZone {

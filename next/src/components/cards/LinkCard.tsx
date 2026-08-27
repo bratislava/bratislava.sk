@@ -10,10 +10,13 @@ import { CommonLinkProps } from '@/src/utils/getLinkProps'
 
 export type LinkCardProps = {
   cardTitleLevel?: CardTitleLevel
-  image?: StrapiUploadImage | null | undefined
+  image?: StrapiUploadImage | null
   imageSizes?: string
-  text?: string | null | undefined
+  imageClassName?: string
+  text?: string | null
   linkProps?: CommonLinkProps
+  showImage?: boolean
+  buttonText?: string | null
 } & CardBaseProps
 
 /**
@@ -25,9 +28,12 @@ const LinkCard = ({
   cardTitleLevel = 'h3',
   image,
   imageSizes,
+  imageClassName,
   text,
   linkProps,
   className,
+  showImage = true,
+  buttonText,
   ...rest
 }: LinkCardProps) => {
   const titleId = useId()
@@ -40,29 +46,36 @@ const LinkCard = ({
       className={cn('h-full bg-background-passive-base', className)}
       {...rest}
     >
-      <CardImage
-        imgSrc={image?.url}
-        className="aspect-272/162 lg:aspect-384/158"
-        sizes={imageSizes}
-      />
+      {showImage ? (
+        <CardImage
+          imgSrc={image?.url}
+          className={cn('aspect-272/162 lg:aspect-384/158', imageClassName)}
+          sizes={imageSizes}
+        />
+      ) : null}
 
       <div className="flex grow flex-col justify-between gap-4 p-4">
         <div className="flex flex-col gap-2">
-          <div className="flex flex-col gap-2">
-            <Typography
-              id={titleId}
-              as={cardTitleLevel}
-              variant="h5"
-              className={cn({ 'group-hover:underline': linkProps })}
-            >
-              {title}
-            </Typography>
+          <Typography
+            id={titleId}
+            as={cardTitleLevel}
+            variant="h5"
+            className={cn({ 'group-hover:underline': linkProps })}
+          >
+            {title}
+          </Typography>
 
-            {text ? <Typography variant="p-small">{text}</Typography> : null}
-          </div>
+          {text ? <Typography variant="p-small">{text}</Typography> : null}
         </div>
+
         {linkProps ? (
-          <div className="flex justify-end">
+          <div className={cn('flex justify-end', { 'justify-between': buttonText })}>
+            {buttonText ? (
+              <Typography variant="p-small" className="text-start underline">
+                {buttonText}
+              </Typography>
+            ) : null}
+
             <Button
               variant="icon-wrapped"
               stretched
