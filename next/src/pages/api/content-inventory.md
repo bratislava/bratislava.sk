@@ -5,6 +5,7 @@ Versions of the `/api/content-inventory` response, as returned in its `version` 
 ## 3
 
 - Add `taxonomies` next to `items`, with `articleCategories`, `tags`, `assetCategories`, `regulationCategories`, `urbanStudyCategories`, `urbanStudyStates`, `officialBoardCategories` and `municipalServiceCategories`, each value as `{ title, slug, locale }`, the slug missing for the official board's categories, which GINIS only names - listed whole, unaffected by the filters and the pagination, and referenced from the entries by slug
+- Drop `locale` and `isLocalized` from the entries and the `locale` query parameter - only the Slovak content is listed, so the entry ids lost their locale too and are now `${type}:${documentId}`
 - Add the `municipal-service` type, listing the services of the city account (konto.bratislava.sk), with `municipal-service.categories` and `municipal-service.contacts`, the latter shaped the same way `page.contacts` is - their `url` points to the city account, not to this website
 - Add the `official-board` type, listing the documents currently posted on the official board, with `official-board.category`, `official-board.numberOfFiles` and `official-board.publishedUntil` - the board's list carries no files, so `files` stays empty
 

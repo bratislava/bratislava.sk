@@ -39,8 +39,8 @@ import {
 } from './types'
 
 // TODO: The paths are hardcoded the same way as in getLinkProps and next-sitemap.config.js, extract them once.
-const getUrl = (path: string, locale = 'sk', siteUrl = environment.siteUrl) =>
-  `${siteUrl.replace(/\/$/, '')}${locale === 'en' ? '/en' : ''}${path}`
+const getUrl = (path: string, siteUrl = environment.siteUrl) =>
+  `${siteUrl.replace(/\/$/, '')}${path}`
 
 const getFirstNonEmpty = (...values: (string | null | undefined)[]) =>
   values.find((value) => isDefined(value) && value.trim().length > 0) ?? undefined
@@ -101,9 +101,8 @@ const getOwner = (
   return adminGroup ? { title: adminGroup.title, slug: adminGroup.slug } : undefined
 }
 
-/** Entries are keyed by type, documentId and locale - content that exists only once in Strapi is keyed as `sk`. */
-const getEntryId = (type: InventoryType, documentId: string, locale?: string | null) =>
-  `${type}:${documentId}:${locale ?? 'sk'}`
+/** Entries are keyed by type and documentId - the inventory lists one locale, so nothing else is needed. */
+const getEntryId = (type: InventoryType, documentId: string) => `${type}:${documentId}`
 
 /**
  * The part of an entry that is the same for every content type. `addedAt` unifies the various "published" dates - each
@@ -116,7 +115,6 @@ const getBase = <TType extends InventoryType>(
     path: string
     /** Only for content hosted elsewhere, i.e. the city account - everything else lives on this website. */
     siteUrl?: string
-    locale?: string | null
     title: string
     summary?: string
     owner?: InventoryOwner
@@ -125,11 +123,9 @@ const getBase = <TType extends InventoryType>(
     files?: InventoryFile[]
   },
 ): InventoryEntryBase & { type: TType } => ({
-  id: getEntryId(type, entry.documentId, entry.locale),
+  id: getEntryId(type, entry.documentId),
   type,
-  url: getUrl(entry.path, entry.locale ?? 'sk', entry.siteUrl),
-  locale: entry.locale ?? 'sk',
-  isLocalized: isDefined(entry.locale),
+  url: getUrl(entry.path, entry.siteUrl),
   title: entry.title,
   summary: entry.summary,
   owner: entry.owner,
@@ -158,14 +154,14 @@ const getPageFiles = (sections: PageInventoryEntityFragment['sections']): Invent
     }),
   )
 
-/** Links to the article entries of the inventory - articles are localized, so the locale is part of their id and url. */
+/** Links to the article entries of the inventory. */
 const getArticleLinks = (
-  articles: ({ documentId: string; slug: string; title: string; locale?: string | null } | null)[],
+  articles: ({ documentId: string; slug: string; title: string } | null)[],
 ): InventoryLink[] | undefined => {
   const links = articles.filter(isDefined).map((article) => ({
-    id: getEntryId('article', article.documentId, article.locale),
+    id: getEntryId('article', article.documentId),
     title: article.title,
-    url: getUrl(`/spravy/${article.slug}`, article.locale ?? 'sk'),
+    url: getUrl(`/spravy/${article.slug}`),
   }))
 
   return links.length > 0 ? links : undefined
@@ -524,14 +520,8 @@ const buildMunicipalServices = async (): Promise<InventoryEntry[]> => {
 }
 
 /** A taxonomy is only its identity here - what it is filed with is on the entries, which name it by its slug. */
-const getTaxonomy = (
-  values: ({ title: string; slug: string; locale?: string | null } | null)[],
-): InventoryTaxonomy[] =>
-  values.filter(isDefined).map((value) => ({
-    title: value.title,
-    slug: value.slug,
-    locale: value.locale ?? 'sk',
-  }))
+const getTaxonomy = (values: ({ title: string; slug: string } | null)[]): InventoryTaxonomy[] =>
+  values.filter(isDefined).map((value) => ({ title: value.title, slug: value.slug }))
 
 /**
  * The board's categories come from GINIS, which names them instead of slugging them - `official-board.category` names
@@ -542,7 +532,7 @@ const buildOfficialBoardCategories = async (): Promise<InventoryTaxonomy[]> => {
     ? mockedParsedCategories
     : await getOfficialBoardParsedCategories()
 
-  return categories.map((category) => ({ title: category.title, locale: 'sk' }))
+  return categories.map((category) => ({ title: category.title }))
 }
 
 /** Every taxonomy of the website, listed whole so a consumer sees the values that nothing is filed under too. */

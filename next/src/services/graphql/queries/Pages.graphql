@@ -188,7 +188,7 @@ fragment PageInventoryEntity on Page {
   }
 }
 
-query PagesInventory($limit: Int = -1, $locale: I18NLocaleCode = "*") {
+query PagesInventory($limit: Int = -1, $locale: I18NLocaleCode = "sk") {
   pages(locale: $locale, sort: "updatedAt:desc", pagination: { limit: $limit }) {
     ...PageInventoryEntity
   }

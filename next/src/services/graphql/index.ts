@@ -20694,13 +20694,8 @@ export type TaxonomiesInventoryQueryVariables = Exact<{
 
 export type TaxonomiesInventoryQuery = {
   __typename?: 'Query'
-  articleCategories: Array<{
-    __typename?: 'ArticleCategory'
-    title: string
-    slug: string
-    locale?: string | null
-  } | null>
-  tags: Array<{ __typename?: 'Tag'; title: string; slug: string; locale?: string | null } | null>
+  articleCategories: Array<{ __typename?: 'ArticleCategory'; title: string; slug: string } | null>
+  tags: Array<{ __typename?: 'Tag'; title: string; slug: string } | null>
   assetCategories: Array<{ __typename?: 'AssetCategory'; title: string; slug: string } | null>
   regulationCategories: Array<{
     __typename?: 'RegulationCategory'
@@ -22683,7 +22678,7 @@ export const Dev_AllArticlesDocument = gql`
   ${ArticleEntityFragmentDoc}
 `
 export const ArticlesInventoryDocument = gql`
-  query ArticlesInventory($limit: Int = -1, $locale: I18NLocaleCode = "*") {
+  query ArticlesInventory($limit: Int = -1, $locale: I18NLocaleCode = "sk") {
     articles(locale: $locale, sort: "updatedAt:desc", pagination: { limit: $limit }) {
       ...ArticleInventoryEntity
     }
@@ -23011,7 +23006,7 @@ export const UpdatePageDocument = gql`
   }
 `
 export const PagesInventoryDocument = gql`
-  query PagesInventory($limit: Int = -1, $locale: I18NLocaleCode = "*") {
+  query PagesInventory($limit: Int = -1, $locale: I18NLocaleCode = "sk") {
     pages(locale: $locale, sort: "updatedAt:desc", pagination: { limit: $limit }) {
       ...PageInventoryEntity
     }
@@ -23075,16 +23070,14 @@ export const UrbanStudiesInventoryDocument = gql`
   ${UrbanStudyInventoryEntityFragmentDoc}
 `
 export const TaxonomiesInventoryDocument = gql`
-  query TaxonomiesInventory($limit: Int = -1, $locale: I18NLocaleCode = "*") {
+  query TaxonomiesInventory($limit: Int = -1, $locale: I18NLocaleCode = "sk") {
     articleCategories(locale: $locale, sort: "title", pagination: { limit: $limit }) {
       title
       slug
-      locale
     }
     tags(locale: $locale, sort: "title", pagination: { limit: $limit }) {
       title
       slug
-      locale
     }
     assetCategories(sort: "title", pagination: { limit: $limit }) {
       title

@@ -39,16 +39,15 @@ export type InventoryFile = {
 /**
  * Fields shared by every content type. Anything type specific lives under the `[type]` key of the entry, the same way
  * documents are wrapped in the shared Meilisearch index.
+ *
+ * The inventory lists the Slovak content only, so nothing here carries a locale - the English pages and articles are
+ * left out entirely.
  */
 export type InventoryEntryBase = {
-  /** Unique key, `${type}:${documentId}:${locale}` - Strapi shares documentId across locales. */
+  /** Unique key, `${type}:${documentId}`. */
   id: string
-  /** Absolute, locale prefixed. Null only for content whose host page could not be resolved. */
+  /** Absolute. Null only for content whose host page could not be resolved. */
   url: string | null
-  /** `sk` or `en`. Content that is not localised is listed as `sk`. */
-  locale: string
-  /** False for every content type but page and article - the rest exists only once, in Slovak. */
-  isLocalized: boolean
   /** As shown to a visitor. */
   title: string
   /** First non-empty of perex / subtext / description. */
@@ -79,7 +78,7 @@ export type InventoryLink = {
   id: string
   /** How the link names its target. */
   title: string
-  /** The `url` of the linked entry, absolute and locale prefixed. */
+  /** The `url` of the linked entry, absolute. */
   url: string
 }
 
@@ -211,8 +210,8 @@ export type UrbanStudyInventoryData = {
 }
 
 /**
- * Official board documents come from GINIS, not from Strapi - they carry no slug, no locale and no editor metadata,
- * only what the board's document list returns.
+ * Official board documents come from GINIS, not from Strapi - they carry no slug and no editor metadata, only what the
+ * board's document list returns.
  */
 export type OfficialBoardInventoryData = {
   /** The board category the document is posted under, as GINIS names it - a plain name, with no slug behind it. */
@@ -265,8 +264,6 @@ export type InventoryTaxonomy = {
   title: string
   /** Absent for the official board, whose categories come from GINIS and are named rather than slugged. */
   slug?: string
-  /** `sk` for the taxonomies that are not localized, the way an entry of a content type that is not localized is. */
-  locale: string
 }
 
 /** Every taxonomy the entries are filed under, each listed whole. */

@@ -23,7 +23,6 @@ const DEFAULT_PAGE_SIZE = 100
 const searchParams = {
   modifiedSince: parseAsIsoDateTime,
   type: parseAsArrayOf(parseAsStringLiteral(inventoryTypes), ','),
-  locale: parseAsStringLiteral(['sk', 'en'] as const),
   fields: parseAsStringLiteral(['url'] as const),
   page: parseAsInteger,
   pageSize: parseAsInteger,
@@ -77,7 +76,7 @@ const handler = async (
 
   if (invalidParams.length > 0) {
     response.status(400).json({
-      error: `Invalid query parameters: ${invalidParams.join(', ')}. Allowed types are ${inventoryTypes.join(', ')}, locales sk and en, fields url, modifiedSince is an ISO date.`,
+      error: `Invalid query parameters: ${invalidParams.join(', ')}. Allowed types are ${inventoryTypes.join(', ')}, fields url, modifiedSince is an ISO date.`,
     })
 
     return
@@ -95,15 +94,11 @@ const handler = async (
     return
   }
 
-  const { modifiedSince, type, locale, fields, page, pageSize } = parsedParams
+  const { modifiedSince, type, fields, page, pageSize } = parsedParams
 
   const filtered = snapshot.entries.filter((entry) => {
     // An empty `type=` is treated as no filter at all, not as "nothing matches".
     if (type?.length && !type.includes(entry.type)) {
-      return false
-    }
-
-    if (locale && entry.locale !== locale) {
       return false
     }
 
