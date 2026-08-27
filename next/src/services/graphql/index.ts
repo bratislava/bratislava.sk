@@ -20687,6 +20687,34 @@ export type UrbanStudiesInventoryQuery = {
   } | null>
 }
 
+export type TaxonomiesInventoryQueryVariables = Exact<{
+  limit?: InputMaybe<Scalars['Int']['input']>
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
+}>
+
+export type TaxonomiesInventoryQuery = {
+  __typename?: 'Query'
+  articleCategories: Array<{
+    __typename?: 'ArticleCategory'
+    title: string
+    slug: string
+    locale?: string | null
+  } | null>
+  tags: Array<{ __typename?: 'Tag'; title: string; slug: string; locale?: string | null } | null>
+  assetCategories: Array<{ __typename?: 'AssetCategory'; title: string; slug: string } | null>
+  regulationCategories: Array<{
+    __typename?: 'RegulationCategory'
+    title: string
+    slug: string
+  } | null>
+  urbanStudyCategories: Array<{
+    __typename?: 'UrbanStudyCategory'
+    title: string
+    slug: string
+  } | null>
+  urbanStudyStates: Array<{ __typename?: 'UrbanStudyState'; title: string; slug: string } | null>
+}
+
 export const ArticleSlugEntityFragmentDoc = gql`
   fragment ArticleSlugEntity on Article {
     __typename
@@ -23046,6 +23074,36 @@ export const UrbanStudiesInventoryDocument = gql`
   }
   ${UrbanStudyInventoryEntityFragmentDoc}
 `
+export const TaxonomiesInventoryDocument = gql`
+  query TaxonomiesInventory($limit: Int = -1, $locale: I18NLocaleCode = "*") {
+    articleCategories(locale: $locale, sort: "title", pagination: { limit: $limit }) {
+      title
+      slug
+      locale
+    }
+    tags(locale: $locale, sort: "title", pagination: { limit: $limit }) {
+      title
+      slug
+      locale
+    }
+    assetCategories(sort: "title", pagination: { limit: $limit }) {
+      title
+      slug
+    }
+    regulationCategories(sort: "title", pagination: { limit: $limit }) {
+      title
+      slug
+    }
+    urbanStudyCategories(sort: "title", pagination: { limit: $limit }) {
+      title
+      slug
+    }
+    urbanStudyStates(sort: "title", pagination: { limit: $limit }) {
+      title
+      slug
+    }
+  }
+`
 
 export type SdkFunctionWrapper = <T>(
   action: (requestHeaders?: Record<string, string>) => Promise<T>,
@@ -23643,6 +23701,21 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             ...wrappedRequestHeaders,
           }),
         'UrbanStudiesInventory',
+        'query',
+        variables,
+      )
+    },
+    TaxonomiesInventory(
+      variables?: TaxonomiesInventoryQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<TaxonomiesInventoryQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<TaxonomiesInventoryQuery>(TaxonomiesInventoryDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'TaxonomiesInventory',
         'query',
         variables,
       )

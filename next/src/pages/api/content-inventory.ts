@@ -130,6 +130,9 @@ const handler = async (
     pageSize: currentPageSize,
     pageCount: currentPageSize > 0 ? Math.ceil(filtered.length / currentPageSize) : 1,
     items: fields === 'url' ? paginated.map(toUrlEntry) : paginated,
+    // The whole taxonomies, whatever the filters are - they are small, and a consumer needs them to make sense of the
+    // categories and tags the entries carry.
+    taxonomies: snapshot.taxonomies,
   })
 }
 

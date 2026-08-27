@@ -237,6 +237,12 @@ export type MunicipalServiceInventoryData = {
   contacts?: InventoryContactsSection[]
 }
 
+/** What one build of the inventory produces - the entries plus the taxonomies listed next to them. */
+export type Inventory = {
+  entries: InventoryEntry[]
+  taxonomies: InventoryTaxonomies
+}
+
 /** Each content type carries only its own data, under the key named after the type. */
 export type InventoryEntry =
   | (InventoryEntryBase & { type: 'page'; page?: PageInventoryData })
@@ -250,6 +256,38 @@ export type InventoryEntry =
       type: 'municipal-service'
       'municipal-service'?: MunicipalServiceInventoryData
     })
+
+/**
+ * One value of a taxonomy, listed alongside the entries so a consumer sees the whole taxonomy and not only the values
+ * in use. The entries reference these by slug, the way they name their own category and tags.
+ */
+export type InventoryTaxonomy = {
+  title: string
+  /** Absent for the official board, whose categories come from GINIS and are named rather than slugged. */
+  slug?: string
+  /** `sk` for the taxonomies that are not localized, the way an entry of a content type that is not localized is. */
+  locale: string
+}
+
+/** Every taxonomy the entries are filed under, each listed whole. */
+export type InventoryTaxonomies = {
+  /** The types of an article, i.e. what `article.category` names. */
+  articleCategories: InventoryTaxonomy[]
+  /** The topics of an article, i.e. what `article.tags` name. */
+  tags: InventoryTaxonomy[]
+  /** What `asset.category` names. */
+  assetCategories: InventoryTaxonomy[]
+  /** What `regulation.category` names. */
+  regulationCategories: InventoryTaxonomy[]
+  /** What `urban-study.category` names. */
+  urbanStudyCategories: InventoryTaxonomy[]
+  /** What `urban-study.state` names. */
+  urbanStudyStates: InventoryTaxonomy[]
+  /** The board's own categories, from GINIS. `official-board.category` names them by their title. */
+  officialBoardCategories: InventoryTaxonomy[]
+  /** The city account's categories, i.e. what `municipal-service.categories` name. */
+  municipalServiceCategories: InventoryTaxonomy[]
+}
 
 /** Reduced entry returned for `?fields=url`, meant for cheap diffing (including detecting removals). */
 export type InventoryUrlEntry = Pick<InventoryEntryBase, 'id' | 'url' | 'modifiedAt'>
@@ -269,4 +307,6 @@ export type InventoryResponse = {
   pageCount: number
   /** The entries themselves, the most recently changed first. Reduced to `InventoryUrlEntry` for `?fields=url`. */
   items: (InventoryEntry | InventoryUrlEntry)[]
+  /** Every taxonomy there is, whole - the filters and the pagination apply to `items` alone. */
+  taxonomies: InventoryTaxonomies
 }

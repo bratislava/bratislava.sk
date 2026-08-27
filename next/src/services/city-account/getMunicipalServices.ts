@@ -3,10 +3,34 @@ import axios from 'axios'
 import { serverEnvironment } from '@/src/environment.server'
 import { ContactsSectionFragment } from '@/src/services/graphql'
 
+const PAGE_SIZE = 100
+
 /** A category of the city account Strapi. */
 type MunicipalServiceCategory = {
   title: string
   slug: string
+}
+
+type MunicipalServiceCategoriesResponse = { data: MunicipalServiceCategory[] }
+
+/**
+ * The categories municipal services are filed under, listed whole - the ones on a service only say which of them it
+ * uses. Errors are swallowed the same way the services themselves swallow theirs.
+ */
+export const getMunicipalServiceCategories = async (): Promise<MunicipalServiceCategory[]> => {
+  try {
+    const response = await axios.get<MunicipalServiceCategoriesResponse>(
+      `${serverEnvironment.cityAccountStrapiUrl}/api/municipal-service-categories`,
+      { params: { sort: 'title', 'pagination[pageSize]': PAGE_SIZE } },
+    )
+
+    return response.data.data
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error('Content inventory: failed to fetch municipal service categories.', error)
+
+    return []
+  }
 }
 
 /**
@@ -34,8 +58,6 @@ type MunicipalServicesResponse = {
   data: MunicipalServiceEntity[]
   meta: { pagination: { page: number; pageCount: number } }
 }
-
-const PAGE_SIZE = 100
 
 /**
  * Municipal services live in the city account Strapi (konto.bratislava.sk), which this app has no GraphQL client for -

@@ -1,7 +1,11 @@
 import { environment } from '@/src/environment'
 import { serverEnvironment } from '@/src/environment.server'
-import { getMunicipalServices } from '@/src/services/city-account/getMunicipalServices'
-import { mockedParsedDocuments } from '@/src/services/ginis/mocks'
+import {
+  getMunicipalServiceCategories,
+  getMunicipalServices,
+} from '@/src/services/city-account/getMunicipalServices'
+import { mockedParsedCategories, mockedParsedDocuments } from '@/src/services/ginis/mocks'
+import { getOfficialBoardParsedCategories } from '@/src/services/ginis/server/getOfficialBoardParsedCategories'
 import { getOfficialBoardParsedList } from '@/src/services/ginis/server/getOfficialBoardParsedList'
 import { shouldMockGinis } from '@/src/services/ginis/utils/shouldMockGinis'
 import {
@@ -18,6 +22,7 @@ import { base64Encode } from '@/src/utils/base64'
 import { isDefined } from '@/src/utils/isDefined'
 
 import {
+  Inventory,
   InventoryCategory,
   InventoryContact,
   InventoryContactsSection,
@@ -27,6 +32,8 @@ import {
   InventoryFile,
   InventoryLink,
   InventoryOwner,
+  InventoryTaxonomies,
+  InventoryTaxonomy,
   InventoryType,
   MunicipalServiceInventoryData,
 } from './types'
@@ -484,7 +491,7 @@ const buildOfficialBoard = async (): Promise<InventoryEntry[]> => {
 }
 
 /** The categories of a municipal service are plain title and slug pairs, the way this website's ones are. */
-const getMunicipalServiceCategories = (
+const getServiceCategories = (
   categories: { title: string; slug: string }[] | null | undefined,
 ): InventoryCategory[] | undefined => {
   const mapped = (categories ?? []).map(({ title, slug }) => ({ title, slug }))
@@ -510,17 +517,59 @@ const buildMunicipalServices = async (): Promise<InventoryEntry[]> => {
       modifiedAt: service.updatedAt,
     }),
     'municipal-service': getTypeData<MunicipalServiceInventoryData>({
-      categories: getMunicipalServiceCategories(service.categories),
+      categories: getServiceCategories(service.categories),
       contacts: getContactsSections(service.sections ?? []),
     }),
   }))
+}
+
+/** A taxonomy is only its identity here - what it is filed with is on the entries, which name it by its slug. */
+const getTaxonomy = (
+  values: ({ title: string; slug: string; locale?: string | null } | null)[],
+): InventoryTaxonomy[] =>
+  values.filter(isDefined).map((value) => ({
+    title: value.title,
+    slug: value.slug,
+    locale: value.locale ?? 'sk',
+  }))
+
+/**
+ * The board's categories come from GINIS, which names them instead of slugging them - `official-board.category` names
+ * them the same way, by their title.
+ */
+const buildOfficialBoardCategories = async (): Promise<InventoryTaxonomy[]> => {
+  const categories = shouldMockGinis()
+    ? mockedParsedCategories
+    : await getOfficialBoardParsedCategories()
+
+  return categories.map((category) => ({ title: category.title, locale: 'sk' }))
+}
+
+/** Every taxonomy of the website, listed whole so a consumer sees the values that nothing is filed under too. */
+const buildTaxonomies = async (): Promise<InventoryTaxonomies> => {
+  const [taxonomies, officialBoardCategories, municipalServiceCategories] = await Promise.all([
+    client.TaxonomiesInventory(),
+    buildOfficialBoardCategories(),
+    getMunicipalServiceCategories(),
+  ])
+
+  return {
+    officialBoardCategories,
+    municipalServiceCategories: getTaxonomy(municipalServiceCategories),
+    articleCategories: getTaxonomy(taxonomies.articleCategories),
+    tags: getTaxonomy(taxonomies.tags),
+    assetCategories: getTaxonomy(taxonomies.assetCategories),
+    regulationCategories: getTaxonomy(taxonomies.regulationCategories),
+    urbanStudyCategories: getTaxonomy(taxonomies.urbanStudyCategories),
+    urbanStudyStates: getTaxonomy(taxonomies.urbanStudyStates),
+  }
 }
 
 /**
  * Builds the inventory of everything on the website that has its own url. Published content only - the Strapi GraphQL
  * api returns published documents by default.
  */
-export const buildInventory = async (): Promise<InventoryEntry[]> => {
+export const buildInventory = async (): Promise<Inventory> => {
   const [
     pages,
     articles,
@@ -530,6 +579,7 @@ export const buildInventory = async (): Promise<InventoryEntry[]> => {
     urbanStudies,
     officialBoard,
     municipalServices,
+    taxonomies,
   ] = await Promise.all([
     buildPages(),
     buildArticles(),
@@ -539,9 +589,10 @@ export const buildInventory = async (): Promise<InventoryEntry[]> => {
     buildUrbanStudies(),
     buildOfficialBoard(),
     buildMunicipalServices(),
+    buildTaxonomies(),
   ])
 
-  return [
+  const entries = [
     ...pages,
     ...articles,
     ...assets,
@@ -551,4 +602,6 @@ export const buildInventory = async (): Promise<InventoryEntry[]> => {
     ...officialBoard,
     ...municipalServices,
   ].sort((a, b) => (b.modifiedAt ?? '').localeCompare(a.modifiedAt ?? ''))
+
+  return { entries, taxonomies }
 }

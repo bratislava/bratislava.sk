@@ -1,11 +1,10 @@
 import { buildInventory } from './buildInventory'
-import { InventoryEntry } from './types'
+import { Inventory } from './types'
 
 const SNAPSHOT_TTL_MS = 10 * 60 * 1000 // 10 min
 
-type Snapshot = {
+type Snapshot = Inventory & {
   builtAt: number
-  entries: InventoryEntry[]
 }
 
 /**
@@ -30,8 +29,8 @@ export const getInventorySnapshot = (): Promise<Snapshot> => {
   }
 
   inFlight = buildInventory()
-    .then((entries) => {
-      snapshot = { builtAt: Date.now(), entries }
+    .then((inventory) => {
+      snapshot = { builtAt: Date.now(), ...inventory }
 
       return snapshot
     })

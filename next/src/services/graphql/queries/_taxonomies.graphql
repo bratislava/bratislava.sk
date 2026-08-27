@@ -1,0 +1,30 @@
+# The taxonomies the content inventory lists next to its entries - only their identity, not what they are filed with.
+
+query TaxonomiesInventory($limit: Int = -1, $locale: I18NLocaleCode = "*") {
+  articleCategories(locale: $locale, sort: "title", pagination: { limit: $limit }) {
+    title
+    slug
+    locale
+  }
+  tags(locale: $locale, sort: "title", pagination: { limit: $limit }) {
+    title
+    slug
+    locale
+  }
+  assetCategories(sort: "title", pagination: { limit: $limit }) {
+    title
+    slug
+  }
+  regulationCategories(sort: "title", pagination: { limit: $limit }) {
+    title
+    slug
+  }
+  urbanStudyCategories(sort: "title", pagination: { limit: $limit }) {
+    title
+    slug
+  }
+  urbanStudyStates(sort: "title", pagination: { limit: $limit }) {
+    title
+    slug
+  }
+}
