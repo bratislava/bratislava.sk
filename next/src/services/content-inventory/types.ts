@@ -1,3 +1,4 @@
+/** Every content type that has its own url on the website, i.e. everything the inventory can list. */
 export const inventoryTypes = [
   'page',
   'article',
@@ -9,10 +10,19 @@ export const inventoryTypes = [
 
 export type InventoryType = (typeof inventoryTypes)[number]
 
-export type InventoryCategory = { title: string; slug: string }
+/** A taxonomy an entry is filed under - categories are their own content types in Strapi, shared across entries. */
+export type InventoryCategory = {
+  title: string
+  /** Slug can serve as an unique identifier. */
+  slug: string
+}
 
 /** The organisation an entry's content belongs to, taken from its admin group. */
-export type InventoryOwner = { title: string; slug: string }
+export type InventoryOwner = {
+  title: string
+  /** Slug can serve as an unique identifier. */
+  slug: string
+}
 
 /** A file attached to an entry - what a visitor can download from its page. */
 export type InventoryFile = {
@@ -33,9 +43,11 @@ export type InventoryEntryBase = {
   id: string
   /** Absolute, locale prefixed. Null only for content whose host page could not be resolved. */
   url: string | null
+  /** `sk` or `en`. Content that is not localised is listed as `sk`. */
   locale: string
   /** False for content types that exist only once in Strapi (asset, regulation, inba-release, urban-study). */
   isLocalized: boolean
+  /** As shown to a visitor. */
   title: string
   /** First non-empty of perex / subtext / description. */
   summary?: string
@@ -63,7 +75,9 @@ export type InventoryEntryBase = {
 export type InventoryLink = {
   /** The `id` of the linked entry, so it can be looked up without parsing the url. */
   id: string
+  /** How the link names its target. */
   title: string
+  /** The `url` of the linked entry, absolute and locale prefixed. */
   url: string
 }
 
@@ -83,9 +97,11 @@ export type InventoryContactType =
  * carry one section each, so the cards must not be flattened across them.
  */
 export type InventoryContactsSection = {
+  /** Usually "Kontakty", but it's helpful when page contains more contacts sections to distinguish between them. */
   title?: string
-  /** As the editor wrote it, i.e. markdown. */
+  /** As the editor wrote it in markdown. Sometimes contains important information how the contact should be used. */
   subtext?: string
+  /** The section's contact cards, in the order they are rendered. */
   contactItems: InventoryContact[]
 }
 
@@ -95,30 +111,38 @@ export type InventoryContact =
       type: InventoryContactType
       /** Set only where the editor overrode the default label of the type. */
       customLabel?: string
+      /** The contact itself, as the editor wrote it - an address, an email, a phone number, an IBAN and so on. */
       value: string
     }
   | {
       type: 'person'
-      /** The person's name, which is also the label the card is rendered with. */
+      /** The person's name, which is also the card's label. */
       name: string
       email?: string
       phone?: string
+      /** What the person is responsible for, or their role. */
       subtext?: string
     }
   | {
       type: 'directions'
       /** Set only where the editor overrode the default label. */
       customLabel?: string
+      /** The street address the directions lead to. */
       address: string
+      /** Where and how to park. */
       parkingInfo?: string
+      /** Which lines stop nearby. */
       publicTransportInfo?: string
+      /** How accessible the place is. */
       barrierFreeInfo?: string
       /** The map embedded in the card, as the url of its iframe. */
       mapUrl?: string
     }
 
 export type PageInventoryData = {
+  /** The SEO meta description. */
   metaDescription?: string
+  /** The SEO keywords, separated by coma (or semicolon). */
   keywords?: string
   /** Assets the page links through its document sections, in the order they are rendered. */
   assets?: InventoryLink[]
@@ -129,18 +153,23 @@ export type PageInventoryData = {
 }
 
 export type ArticleInventoryData = {
+  /** The type of article. */
   category?: InventoryCategory
+  /** The article's topics. */
   tags: { title: string; slug: string }[]
   /** The inba release the article was published in, for the articles that come from one. */
   inbaRelease?: InventoryLink
 }
 
 export type AssetInventoryData = {
+  /** The single category the asset is filed under. */
   category?: InventoryCategory
 }
 
 export type RegulationInventoryData = {
+  /** The number the regulation is cited by, e.g. `1/2023`. */
   regNumber: string
+  /** The single category the regulation is filed under. */
   category?: InventoryCategory
   /** How the regulation relates to the other ones. Omitted for a regulation that stands on its own. */
   regRelations?: {
@@ -154,7 +183,9 @@ export type RegulationInventoryData = {
     cancelling?: InventoryLink[]
   }
   validity: {
+    /** False once the regulation is cancelled, i.e. whenever `regRelations.cancelledBy` is set. */
     isValid: boolean
+    /** When the regulation took effect. */
     effectiveFrom: string | null
     /** When the cancellation took effect, whether this regulation was cancelled directly or through an amendee. */
     effectiveUntil: string | null
@@ -167,8 +198,11 @@ export type InbaReleaseInventoryData = {
 }
 
 export type UrbanStudyInventoryData = {
+  /** The year the study was released. */
   year?: string
+  /** The type of urban study. */
   category?: InventoryCategory
+  /** How far along the study is, e.g. whether it is in progress or finished. */
   state?: InventoryCategory
   /** Regulations the study is tied to. */
   regulations?: InventoryLink[]
@@ -187,12 +221,18 @@ export type InventoryEntry =
 export type InventoryUrlEntry = Pick<InventoryEntryBase, 'id' | 'url' | 'modifiedAt'>
 
 export type InventoryResponse = {
+  /** The shape of the entries, bumped whenever a change can break consumers. Changelog in content-inventory.md. */
   version: number
+  /** When the snapshot the response is served from was built, not when the request was handled. */
   generatedAt: string
   /** Number of entries matching the filters, across all pages. */
   totalItems: number
+  /** The requested page, 1 based. 1 for a response that was not paginated. */
   page: number
+  /** How many entries a page holds. `totalItems` for a response that was not paginated. */
   pageSize: number
+  /** How many pages the filtered entries span. */
   pageCount: number
+  /** The entries themselves, the most recently changed first. Reduced to `InventoryUrlEntry` for `?fields=url`. */
   items: (InventoryEntry | InventoryUrlEntry)[]
 }
