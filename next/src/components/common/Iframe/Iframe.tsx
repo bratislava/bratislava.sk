@@ -62,7 +62,8 @@ const Iframe = ({
       })}
       style={{ height: iframeHeight }}
       // See docs: https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Permissions-Policy#iframes
-      allow={`fullscreen; ${allowGeolocation ? 'geolocation *' : ''}`} // TODO consider narrowing geolocation, and specifying other attributes
+      // TODO consider narrowing geolocation, and specifying other attributes
+      allow={`fullscreen; ${allowGeolocation ? 'geolocation *' : ''}`}
       // Hardening only - this does not stop the iframe collecting cookies, so it is
       // not what keeps us consent-compliant - we use CookieConsentGate for that.
       // Omitting allow-same-origin puts the frame in an opaque origin, which blocks its
@@ -70,7 +71,7 @@ const Iframe = ({
       // third-party cookies arrive as HttpOnly Set-Cookie response headers that
       // JavaScript never touches and sandbox has no say over.
       // https://stackoverflow.com/questions/44837450/recommended-method-to-prevent-any-content-inside-iframe-from-setting-cookies
-      sandbox={`allow-scripts allow-popups allow-forms ${allowDownloads ? 'allow-downloads' : ''}`}
+      sandbox={`allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-forms ${allowDownloads ? 'allow-downloads' : ''}`}
     />
   )
 

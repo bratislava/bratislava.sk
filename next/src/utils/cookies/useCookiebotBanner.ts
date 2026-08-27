@@ -7,11 +7,24 @@ export type CookiebotBannerFailure =
    */
   | 'script-missing'
   /**
-   * The API call succeeded but no banner appeared. Cookiebot only renders its
+   * The API call succeeded but no banner is visible. Cookiebot only renders its
    * dialog on domains registered in the Cookiebot account, so this is the usual
    * outcome on localhost without a working GTM preview.
    */
   | 'banner-not-rendered'
+
+const isCookiebotDialogVisible = () => {
+  const dialog = document.getElementById('CybotCookiebotDialog')
+
+  if (!dialog) {
+    return false
+  }
+
+  //Check if actually visible, not just present in DOM
+  const { width, height } = dialog.getBoundingClientRect()
+
+  return width > 0 && height > 0
+}
 
 export const useCookiebotBanner = () => {
   const isClient = useIsClient()
@@ -43,10 +56,7 @@ export const useCookiebotBanner = () => {
 
     dialogCheckRef.current = setTimeout(
       () => {
-        setCookiebotBannerFailure(
-          // CybotCookiebotBanner is the id of the Cookiebot dialog element.
-          document.getElementById('CybotCookiebotBanner') ? null : 'banner-not-rendered',
-        )
+        setCookiebotBannerFailure(isCookiebotDialogVisible() ? null : 'banner-not-rendered')
       },
       // Wait some time before assuming that the dialog element failed to render.
       1000,
