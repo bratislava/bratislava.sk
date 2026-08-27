@@ -3,7 +3,10 @@ import Banner from '@/src/components/common/Banner/Banner'
 import ResponsiveCarousel from '@/src/components/common/Carousel/ResponsiveCarousel'
 import StrapiImage from '@/src/components/common/Image/StrapiImage'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
-import { LandingPageSectionFragment } from '@/src/services/graphql'
+import {
+  Enum_Componentsectionsbanner_Variant,
+  LandingPageSectionFragment,
+} from '@/src/services/graphql'
 import { generateImageSizes } from '@/src/utils/generateImageSizes'
 import { getLinkProps } from '@/src/utils/getLinkProps'
 import { isDefined } from '@/src/utils/isDefined'
@@ -23,7 +26,7 @@ const LandingPageSection = ({ section }: Props) => {
           <Banner
             {...landingPageBanner}
             imagePath={landingPageBanner.media.url}
-            variant={bannerColorVariant}
+            variant={bannerColorVariant ?? Enum_Componentsectionsbanner_Variant.Color}
           />
         ) : landingPageImage ? (
           <div className="relative aspect-272/162 w-full overflow-hidden rounded-2xl lg:aspect-384/158">
