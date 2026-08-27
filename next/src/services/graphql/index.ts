@@ -16248,7 +16248,69 @@ export type PageInventoryEntityFragment = {
     | { __typename: 'ComponentSectionsColumns' }
     | { __typename: 'ComponentSectionsColumnsList' }
     | { __typename: 'ComponentSectionsComparisonSection' }
-    | { __typename: 'ComponentSectionsContactsSection' }
+    | {
+        __typename: 'ComponentSectionsContactsSection'
+        id: string
+        title?: string | null
+        description?: string | null
+        titleLevelContactsSection?: Enum_Componentsectionscontactssection_Titlelevel | null
+        addressContacts?: Array<{
+          __typename?: 'ComponentBlocksContactCard'
+          overrideLabel?: string | null
+          value: string
+        } | null> | null
+        openingHoursContacts?: Array<{
+          __typename?: 'ComponentBlocksContactCard'
+          overrideLabel?: string | null
+          value: string
+        } | null> | null
+        emailContacts?: Array<{
+          __typename?: 'ComponentBlocksContactCard'
+          overrideLabel?: string | null
+          value: string
+        } | null> | null
+        phoneContacts?: Array<{
+          __typename?: 'ComponentBlocksContactCard'
+          overrideLabel?: string | null
+          value: string
+        } | null> | null
+        webContacts?: Array<{
+          __typename?: 'ComponentBlocksContactCard'
+          overrideLabel?: string | null
+          value: string
+        } | null> | null
+        postalAddressContacts?: Array<{
+          __typename?: 'ComponentBlocksContactCard'
+          overrideLabel?: string | null
+          value: string
+        } | null> | null
+        billingInfoContacts?: Array<{
+          __typename?: 'ComponentBlocksContactCard'
+          overrideLabel?: string | null
+          value: string
+        } | null> | null
+        bankConnectionContacts?: Array<{
+          __typename?: 'ComponentBlocksContactCard'
+          overrideLabel?: string | null
+          value: string
+        } | null> | null
+        personContacts?: Array<{
+          __typename?: 'ComponentBlocksContactPersonCard'
+          title: string
+          subtext?: string | null
+          email?: string | null
+          phone?: string | null
+        } | null> | null
+        directionsContact?: {
+          __typename?: 'ComponentBlocksContactDirectionsCard'
+          overrideLabel?: string | null
+          address: string
+          parkingInfo?: string | null
+          publicTransportInfo?: string | null
+          barrierFreeInfo?: string | null
+          iframeUrl?: string | null
+        } | null
+      }
     | { __typename: 'ComponentSectionsDivider' }
     | { __typename: 'ComponentSectionsEvents' }
     | { __typename: 'ComponentSectionsFacilities' }
@@ -16365,7 +16427,69 @@ export type PagesInventoryQuery = {
       | { __typename: 'ComponentSectionsColumns' }
       | { __typename: 'ComponentSectionsColumnsList' }
       | { __typename: 'ComponentSectionsComparisonSection' }
-      | { __typename: 'ComponentSectionsContactsSection' }
+      | {
+          __typename: 'ComponentSectionsContactsSection'
+          id: string
+          title?: string | null
+          description?: string | null
+          titleLevelContactsSection?: Enum_Componentsectionscontactssection_Titlelevel | null
+          addressContacts?: Array<{
+            __typename?: 'ComponentBlocksContactCard'
+            overrideLabel?: string | null
+            value: string
+          } | null> | null
+          openingHoursContacts?: Array<{
+            __typename?: 'ComponentBlocksContactCard'
+            overrideLabel?: string | null
+            value: string
+          } | null> | null
+          emailContacts?: Array<{
+            __typename?: 'ComponentBlocksContactCard'
+            overrideLabel?: string | null
+            value: string
+          } | null> | null
+          phoneContacts?: Array<{
+            __typename?: 'ComponentBlocksContactCard'
+            overrideLabel?: string | null
+            value: string
+          } | null> | null
+          webContacts?: Array<{
+            __typename?: 'ComponentBlocksContactCard'
+            overrideLabel?: string | null
+            value: string
+          } | null> | null
+          postalAddressContacts?: Array<{
+            __typename?: 'ComponentBlocksContactCard'
+            overrideLabel?: string | null
+            value: string
+          } | null> | null
+          billingInfoContacts?: Array<{
+            __typename?: 'ComponentBlocksContactCard'
+            overrideLabel?: string | null
+            value: string
+          } | null> | null
+          bankConnectionContacts?: Array<{
+            __typename?: 'ComponentBlocksContactCard'
+            overrideLabel?: string | null
+            value: string
+          } | null> | null
+          personContacts?: Array<{
+            __typename?: 'ComponentBlocksContactPersonCard'
+            title: string
+            subtext?: string | null
+            email?: string | null
+            phone?: string | null
+          } | null> | null
+          directionsContact?: {
+            __typename?: 'ComponentBlocksContactDirectionsCard'
+            overrideLabel?: string | null
+            address: string
+            parkingInfo?: string | null
+            publicTransportInfo?: string | null
+            barrierFreeInfo?: string | null
+            iframeUrl?: string | null
+          } | null
+        }
       | { __typename: 'ComponentSectionsDivider' }
       | { __typename: 'ComponentSectionsEvents' }
       | { __typename: 'ComponentSectionsFacilities' }
@@ -22252,6 +22376,9 @@ export const PageInventoryEntityFragmentDoc = gql`
           }
         }
       }
+      ... on ComponentSectionsContactsSection {
+        ...ContactsSection
+      }
     }
   }
   ${PageSlugEntityFragmentDoc}
@@ -22259,6 +22386,7 @@ export const PageInventoryEntityFragmentDoc = gql`
   ${RegulationRelationEntityFragmentDoc}
   ${FileBlockFragmentDoc}
   ${FileItemBlockFragmentDoc}
+  ${ContactsSectionFragmentDoc}
 `
 export const RegulationInventoryEntityFragmentDoc = gql`
   fragment RegulationInventoryEntity on Regulation {

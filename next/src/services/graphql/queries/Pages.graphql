@@ -179,6 +179,9 @@ fragment PageInventoryEntity on Page {
         }
       }
     }
+    ... on ComponentSectionsContactsSection {
+      ...ContactsSection
+    }
   }
 }
 

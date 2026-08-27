@@ -12,6 +12,9 @@ import { isDefined } from '@/src/utils/isDefined'
 
 import {
   InventoryCategory,
+  InventoryContact,
+  InventoryContactsSection,
+  InventoryContactType,
   InventoryEntry,
   InventoryEntryBase,
   InventoryFile,
@@ -175,6 +178,81 @@ const getPageAssets = (
   return assets.length > 0 ? assets : undefined
 }
 
+/**
+ * The contacts section groups its simple cards into one list per kind - flattened here into the order `Contacts`
+ * renders them in, so a section's cards read the way a visitor sees them.
+ */
+const contactCardTypes = {
+  addressContacts: 'address',
+  openingHoursContacts: 'openingHours',
+  emailContacts: 'email',
+  phoneContacts: 'phone',
+  webContacts: 'web',
+  postalAddressContacts: 'postalAddress',
+  billingInfoContacts: 'billingInfo',
+  bankConnectionContacts: 'bankConnection',
+} as const satisfies Record<string, InventoryContactType>
+
+type ContactsSection = Extract<
+  NonNullable<NonNullable<PageInventoryEntityFragment['sections']>[number]>,
+  { __typename: 'ComponentSectionsContactsSection' }
+>
+
+/** The person and directions cards carry their own fields, so they are mapped separately from the simple ones. */
+const getSectionContacts = (section: ContactsSection): InventoryContact[] => [
+  ...Object.entries(contactCardTypes).flatMap(([key, type]) =>
+    (section[key as keyof typeof contactCardTypes] ?? []).filter(isDefined).map((card) => ({
+      type,
+      customLabel: getFirstNonEmpty(card.overrideLabel),
+      value: card.value,
+    })),
+  ),
+  ...(section.personContacts ?? []).filter(isDefined).map((person) => ({
+    type: 'person' as const,
+    // The card is labelled with the person's name, so it has no `customLabel` the way the other cards do.
+    name: person.title,
+    email: getFirstNonEmpty(person.email),
+    phone: getFirstNonEmpty(person.phone),
+    subtext: getFirstNonEmpty(person.subtext),
+  })),
+  ...(section.directionsContact
+    ? [
+        {
+          type: 'directions' as const,
+          customLabel: getFirstNonEmpty(section.directionsContact.overrideLabel),
+          address: section.directionsContact.address,
+          parkingInfo: getFirstNonEmpty(section.directionsContact.parkingInfo),
+          publicTransportInfo: getFirstNonEmpty(section.directionsContact.publicTransportInfo),
+          barrierFreeInfo: getFirstNonEmpty(section.directionsContact.barrierFreeInfo),
+          mapUrl: getFirstNonEmpty(section.directionsContact.iframeUrl),
+        },
+      ]
+    : []),
+]
+
+/**
+ * The contacts sections of a page, in the order they are rendered. The cards are kept grouped by their section - a page
+ * listing several people or departments carries one section each, and its title is what the cards belong to.
+ */
+const getPageContacts = (
+  sections: PageInventoryEntityFragment['sections'],
+): InventoryContactsSection[] | undefined => {
+  const contactsSections = (sections ?? [])
+    .filter(isDefined)
+    .flatMap((section) =>
+      section.__typename === 'ComponentSectionsContactsSection' ? [section] : [],
+    )
+    .map((section) => ({
+      title: getFirstNonEmpty(section.title),
+      subtext: getFirstNonEmpty(section.description),
+      contactItems: getSectionContacts(section),
+    }))
+    // A section an editor left empty adds nothing to the inventory.
+    .filter((section) => section.contactItems.length > 0)
+
+  return contactsSections.length > 0 ? contactsSections : undefined
+}
+
 /** Regulations a page links through its regulation sections, the same way `getPageAssets` collects the assets. */
 const getPageRegulations = (sections: PageInventoryEntityFragment['sections']) =>
   getRegulationLinks(
@@ -202,6 +280,7 @@ const buildPages = async (): Promise<InventoryEntry[]> => {
       keywords: page.keywords ?? undefined,
       assets: getPageAssets(page.sections),
       regulations: getPageRegulations(page.sections),
+      contacts: getPageContacts(page.sections),
     }),
   }))
 }

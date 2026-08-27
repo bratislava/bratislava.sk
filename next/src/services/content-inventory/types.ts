@@ -59,6 +59,56 @@ export type InventoryLink = {
   url: string
 }
 
+/** The kind of contact a card holds - the contacts section groups its cards by these. */
+export type InventoryContactType =
+  | 'address'
+  | 'openingHours'
+  | 'email'
+  | 'phone'
+  | 'web'
+  | 'postalAddress'
+  | 'billingInfo'
+  | 'bankConnection'
+
+/**
+ * One contacts section of a page. Its `title` is what the cards belong to - pages listing several people or departments
+ * carry one section each, so the cards must not be flattened across them.
+ */
+export type InventoryContactsSection = {
+  title?: string
+  /** As the editor wrote it, i.e. markdown. */
+  subtext?: string
+  contactItems: InventoryContact[]
+}
+
+/** A single contact card of a contacts section, as it is rendered on the page. */
+export type InventoryContact =
+  | {
+      type: InventoryContactType
+      /** Set only where the editor overrode the default label of the type. */
+      customLabel?: string
+      value: string
+    }
+  | {
+      type: 'person'
+      /** The person's name, which is also the label the card is rendered with. */
+      name: string
+      email?: string
+      phone?: string
+      subtext?: string
+    }
+  | {
+      type: 'directions'
+      /** Set only where the editor overrode the default label. */
+      customLabel?: string
+      address: string
+      parkingInfo?: string
+      publicTransportInfo?: string
+      barrierFreeInfo?: string
+      /** The map embedded in the card, as the url of its iframe. */
+      mapUrl?: string
+    }
+
 export type PageInventoryData = {
   metaDescription?: string
   keywords?: string
@@ -66,6 +116,8 @@ export type PageInventoryData = {
   assets?: InventoryLink[]
   /** Regulations the page links through its regulation sections. */
   regulations?: InventoryLink[]
+  /** The page's contacts sections, in the order they are rendered, each with its own cards. */
+  contacts?: InventoryContactsSection[]
 }
 
 export type ArticleInventoryData = {
