@@ -36,9 +36,7 @@ const PageCardsSection = ({ section }: Props) => {
           {cardsFiltered.map((card) => (
             <li key={card.page?.documentId} className="*:h-full">
               <LinkCard
-                key={card.page?.path}
                 text={card.subtext}
-                className="min-h-28 min-w-62 shrink-0 rounded-lg"
                 image={card.page?.pageBackgroundImage}
                 showImage={!!showThumbnails}
                 imageClassName="aspect-280/158"
