@@ -1,4 +1,7 @@
 import { environment } from '@/src/environment'
+import { mockedParsedDocuments } from '@/src/services/ginis/mocks'
+import { getOfficialBoardParsedList } from '@/src/services/ginis/server/getOfficialBoardParsedList'
+import { shouldMockGinis } from '@/src/services/ginis/utils/shouldMockGinis'
 import {
   AssetSlugEntityFragment,
   FileBlockFragment,
@@ -8,6 +11,7 @@ import {
   UrbanStudyPartItemFragment,
 } from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
+import { base64Encode } from '@/src/utils/base64'
 import { isDefined } from '@/src/utils/isDefined'
 
 import {
@@ -427,20 +431,63 @@ const buildUrbanStudies = async (): Promise<InventoryEntry[]> => {
 }
 
 /**
+ * Official board documents live in GINIS, not in Strapi. Only the currently published documents are listed.
+ *
+ * GINIS is reachable from the internal network only, so the mocked documents are used wherever the rest of the app
+ * mocks it. `getOfficialBoardParsedList` swallows its own errors and returns nothing, so an unreachable GINIS costs the
+ * inventory this content type instead of the whole snapshot.
+ */
+const buildOfficialBoard = async (): Promise<InventoryEntry[]> => {
+  const documents = shouldMockGinis()
+    ? mockedParsedDocuments
+    : await getOfficialBoardParsedList({ publicationState: 'vyveseno' })
+
+  return documents.map((document) => ({
+    ...getBase('official-board', {
+      // The board has no slugs - a document is addressed by its GINIS id, base64 encoded because it contains a `#`.
+      documentId: document.id,
+      path: `/uradna-tabula/${base64Encode(document.id)}`,
+      title: document.title,
+      // Editors often repeat the title as the description, which would make every second entry carry it twice.
+      summary:
+        getFirstNonEmpty(document.description) === document.title
+          ? undefined
+          : getFirstNonEmpty(document.description),
+      addedAt: document.publishedFrom,
+      // GINIS does not track when a posted document was last changed, so the only date it has is when it went up.
+      modifiedAt: document.publishedFrom,
+    }),
+    'official-board': {
+      category: getFirstNonEmpty(document.categoryName),
+      numberOfFiles: document.numberOfFiles,
+      publishedUntil: getIsoDate(document.publishedTo) ?? undefined,
+    },
+  }))
+}
+
+/**
  * Builds the inventory of everything on the website that has its own url. Published content only - the Strapi GraphQL
  * api returns published documents by default.
  */
 export const buildInventory = async (): Promise<InventoryEntry[]> => {
-  const [pages, articles, assets, regulations, inbaReleases, urbanStudies] = await Promise.all([
-    buildPages(),
-    buildArticles(),
-    buildAssets(),
-    buildRegulations(),
-    buildInbaReleases(),
-    buildUrbanStudies(),
-  ])
+  const [pages, articles, assets, regulations, inbaReleases, urbanStudies, officialBoard] =
+    await Promise.all([
+      buildPages(),
+      buildArticles(),
+      buildAssets(),
+      buildRegulations(),
+      buildInbaReleases(),
+      buildUrbanStudies(),
+      buildOfficialBoard(),
+    ])
 
-  return [...pages, ...articles, ...assets, ...regulations, ...inbaReleases, ...urbanStudies].sort(
-    (a, b) => (b.modifiedAt ?? '').localeCompare(a.modifiedAt ?? ''),
-  )
+  return [
+    ...pages,
+    ...articles,
+    ...assets,
+    ...regulations,
+    ...inbaReleases,
+    ...urbanStudies,
+    ...officialBoard,
+  ].sort((a, b) => (b.modifiedAt ?? '').localeCompare(a.modifiedAt ?? ''))
 }

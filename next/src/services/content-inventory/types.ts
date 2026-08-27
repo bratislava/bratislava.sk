@@ -6,6 +6,7 @@ export const inventoryTypes = [
   'regulation',
   'inba-release',
   'urban-study',
+  'official-board',
 ] as const
 
 export type InventoryType = (typeof inventoryTypes)[number]
@@ -45,7 +46,7 @@ export type InventoryEntryBase = {
   url: string | null
   /** `sk` or `en`. Content that is not localised is listed as `sk`. */
   locale: string
-  /** False for content types that exist only once in Strapi (asset, regulation, inba-release, urban-study). */
+  /** False for content types that exist only once (asset, regulation, inba-release, urban-study, official-board). */
   isLocalized: boolean
   /** As shown to a visitor. */
   title: string
@@ -208,6 +209,22 @@ export type UrbanStudyInventoryData = {
   regulations?: InventoryLink[]
 }
 
+/**
+ * Official board documents come from GINIS, not from Strapi - they carry no slug, no locale and no editor metadata,
+ * only what the board's document list returns.
+ */
+export type OfficialBoardInventoryData = {
+  /** The board category the document is posted under, as GINIS names it - a plain name, with no slug behind it. */
+  category?: string
+  /**
+   * How many files are attached to the document. The board's document list returns only their count - the files
+   * themselves would need one detail request per document, so `files` stays empty for this type.
+   */
+  numberOfFiles: number
+  /** When the document is taken off the board. Absent for a document posted without an end date. */
+  publishedUntil?: string
+}
+
 /** Each content type carries only its own data, under the key named after the type. */
 export type InventoryEntry =
   | (InventoryEntryBase & { type: 'page'; page?: PageInventoryData })
@@ -216,6 +233,7 @@ export type InventoryEntry =
   | (InventoryEntryBase & { type: 'regulation'; regulation: RegulationInventoryData })
   | (InventoryEntryBase & { type: 'inba-release'; 'inba-release'?: InbaReleaseInventoryData })
   | (InventoryEntryBase & { type: 'urban-study'; 'urban-study'?: UrbanStudyInventoryData })
+  | (InventoryEntryBase & { type: 'official-board'; 'official-board': OfficialBoardInventoryData })
 
 /** Reduced entry returned for `?fields=url`, meant for cheap diffing (including detecting removals). */
 export type InventoryUrlEntry = Pick<InventoryEntryBase, 'id' | 'url' | 'modifiedAt'>

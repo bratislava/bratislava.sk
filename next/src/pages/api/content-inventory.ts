@@ -15,7 +15,7 @@ import {
 } from '@/src/services/content-inventory/types'
 
 /** Bump when the shape of an entry changes in a way that can break consumers. */
-const INVENTORY_VERSION = 2
+const INVENTORY_VERSION = 3
 
 /** Used when a page is requested without a page size. Without any pagination parameter everything is returned. */
 const DEFAULT_PAGE_SIZE = 100

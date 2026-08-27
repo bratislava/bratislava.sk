@@ -2,6 +2,10 @@
 
 Versions of the `/api/content-inventory` response, as returned in its `version` field.
 
+## 3
+
+- Add the `official-board` type, listing the documents currently posted on the official board, with `official-board.category`, `official-board.numberOfFiles` and `official-board.publishedUntil` - the board's list carries no files, so `files` stays empty
+
 ## 2
 
 - Add `files` to every entry, as `{ id, url, title }`
