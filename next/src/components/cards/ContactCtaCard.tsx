@@ -178,9 +178,15 @@ const ContactCtaCard = ({ className, contact }: ContactCtaCardProps) => {
                     src={contact.iframeUrl}
                     className="size-full border"
                     allow="geolocation *"
+                    // Hardening only - this does not stop the iframe collecting cookies,
+                    // so it is not what keeps us consent-compliant
+                    // - we use CookieConsentGate for that.
+                    // Omitting allow-same-origin puts the frame in an opaque origin,
+                    // which blocks its JavaScript from reaching document.cookie and localStorage,
+                    // but most third-party cookies arrive as HttpOnly Set-Cookie response headers
+                    // that JavaScript never touches and sandbox has no say over.
                     // https://stackoverflow.com/questions/44837450/recommended-method-to-prevent-any-content-inside-iframe-from-setting-cookies
-
-                    sandbox="allow-scripts allow-popups allow-forms"
+                    sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-forms"
                   />
                 </CookieConsentGate>
               </div>
