@@ -2,7 +2,7 @@ import LinkCard from '@/src/components/cards/LinkCard'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
 import { PageCardsSectionFragment } from '@/src/services/graphql'
-import { getLinkProps, getPageCardsItemProps } from '@/src/utils/getLinkProps'
+import { getLinkProps } from '@/src/utils/getLinkProps'
 import { isDefined } from '@/src/utils/isDefined'
 
 type Props = {
@@ -28,20 +28,26 @@ const PageCardsSection = ({ section }: Props) => {
       <div className="flex flex-col gap-12">
         <SectionHeader title={title} text={description} />
 
-        <div className="flex flex-col gap-8 overflow-x-auto sm:flex-row">
+        <ul
+          className={
+            'grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:gap-8 lg:@page-wide:grid-cols-4'
+          }
+        >
           {cardsFiltered.map((card) => (
-            <LinkCard
-              key={card.page?.path}
-              text={card.subtext}
-              className="h-auto min-h-28 min-w-62 shrink-0 rounded-lg sm:w-62"
-              image={card.page?.pageBackgroundImage}
-              showImage={!!showThumbnails}
-              imageClassName="aspect-280/158"
-              buttonText={card.buttonText}
-              linkProps={getLinkProps({ page: card.page })}
-            />
+            <li key={card.page?.documentId} className="*:h-full">
+              <LinkCard
+                key={card.page?.path}
+                text={card.subtext}
+                className="min-h-28 min-w-62 shrink-0 rounded-lg"
+                image={card.page?.pageBackgroundImage}
+                showImage={!!showThumbnails}
+                imageClassName="aspect-280/158"
+                buttonText={card.buttonText}
+                linkProps={getLinkProps({ page: card.page })}
+              />
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </SectionContainer>
   )

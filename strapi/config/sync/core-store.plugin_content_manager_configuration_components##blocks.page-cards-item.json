@@ -100,11 +100,11 @@
         ],
         [
           {
-            "name": "buttonText",
+            "name": "page",
             "size": 12
           },
           {
-            "name": "page",
+            "name": "buttonText",
             "size": 12
           }
         ]
