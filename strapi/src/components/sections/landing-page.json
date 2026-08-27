@@ -1,0 +1,58 @@
+{
+  "collectionName": "components_sections_landing_pages",
+  "info": {
+    "displayName": "Landing Page"
+  },
+  "options": {},
+  "attributes": {
+    "variant": {
+      "type": "enumeration",
+      "required": true,
+      "default": "banner",
+      "enum": [
+        "banner",
+        "image"
+      ]
+    },
+    "banner": {
+      "type": "component",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "variant"
+            },
+            "banner"
+          ]
+        }
+      },
+      "component": "blocks.landing-page-banner",
+      "repeatable": false,
+      "required": false
+    },
+    "image": {
+      "type": "media",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "variant"
+            },
+            "image"
+          ]
+        }
+      },
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "cardLinks": {
+      "type": "component",
+      "component": "blocks.card-link",
+      "repeatable": true,
+      "max": 3
+    }
+  },
+  "config": {}
+}

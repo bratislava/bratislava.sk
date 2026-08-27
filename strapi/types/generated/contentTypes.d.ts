@@ -1184,6 +1184,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'sections.inba-latest-release',
         'sections.inba-releases',
         'sections.contacts-section',
+        'sections.landing-page',
         'sections.newsletter',
         'sections.page-cards',
         'sections.links',

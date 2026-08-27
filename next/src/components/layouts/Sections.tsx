@@ -20,6 +20,7 @@ import IframeTabsSection from '@/src/components/sections/IframeTabsSection'
 import InbaLatestReleaseSection from '@/src/components/sections/InbaLatestReleaseSection'
 import InbaReleasesSection from '@/src/components/sections/InbaReleasesSection/InbaReleasesSection'
 import JobOffersSection from '@/src/components/sections/JobOffersSection'
+import LandingPageSection from '@/src/components/sections/LandingPageSection'
 import LinksSection from '@/src/components/sections/LinksSection'
 import NarrowTextSection from '@/src/components/sections/NarrowTextSection'
 import NewsletterSection from '@/src/components/sections/NewsletterSection/NewsletterSection'
@@ -163,6 +164,9 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
 
     case 'ComponentSectionsIframeTabs':
       return <IframeTabsSection section={section} />
+
+    case 'ComponentSectionsLandingPage':
+      return <LandingPageSection section={section} />
 
     case 'ComponentSectionsPageCards':
       return <PageCardsSection section={section} />

@@ -508,6 +508,34 @@ fragment StarzLandingPageSection on ComponentSectionsStarzLandingPage {
   }
 }
 
+fragment LandingPageSection on ComponentSectionsLandingPage {
+  landingPageVariant: variant
+  landingPageBanner: banner {
+    title
+    content
+    contentPosition
+    variant
+    media {
+      ...UploadImageEntity
+    }
+    primaryLink {
+      ...CommonLink
+    }
+    secondaryLink {
+      ...CommonLink
+    }
+    tertiaryLink {
+      ...CommonLink
+    }
+  }
+  landingPageImage: image {
+    ...UploadImageEntity
+  }
+  cardLinks {
+    ...CardLink
+  }
+}
+
 fragment OpeningHoursSection on ComponentSectionsOpeningHours {
   title
   text
@@ -712,6 +740,10 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsFacilities {
     ...FacilitiesSection
+  }
+
+  ... on ComponentSectionsLandingPage {
+    ...LandingPageSection
   }
 
   ... on ComponentSectionsStarzLandingPage {
