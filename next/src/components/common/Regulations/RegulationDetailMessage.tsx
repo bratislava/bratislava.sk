@@ -31,7 +31,6 @@ const RegulationMLink = ({ regNumber }: RegulationMLinkProps) => {
 }
 
 const RegulationDetailMessage = ({ regulation }: RegulationDetailMessageProps) => {
-  const amending = regulation.amending?.filter(isDefined)
   const { cancellation, effectiveFrom } = regulation
 
   const { isCancelledDirectly, hasCancelledAmendees, cancelledAmendees, effectiveUntil } =
@@ -69,9 +68,7 @@ const RegulationDetailMessage = ({ regulation }: RegulationDetailMessageProps) =
             účinnosťou od{' '}
             <span className="font-medium whitespace-nowrap">
               {' '}
-              {formatDate(
-                amending?.find((amended) => amended.cancellation)?.cancellation?.effectiveFrom,
-              )}
+              {formatDate(cancelledAmendee.cancellation?.effectiveFrom)}
             </span>
           </Fragment>
         )
