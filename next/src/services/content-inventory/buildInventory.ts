@@ -24,9 +24,7 @@ import { isDefined } from '@/src/utils/isDefined'
 import { FETCH_CHUNK_SIZE } from './config'
 import {
   Inventory,
-  InventoryCategory,
   InventoryContact,
-  InventoryContactsSection,
   InventoryContactType,
   InventoryEntry,
   InventoryEntryBase,
@@ -100,10 +98,8 @@ const getBlockFiles = (blocks: (FileBlock | null)[] | null | undefined): Invento
     .map((block) => (block.media ? getFile(block.media, block.title) : null))
     .filter(isDefined)
 
-const getCategory = (
-  category: InventoryCategory | null | undefined,
-): InventoryCategory | undefined =>
-  category ? { title: category.title, slug: category.slug } : undefined
+/** An entry names its taxonomies by slug alone - the titles are listed once, in `taxonomies`. */
+const getCategory = (category: { slug: string } | null | undefined) => category?.slug
 
 /**
  * An entry has at most one owner, even though Strapi models admin groups as a many to many relation - the extra groups
@@ -147,7 +143,8 @@ const getBase = <TType extends InventoryType>(
   owner: entry.owner,
   addedAt: getIsoDate(entry.addedAt),
   modifiedAt: getIsoDate(entry.modifiedAt),
-  files: entry.files ?? [],
+  // Undefined instead of an empty list, the same way the type specific keys are omitted when they hold nothing.
+  files: entry.files?.length ? entry.files : undefined,
 })
 
 /**
@@ -280,28 +277,17 @@ const getSectionContacts = (section: ContactsSection): InventoryContact[] => [
 ]
 
 /**
- * The contacts sections of an entry, in the order they are rendered. The cards are kept grouped by their section - a
- * page listing several people or departments carries one section each, and its title is what the cards belong to.
+ * The contact cards of an entry, in the order they are rendered. Flattened into one list.
  */
-const getContactsSections = (
-  sections: (ContactsSection | null)[],
-): InventoryContactsSection[] | undefined => {
-  const contactsSections = sections
-    .filter(isDefined)
-    .map((section) => ({
-      title: getFirstNonEmpty(section.title),
-      subtext: getFirstNonEmpty(section.description),
-      contactItems: getSectionContacts(section),
-    }))
-    // A section an editor left empty adds nothing to the inventory.
-    .filter((section) => section.contactItems.length > 0)
+const getContacts = (sections: (ContactsSection | null)[]): InventoryContact[] | undefined => {
+  const contacts = sections.filter(isDefined).flatMap((section) => getSectionContacts(section))
 
-  return contactsSections.length > 0 ? contactsSections : undefined
+  return contacts.length > 0 ? contacts : undefined
 }
 
 /** Picks the contacts sections out of a page's dynamic zone, the same way the assets and regulations are picked. */
 const getPageContacts = (sections: PageInventoryEntityFragment['sections']) =>
-  getContactsSections(
+  getContacts(
     (sections ?? [])
       .filter(isDefined)
       .flatMap((section) =>
@@ -368,7 +354,7 @@ const buildArticles = async (): Promise<InventoryEntry[]> => {
             url: getUrl(`/inba/vydania/${article.inbaRelease.slug}`),
           }
         : undefined,
-      tags: article.tags.filter(isDefined).map(({ title, slug }) => ({ title, slug })),
+      tags: article.tags.filter(isDefined).map(({ slug }) => slug),
     },
   }))
 }
@@ -491,36 +477,39 @@ const buildOfficialBoard = async (): Promise<InventoryEntry[]> => {
     ? mockedParsedDocuments
     : await getOfficialBoardParsedList({ publicationState: 'vyveseno' })
 
-  return documents.map((document) => ({
-    ...getBase('official-board', {
-      // The board has no slugs - a document is addressed by its GINIS id, base64 encoded because it contains a `#`.
-      documentId: document.id,
-      path: `/uradna-tabula/${base64Encode(document.id)}`,
-      title: document.title,
-      // Editors often repeat the title as the description, which would make every second entry carry it twice.
-      summary:
-        getFirstNonEmpty(document.description) === document.title
-          ? undefined
-          : getFirstNonEmpty(document.description),
-      addedAt: document.publishedFrom,
-      // GINIS does not track when a posted document was last changed, so the only date it has is when it went up.
-      modifiedAt: document.publishedFrom,
-    }),
-    'official-board': {
-      category: getFirstNonEmpty(document.categoryName),
-      numberOfFiles: document.numberOfFiles,
-      publishedUntil: getIsoDate(document.publishedTo) ?? undefined,
-    },
-  }))
+  return documents.map((document) => {
+    // The board has no slugs - a document is addressed by its GINIS id, base64 encoded because it contains a `#`. The
+    // entry is keyed by the encoded id too, so it matches the last segment of the url.
+    const documentId = base64Encode(document.id)
+
+    return {
+      ...getBase('official-board', {
+        documentId,
+        path: `/uradna-tabula/${documentId}`,
+        title: document.title,
+        // Editors often repeat the title as the description, which would make every second entry carry it twice.
+        summary:
+          getFirstNonEmpty(document.description) === document.title
+            ? undefined
+            : getFirstNonEmpty(document.description),
+        addedAt: document.publishedFrom,
+        // GINIS does not track when a posted document was last changed, so the only date it has is when it went up.
+        modifiedAt: document.publishedFrom,
+      }),
+      'official-board': {
+        category: getFirstNonEmpty(document.categoryName),
+        numberOfFiles: document.numberOfFiles,
+        publishedUntil: getIsoDate(document.publishedTo) ?? undefined,
+      },
+    }
+  })
 }
 
-/** The categories of a municipal service are plain title and slug pairs, the way this website's ones are. */
-const getServiceCategories = (
-  categories: { title: string; slug: string }[] | null | undefined,
-): InventoryCategory[] | undefined => {
-  const mapped = (categories ?? []).map(({ title, slug }) => ({ title, slug }))
+/** The categories of a municipal service are named by slug too, the way this website's ones are. */
+const getServiceCategories = (categories: { slug: string }[] | null | undefined) => {
+  const slugs = (categories ?? []).map(({ slug }) => slug)
 
-  return mapped.length > 0 ? mapped : undefined
+  return slugs.length > 0 ? slugs : undefined
 }
 
 /**
@@ -542,7 +531,7 @@ const buildMunicipalServices = async (): Promise<InventoryEntry[]> => {
     }),
     'municipal-service': getTypeData<MunicipalServiceInventoryData>({
       categories: getServiceCategories(service.categories),
-      contacts: getContactsSections(service.sections ?? []),
+      contacts: getContacts(service.sections ?? []),
     }),
   }))
 }

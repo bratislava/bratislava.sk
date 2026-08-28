@@ -12,13 +12,6 @@ export const inventoryTypes = [
 
 export type InventoryType = (typeof inventoryTypes)[number]
 
-/** A taxonomy an entry is filed under - categories are their own content types in Strapi, shared across entries. */
-export type InventoryCategory = {
-  title: string
-  /** Slug can serve as an unique identifier. */
-  slug: string
-}
-
 /** The organisation an entry's content belongs to, taken from its admin group. */
 export type InventoryOwner = {
   title: string
@@ -65,11 +58,8 @@ export type InventoryEntryBase = {
   addedAt: string | null
   /** When the last change was published. */
   modifiedAt: string | null
-  /**
-   * Files a visitor can download from the entry's page, in the order they are rendered. Empty for content that has
-   * none.
-   */
-  files: InventoryFile[]
+  /** Files a visitor can download from the entry's page, in the order they are rendered. */
+  files?: InventoryFile[]
 }
 
 /** A reference from one entry to another entry of this inventory. */
@@ -82,7 +72,7 @@ export type InventoryLink = {
   url: string
 }
 
-/** The kind of contact a card holds - the contacts section groups its cards by these. */
+/** The kind of contact a card holds. */
 export type InventoryContactType =
   | 'address'
   | 'openingHours'
@@ -93,20 +83,7 @@ export type InventoryContactType =
   | 'billingInfo'
   | 'bankConnection'
 
-/**
- * One contacts section of a page or of a municipal service. Its `title` is what the cards belong to - content listing
- * several people or departments carries one section each, so the cards must not be flattened across them.
- */
-export type InventoryContactsSection = {
-  /** Usually "Kontakty", but it's helpful when page contains more contacts sections to distinguish between them. */
-  title?: string
-  /** As the editor wrote it in markdown. Sometimes contains important information how the contact should be used. */
-  subtext?: string
-  /** The section's contact cards, in the order they are rendered. */
-  contactItems: InventoryContact[]
-}
-
-/** A single contact card of a contacts section, as it is rendered on the page. */
+/** A single contact card, as it is rendered on the page. */
 export type InventoryContact =
   | {
       type: InventoryContactType
@@ -149,29 +126,29 @@ export type PageInventoryData = {
   assets?: InventoryLink[]
   /** Regulations the page links through its regulation sections. */
   regulations?: InventoryLink[]
-  /** The page's contacts sections, in the order they are rendered, each with its own cards. */
-  contacts?: InventoryContactsSection[]
+  /** The page's contact cards, in the order they are rendered, flattened. */
+  contacts?: InventoryContact[]
 }
 
 export type ArticleInventoryData = {
-  /** The type of article. */
-  category?: InventoryCategory
-  /** The article's topics. */
-  tags: { title: string; slug: string }[]
+  /** The slug of the article's type, as `taxonomies.articleCategories` lists it. */
+  category?: string
+  /** The slugs of the article's topics, as `taxonomies.tags` lists them. */
+  tags: string[]
   /** The inba release the article was published in, for the articles that come from one. */
   inbaRelease?: InventoryLink
 }
 
 export type AssetInventoryData = {
-  /** The single category the asset is filed under. */
-  category?: InventoryCategory
+  /** The slug of the single category the asset is filed under. */
+  category?: string
 }
 
 export type RegulationInventoryData = {
   /** The number the regulation is cited by, e.g. `1/2023`. */
   regNumber: string
-  /** The single category the regulation is filed under. */
-  category?: InventoryCategory
+  /** The slug of the single category the regulation is filed under. */
+  category?: string
   /** How the regulation relates to the other ones. Omitted for a regulation that stands on its own. */
   regRelations?: {
     /** Regulations that amend this one. */
@@ -201,10 +178,10 @@ export type InbaReleaseInventoryData = {
 export type UrbanStudyInventoryData = {
   /** The year the study was released. */
   year?: string
-  /** The type of urban study. */
-  category?: InventoryCategory
-  /** How far along the study is, e.g. whether it is in progress or finished. */
-  state?: InventoryCategory
+  /** The slug of the type of urban study. */
+  category?: string
+  /** The slug of the study state, (in progress, finished...) */
+  state?: string
   /** Regulations the study is tied to. */
   regulations?: InventoryLink[]
 }
@@ -218,7 +195,7 @@ export type OfficialBoardInventoryData = {
   category?: string
   /**
    * How many files are attached to the document. The board's document list returns only their count - the files
-   * themselves would need one detail request per document, so `files` stays empty for this type.
+   * themselves would need one detail request per document, so `files` is never set for this type.
    */
   numberOfFiles: number
   /** When the document is taken off the board. Absent for a document posted without an end date. */
@@ -230,10 +207,10 @@ export type OfficialBoardInventoryData = {
  * taxonomies instead of this website's ones.
  */
 export type MunicipalServiceInventoryData = {
-  /** The categories the service is filed under on the city account - most services have exactly one. */
-  categories?: InventoryCategory[]
-  /** The service's contacts sections, the same shape a page of this website carries them in. */
-  contacts?: InventoryContactsSection[]
+  /** The slugs of the categories the service is filed under on the city account - most services have only one. */
+  categories?: string[]
+  /** The service's contact cards, in the order they are rendered, flattened. */
+  contacts?: InventoryContact[]
 }
 
 /** What one build of the inventory produces - the entries plus the taxonomies listed next to them. */
@@ -258,7 +235,7 @@ export type InventoryEntry =
 
 /**
  * One value of a taxonomy, listed alongside the entries so a consumer sees the whole taxonomy and not only the values
- * in use. The entries reference these by slug, the way they name their own category and tags.
+ * in use. The entries carry the slug alone, so this is the only place a taxonomy's title is spelled out.
  */
 export type InventoryTaxonomy = {
   title: string
