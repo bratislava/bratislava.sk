@@ -2,19 +2,15 @@
 
 Versions of the `/api/content-inventory` response, as returned in its `version` field.
 
-## 4
-
-- Omit `files` from the entries that have none, instead of returning an empty list - `official-board` never carries any, so the type now has none at all
-- Reduce the taxonomies an entry is filed under to their slug alone - `article.category`, `article.tags`, `asset.category`, `regulation.category`, `urban-study.category`, `urban-study.state` and `municipal-service.categories` are now strings, their titles read from `taxonomies` by slug - `official-board.category` is the exception and keeps naming its category by title, the only thing GINIS returns for a posted document
-- Key an `official-board` entry by the base64 encoded GINIS id, the same one its url ends with, instead of the raw id
-- Flatten `page.contacts` and `municipal-service.contacts` into a plain list of contact cards, drop section titles and subtexts.
-
 ## 3
 
 - Add `taxonomies` next to `items`, with `articleCategories`, `tags`, `assetCategories`, `regulationCategories`, `urbanStudyCategories`, `urbanStudyStates`, `officialBoardCategories` and `municipalServiceCategories`, each value as `{ title, slug, locale }`, the slug missing for the official board's categories, which GINIS only names - listed whole, unaffected by the filters and the pagination, and referenced from the entries by slug
+- Reduce the taxonomies an entry is filed under to their slug alone - `article.category`, `article.tags`, `asset.category`, `regulation.category`, `urban-study.category`, `urban-study.state` and `municipal-service.categories` are now strings, their titles read from `taxonomies` by slug - `official-board.category` is the exception and keeps naming its category by title, the only thing GINIS returns for a posted document
+- Omit `files` from the entries that have none, instead of returning an empty list
+- Flatten `page.contacts` and `municipal-service.contacts` into a plain list of contact cards, drop section titles and subtexts
 - Drop `locale` and `isLocalized` from the entries and the `locale` query parameter - only the Slovak content is listed, so the entry ids lost their locale too and are now `${type}:${documentId}`
 - Add the `municipal-service` type, listing the services of the city account (konto.bratislava.sk), with `municipal-service.categories` and `municipal-service.contacts`, the latter shaped the same way `page.contacts` is - their `url` points to the city account, not to this website
-- Add the `official-board` type, listing the documents currently posted on the official board, with `official-board.category`, `official-board.numberOfFiles` and `official-board.publishedUntil` - the board's list carries no files, so `files` stays empty
+- Add the `official-board` type, listing the documents currently posted on the official board, with `official-board.category`, `official-board.numberOfFiles` and `official-board.publishedUntil` - the board's list carries no files, so `files` is never set for this type, and a document is keyed and addressed by its base64 encoded GINIS id
 
 ## 2
 
