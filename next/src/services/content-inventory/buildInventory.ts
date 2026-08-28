@@ -1,6 +1,16 @@
 import { environment } from '@/src/environment'
+import { serverEnvironment } from '@/src/environment.server'
+import {
+  getMunicipalServiceCategories,
+  getMunicipalServices,
+} from '@/src/services/city-account/getMunicipalServices'
+import { mockedParsedCategories, mockedParsedDocuments } from '@/src/services/ginis/mocks'
+import { getOfficialBoardParsedCategories } from '@/src/services/ginis/server/getOfficialBoardParsedCategories'
+import { getOfficialBoardParsedList } from '@/src/services/ginis/server/getOfficialBoardParsedList'
+import { shouldMockGinis } from '@/src/services/ginis/utils/shouldMockGinis'
 import {
   AssetSlugEntityFragment,
+  ContactsSectionFragment,
   FileBlockFragment,
   FileItemBlockFragment,
   PageInventoryEntityFragment,
@@ -8,9 +18,12 @@ import {
   UrbanStudyPartItemFragment,
 } from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
+import { base64Encode } from '@/src/utils/base64'
 import { isDefined } from '@/src/utils/isDefined'
 
+import { FETCH_CHUNK_SIZE } from './config'
 import {
+  Inventory,
   InventoryCategory,
   InventoryContact,
   InventoryContactsSection,
@@ -20,12 +33,15 @@ import {
   InventoryFile,
   InventoryLink,
   InventoryOwner,
+  InventoryTaxonomies,
+  InventoryTaxonomy,
   InventoryType,
+  MunicipalServiceInventoryData,
 } from './types'
 
 // TODO: The paths are hardcoded the same way as in getLinkProps and next-sitemap.config.js, extract them once.
-const getUrl = (path: string, locale = 'sk') =>
-  `${environment.siteUrl.replace(/\/$/, '')}${locale === 'en' ? '/en' : ''}${path}`
+const getUrl = (path: string, siteUrl = environment.siteUrl) =>
+  `${siteUrl.replace(/\/$/, '')}${path}`
 
 const getFirstNonEmpty = (...values: (string | null | undefined)[]) =>
   values.find((value) => isDefined(value) && value.trim().length > 0) ?? undefined
@@ -39,6 +55,21 @@ const getIsoDate = (value: unknown) => {
   }
 
   return /^\d{4}-\d{2}-\d{2}$/.test(date) ? `${date}T00:00:00.000Z` : date
+}
+
+/**
+ * Reads one content type in chunks. Sorted by id so the windows do not shift while fetching.
+ */
+const fetchAll = async <TItem>(
+  fetchChunk: (variables: { start: number; limit: number }) => Promise<(TItem | null)[]>,
+  start = 0,
+): Promise<TItem[]> => {
+  const chunk = await fetchChunk({ start, limit: FETCH_CHUNK_SIZE })
+  const items = chunk.filter(isDefined)
+
+  return chunk.length < FETCH_CHUNK_SIZE
+    ? items
+    : [...items, ...(await fetchAll(fetchChunk, start + FETCH_CHUNK_SIZE))]
 }
 
 /** Omits the type specific object entirely when the content type has nothing to add. */
@@ -86,9 +117,8 @@ const getOwner = (
   return adminGroup ? { title: adminGroup.title, slug: adminGroup.slug } : undefined
 }
 
-/** Entries are keyed by type, documentId and locale - content that exists only once in Strapi is keyed as `sk`. */
-const getEntryId = (type: InventoryType, documentId: string, locale?: string | null) =>
-  `${type}:${documentId}:${locale ?? 'sk'}`
+/** Entries are keyed by type and documentId - the inventory lists one locale, so nothing else is needed. */
+const getEntryId = (type: InventoryType, documentId: string) => `${type}:${documentId}`
 
 /**
  * The part of an entry that is the same for every content type. `addedAt` unifies the various "published" dates - each
@@ -99,7 +129,8 @@ const getBase = <TType extends InventoryType>(
   entry: {
     documentId: string
     path: string
-    locale?: string | null
+    /** Only for content hosted elsewhere, i.e. the city account - everything else lives on this website. */
+    siteUrl?: string
     title: string
     summary?: string
     owner?: InventoryOwner
@@ -108,11 +139,9 @@ const getBase = <TType extends InventoryType>(
     files?: InventoryFile[]
   },
 ): InventoryEntryBase & { type: TType } => ({
-  id: getEntryId(type, entry.documentId, entry.locale),
+  id: getEntryId(type, entry.documentId),
   type,
-  url: getUrl(entry.path, entry.locale ?? 'sk'),
-  locale: entry.locale ?? 'sk',
-  isLocalized: isDefined(entry.locale),
+  url: getUrl(entry.path, entry.siteUrl),
   title: entry.title,
   summary: entry.summary,
   owner: entry.owner,
@@ -141,14 +170,14 @@ const getPageFiles = (sections: PageInventoryEntityFragment['sections']): Invent
     }),
   )
 
-/** Links to the article entries of the inventory - articles are localized, so the locale is part of their id and url. */
+/** Links to the article entries of the inventory. */
 const getArticleLinks = (
-  articles: ({ documentId: string; slug: string; title: string; locale?: string | null } | null)[],
+  articles: ({ documentId: string; slug: string; title: string } | null)[],
 ): InventoryLink[] | undefined => {
   const links = articles.filter(isDefined).map((article) => ({
-    id: getEntryId('article', article.documentId, article.locale),
+    id: getEntryId('article', article.documentId),
     title: article.title,
-    url: getUrl(`/spravy/${article.slug}`, article.locale ?? 'sk'),
+    url: getUrl(`/spravy/${article.slug}`),
   }))
 
   return links.length > 0 ? links : undefined
@@ -208,9 +237,14 @@ const contactCardTypes = {
   bankConnectionContacts: 'bankConnection',
 } as const satisfies Record<string, InventoryContactType>
 
-type ContactsSection = Extract<
-  NonNullable<NonNullable<PageInventoryEntityFragment['sections']>[number]>,
-  { __typename: 'ComponentSectionsContactsSection' }
+/**
+ * The city account uses the same contacts section as this website, so the mapping is written against the generated
+ * fragment without the fields that identify it as this Strapi's - the city account's rest api names its own
+ * differently, and the mapping reads neither.
+ */
+type ContactsSection = Omit<
+  ContactsSectionFragment,
+  '__typename' | 'id' | 'titleLevelContactsSection'
 >
 
 /** The person and directions cards carry their own fields, so they are mapped separately from the simple ones. */
@@ -246,17 +280,14 @@ const getSectionContacts = (section: ContactsSection): InventoryContact[] => [
 ]
 
 /**
- * The contacts sections of a page, in the order they are rendered. The cards are kept grouped by their section - a page
- * listing several people or departments carries one section each, and its title is what the cards belong to.
+ * The contacts sections of an entry, in the order they are rendered. The cards are kept grouped by their section - a
+ * page listing several people or departments carries one section each, and its title is what the cards belong to.
  */
-const getPageContacts = (
-  sections: PageInventoryEntityFragment['sections'],
+const getContactsSections = (
+  sections: (ContactsSection | null)[],
 ): InventoryContactsSection[] | undefined => {
-  const contactsSections = (sections ?? [])
+  const contactsSections = sections
     .filter(isDefined)
-    .flatMap((section) =>
-      section.__typename === 'ComponentSectionsContactsSection' ? [section] : [],
-    )
     .map((section) => ({
       title: getFirstNonEmpty(section.title),
       subtext: getFirstNonEmpty(section.description),
@@ -267,6 +298,16 @@ const getPageContacts = (
 
   return contactsSections.length > 0 ? contactsSections : undefined
 }
+
+/** Picks the contacts sections out of a page's dynamic zone, the same way the assets and regulations are picked. */
+const getPageContacts = (sections: PageInventoryEntityFragment['sections']) =>
+  getContactsSections(
+    (sections ?? [])
+      .filter(isDefined)
+      .flatMap((section) =>
+        section.__typename === 'ComponentSectionsContactsSection' ? [section] : [],
+      ),
+  )
 
 /** Regulations a page links through its regulation sections, the same way `getPageAssets` collects the assets. */
 const getPageRegulations = (sections: PageInventoryEntityFragment['sections']) =>
@@ -279,9 +320,11 @@ const getPageRegulations = (sections: PageInventoryEntityFragment['sections']) =
   )
 
 const buildPages = async (): Promise<InventoryEntry[]> => {
-  const { pages } = await client.PagesInventory()
+  const pages = await fetchAll((variables) =>
+    client.PagesInventory(variables).then((result) => result.pages),
+  )
 
-  return pages.filter(isDefined).map((page) => ({
+  return pages.map((page) => ({
     ...getBase('page', {
       ...page,
       path: `/${page.path}`,
@@ -302,9 +345,11 @@ const buildPages = async (): Promise<InventoryEntry[]> => {
 }
 
 const buildArticles = async (): Promise<InventoryEntry[]> => {
-  const { articles } = await client.ArticlesInventory()
+  const articles = await fetchAll((variables) =>
+    client.ArticlesInventory(variables).then((result) => result.articles),
+  )
 
-  return articles.filter(isDefined).map((article) => ({
+  return articles.map((article) => ({
     ...getBase('article', {
       ...article,
       path: `/spravy/${article.slug}`,
@@ -329,9 +374,11 @@ const buildArticles = async (): Promise<InventoryEntry[]> => {
 }
 
 const buildAssets = async (): Promise<InventoryEntry[]> => {
-  const { assets } = await client.AssetsInventory()
+  const assets = await fetchAll((variables) =>
+    client.AssetsInventory(variables).then((result) => result.assets),
+  )
 
-  return assets.filter(isDefined).map((asset) => ({
+  return assets.map((asset) => ({
     ...getBase('asset', {
       ...asset,
       path: `/dokumenty/${asset.slug}`,
@@ -346,9 +393,11 @@ const buildAssets = async (): Promise<InventoryEntry[]> => {
 }
 
 const buildRegulations = async (): Promise<InventoryEntry[]> => {
-  const { regulations } = await client.RegulationsInventory()
+  const regulations = await fetchAll((variables) =>
+    client.RegulationsInventory(variables).then((result) => result.regulations),
+  )
 
-  return regulations.filter(isDefined).map((regulation) => {
+  return regulations.map((regulation) => {
     // Cancelled either directly, or through an amendee that got cancelled - same rule as getRegulationMetadata.ts.
     const cancellation =
       regulation.cancellation ??
@@ -388,9 +437,11 @@ const buildRegulations = async (): Promise<InventoryEntry[]> => {
 }
 
 const buildInbaReleases = async (): Promise<InventoryEntry[]> => {
-  const { inbaReleases } = await client.InbaReleasesInventory()
+  const inbaReleases = await fetchAll((variables) =>
+    client.InbaReleasesInventory(variables).then((result) => result.inbaReleases),
+  )
 
-  return inbaReleases.filter(isDefined).map((inbaRelease) => ({
+  return inbaReleases.map((inbaRelease) => ({
     ...getBase('inba-release', {
       ...inbaRelease,
       path: `/inba/vydania/${inbaRelease.slug}`,
@@ -404,9 +455,11 @@ const buildInbaReleases = async (): Promise<InventoryEntry[]> => {
 }
 
 const buildUrbanStudies = async (): Promise<InventoryEntry[]> => {
-  const { urbanStudies } = await client.UrbanStudiesInventory()
+  const urbanStudies = await fetchAll((variables) =>
+    client.UrbanStudiesInventory(variables).then((result) => result.urbanStudies),
+  )
 
-  return urbanStudies.filter(isDefined).map((urbanStudy) => ({
+  return urbanStudies.map((urbanStudy) => ({
     ...getBase('urban-study', {
       ...urbanStudy,
       path: `/uzemne-studie/${urbanStudy.slug}`,
@@ -427,20 +480,148 @@ const buildUrbanStudies = async (): Promise<InventoryEntry[]> => {
 }
 
 /**
+ * Official board documents live in GINIS, not in Strapi. Only the currently published documents are listed.
+ *
+ * GINIS is reachable from the internal network only, so the mocked documents are used wherever the rest of the app
+ * mocks it. `getOfficialBoardParsedList` swallows its own errors and returns nothing, so an unreachable GINIS costs the
+ * inventory this content type instead of the whole snapshot.
+ */
+const buildOfficialBoard = async (): Promise<InventoryEntry[]> => {
+  const documents = shouldMockGinis()
+    ? mockedParsedDocuments
+    : await getOfficialBoardParsedList({ publicationState: 'vyveseno' })
+
+  return documents.map((document) => ({
+    ...getBase('official-board', {
+      // The board has no slugs - a document is addressed by its GINIS id, base64 encoded because it contains a `#`.
+      documentId: document.id,
+      path: `/uradna-tabula/${base64Encode(document.id)}`,
+      title: document.title,
+      // Editors often repeat the title as the description, which would make every second entry carry it twice.
+      summary:
+        getFirstNonEmpty(document.description) === document.title
+          ? undefined
+          : getFirstNonEmpty(document.description),
+      addedAt: document.publishedFrom,
+      // GINIS does not track when a posted document was last changed, so the only date it has is when it went up.
+      modifiedAt: document.publishedFrom,
+    }),
+    'official-board': {
+      category: getFirstNonEmpty(document.categoryName),
+      numberOfFiles: document.numberOfFiles,
+      publishedUntil: getIsoDate(document.publishedTo) ?? undefined,
+    },
+  }))
+}
+
+/** The categories of a municipal service are plain title and slug pairs, the way this website's ones are. */
+const getServiceCategories = (
+  categories: { title: string; slug: string }[] | null | undefined,
+): InventoryCategory[] | undefined => {
+  const mapped = (categories ?? []).map(({ title, slug }) => ({ title, slug }))
+
+  return mapped.length > 0 ? mapped : undefined
+}
+
+/**
+ * Municipal services are the city account's content, not this website's - each of them has its own page there, which is
+ * what the entry's url points to.
+ */
+const buildMunicipalServices = async (): Promise<InventoryEntry[]> => {
+  const services = await getMunicipalServices()
+
+  return services.map((service) => ({
+    ...getBase('municipal-service', {
+      documentId: service.documentId,
+      path: `/mestske-sluzby/${service.slug}`,
+      siteUrl: serverEnvironment.cityAccountUrl,
+      title: service.title,
+      summary: getFirstNonEmpty(service.description),
+      addedAt: service.publishedAt,
+      modifiedAt: service.updatedAt,
+    }),
+    'municipal-service': getTypeData<MunicipalServiceInventoryData>({
+      categories: getServiceCategories(service.categories),
+      contacts: getContactsSections(service.sections ?? []),
+    }),
+  }))
+}
+
+/** A taxonomy is only its identity here - what it is filed with is on the entries, which name it by its slug. */
+const getTaxonomy = (values: ({ title: string; slug: string } | null)[]): InventoryTaxonomy[] =>
+  values.filter(isDefined).map((value) => ({ title: value.title, slug: value.slug }))
+
+/**
+ * The board's categories come from GINIS, which names them instead of slugging them - `official-board.category` names
+ * them the same way, by their title.
+ */
+const buildOfficialBoardCategories = async (): Promise<InventoryTaxonomy[]> => {
+  const categories = shouldMockGinis()
+    ? mockedParsedCategories
+    : await getOfficialBoardParsedCategories()
+
+  return categories.map((category) => ({ title: category.title }))
+}
+
+/** Every taxonomy of the website, listed whole so a consumer sees the values that nothing is filed under too. */
+const buildTaxonomies = async (): Promise<InventoryTaxonomies> => {
+  const [taxonomies, officialBoardCategories, municipalServiceCategories] = await Promise.all([
+    client.TaxonomiesInventory(),
+    buildOfficialBoardCategories(),
+    getMunicipalServiceCategories(),
+  ])
+
+  return {
+    officialBoardCategories,
+    municipalServiceCategories: getTaxonomy(municipalServiceCategories),
+    articleCategories: getTaxonomy(taxonomies.articleCategories),
+    tags: getTaxonomy(taxonomies.tags),
+    assetCategories: getTaxonomy(taxonomies.assetCategories),
+    regulationCategories: getTaxonomy(taxonomies.regulationCategories),
+    urbanStudyCategories: getTaxonomy(taxonomies.urbanStudyCategories),
+    urbanStudyStates: getTaxonomy(taxonomies.urbanStudyStates),
+  }
+}
+
+/**
  * Builds the inventory of everything on the website that has its own url. Published content only - the Strapi GraphQL
  * api returns published documents by default.
+ *
+ * Every content type is read in chunks (see `fetchAll`), the types side by side.
  */
-export const buildInventory = async (): Promise<InventoryEntry[]> => {
-  const [pages, articles, assets, regulations, inbaReleases, urbanStudies] = await Promise.all([
+export const buildInventory = async (): Promise<Inventory> => {
+  const [
+    pages,
+    articles,
+    assets,
+    regulations,
+    inbaReleases,
+    urbanStudies,
+    officialBoard,
+    municipalServices,
+    taxonomies,
+  ] = await Promise.all([
     buildPages(),
     buildArticles(),
     buildAssets(),
     buildRegulations(),
     buildInbaReleases(),
     buildUrbanStudies(),
+    buildOfficialBoard(),
+    buildMunicipalServices(),
+    buildTaxonomies(),
   ])
 
-  return [...pages, ...articles, ...assets, ...regulations, ...inbaReleases, ...urbanStudies].sort(
-    (a, b) => (b.modifiedAt ?? '').localeCompare(a.modifiedAt ?? ''),
-  )
+  const entries = [
+    ...pages,
+    ...articles,
+    ...assets,
+    ...regulations,
+    ...inbaReleases,
+    ...urbanStudies,
+    ...officialBoard,
+    ...municipalServices,
+  ].sort((a, b) => (b.modifiedAt ?? '').localeCompare(a.modifiedAt ?? ''))
+
+  return { entries, taxonomies }
 }

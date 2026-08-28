@@ -6,6 +6,8 @@ export const inventoryTypes = [
   'regulation',
   'inba-release',
   'urban-study',
+  'official-board',
+  'municipal-service',
 ] as const
 
 export type InventoryType = (typeof inventoryTypes)[number]
@@ -37,16 +39,15 @@ export type InventoryFile = {
 /**
  * Fields shared by every content type. Anything type specific lives under the `[type]` key of the entry, the same way
  * documents are wrapped in the shared Meilisearch index.
+ *
+ * The inventory lists the Slovak content only, so nothing here carries a locale - the English pages and articles are
+ * left out entirely.
  */
 export type InventoryEntryBase = {
-  /** Unique key, `${type}:${documentId}:${locale}` - Strapi shares documentId across locales. */
+  /** Unique key, `${type}:${documentId}`. */
   id: string
-  /** Absolute, locale prefixed. Null only for content whose host page could not be resolved. */
+  /** Absolute. Null only for content whose host page could not be resolved. */
   url: string | null
-  /** `sk` or `en`. Content that is not localised is listed as `sk`. */
-  locale: string
-  /** False for content types that exist only once in Strapi (asset, regulation, inba-release, urban-study). */
-  isLocalized: boolean
   /** As shown to a visitor. */
   title: string
   /** First non-empty of perex / subtext / description. */
@@ -77,7 +78,7 @@ export type InventoryLink = {
   id: string
   /** How the link names its target. */
   title: string
-  /** The `url` of the linked entry, absolute and locale prefixed. */
+  /** The `url` of the linked entry, absolute. */
   url: string
 }
 
@@ -93,8 +94,8 @@ export type InventoryContactType =
   | 'bankConnection'
 
 /**
- * One contacts section of a page. Its `title` is what the cards belong to - pages listing several people or departments
- * carry one section each, so the cards must not be flattened across them.
+ * One contacts section of a page or of a municipal service. Its `title` is what the cards belong to - content listing
+ * several people or departments carries one section each, so the cards must not be flattened across them.
  */
 export type InventoryContactsSection = {
   /** Usually "Kontakty", but it's helpful when page contains more contacts sections to distinguish between them. */
@@ -208,6 +209,39 @@ export type UrbanStudyInventoryData = {
   regulations?: InventoryLink[]
 }
 
+/**
+ * Official board documents come from GINIS, not from Strapi - they carry no slug and no editor metadata, only what the
+ * board's document list returns.
+ */
+export type OfficialBoardInventoryData = {
+  /** The board category the document is posted under, as GINIS names it - a plain name, with no slug behind it. */
+  category?: string
+  /**
+   * How many files are attached to the document. The board's document list returns only their count - the files
+   * themselves would need one detail request per document, so `files` stays empty for this type.
+   */
+  numberOfFiles: number
+  /** When the document is taken off the board. Absent for a document posted without an end date. */
+  publishedUntil?: string
+}
+
+/**
+ * Municipal services come from the city account (konto.bratislava.sk) and its own Strapi, so they carry that site's
+ * taxonomies instead of this website's ones.
+ */
+export type MunicipalServiceInventoryData = {
+  /** The categories the service is filed under on the city account - most services have exactly one. */
+  categories?: InventoryCategory[]
+  /** The service's contacts sections, the same shape a page of this website carries them in. */
+  contacts?: InventoryContactsSection[]
+}
+
+/** What one build of the inventory produces - the entries plus the taxonomies listed next to them. */
+export type Inventory = {
+  entries: InventoryEntry[]
+  taxonomies: InventoryTaxonomies
+}
+
 /** Each content type carries only its own data, under the key named after the type. */
 export type InventoryEntry =
   | (InventoryEntryBase & { type: 'page'; page?: PageInventoryData })
@@ -216,6 +250,41 @@ export type InventoryEntry =
   | (InventoryEntryBase & { type: 'regulation'; regulation: RegulationInventoryData })
   | (InventoryEntryBase & { type: 'inba-release'; 'inba-release'?: InbaReleaseInventoryData })
   | (InventoryEntryBase & { type: 'urban-study'; 'urban-study'?: UrbanStudyInventoryData })
+  | (InventoryEntryBase & { type: 'official-board'; 'official-board': OfficialBoardInventoryData })
+  | (InventoryEntryBase & {
+      type: 'municipal-service'
+      'municipal-service'?: MunicipalServiceInventoryData
+    })
+
+/**
+ * One value of a taxonomy, listed alongside the entries so a consumer sees the whole taxonomy and not only the values
+ * in use. The entries reference these by slug, the way they name their own category and tags.
+ */
+export type InventoryTaxonomy = {
+  title: string
+  /** Absent for the official board, whose categories come from GINIS and are named rather than slugged. */
+  slug?: string
+}
+
+/** Every taxonomy the entries are filed under, each listed whole. */
+export type InventoryTaxonomies = {
+  /** The types of an article, i.e. what `article.category` names. */
+  articleCategories: InventoryTaxonomy[]
+  /** The topics of an article, i.e. what `article.tags` name. */
+  tags: InventoryTaxonomy[]
+  /** What `asset.category` names. */
+  assetCategories: InventoryTaxonomy[]
+  /** What `regulation.category` names. */
+  regulationCategories: InventoryTaxonomy[]
+  /** What `urban-study.category` names. */
+  urbanStudyCategories: InventoryTaxonomy[]
+  /** What `urban-study.state` names. */
+  urbanStudyStates: InventoryTaxonomy[]
+  /** The board's own categories, from GINIS. `official-board.category` names them by their title. */
+  officialBoardCategories: InventoryTaxonomy[]
+  /** The city account's categories, i.e. what `municipal-service.categories` name. */
+  municipalServiceCategories: InventoryTaxonomy[]
+}
 
 /** Reduced entry returned for `?fields=url`, meant for cheap diffing (including detecting removals). */
 export type InventoryUrlEntry = Pick<InventoryEntryBase, 'id' | 'url' | 'modifiedAt'>
@@ -235,4 +304,6 @@ export type InventoryResponse = {
   pageCount: number
   /** The entries themselves, the most recently changed first. Reduced to `InventoryUrlEntry` for `?fields=url`. */
   items: (InventoryEntry | InventoryUrlEntry)[]
+  /** Every taxonomy there is, whole - the filters and the pagination apply to `items` alone. */
+  taxonomies: InventoryTaxonomies
 }

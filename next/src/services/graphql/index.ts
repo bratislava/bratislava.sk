@@ -7951,6 +7951,7 @@ export type ArticleInventoryEntityFragment = {
 }
 
 export type ArticlesInventoryQueryVariables = Exact<{
+  start?: InputMaybe<Scalars['Int']['input']>
   limit?: InputMaybe<Scalars['Int']['input']>
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
 }>
@@ -8142,6 +8143,7 @@ export type AssetInventoryEntityFragment = {
 }
 
 export type AssetsInventoryQueryVariables = Exact<{
+  start?: InputMaybe<Scalars['Int']['input']>
   limit?: InputMaybe<Scalars['Int']['input']>
 }>
 
@@ -11404,6 +11406,7 @@ export type InbaReleaseInventoryEntityFragment = {
 }
 
 export type InbaReleasesInventoryQueryVariables = Exact<{
+  start?: InputMaybe<Scalars['Int']['input']>
   limit?: InputMaybe<Scalars['Int']['input']>
 }>
 
@@ -17242,6 +17245,7 @@ export type PageInventoryEntityFragment = {
 }
 
 export type PagesInventoryQueryVariables = Exact<{
+  start?: InputMaybe<Scalars['Int']['input']>
   limit?: InputMaybe<Scalars['Int']['input']>
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
 }>
@@ -17738,6 +17742,7 @@ export type RegulationInventoryEntityFragment = {
 }
 
 export type RegulationsInventoryQueryVariables = Exact<{
+  start?: InputMaybe<Scalars['Int']['input']>
   limit?: InputMaybe<Scalars['Int']['input']>
 }>
 
@@ -21913,6 +21918,7 @@ export type UrbanStudyInventoryEntityFragment = {
 }
 
 export type UrbanStudiesInventoryQueryVariables = Exact<{
+  start?: InputMaybe<Scalars['Int']['input']>
   limit?: InputMaybe<Scalars['Int']['input']>
 }>
 
@@ -21965,6 +21971,29 @@ export type UrbanStudiesInventoryQuery = {
       effectiveFrom: any
     } | null>
   } | null>
+}
+
+export type TaxonomiesInventoryQueryVariables = Exact<{
+  limit?: InputMaybe<Scalars['Int']['input']>
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
+}>
+
+export type TaxonomiesInventoryQuery = {
+  __typename?: 'Query'
+  articleCategories: Array<{ __typename?: 'ArticleCategory'; title: string; slug: string } | null>
+  tags: Array<{ __typename?: 'Tag'; title: string; slug: string } | null>
+  assetCategories: Array<{ __typename?: 'AssetCategory'; title: string; slug: string } | null>
+  regulationCategories: Array<{
+    __typename?: 'RegulationCategory'
+    title: string
+    slug: string
+  } | null>
+  urbanStudyCategories: Array<{
+    __typename?: 'UrbanStudyCategory'
+    title: string
+    slug: string
+  } | null>
+  urbanStudyStates: Array<{ __typename?: 'UrbanStudyState'; title: string; slug: string } | null>
 }
 
 export const ArticleSlugEntityFragmentDoc = gql`
@@ -23996,8 +24025,8 @@ export const Dev_AllArticlesDocument = gql`
   ${ArticleEntityFragmentDoc}
 `
 export const ArticlesInventoryDocument = gql`
-  query ArticlesInventory($limit: Int = -1, $locale: I18NLocaleCode = "*") {
-    articles(locale: $locale, sort: "updatedAt:desc", pagination: { limit: $limit }) {
+  query ArticlesInventory($start: Int = 0, $limit: Int = 100, $locale: I18NLocaleCode = "sk") {
+    articles(locale: $locale, sort: "id:asc", pagination: { start: $start, limit: $limit }) {
       ...ArticleInventoryEntity
     }
   }
@@ -24028,8 +24057,8 @@ export const AssetCategoriesDocument = gql`
   ${AssetCategoryEntityFragmentDoc}
 `
 export const AssetsInventoryDocument = gql`
-  query AssetsInventory($limit: Int = -1) {
-    assets(sort: "updatedAt:desc", pagination: { limit: $limit }) {
+  query AssetsInventory($start: Int = 0, $limit: Int = 100) {
+    assets(sort: "id:asc", pagination: { start: $start, limit: $limit }) {
       ...AssetInventoryEntity
     }
   }
@@ -24232,8 +24261,8 @@ export const LatestInbaReleaseDocument = gql`
   ${InbaReleaseEntityFragmentDoc}
 `
 export const InbaReleasesInventoryDocument = gql`
-  query InbaReleasesInventory($limit: Int = -1) {
-    inbaReleases(sort: "updatedAt:desc", pagination: { limit: $limit }) {
+  query InbaReleasesInventory($start: Int = 0, $limit: Int = 100) {
+    inbaReleases(sort: "id:asc", pagination: { start: $start, limit: $limit }) {
       ...InbaReleaseInventoryEntity
     }
   }
@@ -24324,8 +24353,8 @@ export const UpdatePageDocument = gql`
   }
 `
 export const PagesInventoryDocument = gql`
-  query PagesInventory($limit: Int = -1, $locale: I18NLocaleCode = "*") {
-    pages(locale: $locale, sort: "updatedAt:desc", pagination: { limit: $limit }) {
+  query PagesInventory($start: Int = 0, $limit: Int = 100, $locale: I18NLocaleCode = "sk") {
+    pages(locale: $locale, sort: "id:asc", pagination: { start: $start, limit: $limit }) {
       ...PageInventoryEntity
     }
   }
@@ -24348,8 +24377,8 @@ export const RegulationBySlugDocument = gql`
   ${RegulationEntityFragmentDoc}
 `
 export const RegulationsInventoryDocument = gql`
-  query RegulationsInventory($limit: Int = -1) {
-    regulations(sort: "updatedAt:desc", pagination: { limit: $limit }) {
+  query RegulationsInventory($start: Int = 0, $limit: Int = 100) {
+    regulations(sort: "id:asc", pagination: { start: $start, limit: $limit }) {
       ...RegulationInventoryEntity
     }
   }
@@ -24380,12 +24409,40 @@ export const UrbanStudiesStaticPathsDocument = gql`
   }
 `
 export const UrbanStudiesInventoryDocument = gql`
-  query UrbanStudiesInventory($limit: Int = -1) {
-    urbanStudies(sort: "updatedAt:desc", pagination: { limit: $limit }) {
+  query UrbanStudiesInventory($start: Int = 0, $limit: Int = 100) {
+    urbanStudies(sort: "id:asc", pagination: { start: $start, limit: $limit }) {
       ...UrbanStudyInventoryEntity
     }
   }
   ${UrbanStudyInventoryEntityFragmentDoc}
+`
+export const TaxonomiesInventoryDocument = gql`
+  query TaxonomiesInventory($limit: Int = -1, $locale: I18NLocaleCode = "sk") {
+    articleCategories(locale: $locale, sort: "title", pagination: { limit: $limit }) {
+      title
+      slug
+    }
+    tags(locale: $locale, sort: "title", pagination: { limit: $limit }) {
+      title
+      slug
+    }
+    assetCategories(sort: "title", pagination: { limit: $limit }) {
+      title
+      slug
+    }
+    regulationCategories(sort: "title", pagination: { limit: $limit }) {
+      title
+      slug
+    }
+    urbanStudyCategories(sort: "title", pagination: { limit: $limit }) {
+      title
+      slug
+    }
+    urbanStudyStates(sort: "title", pagination: { limit: $limit }) {
+      title
+      slug
+    }
+  }
 `
 
 export type SdkFunctionWrapper = <T>(
@@ -24984,6 +25041,21 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             ...wrappedRequestHeaders,
           }),
         'UrbanStudiesInventory',
+        'query',
+        variables,
+      )
+    },
+    TaxonomiesInventory(
+      variables?: TaxonomiesInventoryQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<TaxonomiesInventoryQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<TaxonomiesInventoryQuery>(TaxonomiesInventoryDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'TaxonomiesInventory',
         'query',
         variables,
       )

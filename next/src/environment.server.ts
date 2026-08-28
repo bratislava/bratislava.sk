@@ -15,4 +15,6 @@ export const serverEnvironment = {
   msalClientId: assertEnv('MSAL_CLIENT_ID', process.env.MSAL_CLIENT_ID),
   msalTenantId: assertEnv('MSAL_TENANT_ID', process.env.MSAL_TENANT_ID),
   ginisHostUde: assertEnv('GINIS_HOST_UDE', process.env.GINIS_HOST_UDE),
+  cityAccountStrapiUrl: assertEnv('CITY_ACCOUNT_STRAPI_URL', process.env.CITY_ACCOUNT_STRAPI_URL),
+  cityAccountUrl: assertEnv('CITY_ACCOUNT_URL', process.env.CITY_ACCOUNT_URL),
 }
