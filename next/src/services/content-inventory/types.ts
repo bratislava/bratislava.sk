@@ -65,11 +65,8 @@ export type InventoryEntryBase = {
   addedAt: string | null
   /** When the last change was published. */
   modifiedAt: string | null
-  /**
-   * Files a visitor can download from the entry's page, in the order they are rendered. Empty for content that has
-   * none.
-   */
-  files: InventoryFile[]
+  /** Files a visitor can download from the entry's page, in the order they are rendered. */
+  files?: InventoryFile[]
 }
 
 /** A reference from one entry to another entry of this inventory. */
@@ -218,7 +215,7 @@ export type OfficialBoardInventoryData = {
   category?: string
   /**
    * How many files are attached to the document. The board's document list returns only their count - the files
-   * themselves would need one detail request per document, so `files` stays empty for this type.
+   * themselves would need one detail request per document, so `files` is never set for this type.
    */
   numberOfFiles: number
   /** When the document is taken off the board. Absent for a document posted without an end date. */

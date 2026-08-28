@@ -147,7 +147,8 @@ const getBase = <TType extends InventoryType>(
   owner: entry.owner,
   addedAt: getIsoDate(entry.addedAt),
   modifiedAt: getIsoDate(entry.modifiedAt),
-  files: entry.files ?? [],
+  // Undefined instead of an empty list, the same way the type specific keys are omitted when they hold nothing.
+  files: entry.files?.length ? entry.files : undefined,
 })
 
 /**
