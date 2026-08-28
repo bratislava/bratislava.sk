@@ -1,5 +1,5 @@
 /** The shape of the entries, bumped whenever a change can break consumers. Changelog in content-inventory.md. */
-export const INVENTORY_VERSION = 3
+export const INVENTORY_VERSION = 4
 
 /** The whole inventory is built at once and served from memory until it expires. */
 export const SNAPSHOT_TTL_MS = 60 * 60 * 1000 // 1 hour

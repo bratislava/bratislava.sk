@@ -79,7 +79,7 @@ export type InventoryLink = {
   url: string
 }
 
-/** The kind of contact a card holds - the contacts section groups its cards by these. */
+/** The kind of contact a card holds. */
 export type InventoryContactType =
   | 'address'
   | 'openingHours'
@@ -90,20 +90,7 @@ export type InventoryContactType =
   | 'billingInfo'
   | 'bankConnection'
 
-/**
- * One contacts section of a page or of a municipal service. Its `title` is what the cards belong to - content listing
- * several people or departments carries one section each, so the cards must not be flattened across them.
- */
-export type InventoryContactsSection = {
-  /** Usually "Kontakty", but it's helpful when page contains more contacts sections to distinguish between them. */
-  title?: string
-  /** As the editor wrote it in markdown. Sometimes contains important information how the contact should be used. */
-  subtext?: string
-  /** The section's contact cards, in the order they are rendered. */
-  contactItems: InventoryContact[]
-}
-
-/** A single contact card of a contacts section, as it is rendered on the page. */
+/** A single contact card, as it is rendered on the page. */
 export type InventoryContact =
   | {
       type: InventoryContactType
@@ -146,8 +133,8 @@ export type PageInventoryData = {
   assets?: InventoryLink[]
   /** Regulations the page links through its regulation sections. */
   regulations?: InventoryLink[]
-  /** The page's contacts sections, in the order they are rendered, each with its own cards. */
-  contacts?: InventoryContactsSection[]
+  /** The page's contact cards, in the order they are rendered, flattened. */
+  contacts?: InventoryContact[]
 }
 
 export type ArticleInventoryData = {
@@ -229,8 +216,8 @@ export type OfficialBoardInventoryData = {
 export type MunicipalServiceInventoryData = {
   /** The categories the service is filed under on the city account - most services have exactly one. */
   categories?: InventoryCategory[]
-  /** The service's contacts sections, the same shape a page of this website carries them in. */
-  contacts?: InventoryContactsSection[]
+  /** The service's contact cards, in the order they are rendered, flattened. */
+  contacts?: InventoryContact[]
 }
 
 /** What one build of the inventory produces - the entries plus the taxonomies listed next to them. */

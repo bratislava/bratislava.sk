@@ -26,7 +26,6 @@ import {
   Inventory,
   InventoryCategory,
   InventoryContact,
-  InventoryContactsSection,
   InventoryContactType,
   InventoryEntry,
   InventoryEntryBase,
@@ -281,28 +280,17 @@ const getSectionContacts = (section: ContactsSection): InventoryContact[] => [
 ]
 
 /**
- * The contacts sections of an entry, in the order they are rendered. The cards are kept grouped by their section - a
- * page listing several people or departments carries one section each, and its title is what the cards belong to.
+ * The contact cards of an entry, in the order they are rendered. Flattened into one list.
  */
-const getContactsSections = (
-  sections: (ContactsSection | null)[],
-): InventoryContactsSection[] | undefined => {
-  const contactsSections = sections
-    .filter(isDefined)
-    .map((section) => ({
-      title: getFirstNonEmpty(section.title),
-      subtext: getFirstNonEmpty(section.description),
-      contactItems: getSectionContacts(section),
-    }))
-    // A section an editor left empty adds nothing to the inventory.
-    .filter((section) => section.contactItems.length > 0)
+const getContacts = (sections: (ContactsSection | null)[]): InventoryContact[] | undefined => {
+  const contacts = sections.filter(isDefined).flatMap((section) => getSectionContacts(section))
 
-  return contactsSections.length > 0 ? contactsSections : undefined
+  return contacts.length > 0 ? contacts : undefined
 }
 
 /** Picks the contacts sections out of a page's dynamic zone, the same way the assets and regulations are picked. */
 const getPageContacts = (sections: PageInventoryEntityFragment['sections']) =>
-  getContactsSections(
+  getContacts(
     (sections ?? [])
       .filter(isDefined)
       .flatMap((section) =>
@@ -543,7 +531,7 @@ const buildMunicipalServices = async (): Promise<InventoryEntry[]> => {
     }),
     'municipal-service': getTypeData<MunicipalServiceInventoryData>({
       categories: getServiceCategories(service.categories),
-      contacts: getContactsSections(service.sections ?? []),
+      contacts: getContacts(service.sections ?? []),
     }),
   }))
 }
