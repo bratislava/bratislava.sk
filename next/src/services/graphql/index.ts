@@ -7679,15 +7679,16 @@ export type ArticlesStaticPathsQuery = {
   } | null>
 }
 
-export type ArticlesStaticPathsWithLocalizationsQueryVariables = Exact<{
+export type ArticlesStaticPathsForSitemapQueryVariables = Exact<{
   limit?: InputMaybe<Scalars['Int']['input']>
   locale: Scalars['I18NLocaleCode']['input']
 }>
 
-export type ArticlesStaticPathsWithLocalizationsQuery = {
+export type ArticlesStaticPathsForSitemapQuery = {
   __typename?: 'Query'
   articles: Array<{
     __typename: 'Article'
+    updatedAt?: any | null
     documentId: string
     slug: string
     title: string
@@ -8007,6 +8008,20 @@ export type AssetsStaticPathsQueryVariables = Exact<{
 export type AssetsStaticPathsQuery = {
   __typename?: 'Query'
   assets: Array<{ __typename?: 'Asset'; documentId: string; slug: string } | null>
+}
+
+export type AssetsStaticPathsForSitemapQueryVariables = Exact<{
+  limit?: InputMaybe<Scalars['Int']['input']>
+}>
+
+export type AssetsStaticPathsForSitemapQuery = {
+  __typename?: 'Query'
+  assets: Array<{
+    __typename?: 'Asset'
+    documentId: string
+    slug: string
+    updatedAt?: any | null
+  } | null>
 }
 
 export type AssetBySlugQueryVariables = Exact<{
@@ -11107,6 +11122,20 @@ export type InbaReleasesStaticPathsQuery = {
   inbaReleases: Array<{ __typename?: 'InbaRelease'; documentId: string; slug: string } | null>
 }
 
+export type InbaReleasesStaticPathsForSitemapQueryVariables = Exact<{
+  limit?: InputMaybe<Scalars['Int']['input']>
+}>
+
+export type InbaReleasesStaticPathsForSitemapQuery = {
+  __typename?: 'Query'
+  inbaReleases: Array<{
+    __typename?: 'InbaRelease'
+    documentId: string
+    slug: string
+    updatedAt?: any | null
+  } | null>
+}
+
 export type InbaReleasesRssFeedQueryVariables = Exact<{ [key: string]: never }>
 
 export type InbaReleasesRssFeedQuery = {
@@ -13218,7 +13247,7 @@ export type PagesStaticPathsQuery = {
   pages: Array<{ __typename?: 'Page'; documentId: string; path?: string | null } | null>
 }
 
-export type PagesStaticPathsWithLocalizationsQueryVariables = Exact<{
+export type PagesStaticPathsForSitemapQueryVariables = Exact<{
   limit?: InputMaybe<Scalars['Int']['input']>
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
   sort?: InputMaybe<
@@ -13226,13 +13255,14 @@ export type PagesStaticPathsWithLocalizationsQueryVariables = Exact<{
   >
 }>
 
-export type PagesStaticPathsWithLocalizationsQuery = {
+export type PagesStaticPathsForSitemapQuery = {
   __typename?: 'Query'
   pages: Array<{
     __typename?: 'Page'
     documentId: string
     path?: string | null
     locale?: string | null
+    updatedAt?: any | null
     localizations: Array<{
       __typename?: 'Page'
       documentId: string
@@ -16982,6 +17012,20 @@ export type RegulationsStaticPathsQueryVariables = Exact<{
 export type RegulationsStaticPathsQuery = {
   __typename?: 'Query'
   regulations: Array<{ __typename?: 'Regulation'; documentId: string; slug: string } | null>
+}
+
+export type RegulationsStaticPathsForSitemapQueryVariables = Exact<{
+  limit?: InputMaybe<Scalars['Int']['input']>
+}>
+
+export type RegulationsStaticPathsForSitemapQuery = {
+  __typename?: 'Query'
+  regulations: Array<{
+    __typename?: 'Regulation'
+    documentId: string
+    slug: string
+    updatedAt?: any | null
+  } | null>
 }
 
 export type RegulationBySlugQueryVariables = Exact<{
@@ -21328,6 +21372,20 @@ export type UrbanStudiesStaticPathsQuery = {
   urbanStudies: Array<{ __typename?: 'UrbanStudy'; documentId: string; slug: string } | null>
 }
 
+export type UrbanStudiesStaticPathsForSitemapQueryVariables = Exact<{
+  limit?: InputMaybe<Scalars['Int']['input']>
+}>
+
+export type UrbanStudiesStaticPathsForSitemapQuery = {
+  __typename?: 'Query'
+  urbanStudies: Array<{
+    __typename?: 'UrbanStudy'
+    documentId: string
+    slug: string
+    updatedAt?: any | null
+  } | null>
+}
+
 export type UrbanStudyInventoryEntityFragment = {
   __typename: 'UrbanStudy'
   updatedAt?: any | null
@@ -23245,10 +23303,11 @@ export const ArticlesStaticPathsDocument = gql`
   }
   ${ArticleSlugEntityFragmentDoc}
 `
-export const ArticlesStaticPathsWithLocalizationsDocument = gql`
-  query ArticlesStaticPathsWithLocalizations($limit: Int = -1, $locale: I18NLocaleCode!) {
+export const ArticlesStaticPathsForSitemapDocument = gql`
+  query ArticlesStaticPathsForSitemap($limit: Int = -1, $locale: I18NLocaleCode!) {
     articles(locale: $locale, sort: "addedAt:desc", pagination: { limit: $limit }) {
       ...ArticleSlugEntity
+      updatedAt
       localizations {
         ...ArticleSlugEntity
       }
@@ -23337,6 +23396,15 @@ export const AssetsStaticPathsDocument = gql`
     assets(sort: "updatedAt:desc", pagination: { limit: $limit }) {
       documentId
       slug
+    }
+  }
+`
+export const AssetsStaticPathsForSitemapDocument = gql`
+  query AssetsStaticPathsForSitemap($limit: Int = -1) {
+    assets(sort: "updatedAt:desc", pagination: { limit: $limit }) {
+      documentId
+      slug
+      updatedAt
     }
   }
 `
@@ -23536,6 +23604,15 @@ export const InbaReleasesStaticPathsDocument = gql`
     }
   }
 `
+export const InbaReleasesStaticPathsForSitemapDocument = gql`
+  query InbaReleasesStaticPathsForSitemap($limit: Int = -1) {
+    inbaReleases(sort: "releaseDate:desc", pagination: { limit: $limit }) {
+      documentId
+      slug
+      updatedAt
+    }
+  }
+`
 export const InbaReleasesRssFeedDocument = gql`
   query InbaReleasesRssFeed {
     inbaReleases(sort: "releaseDate:desc", pagination: { limit: -1 }) {
@@ -23588,8 +23665,8 @@ export const PagesStaticPathsDocument = gql`
     }
   }
 `
-export const PagesStaticPathsWithLocalizationsDocument = gql`
-  query PagesStaticPathsWithLocalizations(
+export const PagesStaticPathsForSitemapDocument = gql`
+  query PagesStaticPathsForSitemap(
     $limit: Int = -1
     $locale: I18NLocaleCode = "*"
     $sort: [String] = ["updatedAt:desc"]
@@ -23598,6 +23675,7 @@ export const PagesStaticPathsWithLocalizationsDocument = gql`
       documentId
       path
       locale
+      updatedAt
       localizations {
         documentId
         path
@@ -23668,6 +23746,15 @@ export const RegulationsStaticPathsDocument = gql`
     }
   }
 `
+export const RegulationsStaticPathsForSitemapDocument = gql`
+  query RegulationsStaticPathsForSitemap($limit: Int = -1) {
+    regulations(sort: "updatedAt:desc", pagination: { limit: $limit }) {
+      documentId
+      slug
+      updatedAt
+    }
+  }
+`
 export const RegulationBySlugDocument = gql`
   query RegulationBySlug($slug: String) {
     regulations(filters: { slug: { eq: $slug } }) {
@@ -23705,6 +23792,15 @@ export const UrbanStudiesStaticPathsDocument = gql`
     urbanStudies(pagination: { limit: $limit }) {
       documentId
       slug
+    }
+  }
+`
+export const UrbanStudiesStaticPathsForSitemapDocument = gql`
+  query UrbanStudiesStaticPathsForSitemap($limit: Int = -1) {
+    urbanStudies(pagination: { limit: $limit }) {
+      documentId
+      slug
+      updatedAt
     }
   }
 `
@@ -23774,18 +23870,18 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
         variables,
       )
     },
-    ArticlesStaticPathsWithLocalizations(
-      variables: ArticlesStaticPathsWithLocalizationsQueryVariables,
+    ArticlesStaticPathsForSitemap(
+      variables: ArticlesStaticPathsForSitemapQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
-    ): Promise<ArticlesStaticPathsWithLocalizationsQuery> {
+    ): Promise<ArticlesStaticPathsForSitemapQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<ArticlesStaticPathsWithLocalizationsQuery>(
-            ArticlesStaticPathsWithLocalizationsDocument,
+          client.request<ArticlesStaticPathsForSitemapQuery>(
+            ArticlesStaticPathsForSitemapDocument,
             variables,
             { ...requestHeaders, ...wrappedRequestHeaders },
           ),
-        'ArticlesStaticPathsWithLocalizations',
+        'ArticlesStaticPathsForSitemap',
         'query',
         variables,
       )
@@ -23876,6 +23972,22 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             ...wrappedRequestHeaders,
           }),
         'AssetsStaticPaths',
+        'query',
+        variables,
+      )
+    },
+    AssetsStaticPathsForSitemap(
+      variables?: AssetsStaticPathsForSitemapQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<AssetsStaticPathsForSitemapQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<AssetsStaticPathsForSitemapQuery>(
+            AssetsStaticPathsForSitemapDocument,
+            variables,
+            { ...requestHeaders, ...wrappedRequestHeaders },
+          ),
+        'AssetsStaticPathsForSitemap',
         'query',
         variables,
       )
@@ -24030,6 +24142,22 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
         variables,
       )
     },
+    InbaReleasesStaticPathsForSitemap(
+      variables?: InbaReleasesStaticPathsForSitemapQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<InbaReleasesStaticPathsForSitemapQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<InbaReleasesStaticPathsForSitemapQuery>(
+            InbaReleasesStaticPathsForSitemapDocument,
+            variables,
+            { ...requestHeaders, ...wrappedRequestHeaders },
+          ),
+        'InbaReleasesStaticPathsForSitemap',
+        'query',
+        variables,
+      )
+    },
     InbaReleasesRssFeed(
       variables?: InbaReleasesRssFeedQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
@@ -24121,18 +24249,18 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
         variables,
       )
     },
-    PagesStaticPathsWithLocalizations(
-      variables?: PagesStaticPathsWithLocalizationsQueryVariables,
+    PagesStaticPathsForSitemap(
+      variables?: PagesStaticPathsForSitemapQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
-    ): Promise<PagesStaticPathsWithLocalizationsQuery> {
+    ): Promise<PagesStaticPathsForSitemapQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<PagesStaticPathsWithLocalizationsQuery>(
-            PagesStaticPathsWithLocalizationsDocument,
+          client.request<PagesStaticPathsForSitemapQuery>(
+            PagesStaticPathsForSitemapDocument,
             variables,
             { ...requestHeaders, ...wrappedRequestHeaders },
           ),
-        'PagesStaticPathsWithLocalizations',
+        'PagesStaticPathsForSitemap',
         'query',
         variables,
       )
@@ -24227,6 +24355,22 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
         variables,
       )
     },
+    RegulationsStaticPathsForSitemap(
+      variables?: RegulationsStaticPathsForSitemapQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<RegulationsStaticPathsForSitemapQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<RegulationsStaticPathsForSitemapQuery>(
+            RegulationsStaticPathsForSitemapDocument,
+            variables,
+            { ...requestHeaders, ...wrappedRequestHeaders },
+          ),
+        'RegulationsStaticPathsForSitemap',
+        'query',
+        variables,
+      )
+    },
     RegulationBySlug(
       variables?: RegulationBySlugQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
@@ -24298,6 +24442,22 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             ...wrappedRequestHeaders,
           }),
         'UrbanStudiesStaticPaths',
+        'query',
+        variables,
+      )
+    },
+    UrbanStudiesStaticPathsForSitemap(
+      variables?: UrbanStudiesStaticPathsForSitemapQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<UrbanStudiesStaticPathsForSitemapQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<UrbanStudiesStaticPathsForSitemapQuery>(
+            UrbanStudiesStaticPathsForSitemapDocument,
+            variables,
+            { ...requestHeaders, ...wrappedRequestHeaders },
+          ),
+        'UrbanStudiesStaticPathsForSitemap',
         'query',
         variables,
       )

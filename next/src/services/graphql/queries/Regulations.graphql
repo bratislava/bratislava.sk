@@ -12,6 +12,14 @@ query RegulationsStaticPaths($limit: Int = -1) {
   }
 }
 
+query RegulationsStaticPathsForSitemap($limit: Int = -1) {
+  regulations(sort: "updatedAt:desc", pagination: { limit: $limit }) {
+    documentId
+    slug
+    updatedAt
+  }
+}
+
 query RegulationBySlug($slug: String) {
   regulations(filters: { slug: { eq: $slug } }) {
     ...RegulationEntity

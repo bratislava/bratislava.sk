@@ -56,6 +56,14 @@ query InbaReleasesStaticPaths($limit: Int = -1) {
   }
 }
 
+query InbaReleasesStaticPathsForSitemap($limit: Int = -1) {
+  inbaReleases(sort: "releaseDate:desc", pagination: { limit: $limit }) {
+    documentId
+    slug
+    updatedAt
+  }
+}
+
 query InbaReleasesRssFeed {
   inbaReleases(sort: "releaseDate:desc", pagination: { limit: -1 }) {
     ...InbaReleaseCardEntity

@@ -90,7 +90,7 @@ query PagesStaticPaths(
   }
 }
 
-query PagesStaticPathsWithLocalizations(
+query PagesStaticPathsForSitemap(
   $limit: Int = -1
   $locale: I18NLocaleCode = "*"
   $sort: [String] = ["updatedAt:desc"]
@@ -99,6 +99,7 @@ query PagesStaticPathsWithLocalizations(
     documentId
     path
     locale
+    updatedAt
     localizations {
       documentId
       path

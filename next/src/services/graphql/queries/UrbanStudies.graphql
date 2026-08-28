@@ -69,6 +69,14 @@ query UrbanStudiesStaticPaths($limit: Int = -1) {
   }
 }
 
+query UrbanStudiesStaticPathsForSitemap($limit: Int = -1) {
+  urbanStudies(pagination: { limit: $limit }) {
+    documentId
+    slug
+    updatedAt
+  }
+}
+
 # Used by the /api/content-inventory endpoint.
 fragment UrbanStudyInventoryEntity on UrbanStudy {
   ...UrbanStudySlugEntity

@@ -31,6 +31,14 @@ query AssetsStaticPaths($limit: Int = -1) {
   }
 }
 
+query AssetsStaticPathsForSitemap($limit: Int = -1) {
+  assets(sort: "updatedAt:desc", pagination: { limit: $limit }) {
+    documentId
+    slug
+    updatedAt
+  }
+}
+
 query AssetBySlug($slug: String!) {
   assets(filters: { slug: { eq: $slug } }) {
     ...AssetEntity
