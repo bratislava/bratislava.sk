@@ -5,6 +5,7 @@ Versions of the `/api/content-inventory` response, as returned in its `version` 
 ## 4
 
 - Omit `files` from the entries that have none, instead of returning an empty list - `official-board` never carries any, so the type now has none at all
+- Reduce the taxonomies an entry is filed under to their slug alone - `article.category`, `article.tags`, `asset.category`, `regulation.category`, `urban-study.category`, `urban-study.state` and `municipal-service.categories` are now strings, their titles read from `taxonomies` by slug - `official-board.category` is the exception and keeps naming its category by title, the only thing GINIS returns for a posted document
 - Flatten `page.contacts` and `municipal-service.contacts` into a plain list of contact cards, drop section titles and subtexts.
 
 ## 3

@@ -24,7 +24,6 @@ import { isDefined } from '@/src/utils/isDefined'
 import { FETCH_CHUNK_SIZE } from './config'
 import {
   Inventory,
-  InventoryCategory,
   InventoryContact,
   InventoryContactType,
   InventoryEntry,
@@ -99,10 +98,8 @@ const getBlockFiles = (blocks: (FileBlock | null)[] | null | undefined): Invento
     .map((block) => (block.media ? getFile(block.media, block.title) : null))
     .filter(isDefined)
 
-const getCategory = (
-  category: InventoryCategory | null | undefined,
-): InventoryCategory | undefined =>
-  category ? { title: category.title, slug: category.slug } : undefined
+/** An entry names its taxonomies by slug alone - the titles are listed once, in `taxonomies`. */
+const getCategory = (category: { slug: string } | null | undefined) => category?.slug
 
 /**
  * An entry has at most one owner, even though Strapi models admin groups as a many to many relation - the extra groups
@@ -357,7 +354,7 @@ const buildArticles = async (): Promise<InventoryEntry[]> => {
             url: getUrl(`/inba/vydania/${article.inbaRelease.slug}`),
           }
         : undefined,
-      tags: article.tags.filter(isDefined).map(({ title, slug }) => ({ title, slug })),
+      tags: article.tags.filter(isDefined).map(({ slug }) => slug),
     },
   }))
 }
@@ -503,13 +500,11 @@ const buildOfficialBoard = async (): Promise<InventoryEntry[]> => {
   }))
 }
 
-/** The categories of a municipal service are plain title and slug pairs, the way this website's ones are. */
-const getServiceCategories = (
-  categories: { title: string; slug: string }[] | null | undefined,
-): InventoryCategory[] | undefined => {
-  const mapped = (categories ?? []).map(({ title, slug }) => ({ title, slug }))
+/** The categories of a municipal service are named by slug too, the way this website's ones are. */
+const getServiceCategories = (categories: { slug: string }[] | null | undefined) => {
+  const slugs = (categories ?? []).map(({ slug }) => slug)
 
-  return mapped.length > 0 ? mapped : undefined
+  return slugs.length > 0 ? slugs : undefined
 }
 
 /**
