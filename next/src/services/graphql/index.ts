@@ -7799,6 +7799,7 @@ export type ArticleInventoryEntityFragment = {
 }
 
 export type ArticlesInventoryQueryVariables = Exact<{
+  start?: InputMaybe<Scalars['Int']['input']>
   limit?: InputMaybe<Scalars['Int']['input']>
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
 }>
@@ -7990,6 +7991,7 @@ export type AssetInventoryEntityFragment = {
 }
 
 export type AssetsInventoryQueryVariables = Exact<{
+  start?: InputMaybe<Scalars['Int']['input']>
   limit?: InputMaybe<Scalars['Int']['input']>
 }>
 
@@ -11250,6 +11252,7 @@ export type InbaReleaseInventoryEntityFragment = {
 }
 
 export type InbaReleasesInventoryQueryVariables = Exact<{
+  start?: InputMaybe<Scalars['Int']['input']>
   limit?: InputMaybe<Scalars['Int']['input']>
 }>
 
@@ -16401,6 +16404,7 @@ export type PageInventoryEntityFragment = {
 }
 
 export type PagesInventoryQueryVariables = Exact<{
+  start?: InputMaybe<Scalars['Int']['input']>
   limit?: InputMaybe<Scalars['Int']['input']>
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
 }>
@@ -16899,6 +16903,7 @@ export type RegulationInventoryEntityFragment = {
 }
 
 export type RegulationsInventoryQueryVariables = Exact<{
+  start?: InputMaybe<Scalars['Int']['input']>
   limit?: InputMaybe<Scalars['Int']['input']>
 }>
 
@@ -20633,6 +20638,7 @@ export type UrbanStudyInventoryEntityFragment = {
 }
 
 export type UrbanStudiesInventoryQueryVariables = Exact<{
+  start?: InputMaybe<Scalars['Int']['input']>
   limit?: InputMaybe<Scalars['Int']['input']>
 }>
 
@@ -22678,8 +22684,8 @@ export const Dev_AllArticlesDocument = gql`
   ${ArticleEntityFragmentDoc}
 `
 export const ArticlesInventoryDocument = gql`
-  query ArticlesInventory($limit: Int = -1, $locale: I18NLocaleCode = "sk") {
-    articles(locale: $locale, sort: "updatedAt:desc", pagination: { limit: $limit }) {
+  query ArticlesInventory($start: Int = 0, $limit: Int = 100, $locale: I18NLocaleCode = "sk") {
+    articles(locale: $locale, sort: "id:asc", pagination: { start: $start, limit: $limit }) {
       ...ArticleInventoryEntity
     }
   }
@@ -22710,8 +22716,8 @@ export const AssetCategoriesDocument = gql`
   ${AssetCategoryEntityFragmentDoc}
 `
 export const AssetsInventoryDocument = gql`
-  query AssetsInventory($limit: Int = -1) {
-    assets(sort: "updatedAt:desc", pagination: { limit: $limit }) {
+  query AssetsInventory($start: Int = 0, $limit: Int = 100) {
+    assets(sort: "id:asc", pagination: { start: $start, limit: $limit }) {
       ...AssetInventoryEntity
     }
   }
@@ -22914,8 +22920,8 @@ export const LatestInbaReleaseDocument = gql`
   ${InbaReleaseEntityFragmentDoc}
 `
 export const InbaReleasesInventoryDocument = gql`
-  query InbaReleasesInventory($limit: Int = -1) {
-    inbaReleases(sort: "updatedAt:desc", pagination: { limit: $limit }) {
+  query InbaReleasesInventory($start: Int = 0, $limit: Int = 100) {
+    inbaReleases(sort: "id:asc", pagination: { start: $start, limit: $limit }) {
       ...InbaReleaseInventoryEntity
     }
   }
@@ -23006,8 +23012,8 @@ export const UpdatePageDocument = gql`
   }
 `
 export const PagesInventoryDocument = gql`
-  query PagesInventory($limit: Int = -1, $locale: I18NLocaleCode = "sk") {
-    pages(locale: $locale, sort: "updatedAt:desc", pagination: { limit: $limit }) {
+  query PagesInventory($start: Int = 0, $limit: Int = 100, $locale: I18NLocaleCode = "sk") {
+    pages(locale: $locale, sort: "id:asc", pagination: { start: $start, limit: $limit }) {
       ...PageInventoryEntity
     }
   }
@@ -23030,8 +23036,8 @@ export const RegulationBySlugDocument = gql`
   ${RegulationEntityFragmentDoc}
 `
 export const RegulationsInventoryDocument = gql`
-  query RegulationsInventory($limit: Int = -1) {
-    regulations(sort: "updatedAt:desc", pagination: { limit: $limit }) {
+  query RegulationsInventory($start: Int = 0, $limit: Int = 100) {
+    regulations(sort: "id:asc", pagination: { start: $start, limit: $limit }) {
       ...RegulationInventoryEntity
     }
   }
@@ -23062,8 +23068,8 @@ export const UrbanStudiesStaticPathsDocument = gql`
   }
 `
 export const UrbanStudiesInventoryDocument = gql`
-  query UrbanStudiesInventory($limit: Int = -1) {
-    urbanStudies(sort: "updatedAt:desc", pagination: { limit: $limit }) {
+  query UrbanStudiesInventory($start: Int = 0, $limit: Int = 100) {
+    urbanStudies(sort: "id:asc", pagination: { start: $start, limit: $limit }) {
       ...UrbanStudyInventoryEntity
     }
   }

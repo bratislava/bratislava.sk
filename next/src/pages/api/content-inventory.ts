@@ -104,14 +104,16 @@ const handler = async (
 
   const { modifiedSince, type, fields, page, pageSize } = parsedParams
 
+  const generatedAt = new Date(snapshot.builtAt).toISOString()
+
   const filtered = snapshot.entries.filter((entry) => {
     // An empty `type=` is treated as no filter at all, not as "nothing matches".
     if (type?.length && !type.includes(entry.type)) {
       return false
     }
 
-    if (modifiedSince) {
-      return Boolean(entry.modifiedAt) && new Date(entry.modifiedAt as string) > modifiedSince
+    if (modifiedSince && !(entry.modifiedAt && new Date(entry.modifiedAt) > modifiedSince)) {
+      return false
     }
 
     return true
@@ -127,7 +129,7 @@ const handler = async (
 
   response.status(200).json({
     version: INVENTORY_VERSION,
-    generatedAt: new Date(snapshot.builtAt).toISOString(),
+    generatedAt,
     totalItems: filtered.length,
     page: currentPage,
     pageSize: currentPageSize,

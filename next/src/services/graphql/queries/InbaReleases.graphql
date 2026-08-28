@@ -85,8 +85,8 @@ fragment InbaReleaseInventoryEntity on InbaRelease {
   }
 }
 
-query InbaReleasesInventory($limit: Int = -1) {
-  inbaReleases(sort: "updatedAt:desc", pagination: { limit: $limit }) {
+query InbaReleasesInventory($start: Int = 0, $limit: Int = 100) {
+  inbaReleases(sort: "id:asc", pagination: { start: $start, limit: $limit }) {
     ...InbaReleaseInventoryEntity
   }
 }

@@ -94,8 +94,8 @@ export type InventoryContactType =
   | 'bankConnection'
 
 /**
- * One contacts section of a page. Its `title` is what the cards belong to - pages listing several people or departments
- * carry one section each, so the cards must not be flattened across them.
+ * One contacts section of a page or of a municipal service. Its `title` is what the cards belong to - content listing
+ * several people or departments carries one section each, so the cards must not be flattened across them.
  */
 export type InventoryContactsSection = {
   /** Usually "Kontakty", but it's helpful when page contains more contacts sections to distinguish between them. */

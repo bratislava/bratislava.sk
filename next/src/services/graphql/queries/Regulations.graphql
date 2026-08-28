@@ -110,8 +110,8 @@ fragment RegulationInventoryEntity on Regulation {
   }
 }
 
-query RegulationsInventory($limit: Int = -1) {
-  regulations(sort: "updatedAt:desc", pagination: { limit: $limit }) {
+query RegulationsInventory($start: Int = 0, $limit: Int = 100) {
+  regulations(sort: "id:asc", pagination: { start: $start, limit: $limit }) {
     ...RegulationInventoryEntity
   }
 }

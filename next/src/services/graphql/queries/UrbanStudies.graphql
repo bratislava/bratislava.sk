@@ -92,8 +92,8 @@ fragment UrbanStudyInventoryEntity on UrbanStudy {
   }
 }
 
-query UrbanStudiesInventory($limit: Int = -1) {
-  urbanStudies(sort: "updatedAt:desc", pagination: { limit: $limit }) {
+query UrbanStudiesInventory($start: Int = 0, $limit: Int = 100) {
+  urbanStudies(sort: "id:asc", pagination: { start: $start, limit: $limit }) {
     ...UrbanStudyInventoryEntity
   }
 }

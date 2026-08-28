@@ -154,8 +154,8 @@ fragment ArticleInventoryEntity on Article {
   }
 }
 
-query ArticlesInventory($limit: Int = -1, $locale: I18NLocaleCode = "sk") {
-  articles(locale: $locale, sort: "updatedAt:desc", pagination: { limit: $limit }) {
+query ArticlesInventory($start: Int = 0, $limit: Int = 100, $locale: I18NLocaleCode = "sk") {
+  articles(locale: $locale, sort: "id:asc", pagination: { start: $start, limit: $limit }) {
     ...ArticleInventoryEntity
   }
 }

@@ -61,8 +61,8 @@ fragment AssetInventoryEntity on Asset {
   }
 }
 
-query AssetsInventory($limit: Int = -1) {
-  assets(sort: "updatedAt:desc", pagination: { limit: $limit }) {
+query AssetsInventory($start: Int = 0, $limit: Int = 100) {
+  assets(sort: "id:asc", pagination: { start: $start, limit: $limit }) {
     ...AssetInventoryEntity
   }
 }

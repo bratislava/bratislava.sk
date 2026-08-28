@@ -21,6 +21,7 @@ import { client } from '@/src/services/graphql/gql'
 import { base64Encode } from '@/src/utils/base64'
 import { isDefined } from '@/src/utils/isDefined'
 
+import { FETCH_CHUNK_SIZE } from './config'
 import {
   Inventory,
   InventoryCategory,
@@ -54,6 +55,21 @@ const getIsoDate = (value: unknown) => {
   }
 
   return /^\d{4}-\d{2}-\d{2}$/.test(date) ? `${date}T00:00:00.000Z` : date
+}
+
+/**
+ * Reads one content type in chunks. Sorted by id so the windows do not shift while fetching.
+ */
+const fetchAll = async <TItem>(
+  fetchChunk: (variables: { start: number; limit: number }) => Promise<(TItem | null)[]>,
+  start = 0,
+): Promise<TItem[]> => {
+  const chunk = await fetchChunk({ start, limit: FETCH_CHUNK_SIZE })
+  const items = chunk.filter(isDefined)
+
+  return chunk.length < FETCH_CHUNK_SIZE
+    ? items
+    : [...items, ...(await fetchAll(fetchChunk, start + FETCH_CHUNK_SIZE))]
 }
 
 /** Omits the type specific object entirely when the content type has nothing to add. */
@@ -304,9 +320,11 @@ const getPageRegulations = (sections: PageInventoryEntityFragment['sections']) =
   )
 
 const buildPages = async (): Promise<InventoryEntry[]> => {
-  const { pages } = await client.PagesInventory()
+  const pages = await fetchAll((variables) =>
+    client.PagesInventory(variables).then((result) => result.pages),
+  )
 
-  return pages.filter(isDefined).map((page) => ({
+  return pages.map((page) => ({
     ...getBase('page', {
       ...page,
       path: `/${page.path}`,
@@ -327,9 +345,11 @@ const buildPages = async (): Promise<InventoryEntry[]> => {
 }
 
 const buildArticles = async (): Promise<InventoryEntry[]> => {
-  const { articles } = await client.ArticlesInventory()
+  const articles = await fetchAll((variables) =>
+    client.ArticlesInventory(variables).then((result) => result.articles),
+  )
 
-  return articles.filter(isDefined).map((article) => ({
+  return articles.map((article) => ({
     ...getBase('article', {
       ...article,
       path: `/spravy/${article.slug}`,
@@ -354,9 +374,11 @@ const buildArticles = async (): Promise<InventoryEntry[]> => {
 }
 
 const buildAssets = async (): Promise<InventoryEntry[]> => {
-  const { assets } = await client.AssetsInventory()
+  const assets = await fetchAll((variables) =>
+    client.AssetsInventory(variables).then((result) => result.assets),
+  )
 
-  return assets.filter(isDefined).map((asset) => ({
+  return assets.map((asset) => ({
     ...getBase('asset', {
       ...asset,
       path: `/dokumenty/${asset.slug}`,
@@ -371,9 +393,11 @@ const buildAssets = async (): Promise<InventoryEntry[]> => {
 }
 
 const buildRegulations = async (): Promise<InventoryEntry[]> => {
-  const { regulations } = await client.RegulationsInventory()
+  const regulations = await fetchAll((variables) =>
+    client.RegulationsInventory(variables).then((result) => result.regulations),
+  )
 
-  return regulations.filter(isDefined).map((regulation) => {
+  return regulations.map((regulation) => {
     // Cancelled either directly, or through an amendee that got cancelled - same rule as getRegulationMetadata.ts.
     const cancellation =
       regulation.cancellation ??
@@ -413,9 +437,11 @@ const buildRegulations = async (): Promise<InventoryEntry[]> => {
 }
 
 const buildInbaReleases = async (): Promise<InventoryEntry[]> => {
-  const { inbaReleases } = await client.InbaReleasesInventory()
+  const inbaReleases = await fetchAll((variables) =>
+    client.InbaReleasesInventory(variables).then((result) => result.inbaReleases),
+  )
 
-  return inbaReleases.filter(isDefined).map((inbaRelease) => ({
+  return inbaReleases.map((inbaRelease) => ({
     ...getBase('inba-release', {
       ...inbaRelease,
       path: `/inba/vydania/${inbaRelease.slug}`,
@@ -429,9 +455,11 @@ const buildInbaReleases = async (): Promise<InventoryEntry[]> => {
 }
 
 const buildUrbanStudies = async (): Promise<InventoryEntry[]> => {
-  const { urbanStudies } = await client.UrbanStudiesInventory()
+  const urbanStudies = await fetchAll((variables) =>
+    client.UrbanStudiesInventory(variables).then((result) => result.urbanStudies),
+  )
 
-  return urbanStudies.filter(isDefined).map((urbanStudy) => ({
+  return urbanStudies.map((urbanStudy) => ({
     ...getBase('urban-study', {
       ...urbanStudy,
       path: `/uzemne-studie/${urbanStudy.slug}`,
@@ -558,6 +586,8 @@ const buildTaxonomies = async (): Promise<InventoryTaxonomies> => {
 /**
  * Builds the inventory of everything on the website that has its own url. Published content only - the Strapi GraphQL
  * api returns published documents by default.
+ *
+ * Every content type is read in chunks (see `fetchAll`), the types side by side.
  */
 export const buildInventory = async (): Promise<Inventory> => {
   const [
