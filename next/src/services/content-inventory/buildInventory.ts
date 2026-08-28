@@ -477,27 +477,32 @@ const buildOfficialBoard = async (): Promise<InventoryEntry[]> => {
     ? mockedParsedDocuments
     : await getOfficialBoardParsedList({ publicationState: 'vyveseno' })
 
-  return documents.map((document) => ({
-    ...getBase('official-board', {
-      // The board has no slugs - a document is addressed by its GINIS id, base64 encoded because it contains a `#`.
-      documentId: document.id,
-      path: `/uradna-tabula/${base64Encode(document.id)}`,
-      title: document.title,
-      // Editors often repeat the title as the description, which would make every second entry carry it twice.
-      summary:
-        getFirstNonEmpty(document.description) === document.title
-          ? undefined
-          : getFirstNonEmpty(document.description),
-      addedAt: document.publishedFrom,
-      // GINIS does not track when a posted document was last changed, so the only date it has is when it went up.
-      modifiedAt: document.publishedFrom,
-    }),
-    'official-board': {
-      category: getFirstNonEmpty(document.categoryName),
-      numberOfFiles: document.numberOfFiles,
-      publishedUntil: getIsoDate(document.publishedTo) ?? undefined,
-    },
-  }))
+  return documents.map((document) => {
+    // The board has no slugs - a document is addressed by its GINIS id, base64 encoded because it contains a `#`. The
+    // entry is keyed by the encoded id too, so it matches the last segment of the url.
+    const documentId = base64Encode(document.id)
+
+    return {
+      ...getBase('official-board', {
+        documentId,
+        path: `/uradna-tabula/${documentId}`,
+        title: document.title,
+        // Editors often repeat the title as the description, which would make every second entry carry it twice.
+        summary:
+          getFirstNonEmpty(document.description) === document.title
+            ? undefined
+            : getFirstNonEmpty(document.description),
+        addedAt: document.publishedFrom,
+        // GINIS does not track when a posted document was last changed, so the only date it has is when it went up.
+        modifiedAt: document.publishedFrom,
+      }),
+      'official-board': {
+        category: getFirstNonEmpty(document.categoryName),
+        numberOfFiles: document.numberOfFiles,
+        publishedUntil: getIsoDate(document.publishedTo) ?? undefined,
+      },
+    }
+  })
 }
 
 /** The categories of a municipal service are named by slug too, the way this website's ones are. */
