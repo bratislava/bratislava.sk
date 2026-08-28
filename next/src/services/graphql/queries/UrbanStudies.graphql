@@ -82,6 +82,14 @@ fragment UrbanStudyInventoryEntity on UrbanStudy {
   urbanStudyState {
     ...UrbanStudyStateEntity
   }
+  urbanStudyParts {
+    items(pagination: { limit: -1 }) {
+      ...UrbanStudyPartItem
+    }
+  }
+  regulations(pagination: { limit: -1 }) {
+    ...RegulationRelationEntity
+  }
 }
 
 query UrbanStudiesInventory($limit: Int = -1) {

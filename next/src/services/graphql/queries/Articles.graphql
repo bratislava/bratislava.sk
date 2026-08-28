@@ -137,11 +137,20 @@ fragment ArticleInventoryEntity on Article {
   perex
   addedAt
   updatedAt
+  adminGroups {
+    ...AdminGroupSlugEntity
+  }
   articleCategory {
     ...ArticleCategoryEntity
   }
   tags {
     ...TagEntity
+  }
+  files {
+    ...FileBlock
+  }
+  inbaRelease {
+    ...InbaReleaseSlugEntity
   }
 }
 

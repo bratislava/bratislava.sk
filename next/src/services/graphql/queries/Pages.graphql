@@ -154,6 +154,38 @@ fragment PageInventoryEntity on Page {
   subtext
   metaDescription
   keywords
+  adminGroups {
+    ...AdminGroupSlugEntity
+  }
+  # Only the sections that carry files or link other content - the rest of the dynamic zone is not needed here.
+  sections {
+    __typename
+    ... on ComponentSectionsAssets {
+      assets(pagination: { limit: -1 }) {
+        ...AssetSlugEntity
+      }
+    }
+    ... on ComponentSectionsRegulations {
+      regulations(pagination: { limit: -1 }) {
+        ...RegulationRelationEntity
+      }
+    }
+    ... on ComponentSectionsFileList {
+      fileList(pagination: { limit: -1 }) {
+        ...FileBlock
+      }
+    }
+    ... on ComponentSectionsAccordion {
+      flatText(pagination: { limit: -1 }) {
+        fileList {
+          ...FileItemBlock
+        }
+      }
+    }
+    ... on ComponentSectionsContactsSection {
+      ...ContactsSection
+    }
+  }
 }
 
 query PagesInventory($limit: Int = -1, $locale: I18NLocaleCode = "*") {

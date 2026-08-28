@@ -19,11 +19,7 @@ fragment InbaReleaseEntity on InbaRelease {
     ...UploadImageEntity
   }
   files {
-    id
-    title
-    media {
-      ...UploadFileEntity
-    }
+    ...FileBlock
   }
   articles {
     ...ArticleCardEntity
@@ -81,6 +77,12 @@ fragment InbaReleaseInventoryEntity on InbaRelease {
   releaseDate
   updatedAt
   publishedAt
+  files {
+    ...FileBlock
+  }
+  articles(pagination: { limit: -1 }) {
+    ...ArticleSlugEntity
+  }
 }
 
 query InbaReleasesInventory($limit: Int = -1) {

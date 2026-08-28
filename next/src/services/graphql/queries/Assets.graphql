@@ -50,8 +50,14 @@ fragment AssetInventoryEntity on Asset {
   publishedAt
   customPublishedAt
   description
+  adminGroups {
+    ...AdminGroupSlugEntity
+  }
   assetCategory {
     ...AssetCategoryEntity
+  }
+  files {
+    ...UploadFileEntity
   }
 }
 
