@@ -60,9 +60,10 @@ query ArticlesStaticPaths($limit: Int = -1, $locale: I18NLocaleCode!) {
   }
 }
 
-query ArticlesStaticPathsWithLocalizations($limit: Int = -1, $locale: I18NLocaleCode!) {
+query ArticlesStaticPathsForSitemap($limit: Int = -1, $locale: I18NLocaleCode!) {
   articles(locale: $locale, sort: "addedAt:desc", pagination: { limit: $limit }) {
     ...ArticleSlugEntity
+    updatedAt
     localizations {
       ...ArticleSlugEntity
     }

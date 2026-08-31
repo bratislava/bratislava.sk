@@ -39,12 +39,13 @@ module.exports = {
     const fetchArticlePaths = async () => {
       const results = await Promise.all(
         locales.map(async (locale) => {
-          const { articles } = await client.ArticlesStaticPathsWithLocalizations({
+          const { articles } = await client.ArticlesStaticPathsForSitemap({
             limit: -1,
             locale,
           })
           return articles.map((article) => ({
             loc: `${localePrefix(locale)}/spravy/${article.slug}`,
+            lastmod: article.updatedAt,
             alternateRefs: getAlternateRefs({
               siteUrl,
               entity: article,
@@ -59,9 +60,10 @@ module.exports = {
     const fetchPagePaths = async () => {
       const results = await Promise.all(
         locales.map(async (locale) => {
-          const { pages } = await client.PagesStaticPathsWithLocalizations({ limit: -1, locale })
+          const { pages } = await client.PagesStaticPathsForSitemap({ limit: -1, locale })
           return pages.map((page) => ({
             loc: `${localePrefix(locale)}/${page.path}`,
+            lastmod: page.updatedAt,
             alternateRefs: getAlternateRefs({
               siteUrl,
               entity: page,
@@ -75,23 +77,35 @@ module.exports = {
 
     // Content types below are not localised in Strapi, so they have no alternate refs.
     const fetchInbaReleasePaths = async () => {
-      const { inbaReleases } = await client.InbaReleasesStaticPaths({ limit: -1 })
-      return inbaReleases.map((release) => ({ loc: `/inba/vydania/${release.slug}` }))
+      const { inbaReleases } = await client.InbaReleasesStaticPathsForSitemap({ limit: -1 })
+      return inbaReleases.map((release) => ({
+        loc: `/inba/vydania/${release.slug}`,
+        lastmod: release.updatedAt,
+      }))
     }
 
     const fetchRegulationPaths = async () => {
-      const { regulations } = await client.RegulationsStaticPaths({ limit: -1 })
-      return regulations.map((regulation) => ({ loc: `/vzn/${regulation.slug}` }))
+      const { regulations } = await client.RegulationsStaticPathsForSitemap({ limit: -1 })
+      return regulations.map((regulation) => ({
+        loc: `/vzn/${regulation.slug}`,
+        lastmod: regulation.updatedAt,
+      }))
     }
 
     const fetchAssetPaths = async () => {
-      const { assets } = await client.AssetsStaticPaths({ limit: -1 })
-      return assets.map((asset) => ({ loc: `/dokumenty/${asset.slug}` }))
+      const { assets } = await client.AssetsStaticPathsForSitemap({ limit: -1 })
+      return assets.map((asset) => ({
+        loc: `/dokumenty/${asset.slug}`,
+        lastmod: asset.updatedAt,
+      }))
     }
 
     const fetchUrbanStudyPaths = async () => {
-      const { urbanStudies } = await client.UrbanStudiesStaticPaths({ limit: -1 })
-      return urbanStudies.map((urbanStudy) => ({ loc: `/uzemne-studie/${urbanStudy.slug}` }))
+      const { urbanStudies } = await client.UrbanStudiesStaticPathsForSitemap({ limit: -1 })
+      return urbanStudies.map((urbanStudy) => ({
+        loc: `/uzemne-studie/${urbanStudy.slug}`,
+        lastmod: urbanStudy.updatedAt,
+      }))
     }
 
     const pathGroups = await Promise.all([
@@ -108,7 +122,7 @@ module.exports = {
       loc: path.loc,
       changefreq: config.changefreq,
       priority: config.priority,
-      lastmod: config.autoLastmod ? new Date().toISOString() : undefined,
+      lastmod: path.lastmod ? new Date(path.lastmod).toISOString() : undefined,
       alternateRefs: path.alternateRefs ?? [],
     }))
   },
