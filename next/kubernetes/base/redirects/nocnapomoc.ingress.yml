@@ -14,7 +14,6 @@ metadata:
           return 301 https://${BRATISKA_HOSTNAME}/socialne-sluzby-a-byvanie/socialne-sluzby-a-zariadenia/nocna-pomoc;
       }
 spec:
-  ingressClassName: nginx
   tls:
     - hosts:
         - nocnapomoc.sk
