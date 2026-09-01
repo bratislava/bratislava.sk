@@ -6,6 +6,8 @@ metadata:
   labels:
     service: redirect
   annotations:
+    nginx.org/proxy-buffer-size: 16k
+    nginx.org/proxy-buffers: 8 16k
     cert-manager.io/cluster-issuer: cloudflare-dns01
     cert-manager.io/issue-temporary-certificate: 'true'
     ingress.kubernetes.io/redirect-to: https://${BRATISKA_HOSTNAME}/zivotne-prostredie-a-vystavba/zelen/udrzba-a-tvorba-zelene/parky-a-zahrady/horsky-park
