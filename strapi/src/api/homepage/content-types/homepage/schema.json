@@ -116,14 +116,14 @@
       "component": "sections.tootoot-events",
       "repeatable": false
     },
-    "announcementBanner": {
+    "announcementBannerSection": {
       "type": "component",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "component": "blocks.announcement-banner",
+      "component": "sections.announcement-banner",
       "repeatable": false
     }
   }

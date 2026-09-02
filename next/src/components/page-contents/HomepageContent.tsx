@@ -10,7 +10,7 @@ import TootootEventsSection from '@/src/components/sections/TootootEventsSection
 const HomepageContent = () => {
   const { homepage } = useHomepageContext()
 
-  const { eventsSection, announcementBanner } = homepage ?? {}
+  const { eventsSection, announcementBannerSection } = homepage ?? {}
 
   return (
     <>
@@ -26,7 +26,9 @@ const HomepageContent = () => {
         <TootootEventsSection section={eventsSection} className="py-8 lg:pt-18" />
       ) : null}
 
-      {announcementBanner ? <AnnouncementBannerSection {...announcementBanner} /> : null}
+      {announcementBannerSection ? (
+        <AnnouncementBannerSection {...announcementBannerSection} />
+      ) : null}
       <Waves waveColor="var(--color-category-200)" wavePosition="top" />
 
       <TopServicesHomepageSection />

@@ -49,6 +49,9 @@ const nextConfig: NextConfig = {
       './next-i18next.config.js',
     ],
   },
+  experimental: {
+    turbopackLocalPostcssConfig: true,
+  },
   turbopack: {
     rules: {
       '*.svg': {

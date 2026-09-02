@@ -867,7 +867,7 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
     }
   }
   attributes: {
-    announcementBanner: Schema.Attribute.Component<'blocks.announcement-banner', false> &
+    announcementBannerSection: Schema.Attribute.Component<'sections.announcement-banner', false> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true

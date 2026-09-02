@@ -34,18 +34,6 @@ export interface AccordionItemsInstitution extends Struct.ComponentSchema {
   }
 }
 
-export interface BlocksAnnouncementBanner extends Struct.ComponentSchema {
-  collectionName: 'components_blocks_announcement_banners'
-  info: {
-    displayName: 'announcementBanner'
-  }
-  attributes: {
-    link: Schema.Attribute.Component<'blocks.common-link', false>
-    text: Schema.Attribute.String
-    title: Schema.Attribute.String
-  }
-}
-
 export interface BlocksCardLink extends Struct.ComponentSchema {
   collectionName: 'components_blocks_card_links'
   info: {
@@ -635,6 +623,18 @@ export interface SectionsAlert extends Struct.ComponentSchema {
     alertVariant: Schema.Attribute.Enumeration<['warning', 'info', 'success', 'error']> &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'warning'>
+  }
+}
+
+export interface SectionsAnnouncementBanner extends Struct.ComponentSchema {
+  collectionName: 'components_sections_announcement_banners'
+  info: {
+    displayName: 'Oznamovac\u00ED Homepage Banner'
+  }
+  attributes: {
+    link: Schema.Attribute.Component<'blocks.common-link', false> & Schema.Attribute.Required
+    text: Schema.Attribute.Text
+    title: Schema.Attribute.String & Schema.Attribute.Required
   }
 }
 
@@ -1405,7 +1405,6 @@ declare module '@strapi/strapi' {
     export interface ComponentSchemas {
       'accordion-items.flat-text': AccordionItemsFlatText
       'accordion-items.institution': AccordionItemsInstitution
-      'blocks.announcement-banner': BlocksAnnouncementBanner
       'blocks.card-link': BlocksCardLink
       'blocks.columns-item': BlocksColumnsItem
       'blocks.columns-list-item': BlocksColumnsListItem
@@ -1444,6 +1443,7 @@ declare module '@strapi/strapi' {
       'menu.menu-section': MenuMenuSection
       'sections.accordion': SectionsAccordion
       'sections.alert': SectionsAlert
+      'sections.announcement-banner': SectionsAnnouncementBanner
       'sections.articles': SectionsArticles
       'sections.articles-landing-page': SectionsArticlesLandingPage
       'sections.assets': SectionsAssets

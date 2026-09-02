@@ -1,15 +1,15 @@
 {
-  "key": "plugin_content_manager_configuration_components::blocks.announcement-banner",
+  "key": "plugin_content_manager_configuration_components::sections.announcement-banner",
   "value": {
     "settings": {
       "bulkable": true,
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "relationOpenMode": "modal",
       "mainField": "title",
       "defaultSortBy": "title",
-      "defaultSortOrder": "ASC"
+      "defaultSortOrder": "ASC",
+      "relationOpenMode": "modal"
     },
     "metadatas": {
       "id": {
@@ -22,7 +22,7 @@
       },
       "title": {
         "edit": {
-          "label": "title",
+          "label": "Názov",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -36,7 +36,7 @@
       },
       "text": {
         "edit": {
-          "label": "text",
+          "label": "Text",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -50,7 +50,7 @@
       },
       "link": {
         "edit": {
-          "label": "link",
+          "label": "Link",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -82,11 +82,11 @@
         [
           {
             "name": "title",
-            "size": 6
+            "size": 12
           },
           {
             "name": "text",
-            "size": 6
+            "size": 12
           }
         ],
         [
@@ -97,7 +97,7 @@
         ]
       ]
     },
-    "uid": "blocks.announcement-banner",
+    "uid": "sections.announcement-banner",
     "isComponent": true
   },
   "type": "object",

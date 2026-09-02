@@ -1254,16 +1254,16 @@
           "eventsSection.showMoreLink.inbaRelease",
           "eventsSection.showMoreLink.regulation",
           "eventsSection.showMoreLink.asset",
-          "announcementBanner.title",
-          "announcementBanner.text",
-          "announcementBanner.link.label",
-          "announcementBanner.link.page",
-          "announcementBanner.link.article",
-          "announcementBanner.link.url",
-          "announcementBanner.link.analyticsId",
-          "announcementBanner.link.inbaRelease",
-          "announcementBanner.link.regulation",
-          "announcementBanner.link.asset"
+          "announcementBannerSection.title",
+          "announcementBannerSection.text",
+          "announcementBannerSection.link.label",
+          "announcementBannerSection.link.page",
+          "announcementBannerSection.link.article",
+          "announcementBannerSection.link.url",
+          "announcementBannerSection.link.analyticsId",
+          "announcementBannerSection.link.inbaRelease",
+          "announcementBannerSection.link.regulation",
+          "announcementBannerSection.link.asset"
         ],
         "locales": [
           "sk",
@@ -1272,7 +1272,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "fikem97tnf0523wd4gln1eiv",
+      "documentId": "z9rmclv7mxdj3tak3qwal2m5",
       "locale": null
     },
     {
@@ -1395,16 +1395,16 @@
           "eventsSection.showMoreLink.inbaRelease",
           "eventsSection.showMoreLink.regulation",
           "eventsSection.showMoreLink.asset",
-          "announcementBanner.title",
-          "announcementBanner.text",
-          "announcementBanner.link.label",
-          "announcementBanner.link.page",
-          "announcementBanner.link.article",
-          "announcementBanner.link.url",
-          "announcementBanner.link.analyticsId",
-          "announcementBanner.link.inbaRelease",
-          "announcementBanner.link.regulation",
-          "announcementBanner.link.asset"
+          "announcementBannerSection.title",
+          "announcementBannerSection.text",
+          "announcementBannerSection.link.label",
+          "announcementBannerSection.link.page",
+          "announcementBannerSection.link.article",
+          "announcementBannerSection.link.url",
+          "announcementBannerSection.link.analyticsId",
+          "announcementBannerSection.link.inbaRelease",
+          "announcementBannerSection.link.regulation",
+          "announcementBannerSection.link.asset"
         ],
         "locales": [
           "sk",
@@ -1413,7 +1413,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "koh3x0xubt0awqgca4wjkq2x",
+      "documentId": "qqbneoqbnd51e4wp0mwxow06",
       "locale": null
     },
     {
@@ -1508,16 +1508,16 @@
           "eventsSection.showMoreLink.inbaRelease",
           "eventsSection.showMoreLink.regulation",
           "eventsSection.showMoreLink.asset",
-          "announcementBanner.title",
-          "announcementBanner.text",
-          "announcementBanner.link.label",
-          "announcementBanner.link.page",
-          "announcementBanner.link.article",
-          "announcementBanner.link.url",
-          "announcementBanner.link.analyticsId",
-          "announcementBanner.link.inbaRelease",
-          "announcementBanner.link.regulation",
-          "announcementBanner.link.asset"
+          "announcementBannerSection.title",
+          "announcementBannerSection.text",
+          "announcementBannerSection.link.label",
+          "announcementBannerSection.link.page",
+          "announcementBannerSection.link.article",
+          "announcementBannerSection.link.url",
+          "announcementBannerSection.link.analyticsId",
+          "announcementBannerSection.link.inbaRelease",
+          "announcementBannerSection.link.regulation",
+          "announcementBannerSection.link.asset"
         ],
         "locales": [
           "sk",
@@ -1526,7 +1526,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "q0eo955n4wd3xmwuu60ubhu7",
+      "documentId": "n3blxkrxk853p84j9fscbly7",
       "locale": null
     },
     {

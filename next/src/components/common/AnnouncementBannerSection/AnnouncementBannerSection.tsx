@@ -6,9 +6,9 @@ import { CommonLinkFragment } from '@/src/services/graphql'
 import { getLinkProps } from '@/src/utils/getLinkProps'
 
 type Props = {
-  title?: string | null
+  title: string
   text?: string | null
-  link?: CommonLinkFragment | null
+  link: CommonLinkFragment
 }
 
 const AnnouncementBannerSection = ({ title, text, link }: Props) => {
@@ -20,13 +20,14 @@ const AnnouncementBannerSection = ({ title, text, link }: Props) => {
         <div className="flex flex-1 flex-col justify-between gap-3 sm:flex-row sm:gap-0">
           <div className="flex max-w-170 flex-col justify-between gap-2">
             <Typography variant="h3" className="text-white">
-              {title || 'Komunálne voľby 2026'}
+              {title}
             </Typography>
 
-            <Typography variant="p-small" className="text-white">
-              {text ||
-                'Voľby do orgánov samosprávy obcí sa uskutočnia na jeseň 2026. Termín, volebné okrsky, informácieo voľbe poštou aj o kandidátoch zverejňujeme priebežne na jednej stránke.'}
-            </Typography>
+            {text ? (
+              <Typography variant="p-small" className="text-white">
+                {text}
+              </Typography>
+            ) : null}
           </div>
 
           <div className="flex flex-col justify-center">

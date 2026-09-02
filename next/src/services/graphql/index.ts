@@ -710,30 +710,6 @@ export type ComponentAccordionItemsInstitutionInput = {
   urlLabel?: InputMaybe<Scalars['String']['input']>
 }
 
-export type ComponentBlocksAnnouncementBanner = {
-  __typename?: 'ComponentBlocksAnnouncementBanner'
-  id: Scalars['ID']['output']
-  link?: Maybe<ComponentBlocksCommonLink>
-  text?: Maybe<Scalars['String']['output']>
-  title?: Maybe<Scalars['String']['output']>
-}
-
-export type ComponentBlocksAnnouncementBannerFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentBlocksAnnouncementBannerFiltersInput>>>
-  link?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
-  not?: InputMaybe<ComponentBlocksAnnouncementBannerFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentBlocksAnnouncementBannerFiltersInput>>>
-  text?: InputMaybe<StringFilterInput>
-  title?: InputMaybe<StringFilterInput>
-}
-
-export type ComponentBlocksAnnouncementBannerInput = {
-  id?: InputMaybe<Scalars['ID']['input']>
-  link?: InputMaybe<ComponentBlocksCommonLinkInput>
-  text?: InputMaybe<Scalars['String']['input']>
-  title?: InputMaybe<Scalars['String']['input']>
-}
-
 export type ComponentBlocksCardLink = {
   __typename?: 'ComponentBlocksCardLink'
   analyticsId?: Maybe<Scalars['String']['output']>
@@ -1774,6 +1750,30 @@ export type ComponentSectionsAlertInput = {
   alertTitle?: InputMaybe<Scalars['String']['input']>
   alertVariant?: InputMaybe<Enum_Componentsectionsalert_Alertvariant>
   id?: InputMaybe<Scalars['ID']['input']>
+}
+
+export type ComponentSectionsAnnouncementBanner = {
+  __typename?: 'ComponentSectionsAnnouncementBanner'
+  id: Scalars['ID']['output']
+  link: ComponentBlocksCommonLink
+  text?: Maybe<Scalars['String']['output']>
+  title: Scalars['String']['output']
+}
+
+export type ComponentSectionsAnnouncementBannerFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentSectionsAnnouncementBannerFiltersInput>>>
+  link?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
+  not?: InputMaybe<ComponentSectionsAnnouncementBannerFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentSectionsAnnouncementBannerFiltersInput>>>
+  text?: InputMaybe<StringFilterInput>
+  title?: InputMaybe<StringFilterInput>
+}
+
+export type ComponentSectionsAnnouncementBannerInput = {
+  id?: InputMaybe<Scalars['ID']['input']>
+  link?: InputMaybe<ComponentBlocksCommonLinkInput>
+  text?: InputMaybe<Scalars['String']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
 }
 
 export type ComponentSectionsArticles = {
@@ -4175,7 +4175,6 @@ export type GenericMorph =
   | AssetCategory
   | ComponentAccordionItemsFlatText
   | ComponentAccordionItemsInstitution
-  | ComponentBlocksAnnouncementBanner
   | ComponentBlocksCardLink
   | ComponentBlocksColumnsItem
   | ComponentBlocksColumnsListItem
@@ -4214,6 +4213,7 @@ export type GenericMorph =
   | ComponentMenuMenuSection
   | ComponentSectionsAccordion
   | ComponentSectionsAlert
+  | ComponentSectionsAnnouncementBanner
   | ComponentSectionsArticles
   | ComponentSectionsArticlesLandingPage
   | ComponentSectionsAssets
@@ -4288,7 +4288,7 @@ export type GenericMorph =
 
 export type Homepage = {
   __typename?: 'Homepage'
-  announcementBanner?: Maybe<ComponentBlocksAnnouncementBanner>
+  announcementBannerSection?: Maybe<ComponentSectionsAnnouncementBanner>
   createdAt?: Maybe<Scalars['DateTime']['output']>
   documentId: Scalars['ID']['output']
   eventsSection?: Maybe<ComponentSectionsTootootEvents>
@@ -4327,7 +4327,7 @@ export type HomepageEntityResponseCollection = {
 
 export type HomepageFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<HomepageFiltersInput>>>
-  announcementBanner?: InputMaybe<ComponentBlocksAnnouncementBannerFiltersInput>
+  announcementBannerSection?: InputMaybe<ComponentSectionsAnnouncementBannerFiltersInput>
   createdAt?: InputMaybe<DateTimeFilterInput>
   eventsSection?: InputMaybe<ComponentSectionsTootootEventsFiltersInput>
   highlights?: InputMaybe<ComponentSectionsHomepageHighlightsFiltersInput>
@@ -4347,7 +4347,7 @@ export type HomepageFiltersInput = {
 }
 
 export type HomepageInput = {
-  announcementBanner?: InputMaybe<ComponentBlocksAnnouncementBannerInput>
+  announcementBannerSection?: InputMaybe<ComponentSectionsAnnouncementBannerInput>
   eventsSection?: InputMaybe<ComponentSectionsTootootEventsInput>
   highlights?: InputMaybe<ComponentSectionsHomepageHighlightsInput>
   inba?: InputMaybe<ComponentBlocksInBaInput>
@@ -10089,11 +10089,11 @@ export type HomepageEntityFragment = {
       asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
     } | null
   } | null
-  announcementBanner?: {
-    __typename?: 'ComponentBlocksAnnouncementBanner'
-    title?: string | null
+  announcementBannerSection?: {
+    __typename?: 'ComponentSectionsAnnouncementBanner'
+    title: string
     text?: string | null
-    link?: {
+    link: {
       __typename?: 'ComponentBlocksCommonLink'
       label?: string | null
       url?: string | null
@@ -10125,7 +10125,7 @@ export type HomepageEntityFragment = {
         titleText?: string | null
       } | null
       asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
-    } | null
+    }
   } | null
 }
 
@@ -10580,11 +10580,11 @@ export type HomepageQuery = {
         asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
       } | null
     } | null
-    announcementBanner?: {
-      __typename?: 'ComponentBlocksAnnouncementBanner'
-      title?: string | null
+    announcementBannerSection?: {
+      __typename?: 'ComponentSectionsAnnouncementBanner'
+      title: string
       text?: string | null
-      link?: {
+      link: {
         __typename?: 'ComponentBlocksCommonLink'
         label?: string | null
         url?: string | null
@@ -10616,7 +10616,7 @@ export type HomepageQuery = {
           titleText?: string | null
         } | null
         asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
-      } | null
+      }
     } | null
   } | null
 }
@@ -11011,11 +11011,11 @@ export type HomepageInbaFragment = {
   } | null
 }
 
-export type AnnouncementBannerFragment = {
-  __typename?: 'ComponentBlocksAnnouncementBanner'
-  title?: string | null
+export type AnnouncementBannerSectionFragment = {
+  __typename?: 'ComponentSectionsAnnouncementBanner'
+  title: string
   text?: string | null
-  link?: {
+  link: {
     __typename?: 'ComponentBlocksCommonLink'
     label?: string | null
     url?: string | null
@@ -11047,7 +11047,7 @@ export type AnnouncementBannerFragment = {
       titleText?: string | null
     } | null
     asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
-  } | null
+  }
 }
 
 export type InbaReleaseSlugEntityFragment = {
@@ -22712,8 +22712,8 @@ export const HomepageInbaFragmentDoc = gql`
   }
   ${CommonLinkFragmentDoc}
 `
-export const AnnouncementBannerFragmentDoc = gql`
-  fragment AnnouncementBanner on ComponentBlocksAnnouncementBanner {
+export const AnnouncementBannerSectionFragmentDoc = gql`
+  fragment AnnouncementBannerSection on ComponentSectionsAnnouncementBanner {
     title
     text
     link {
@@ -22758,8 +22758,8 @@ export const HomepageEntityFragmentDoc = gql`
     inba {
       ...HomepageInba
     }
-    announcementBanner {
-      ...AnnouncementBanner
+    announcementBannerSection {
+      ...AnnouncementBannerSection
     }
   }
   ${UploadImageSrcEntityFragmentDoc}
@@ -22769,7 +22769,7 @@ export const HomepageEntityFragmentDoc = gql`
   ${TootootEventsSectionFragmentDoc}
   ${TopServicesItemFragmentDoc}
   ${HomepageInbaFragmentDoc}
-  ${AnnouncementBannerFragmentDoc}
+  ${AnnouncementBannerSectionFragmentDoc}
 `
 export const InbaReleaseEntityFragmentDoc = gql`
   fragment InbaReleaseEntity on InbaRelease {

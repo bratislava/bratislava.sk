@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_sections_announcement_banners",
+  "info": {
+    "displayName": "Oznamovací Homepage Banner"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "text": {
+      "type": "text"
+    },
+    "link": {
+      "type": "component",
+      "component": "blocks.common-link",
+      "repeatable": false,
+      "required": true
+    }
+  },
+  "config": {}
+}

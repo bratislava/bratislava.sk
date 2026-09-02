@@ -9,7 +9,8 @@
       "pageSize": 10,
       "mainField": "id",
       "defaultSortBy": "id",
-      "defaultSortOrder": "ASC"
+      "defaultSortOrder": "ASC",
+      "relationOpenMode": "modal"
     },
     "metadatas": {
       "id": {
@@ -160,16 +161,16 @@
           "sortable": false
         }
       },
-      "announcementBanner": {
+      "announcementBannerSection": {
         "edit": {
-          "label": "announcementBanner",
+          "label": "Oznamovací banner",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "announcementBanner",
+          "label": "announcementBannerSection",
           "searchable": false,
           "sortable": false
         }
@@ -307,7 +308,7 @@
         ],
         [
           {
-            "name": "announcementBanner",
+            "name": "announcementBannerSection",
             "size": 12
           }
         ]
