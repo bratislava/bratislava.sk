@@ -32,7 +32,7 @@ const AnnouncementBannerSection = ({ title, text, link, variant }: Props) => {
         <Icon name="info" className="size-9 max-lg:hidden" />
 
         <div className="flex flex-1 flex-col justify-between gap-3 lg:flex-row lg:gap-0">
-          <div className="flex max-w-170 flex-col justify-between gap-2">
+          <div className="flex lg:max-w-170 flex-col justify-between gap-2">
             <Typography variant="h3" as="h2">
               {title}
             </Typography>
@@ -46,14 +46,7 @@ const AnnouncementBannerSection = ({ title, text, link, variant }: Props) => {
               endIcon={<Icon name="arrow-right" />}
               className={cn(
                 'flex flex-row items-center justify-center gap-2 rounded-lg bg-background-active-primary-inverted-default px-4 py-3 text-content-active-primary-default',
-                {
-                  'bg-background-active-primary-default text-content-active-primary-inverted-default':
-                    variant === 'inverted',
-                },
-              )}
-              {...getLinkProps(link)}
-            />
-          </div>
+ <Button fullWidthMobile variant="solid-inverted" {...getLinkProps(link)} /
         </div>
       </div>
     </SectionContainer>
