@@ -5,8 +5,8 @@ import Wrapper from '../Wrapper'
 
 const AnnouncementBannerSectionShowcase = () => {
   return (
-    <Wrapper title="Announcement Banner Section">
-      <Stack className="w-304">
+    <Wrapper direction="column" title="Announcement Banner Section">
+      <Stack direction="column" className="items-stretch">
         <AnnouncementBannerSection
           title="Announcement Banner"
           link={{ label: 'Learn more', url: '#' }}
