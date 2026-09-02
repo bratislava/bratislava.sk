@@ -9,7 +9,9 @@ const AnnouncementBannerSectionShowcase = () => {
       <Stack direction="column" className="items-stretch">
         <AnnouncementBannerSection
           title="Announcement Banner"
+          text="This is an announcement banner section."
           link={{ label: 'Learn more', url: '#' }}
+          variant="dark"
         />
       </Stack>
     </Wrapper>

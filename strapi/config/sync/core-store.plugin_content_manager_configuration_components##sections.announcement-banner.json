@@ -22,7 +22,7 @@
       },
       "title": {
         "edit": {
-          "label": "Názov",
+          "label": "Nadpis",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -72,12 +72,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "text",
-        "link"
-      ],
+      "list": ["id", "title", "text", "link"],
       "edit": [
         [
           {

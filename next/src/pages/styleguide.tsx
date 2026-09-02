@@ -48,8 +48,8 @@ const showcases = [
   { id: 'disclosure', label: 'Disclosure', component: <DisclosureShowcase /> },
   { id: 'banner', label: 'Banner', component: <BannerShowCase /> },
   {
-    id: 'non-critical-notification',
-    label: 'Non-critical Notification',
+    id: 'announcement-banner',
+    label: 'Announcement Banner',
     component: <AnnouncementBannerSectionShowcase />,
   },
   {

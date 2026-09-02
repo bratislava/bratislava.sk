@@ -243,12 +243,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "createdAt",
-        "updatedAt",
-        "eventsSection"
-      ],
+      "list": ["id", "createdAt", "updatedAt", "eventsSection"],
       "edit": [
         [
           {
@@ -284,6 +279,12 @@
         ],
         [
           {
+            "name": "announcementBannerSection",
+            "size": 12
+          }
+        ],
+        [
+          {
             "name": "mayorAndCouncil",
             "size": 12
           }
@@ -303,12 +304,6 @@
         [
           {
             "name": "inba",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "announcementBannerSection",
             "size": 12
           }
         ]
