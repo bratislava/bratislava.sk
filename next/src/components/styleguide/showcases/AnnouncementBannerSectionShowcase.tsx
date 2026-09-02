@@ -7,7 +7,10 @@ const AnnouncementBannerSectionShowcase = () => {
   return (
     <Wrapper title="Announcement Banner Section">
       <Stack className="w-304">
-        <AnnouncementBannerSection />
+        <AnnouncementBannerSection
+          title="Announcement Banner"
+          link={{ label: 'Learn more', url: '#' }}
+        />
       </Stack>
     </Wrapper>
   )
