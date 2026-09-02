@@ -1,27 +1,34 @@
-diff --git a/node_modules/@strapi/content-manager/dist/admin/pages/EditView/components/FormInputs/Wysiwyg/Field.mjs b/node_modules/@strapi/content-manager/dist/admin/pages/EditView/components/FormInputs/Wysiwyg/Field.mjs
-index 42a4985..cef59d9 100644
---- a/node_modules/@strapi/content-manager/dist/admin/pages/EditView/components/FormInputs/Wysiwyg/Field.mjs
-+++ b/node_modules/@strapi/content-manager/dist/admin/pages/EditView/components/FormInputs/Wysiwyg/Field.mjs
-@@ -29,7 +29,8 @@ const Wysiwyg = /*#__PURE__*/ React.forwardRef(({ hint, disabled, label, name, p
-         const formattedFiles = files.map((f)=>({
-                 alt: f.alternativeText || f.name,
-                 url: prefixFileUrlWithBackendUrl(f.url) ?? f.url,
--                mime: f.mime
-+                mime: f.mime,
-+                caption: f.caption || f.name
-             }));
-         insertFile(editorRef, formattedFiles);
-         setMediaLibVisible(false);
-diff --git a/node_modules/@strapi/content-manager/dist/admin/pages/EditView/components/FormInputs/Wysiwyg/utils/utils.mjs b/node_modules/@strapi/content-manager/dist/admin/pages/EditView/components/FormInputs/Wysiwyg/utils/utils.mjs
-index 69826e8..43fd868 100644
---- a/node_modules/@strapi/content-manager/dist/admin/pages/EditView/components/FormInputs/Wysiwyg/utils/utils.mjs
-+++ b/node_modules/@strapi/content-manager/dist/admin/pages/EditView/components/FormInputs/Wysiwyg/utils/utils.mjs
-@@ -233,7 +233,7 @@ const insertFile = (editor, files)=>{
-             editor.current.replaceSelection('\n');
-         }
-         if (file.mime.includes('image')) {
--            editor.current.replaceSelection(`![${file.alt}](${file.url})`);
-+            editor.current.replaceSelection(`![${file.alt}](${file.url} "${file.caption}")`);
-         } else {
-             editor.current.replaceSelection(`[${file.alt}](${file.url})`);
-         }
+ diff --git a/node_modules/@strapi/content-manager/dist/admin/pages/EditView/components/FormInputs/Relations/Relations.mjs b/node_modules/@strapi/content-manager/dist/admin/pages/EditView/components/FormInputs/Relations/Relations.mjs
+index c66cdf0..f8dfa6e 100644
+--- a/node_modules/@strapi/content-manager/dist/admin/pages/EditView/components/FormInputs/Relations/Relations.mjs
++++ b/node_modules/@strapi/content-manager/dist/admin/pages/EditView/components/FormInputs/Relations/Relations.mjs
+@@ -195,19 +195,26 @@ const EMPTY_RELATION_RESULTS = [];
+     ]);
+     const handleDisconnect = useHandleDisconnect(props.name, 'RelationsField');
+     const handleConnect = React.useCallback((relation)=>{
+-        const [lastItemInList] = relations.slice(-1);
++        // AssetsSection (`sections.assets`'s `assets` field) prepends new relations to the top of the list instead of the bottom.
++        const prependToTop = props.attribute.target === 'api::asset.asset' && props.name.includes('.assets');
++        const [adjacentItemInList] = prependToTop ? relations.slice(0, 1) : relations.slice(-1);
+         const item = {
+             id: relation.id,
+             apiData: {
+                 id: relation.id,
+                 documentId: relation.documentId,
+                 locale: relation.locale,
+-                isTemporary: true
++                isTemporary: true,
++                ...prependToTop ? {
++                    position: {
++                        start: true
++                    }
++                } : {}
+             },
+             status: relation.status,
+             /**
+            * If there's a last item, that's the first key we use to generate out next one.
+-           */ __temp_key__: generateNKeysBetween(lastItemInList?.__temp_key__ ?? null, null, 1)[0],
++           */ __temp_key__: prependToTop ? generateNKeysBetween(null, adjacentItemInList?.__temp_key__ ?? null, 1)[0] : generateNKeysBetween(adjacentItemInList?.__temp_key__ ?? null, null, 1)[0],
+             // Fallback to `id` if there is no `mainField` value, which will overwrite the above `id` property with the exact same data.
+             [props.mainField?.name ?? 'documentId']: relation[props.mainField?.name ?? 'documentId'],
+             label: getRelationLabel(relation, props.mainField),
