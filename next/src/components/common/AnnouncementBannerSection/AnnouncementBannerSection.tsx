@@ -11,6 +11,10 @@ type Props = {
   link: CommonLinkFragment
 }
 
+/**
+ * Figma: https://www.figma.com/design/A9aoQH2FGhR1D14wvvk6FW/Mestsk%C3%BD-web--bratislava.sk-?node-id=5548-2813&m=dev
+ */
+
 const AnnouncementBannerSection = ({ title, text, link }: Props) => {
   return (
     <SectionContainer>
