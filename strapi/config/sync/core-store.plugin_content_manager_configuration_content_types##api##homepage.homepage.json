@@ -160,6 +160,20 @@
           "sortable": false
         }
       },
+      "announcementBanner": {
+        "edit": {
+          "label": "announcementBanner",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "announcementBanner",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -288,6 +302,12 @@
         [
           {
             "name": "inba",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "announcementBanner",
             "size": 12
           }
         ]

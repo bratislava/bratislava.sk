@@ -710,6 +710,30 @@ export type ComponentAccordionItemsInstitutionInput = {
   urlLabel?: InputMaybe<Scalars['String']['input']>
 }
 
+export type ComponentBlocksAnnouncementBanner = {
+  __typename?: 'ComponentBlocksAnnouncementBanner'
+  id: Scalars['ID']['output']
+  link?: Maybe<ComponentBlocksCommonLink>
+  text?: Maybe<Scalars['String']['output']>
+  title?: Maybe<Scalars['String']['output']>
+}
+
+export type ComponentBlocksAnnouncementBannerFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentBlocksAnnouncementBannerFiltersInput>>>
+  link?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
+  not?: InputMaybe<ComponentBlocksAnnouncementBannerFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentBlocksAnnouncementBannerFiltersInput>>>
+  text?: InputMaybe<StringFilterInput>
+  title?: InputMaybe<StringFilterInput>
+}
+
+export type ComponentBlocksAnnouncementBannerInput = {
+  id?: InputMaybe<Scalars['ID']['input']>
+  link?: InputMaybe<ComponentBlocksCommonLinkInput>
+  text?: InputMaybe<Scalars['String']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
+}
+
 export type ComponentBlocksCardLink = {
   __typename?: 'ComponentBlocksCardLink'
   analyticsId?: Maybe<Scalars['String']['output']>
@@ -4151,6 +4175,7 @@ export type GenericMorph =
   | AssetCategory
   | ComponentAccordionItemsFlatText
   | ComponentAccordionItemsInstitution
+  | ComponentBlocksAnnouncementBanner
   | ComponentBlocksCardLink
   | ComponentBlocksColumnsItem
   | ComponentBlocksColumnsListItem
@@ -4263,6 +4288,7 @@ export type GenericMorph =
 
 export type Homepage = {
   __typename?: 'Homepage'
+  announcementBanner?: Maybe<ComponentBlocksAnnouncementBanner>
   createdAt?: Maybe<Scalars['DateTime']['output']>
   documentId: Scalars['ID']['output']
   eventsSection?: Maybe<ComponentSectionsTootootEvents>
@@ -4301,6 +4327,7 @@ export type HomepageEntityResponseCollection = {
 
 export type HomepageFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<HomepageFiltersInput>>>
+  announcementBanner?: InputMaybe<ComponentBlocksAnnouncementBannerFiltersInput>
   createdAt?: InputMaybe<DateTimeFilterInput>
   eventsSection?: InputMaybe<ComponentSectionsTootootEventsFiltersInput>
   highlights?: InputMaybe<ComponentSectionsHomepageHighlightsFiltersInput>
@@ -4320,6 +4347,7 @@ export type HomepageFiltersInput = {
 }
 
 export type HomepageInput = {
+  announcementBanner?: InputMaybe<ComponentBlocksAnnouncementBannerInput>
   eventsSection?: InputMaybe<ComponentSectionsTootootEventsInput>
   highlights?: InputMaybe<ComponentSectionsHomepageHighlightsInput>
   inba?: InputMaybe<ComponentBlocksInBaInput>
@@ -10061,6 +10089,44 @@ export type HomepageEntityFragment = {
       asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
     } | null
   } | null
+  announcementBanner?: {
+    __typename?: 'ComponentBlocksAnnouncementBanner'
+    title?: string | null
+    text?: string | null
+    link?: {
+      __typename?: 'ComponentBlocksCommonLink'
+      label?: string | null
+      url?: string | null
+      analyticsId?: string | null
+      page?: {
+        __typename?: 'Page'
+        documentId: string
+        title: string
+        locale?: string | null
+        path?: string | null
+      } | null
+      article?: {
+        __typename: 'Article'
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+      } | null
+      inbaRelease?: {
+        __typename?: 'InbaRelease'
+        documentId: string
+        title: string
+        slug: string
+      } | null
+      regulation?: {
+        __typename?: 'Regulation'
+        documentId: string
+        slug: string
+        titleText?: string | null
+      } | null
+      asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
+    } | null
+  } | null
 }
 
 export type HomepageQueryVariables = Exact<{
@@ -10514,6 +10580,44 @@ export type HomepageQuery = {
         asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
       } | null
     } | null
+    announcementBanner?: {
+      __typename?: 'ComponentBlocksAnnouncementBanner'
+      title?: string | null
+      text?: string | null
+      link?: {
+        __typename?: 'ComponentBlocksCommonLink'
+        label?: string | null
+        url?: string | null
+        analyticsId?: string | null
+        page?: {
+          __typename?: 'Page'
+          documentId: string
+          title: string
+          locale?: string | null
+          path?: string | null
+        } | null
+        article?: {
+          __typename: 'Article'
+          documentId: string
+          slug: string
+          title: string
+          locale?: string | null
+        } | null
+        inbaRelease?: {
+          __typename?: 'InbaRelease'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        regulation?: {
+          __typename?: 'Regulation'
+          documentId: string
+          slug: string
+          titleText?: string | null
+        } | null
+        asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
+      } | null
+    } | null
   } | null
 }
 
@@ -10873,6 +10977,45 @@ export type HomepageInbaFragment = {
   title?: string | null
   content?: string | null
   showMoreLink?: {
+    __typename?: 'ComponentBlocksCommonLink'
+    label?: string | null
+    url?: string | null
+    analyticsId?: string | null
+    page?: {
+      __typename?: 'Page'
+      documentId: string
+      title: string
+      locale?: string | null
+      path?: string | null
+    } | null
+    article?: {
+      __typename: 'Article'
+      documentId: string
+      slug: string
+      title: string
+      locale?: string | null
+    } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      documentId: string
+      title: string
+      slug: string
+    } | null
+    regulation?: {
+      __typename?: 'Regulation'
+      documentId: string
+      slug: string
+      titleText?: string | null
+    } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
+  } | null
+}
+
+export type AnnouncementBannerFragment = {
+  __typename?: 'ComponentBlocksAnnouncementBanner'
+  title?: string | null
+  text?: string | null
+  link?: {
     __typename?: 'ComponentBlocksCommonLink'
     label?: string | null
     url?: string | null
@@ -17243,6 +17386,7 @@ export type PageInventoryEntityFragment = {
     | { __typename: 'ComponentSectionsInbaLatestRelease' }
     | { __typename: 'ComponentSectionsInbaReleases' }
     | { __typename: 'ComponentSectionsJobOffers' }
+    | { __typename: 'ComponentSectionsLandingPage' }
     | { __typename: 'ComponentSectionsLinks' }
     | { __typename: 'ComponentSectionsNarrowText' }
     | { __typename: 'ComponentSectionsNewsletter' }
@@ -17251,6 +17395,7 @@ export type PageInventoryEntityFragment = {
     | { __typename: 'ComponentSectionsOfficialBoard' }
     | { __typename: 'ComponentSectionsOpeningHours' }
     | { __typename: 'ComponentSectionsOrganizationalStructure' }
+    | { __typename: 'ComponentSectionsPageCards' }
     | { __typename: 'ComponentSectionsPartners' }
     | { __typename: 'ComponentSectionsProsAndConsSection' }
     | {
@@ -17429,6 +17574,7 @@ export type PagesInventoryQuery = {
       | { __typename: 'ComponentSectionsInbaLatestRelease' }
       | { __typename: 'ComponentSectionsInbaReleases' }
       | { __typename: 'ComponentSectionsJobOffers' }
+      | { __typename: 'ComponentSectionsLandingPage' }
       | { __typename: 'ComponentSectionsLinks' }
       | { __typename: 'ComponentSectionsNarrowText' }
       | { __typename: 'ComponentSectionsNewsletter' }
@@ -17437,6 +17583,7 @@ export type PagesInventoryQuery = {
       | { __typename: 'ComponentSectionsOfficialBoard' }
       | { __typename: 'ComponentSectionsOpeningHours' }
       | { __typename: 'ComponentSectionsOrganizationalStructure' }
+      | { __typename: 'ComponentSectionsPageCards' }
       | { __typename: 'ComponentSectionsPartners' }
       | { __typename: 'ComponentSectionsProsAndConsSection' }
       | {
@@ -22565,6 +22712,16 @@ export const HomepageInbaFragmentDoc = gql`
   }
   ${CommonLinkFragmentDoc}
 `
+export const AnnouncementBannerFragmentDoc = gql`
+  fragment AnnouncementBanner on ComponentBlocksAnnouncementBanner {
+    title
+    text
+    link {
+      ...CommonLink
+    }
+  }
+  ${CommonLinkFragmentDoc}
+`
 export const HomepageEntityFragmentDoc = gql`
   fragment HomepageEntity on Homepage {
     documentId
@@ -22601,6 +22758,9 @@ export const HomepageEntityFragmentDoc = gql`
     inba {
       ...HomepageInba
     }
+    announcementBanner {
+      ...AnnouncementBanner
+    }
   }
   ${UploadImageSrcEntityFragmentDoc}
   ${HomepageHighlightsItemFragmentDoc}
@@ -22609,6 +22769,7 @@ export const HomepageEntityFragmentDoc = gql`
   ${TootootEventsSectionFragmentDoc}
   ${TopServicesItemFragmentDoc}
   ${HomepageInbaFragmentDoc}
+  ${AnnouncementBannerFragmentDoc}
 `
 export const InbaReleaseEntityFragmentDoc = gql`
   fragment InbaReleaseEntity on InbaRelease {

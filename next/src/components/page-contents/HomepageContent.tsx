@@ -1,3 +1,4 @@
+import AnnouncementBanner from '@/src/components/common/AnnouncementBanner/AnnouncementBanner'
 import Waves from '@/src/components/common/Waves/Waves'
 import { useHomepageContext } from '@/src/components/providers/HomepageContextProvider'
 import InbaHomepageSection from '@/src/components/sections/homepage-sections/InbaHomepageSection'
@@ -24,6 +25,8 @@ const HomepageContent = () => {
       {eventsSection ? (
         <TootootEventsSection section={eventsSection} className="py-8 lg:pt-18" />
       ) : null}
+
+      <AnnouncementBanner homepage={homepage.announcementBanner} />
 
       <Waves waveColor="var(--color-category-200)" wavePosition="top" />
 

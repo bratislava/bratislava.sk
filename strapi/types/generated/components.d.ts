@@ -34,6 +34,18 @@ export interface AccordionItemsInstitution extends Struct.ComponentSchema {
   }
 }
 
+export interface BlocksAnnouncementBanner extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_announcement_banners'
+  info: {
+    displayName: 'announcementBanner'
+  }
+  attributes: {
+    link: Schema.Attribute.Component<'blocks.common-link', false>
+    text: Schema.Attribute.String
+    title: Schema.Attribute.String
+  }
+}
+
 export interface BlocksCardLink extends Struct.ComponentSchema {
   collectionName: 'components_blocks_card_links'
   info: {
@@ -1393,6 +1405,7 @@ declare module '@strapi/strapi' {
     export interface ComponentSchemas {
       'accordion-items.flat-text': AccordionItemsFlatText
       'accordion-items.institution': AccordionItemsInstitution
+      'blocks.announcement-banner': BlocksAnnouncementBanner
       'blocks.card-link': BlocksCardLink
       'blocks.columns-item': BlocksColumnsItem
       'blocks.columns-list-item': BlocksColumnsListItem
