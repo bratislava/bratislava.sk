@@ -1,4 +1,4 @@
-import AnnouncementBanner from '@/src/components/common/AnnouncementBanner/AnnouncementBanner'
+import AnnouncementBannerSection from '@/src/components/common/AnnouncementBannerSection/AnnouncementBannerSection'
 import Waves from '@/src/components/common/Waves/Waves'
 import { useHomepageContext } from '@/src/components/providers/HomepageContextProvider'
 import InbaHomepageSection from '@/src/components/sections/homepage-sections/InbaHomepageSection'
@@ -10,7 +10,7 @@ import TootootEventsSection from '@/src/components/sections/TootootEventsSection
 const HomepageContent = () => {
   const { homepage } = useHomepageContext()
 
-  const { eventsSection } = homepage ?? {}
+  const { eventsSection, announcementBanner } = homepage ?? {}
 
   return (
     <>
@@ -26,8 +26,7 @@ const HomepageContent = () => {
         <TootootEventsSection section={eventsSection} className="py-8 lg:pt-18" />
       ) : null}
 
-      <AnnouncementBanner homepage={homepage.announcementBanner} />
-
+      {announcementBanner ? <AnnouncementBannerSection {...announcementBanner} /> : null}
       <Waves waveColor="var(--color-category-200)" wavePosition="top" />
 
       <TopServicesHomepageSection />
