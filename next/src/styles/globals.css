@@ -174,8 +174,8 @@
   --color-border-passive-primary: var(--color-grey-200);
   --color-border-passive-secondary: var(--color-grey-transparent);
 
-  --color-border-active-default: var(--color-grey-200);
-  --color-border-active-hover: var(--color-grey-300);
+  --color-border-active-default: var(--color-grey-500);
+  --color-border-active-hover: var(--color-grey-600);
   --color-border-active-disabled: var(--color-grey-300);
   --color-border-active-focused: var(--color-grey-700);
   --color-border-active-inverted-default: var(--color-grey-600);
@@ -242,8 +242,8 @@
   --color-content-error-default: var(--color-negative-700);
   --color-content-error-hover: var(--color-negative-600);
   --color-content-error-pressed: var(--color-negative-800);
-  --color-content-warning-default: var(--color-warning-700);
-  --color-content-success-default: var(--color-success-700);
+  --color-content-warning-default: var(--color-warning-800);
+  --color-content-success-default: var(--color-success-800);
 
   --color-content-passive-primary: var(--color-grey-800);
   --color-content-passive-secondary: var(--color-grey-700);
