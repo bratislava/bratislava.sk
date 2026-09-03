@@ -22,7 +22,7 @@ const NewsAndInfoHomepageSection = ({ announcementBannerSectionProps }: Props) =
         <AnnouncementBannerSection
           {...announcementBannerSectionProps}
           variant="dark"
-          className="mt-18 mb-8.5"
+          className="mt-8 mb-7.5 lg:mt-18 lg:mb-8.5"
         />
       ) : (
         <HorizontalDivider className="mt-8 lg:mt-18" />
