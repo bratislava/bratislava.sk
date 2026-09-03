@@ -1752,6 +1752,33 @@ export type ComponentSectionsAlertInput = {
   id?: InputMaybe<Scalars['ID']['input']>
 }
 
+export type ComponentSectionsAnnouncementBanner = {
+  __typename?: 'ComponentSectionsAnnouncementBanner'
+  id: Scalars['ID']['output']
+  link: ComponentBlocksCommonLink
+  text?: Maybe<Scalars['String']['output']>
+  title: Scalars['String']['output']
+  variant: Enum_Componentsectionsannouncementbanner_Variant
+}
+
+export type ComponentSectionsAnnouncementBannerFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentSectionsAnnouncementBannerFiltersInput>>>
+  link?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
+  not?: InputMaybe<ComponentSectionsAnnouncementBannerFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentSectionsAnnouncementBannerFiltersInput>>>
+  text?: InputMaybe<StringFilterInput>
+  title?: InputMaybe<StringFilterInput>
+  variant?: InputMaybe<StringFilterInput>
+}
+
+export type ComponentSectionsAnnouncementBannerInput = {
+  id?: InputMaybe<Scalars['ID']['input']>
+  link?: InputMaybe<ComponentBlocksCommonLinkInput>
+  text?: InputMaybe<Scalars['String']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
+  variant?: InputMaybe<Enum_Componentsectionsannouncementbanner_Variant>
+}
+
 export type ComponentSectionsArticles = {
   __typename?: 'ComponentSectionsArticles'
   adminGroups: Array<Maybe<AdminGroup>>
@@ -3558,6 +3585,11 @@ export enum Enum_Componentsectionsalert_Alertvariant {
   Warning = 'warning',
 }
 
+export enum Enum_Componentsectionsannouncementbanner_Variant {
+  Dark = 'dark',
+  Inverted = 'inverted',
+}
+
 export enum Enum_Componentsectionsassets_Titlelevel {
   H2 = 'h2',
   H3 = 'h3',
@@ -4189,6 +4221,7 @@ export type GenericMorph =
   | ComponentMenuMenuSection
   | ComponentSectionsAccordion
   | ComponentSectionsAlert
+  | ComponentSectionsAnnouncementBanner
   | ComponentSectionsArticles
   | ComponentSectionsArticlesLandingPage
   | ComponentSectionsAssets
@@ -4263,6 +4296,7 @@ export type GenericMorph =
 
 export type Homepage = {
   __typename?: 'Homepage'
+  announcementBannerSection?: Maybe<ComponentSectionsAnnouncementBanner>
   createdAt?: Maybe<Scalars['DateTime']['output']>
   documentId: Scalars['ID']['output']
   eventsSection?: Maybe<ComponentSectionsTootootEvents>
@@ -4301,6 +4335,7 @@ export type HomepageEntityResponseCollection = {
 
 export type HomepageFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<HomepageFiltersInput>>>
+  announcementBannerSection?: InputMaybe<ComponentSectionsAnnouncementBannerFiltersInput>
   createdAt?: InputMaybe<DateTimeFilterInput>
   eventsSection?: InputMaybe<ComponentSectionsTootootEventsFiltersInput>
   highlights?: InputMaybe<ComponentSectionsHomepageHighlightsFiltersInput>
@@ -4320,6 +4355,7 @@ export type HomepageFiltersInput = {
 }
 
 export type HomepageInput = {
+  announcementBannerSection?: InputMaybe<ComponentSectionsAnnouncementBannerInput>
   eventsSection?: InputMaybe<ComponentSectionsTootootEventsInput>
   highlights?: InputMaybe<ComponentSectionsHomepageHighlightsInput>
   inba?: InputMaybe<ComponentBlocksInBaInput>
@@ -10061,6 +10097,45 @@ export type HomepageEntityFragment = {
       asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
     } | null
   } | null
+  announcementBannerSection?: {
+    __typename?: 'ComponentSectionsAnnouncementBanner'
+    title: string
+    text?: string | null
+    variant: Enum_Componentsectionsannouncementbanner_Variant
+    link: {
+      __typename?: 'ComponentBlocksCommonLink'
+      label?: string | null
+      url?: string | null
+      analyticsId?: string | null
+      page?: {
+        __typename?: 'Page'
+        documentId: string
+        title: string
+        locale?: string | null
+        path?: string | null
+      } | null
+      article?: {
+        __typename: 'Article'
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+      } | null
+      inbaRelease?: {
+        __typename?: 'InbaRelease'
+        documentId: string
+        title: string
+        slug: string
+      } | null
+      regulation?: {
+        __typename?: 'Regulation'
+        documentId: string
+        slug: string
+        titleText?: string | null
+      } | null
+      asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
+    }
+  } | null
 }
 
 export type HomepageQueryVariables = Exact<{
@@ -10514,6 +10589,45 @@ export type HomepageQuery = {
         asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
       } | null
     } | null
+    announcementBannerSection?: {
+      __typename?: 'ComponentSectionsAnnouncementBanner'
+      title: string
+      text?: string | null
+      variant: Enum_Componentsectionsannouncementbanner_Variant
+      link: {
+        __typename?: 'ComponentBlocksCommonLink'
+        label?: string | null
+        url?: string | null
+        analyticsId?: string | null
+        page?: {
+          __typename?: 'Page'
+          documentId: string
+          title: string
+          locale?: string | null
+          path?: string | null
+        } | null
+        article?: {
+          __typename: 'Article'
+          documentId: string
+          slug: string
+          title: string
+          locale?: string | null
+        } | null
+        inbaRelease?: {
+          __typename?: 'InbaRelease'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        regulation?: {
+          __typename?: 'Regulation'
+          documentId: string
+          slug: string
+          titleText?: string | null
+        } | null
+        asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
+      }
+    } | null
   } | null
 }
 
@@ -10905,6 +11019,46 @@ export type HomepageInbaFragment = {
     } | null
     asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null
+}
+
+export type AnnouncementBannerSectionFragment = {
+  __typename?: 'ComponentSectionsAnnouncementBanner'
+  title: string
+  text?: string | null
+  variant: Enum_Componentsectionsannouncementbanner_Variant
+  link: {
+    __typename?: 'ComponentBlocksCommonLink'
+    label?: string | null
+    url?: string | null
+    analyticsId?: string | null
+    page?: {
+      __typename?: 'Page'
+      documentId: string
+      title: string
+      locale?: string | null
+      path?: string | null
+    } | null
+    article?: {
+      __typename: 'Article'
+      documentId: string
+      slug: string
+      title: string
+      locale?: string | null
+    } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      documentId: string
+      title: string
+      slug: string
+    } | null
+    regulation?: {
+      __typename?: 'Regulation'
+      documentId: string
+      slug: string
+      titleText?: string | null
+    } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
+  }
 }
 
 export type InbaReleaseSlugEntityFragment = {
@@ -17243,6 +17397,7 @@ export type PageInventoryEntityFragment = {
     | { __typename: 'ComponentSectionsInbaLatestRelease' }
     | { __typename: 'ComponentSectionsInbaReleases' }
     | { __typename: 'ComponentSectionsJobOffers' }
+    | { __typename: 'ComponentSectionsLandingPage' }
     | { __typename: 'ComponentSectionsLinks' }
     | { __typename: 'ComponentSectionsNarrowText' }
     | { __typename: 'ComponentSectionsNewsletter' }
@@ -17251,6 +17406,7 @@ export type PageInventoryEntityFragment = {
     | { __typename: 'ComponentSectionsOfficialBoard' }
     | { __typename: 'ComponentSectionsOpeningHours' }
     | { __typename: 'ComponentSectionsOrganizationalStructure' }
+    | { __typename: 'ComponentSectionsPageCards' }
     | { __typename: 'ComponentSectionsPartners' }
     | { __typename: 'ComponentSectionsProsAndConsSection' }
     | {
@@ -17429,6 +17585,7 @@ export type PagesInventoryQuery = {
       | { __typename: 'ComponentSectionsInbaLatestRelease' }
       | { __typename: 'ComponentSectionsInbaReleases' }
       | { __typename: 'ComponentSectionsJobOffers' }
+      | { __typename: 'ComponentSectionsLandingPage' }
       | { __typename: 'ComponentSectionsLinks' }
       | { __typename: 'ComponentSectionsNarrowText' }
       | { __typename: 'ComponentSectionsNewsletter' }
@@ -17437,6 +17594,7 @@ export type PagesInventoryQuery = {
       | { __typename: 'ComponentSectionsOfficialBoard' }
       | { __typename: 'ComponentSectionsOpeningHours' }
       | { __typename: 'ComponentSectionsOrganizationalStructure' }
+      | { __typename: 'ComponentSectionsPageCards' }
       | { __typename: 'ComponentSectionsPartners' }
       | { __typename: 'ComponentSectionsProsAndConsSection' }
       | {
@@ -22565,6 +22723,17 @@ export const HomepageInbaFragmentDoc = gql`
   }
   ${CommonLinkFragmentDoc}
 `
+export const AnnouncementBannerSectionFragmentDoc = gql`
+  fragment AnnouncementBannerSection on ComponentSectionsAnnouncementBanner {
+    title
+    text
+    link {
+      ...CommonLink
+    }
+    variant
+  }
+  ${CommonLinkFragmentDoc}
+`
 export const HomepageEntityFragmentDoc = gql`
   fragment HomepageEntity on Homepage {
     documentId
@@ -22601,6 +22770,9 @@ export const HomepageEntityFragmentDoc = gql`
     inba {
       ...HomepageInba
     }
+    announcementBannerSection {
+      ...AnnouncementBannerSection
+    }
   }
   ${UploadImageSrcEntityFragmentDoc}
   ${HomepageHighlightsItemFragmentDoc}
@@ -22609,6 +22781,7 @@ export const HomepageEntityFragmentDoc = gql`
   ${TootootEventsSectionFragmentDoc}
   ${TopServicesItemFragmentDoc}
   ${HomepageInbaFragmentDoc}
+  ${AnnouncementBannerSectionFragmentDoc}
 `
 export const InbaReleaseEntityFragmentDoc = gql`
   fragment InbaReleaseEntity on InbaRelease {

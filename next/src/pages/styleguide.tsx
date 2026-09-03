@@ -4,6 +4,7 @@ import { ReactElement, useState } from 'react'
 import { Key, Tab, TabList, TabPanel, Tabs } from 'react-aria-components'
 
 import AlertShowCase from '@/src/components/styleguide/showcases/AlertShowCase'
+import AnnouncementBannerSectionShowcase from '@/src/components/styleguide/showcases/AnnouncementBannerSectionShowcase'
 import ArticleCardShowcase from '@/src/components/styleguide/showcases/ArticleCardShowcase'
 import BannerShowCase from '@/src/components/styleguide/showcases/BannerShowCase'
 import ButtonShowCase from '@/src/components/styleguide/showcases/ButtonShowCase'
@@ -46,6 +47,11 @@ const showcases = [
   { id: 'alert', label: 'Alert', component: <AlertShowCase /> },
   { id: 'disclosure', label: 'Disclosure', component: <DisclosureShowcase /> },
   { id: 'banner', label: 'Banner', component: <BannerShowCase /> },
+  {
+    id: 'announcement-banner',
+    label: 'Announcement Banner',
+    component: <AnnouncementBannerSectionShowcase />,
+  },
   {
     id: 'tootoot-event-card',
     label: 'Tootoot Event Card',

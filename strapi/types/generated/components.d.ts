@@ -626,6 +626,21 @@ export interface SectionsAlert extends Struct.ComponentSchema {
   }
 }
 
+export interface SectionsAnnouncementBanner extends Struct.ComponentSchema {
+  collectionName: 'components_sections_announcement_banners'
+  info: {
+    displayName: 'Oznamovac\u00ED Homepage Banner'
+  }
+  attributes: {
+    link: Schema.Attribute.Component<'blocks.common-link', false> & Schema.Attribute.Required
+    text: Schema.Attribute.Text
+    title: Schema.Attribute.String & Schema.Attribute.Required
+    variant: Schema.Attribute.Enumeration<['dark', 'inverted']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'dark'>
+  }
+}
+
 export interface SectionsArticles extends Struct.ComponentSchema {
   collectionName: 'components_sections_articles'
   info: {
@@ -1431,6 +1446,7 @@ declare module '@strapi/strapi' {
       'menu.menu-section': MenuMenuSection
       'sections.accordion': SectionsAccordion
       'sections.alert': SectionsAlert
+      'sections.announcement-banner': SectionsAnnouncementBanner
       'sections.articles': SectionsArticles
       'sections.articles-landing-page': SectionsArticlesLandingPage
       'sections.assets': SectionsAssets

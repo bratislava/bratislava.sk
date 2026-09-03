@@ -33,6 +33,9 @@ fragment HomepageEntity on Homepage {
   inba {
     ...HomepageInba
   }
+  announcementBannerSection {
+    ...AnnouncementBannerSection
+  }
 }
 
 query Homepage($locale: I18NLocaleCode!) {
@@ -100,4 +103,13 @@ fragment HomepageInba on ComponentBlocksInBa {
   showMoreLink {
     ...CommonLink
   }
+}
+
+fragment AnnouncementBannerSection on ComponentSectionsAnnouncementBanner {
+  title
+  text
+  link {
+    ...CommonLink
+  }
+  variant
 }

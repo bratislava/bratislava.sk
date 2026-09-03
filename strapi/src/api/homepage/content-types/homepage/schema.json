@@ -115,6 +115,16 @@
       },
       "component": "sections.tootoot-events",
       "repeatable": false
+    },
+    "announcementBannerSection": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "sections.announcement-banner",
+      "repeatable": false
     }
   }
 }

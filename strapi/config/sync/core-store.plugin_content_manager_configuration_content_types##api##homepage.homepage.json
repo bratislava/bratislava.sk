@@ -9,7 +9,8 @@
       "pageSize": 10,
       "mainField": "id",
       "defaultSortBy": "id",
-      "defaultSortOrder": "ASC"
+      "defaultSortOrder": "ASC",
+      "relationOpenMode": "modal"
     },
     "metadatas": {
       "id": {
@@ -160,6 +161,20 @@
           "sortable": false
         }
       },
+      "announcementBannerSection": {
+        "edit": {
+          "label": "Oznamovací banner",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "announcementBannerSection",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -228,12 +243,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "createdAt",
-        "updatedAt",
-        "eventsSection"
-      ],
+      "list": ["id", "createdAt", "updatedAt", "eventsSection"],
       "edit": [
         [
           {
@@ -264,6 +274,12 @@
         [
           {
             "name": "tabs",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "announcementBannerSection",
             "size": 12
           }
         ],

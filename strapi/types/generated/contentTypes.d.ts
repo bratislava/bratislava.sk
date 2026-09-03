@@ -867,6 +867,12 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
     }
   }
   attributes: {
+    announcementBannerSection: Schema.Attribute.Component<'sections.announcement-banner', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
     createdAt: Schema.Attribute.DateTime
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
     eventsSection: Schema.Attribute.Component<'sections.tootoot-events', false> &
