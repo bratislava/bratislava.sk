@@ -1413,7 +1413,7 @@ type ComponentSectionsAnnouncementBanner {
   link: ComponentBlocksCommonLink!
   text: String
   title: String!
-  variant: ENUM_COMPONENTSECTIONSANNOUNCEMENTBANNER_VARIANT
+  variant: ENUM_COMPONENTSECTIONSANNOUNCEMENTBANNER_VARIANT!
 }
 
 input ComponentSectionsAnnouncementBannerFiltersInput {

@@ -1758,7 +1758,7 @@ export type ComponentSectionsAnnouncementBanner = {
   link: ComponentBlocksCommonLink
   text?: Maybe<Scalars['String']['output']>
   title: Scalars['String']['output']
-  variant?: Maybe<Enum_Componentsectionsannouncementbanner_Variant>
+  variant: Enum_Componentsectionsannouncementbanner_Variant
 }
 
 export type ComponentSectionsAnnouncementBannerFiltersInput = {
@@ -10101,7 +10101,7 @@ export type HomepageEntityFragment = {
     __typename?: 'ComponentSectionsAnnouncementBanner'
     title: string
     text?: string | null
-    variant?: Enum_Componentsectionsannouncementbanner_Variant | null
+    variant: Enum_Componentsectionsannouncementbanner_Variant
     link: {
       __typename?: 'ComponentBlocksCommonLink'
       label?: string | null
@@ -10593,7 +10593,7 @@ export type HomepageQuery = {
       __typename?: 'ComponentSectionsAnnouncementBanner'
       title: string
       text?: string | null
-      variant?: Enum_Componentsectionsannouncementbanner_Variant | null
+      variant: Enum_Componentsectionsannouncementbanner_Variant
       link: {
         __typename?: 'ComponentBlocksCommonLink'
         label?: string | null
@@ -11025,7 +11025,7 @@ export type AnnouncementBannerSectionFragment = {
   __typename?: 'ComponentSectionsAnnouncementBanner'
   title: string
   text?: string | null
-  variant?: Enum_Componentsectionsannouncementbanner_Variant | null
+  variant: Enum_Componentsectionsannouncementbanner_Variant
   link: {
     __typename?: 'ComponentBlocksCommonLink'
     label?: string | null

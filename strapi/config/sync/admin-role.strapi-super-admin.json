@@ -1263,7 +1263,8 @@
           "announcementBannerSection.link.analyticsId",
           "announcementBannerSection.link.inbaRelease",
           "announcementBannerSection.link.regulation",
-          "announcementBannerSection.link.asset"
+          "announcementBannerSection.link.asset",
+          "announcementBannerSection.variant"
         ],
         "locales": [
           "sk",
@@ -1272,7 +1273,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "z9rmclv7mxdj3tak3qwal2m5",
+      "documentId": "jhbevrykw6b1bqvz98mhivfk",
       "locale": null
     },
     {
@@ -1404,7 +1405,8 @@
           "announcementBannerSection.link.analyticsId",
           "announcementBannerSection.link.inbaRelease",
           "announcementBannerSection.link.regulation",
-          "announcementBannerSection.link.asset"
+          "announcementBannerSection.link.asset",
+          "announcementBannerSection.variant"
         ],
         "locales": [
           "sk",
@@ -1413,7 +1415,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "qqbneoqbnd51e4wp0mwxow06",
+      "documentId": "y12leq64hof6ifgsaa7ngqet",
       "locale": null
     },
     {
@@ -1517,7 +1519,8 @@
           "announcementBannerSection.link.analyticsId",
           "announcementBannerSection.link.inbaRelease",
           "announcementBannerSection.link.regulation",
-          "announcementBannerSection.link.asset"
+          "announcementBannerSection.link.asset",
+          "announcementBannerSection.variant"
         ],
         "locales": [
           "sk",
@@ -1526,7 +1529,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "n3blxkrxk853p84j9fscbly7",
+      "documentId": "rmz3x42967u8vsa2y20fv489",
       "locale": null
     },
     {
