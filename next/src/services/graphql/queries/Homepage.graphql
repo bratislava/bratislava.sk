@@ -111,4 +111,5 @@ fragment AnnouncementBannerSection on ComponentSectionsAnnouncementBanner {
   link {
     ...CommonLink
   }
+  variant
 }

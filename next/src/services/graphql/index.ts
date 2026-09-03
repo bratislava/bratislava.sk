@@ -1758,6 +1758,7 @@ export type ComponentSectionsAnnouncementBanner = {
   link: ComponentBlocksCommonLink
   text?: Maybe<Scalars['String']['output']>
   title: Scalars['String']['output']
+  variant?: Maybe<Enum_Componentsectionsannouncementbanner_Variant>
 }
 
 export type ComponentSectionsAnnouncementBannerFiltersInput = {
@@ -1767,6 +1768,7 @@ export type ComponentSectionsAnnouncementBannerFiltersInput = {
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsAnnouncementBannerFiltersInput>>>
   text?: InputMaybe<StringFilterInput>
   title?: InputMaybe<StringFilterInput>
+  variant?: InputMaybe<StringFilterInput>
 }
 
 export type ComponentSectionsAnnouncementBannerInput = {
@@ -1774,6 +1776,7 @@ export type ComponentSectionsAnnouncementBannerInput = {
   link?: InputMaybe<ComponentBlocksCommonLinkInput>
   text?: InputMaybe<Scalars['String']['input']>
   title?: InputMaybe<Scalars['String']['input']>
+  variant?: InputMaybe<Enum_Componentsectionsannouncementbanner_Variant>
 }
 
 export type ComponentSectionsArticles = {
@@ -3580,6 +3583,11 @@ export enum Enum_Componentsectionsalert_Alertvariant {
   Info = 'info',
   Success = 'success',
   Warning = 'warning',
+}
+
+export enum Enum_Componentsectionsannouncementbanner_Variant {
+  Dark = 'dark',
+  Inverted = 'inverted',
 }
 
 export enum Enum_Componentsectionsassets_Titlelevel {
@@ -10093,6 +10101,7 @@ export type HomepageEntityFragment = {
     __typename?: 'ComponentSectionsAnnouncementBanner'
     title: string
     text?: string | null
+    variant?: Enum_Componentsectionsannouncementbanner_Variant | null
     link: {
       __typename?: 'ComponentBlocksCommonLink'
       label?: string | null
@@ -10584,6 +10593,7 @@ export type HomepageQuery = {
       __typename?: 'ComponentSectionsAnnouncementBanner'
       title: string
       text?: string | null
+      variant?: Enum_Componentsectionsannouncementbanner_Variant | null
       link: {
         __typename?: 'ComponentBlocksCommonLink'
         label?: string | null
@@ -11015,6 +11025,7 @@ export type AnnouncementBannerSectionFragment = {
   __typename?: 'ComponentSectionsAnnouncementBanner'
   title: string
   text?: string | null
+  variant?: Enum_Componentsectionsannouncementbanner_Variant | null
   link: {
     __typename?: 'ComponentBlocksCommonLink'
     label?: string | null
@@ -22719,6 +22730,7 @@ export const AnnouncementBannerSectionFragmentDoc = gql`
     link {
       ...CommonLink
     }
+    variant
   }
   ${CommonLinkFragmentDoc}
 `

@@ -1,4 +1,4 @@
-import AnnouncementBannerSection from '@/src/components/common/AnnouncementBannerSection/AnnouncementBannerSection'
+import AnnouncementBannerSection from '@/src/components/sections/homepage-sections/AnnouncementBannerSection'
 
 import Stack from '../Stack'
 import Wrapper from '../Wrapper'

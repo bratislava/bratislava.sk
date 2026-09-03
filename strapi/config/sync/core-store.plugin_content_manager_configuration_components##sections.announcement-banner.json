@@ -22,7 +22,7 @@
       },
       "title": {
         "edit": {
-          "label": "Nadpis",
+          "label": "Názov",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -54,12 +54,27 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": true,
+          "mainField": "label"
         },
         "list": {
           "label": "link",
           "searchable": false,
           "sortable": false
+        }
+      },
+      "variant": {
+        "edit": {
+          "label": "Farba",
+          "description": "Farba pozadia banneru",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "variant",
+          "searchable": true,
+          "sortable": true
         }
       },
       "documentId": {
@@ -72,7 +87,6 @@
       }
     },
     "layouts": {
-      "list": ["id", "title", "text", "link"],
       "edit": [
         [
           {
@@ -89,7 +103,19 @@
             "name": "link",
             "size": 12
           }
+        ],
+        [
+          {
+            "name": "variant",
+            "size": 12
+          }
         ]
+      ],
+      "list": [
+        "id",
+        "title",
+        "text",
+        "link"
       ]
     },
     "uid": "sections.announcement-banner",

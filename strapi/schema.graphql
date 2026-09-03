@@ -1413,6 +1413,7 @@ type ComponentSectionsAnnouncementBanner {
   link: ComponentBlocksCommonLink!
   text: String
   title: String!
+  variant: ENUM_COMPONENTSECTIONSANNOUNCEMENTBANNER_VARIANT
 }
 
 input ComponentSectionsAnnouncementBannerFiltersInput {
@@ -1422,6 +1423,7 @@ input ComponentSectionsAnnouncementBannerFiltersInput {
   or: [ComponentSectionsAnnouncementBannerFiltersInput]
   text: StringFilterInput
   title: StringFilterInput
+  variant: StringFilterInput
 }
 
 input ComponentSectionsAnnouncementBannerInput {
@@ -1429,6 +1431,7 @@ input ComponentSectionsAnnouncementBannerInput {
   link: ComponentBlocksCommonLinkInput
   text: String
   title: String
+  variant: ENUM_COMPONENTSECTIONSANNOUNCEMENTBANNER_VARIANT
 }
 
 type ComponentSectionsArticles {
@@ -2860,6 +2863,11 @@ enum ENUM_COMPONENTSECTIONSALERT_ALERTVARIANT {
   info
   success
   warning
+}
+
+enum ENUM_COMPONENTSECTIONSANNOUNCEMENTBANNER_VARIANT {
+  dark
+  inverted
 }
 
 enum ENUM_COMPONENTSECTIONSASSETS_TITLELEVEL {

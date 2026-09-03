@@ -635,6 +635,7 @@ export interface SectionsAnnouncementBanner extends Struct.ComponentSchema {
     link: Schema.Attribute.Component<'blocks.common-link', false> & Schema.Attribute.Required
     text: Schema.Attribute.Text
     title: Schema.Attribute.String & Schema.Attribute.Required
+    variant: Schema.Attribute.Enumeration<['dark', 'inverted']> & Schema.Attribute.DefaultTo<'dark'>
   }
 }
 
