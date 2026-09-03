@@ -9,9 +9,16 @@ const AnnouncementBannerSectionShowcase = () => {
       <Stack direction="column" className="items-stretch">
         <AnnouncementBannerSection
           title="Announcement Banner"
-          text="This is an announcement banner section."
+          text="This is the default 'dark' variant announcement banner section."
           link={{ label: 'Learn more', url: '#' }}
           variant="dark"
+        />
+
+        <AnnouncementBannerSection
+          title="Announcement Banner"
+          text="This is an announcement banner section. With an inverted variant, the background and text colors are swapped."
+          link={{ label: 'Learn more', url: '#' }}
+          variant="inverted"
         />
       </Stack>
     </Wrapper>
