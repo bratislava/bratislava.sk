@@ -28,6 +28,7 @@ const ScrollToTopButton = () => {
 
   return (
     <Button
+      data-ai-crawl-exclude
       variant="icon-wrapped"
       aria-label={t('ScrollToTopButton.ariaLabel')}
       id="scrollToTopButton"

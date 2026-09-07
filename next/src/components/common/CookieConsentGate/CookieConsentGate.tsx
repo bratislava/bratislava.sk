@@ -63,6 +63,7 @@ const CookieConsentGate = (props: Props) => {
 
   return (
     <div
+      data-ai-crawl-exclude
       className={cn(
         'flex flex-col items-center justify-center gap-4 rounded-lg bg-background-passive-secondary p-4 text-center lg:p-8',
         className,

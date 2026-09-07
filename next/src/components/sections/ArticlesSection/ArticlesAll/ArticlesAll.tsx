@@ -68,7 +68,7 @@ const ArticlesAll = ({ section }: Props) => {
   }, [filters.page, filters.pageSize])
 
   return (
-    <div className="flex flex-col gap-8">
+    <div data-ai-crawl-exclude className="flex flex-col gap-8">
       <div className="flex flex-col gap-6">
         <SectionHeader title={title} text={text} />
         <SearchBar

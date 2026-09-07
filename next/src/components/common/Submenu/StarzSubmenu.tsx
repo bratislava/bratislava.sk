@@ -24,7 +24,7 @@ const StarzSubmenu = ({ adminGroup, className }: Props) => {
 
   // Beware of paddings, margins and gaps - they are used to enlarge clickable/touchable area of links, and they are carefully set to fit Figma design together
   return (
-    <SectionContainer className={cn('bg-starz-primary-700', className)}>
+    <SectionContainer data-ai-crawl-exclude className={cn('bg-starz-primary-700', className)}>
       <div className="flex gap-6">
         <StarzLogo
           variant="white"

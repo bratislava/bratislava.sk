@@ -37,7 +37,7 @@ const RelatedArticlesSection = ({ page, className }: Props) => {
   }
 
   return (
-    <SectionContainer className={className}>
+    <SectionContainer data-ai-crawl-exclude className={className}>
       <div className="flex flex-col">
         <SectionHeader
           title={t('RelatedArticlesSection.relatedArticles')}

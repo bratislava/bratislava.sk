@@ -37,7 +37,7 @@ const GTranslateSwitcher = () => {
   return (
     <>
       {/* eslint-disable-next-line better-tailwindcss/no-unknown-classes -- GTranslate mounts its widget into this selector */}
-      <div className="gtranslate_wrapper" />
+      <div className="gtranslate_wrapper" data-ai-crawl-exclude />
       <Script id="gtranslate-settings" strategy="afterInteractive">
         {`window.gtranslateSettings = ${JSON.stringify(gtranslateSettings)}`}
       </Script>

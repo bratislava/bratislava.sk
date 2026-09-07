@@ -15,7 +15,10 @@ export type ShareBlockProps = {
 
 const ShareBlock = ({ text, buttonText }: ShareBlockProps) => {
   return (
-    <div className="flex flex-col items-center gap-3 rounded-lg bg-background-passive-secondary p-4 lg:flex-row lg:gap-2.5 lg:px-8 lg:py-6">
+    <div
+      data-ai-crawl-exclude
+      className="flex flex-col items-center gap-3 rounded-lg bg-background-passive-secondary p-4 lg:flex-row lg:gap-2.5 lg:px-8 lg:py-6"
+    >
       <div className="grow">
         <Typography variant="h5">{text}</Typography>
       </div>

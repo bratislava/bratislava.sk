@@ -1,6 +1,6 @@
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import InbaReleasesCarousel from '@/src/components/sections/InbaReleasesSection/InbaReleasesCarousel'
-import InbaReleasesGrid from '@/src/components/sections/InbaReleasesSection/InbaReleasesGrid'
+import InbaReleasesGridAll from '@/src/components/sections/InbaReleasesSection/InbaReleasesGridAll'
 import {
   Enum_Componentsectionsinbareleases_Variant,
   InbaReleasesSectionFragment,
@@ -24,7 +24,7 @@ const InbaReleasesSection = ({ section }: Props) => {
   // TODO make variant required and implement correct check
   return (
     <SectionContainer>
-      <InbaReleasesGrid section={section} />
+      <InbaReleasesGridAll section={section} />
     </SectionContainer>
   )
 }

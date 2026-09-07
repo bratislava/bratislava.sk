@@ -16,7 +16,8 @@ const Breadcrumbs = (props: BreadcrumbsProps) => {
       <nav className="hidden lg:block">
         <DesktopBreadcrumbs {...props} />
       </nav>
-      <nav className="lg:hidden">
+      {/* Even tho it's hidden on desktop, it's still rendered in html, so we exclude it fro crawler */}
+      <nav className="lg:hidden" data-ai-crawl-exclude>
         <MobileBreadcrumbs {...props} />
       </nav>
     </>

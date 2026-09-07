@@ -23,7 +23,7 @@ type Props = { section: InbaReleasesSectionFragment }
  * Figma: https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=17826-20475&t=oiip1Wu4BbgLXqBp-4
  */
 
-const InbaReleasesGrid = ({ section }: Props) => {
+const InbaReleasesGridAll = ({ section }: Props) => {
   const { t } = useTranslation()
 
   const { title, text } = section
@@ -48,7 +48,7 @@ const InbaReleasesGrid = ({ section }: Props) => {
   }
 
   return (
-    <div className="flex flex-col gap-8">
+    <div data-ai-crawl-exclude className="flex flex-col gap-8">
       <SectionHeader title={title} text={text} />
 
       <SearchBar
@@ -97,4 +97,4 @@ const InbaReleasesGrid = ({ section }: Props) => {
   )
 }
 
-export default InbaReleasesGrid
+export default InbaReleasesGridAll
