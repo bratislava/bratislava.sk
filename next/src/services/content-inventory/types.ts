@@ -8,6 +8,7 @@ export const inventoryTypes = [
   'urban-study',
   'official-board',
   'municipal-service',
+  'job-offer',
 ] as const
 
 export type InventoryType = (typeof inventoryTypes)[number]
@@ -213,6 +214,22 @@ export type MunicipalServiceInventoryData = {
   contacts?: InventoryContact[]
 }
 
+/**
+ * Job offers come from Nalgoo, the city's applicant tracking system, not from Strapi - the website only lists them, so
+ * an offer carries no editor metadata and its `url` points to Nalgoo. The offers Nalgoo returns without a url are left
+ * out, there is nothing to send a visitor to.
+ */
+export type JobOfferInventoryData = {
+  /** Where the job is based, as the offer states it. */
+  location?: string
+  /** What the offer states as the salary, e.g. a range. Absent where it states none. */
+  salary?: string
+  /** What the offer adds about the salary - the basis it is stated on, bonuses and so on. */
+  salaryInfo?: string
+  /** The forms of employment the offer is open to, named the way Nalgoo names them. */
+  employmentForms?: string[]
+}
+
 /** What one build of the inventory produces - the entries plus the taxonomies listed next to them. */
 export type Inventory = {
   entries: InventoryEntry[]
@@ -232,6 +249,7 @@ export type InventoryEntry =
       type: 'municipal-service'
       'municipal-service'?: MunicipalServiceInventoryData
     })
+  | (InventoryEntryBase & { type: 'job-offer'; 'job-offer'?: JobOfferInventoryData })
 
 /**
  * One value of a taxonomy, listed alongside the entries so a consumer sees the whole taxonomy and not only the values

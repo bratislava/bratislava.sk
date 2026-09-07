@@ -18,6 +18,8 @@ import {
   UrbanStudyPartItemFragment,
 } from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
+import { NalgooJobOffersResponse } from '@/src/services/nalgoo/nalgooJobOffers.fetcher'
+import { getNalgooJobOffers } from '@/src/services/nalgoo/server/getNalgooJobOffers'
 import { base64Encode } from '@/src/utils/base64'
 import { isDefined } from '@/src/utils/isDefined'
 
@@ -34,6 +36,7 @@ import {
   InventoryTaxonomies,
   InventoryTaxonomy,
   InventoryType,
+  JobOfferInventoryData,
   MunicipalServiceInventoryData,
 } from './types'
 
@@ -124,20 +127,25 @@ const getBase = <TType extends InventoryType>(
   type: TType,
   entry: {
     documentId: string
-    path: string
-    /** Only for content hosted elsewhere, i.e. the city account - everything else lives on this website. */
-    siteUrl?: string
     title: string
     summary?: string
     owner?: InventoryOwner
     addedAt?: unknown
     modifiedAt?: unknown
     files?: InventoryFile[]
-  },
+  } & (
+    | {
+        path: string
+        /** Only for content hosted elsewhere, i.e. the city account - everything else lives on this website. */
+        siteUrl?: string
+      }
+    // Content that is not addressed by a path under a site root, i.e. the job offers Nalgoo hosts.
+    | { url: string }
+  ),
 ): InventoryEntryBase & { type: TType } => ({
   id: getEntryId(type, entry.documentId),
   type,
-  url: getUrl(entry.path, entry.siteUrl),
+  url: 'url' in entry ? entry.url : getUrl(entry.path, entry.siteUrl),
   title: entry.title,
   summary: entry.summary,
   owner: entry.owner,
@@ -536,6 +544,73 @@ const buildMunicipalServices = async (): Promise<InventoryEntry[]> => {
   }))
 }
 
+/** Nalgoo pads a good part of its strings, so everything taken from an offer is trimmed. */
+const getTrimmed = (value: string | null | undefined) => getFirstNonEmpty(value)?.trim()
+
+/**
+ * Nalgoo dates carry an offset (`2026-09-02T13:36:38+02:00`) while everything else in the inventory is in UTC. The
+ * entries are sorted by comparing those strings, so an offset would place a job offer by its wall clock instead of its
+ * instant - they are normalised here rather than in `getIsoDate`, which the other content types share.
+ */
+const getUtcDate = (value: string | null | undefined) => {
+  const date = new Date(value ?? '')
+
+  return Number.isNaN(date.getTime()) ? null : date.toISOString()
+}
+
+/**
+ * Job offers are Nalgoo's content - the website only lists them, so an offer's url points to Nalgoo and the offers
+ * returned without one are left out, there being nothing to send a visitor to.
+ *
+ * Nalgoo is a third party the inventory does not control, so a failed fetch costs this content type instead of the
+ * whole snapshot, the same way an unreachable GINIS does.
+ */
+/** Nalgoo names the forms instead of slugging them, so the entry carries the names themselves. */
+const getEmploymentForms = (jobOffer: NalgooJobOffersResponse) => {
+  const names = jobOffer.employmentForms.map((form) => form.name.trim()).filter(Boolean)
+
+  return names.length > 0 ? names : undefined
+}
+
+const buildJobOffers = async (): Promise<InventoryEntry[]> => {
+  let jobOffers: NalgooJobOffersResponse[]
+
+  try {
+    jobOffers = await getNalgooJobOffers()
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error('Content inventory: failed to read the job offers from Nalgoo.', error)
+
+    return []
+  }
+
+  return jobOffers
+    .map((jobOffer) => {
+      const url = getTrimmed(jobOffer.url)
+
+      if (!url) {
+        return null
+      }
+
+      return {
+        ...getBase('job-offer', {
+          documentId: String(jobOffer.id),
+          url,
+          title: jobOffer.title.trim(),
+          addedAt: getUtcDate(jobOffer.publishedOn),
+          modifiedAt: getUtcDate(jobOffer.updatedOn),
+        }),
+        'job-offer': getTypeData<JobOfferInventoryData>({
+          location: getTrimmed(jobOffer.location),
+          salary: getTrimmed(jobOffer.salary),
+          salaryInfo: getTrimmed(jobOffer.salaryInfo),
+          employmentForms: getEmploymentForms(jobOffer),
+        }),
+      }
+    })
+    .filter(isDefined)
+}
+
 /** A taxonomy is only its identity here - what it is filed with is on the entries, which name it by its slug. */
 const getTaxonomy = (values: ({ title: string; slug: string } | null)[]): InventoryTaxonomy[] =>
   values.filter(isDefined).map((value) => ({ title: value.title, slug: value.slug }))
@@ -588,6 +663,7 @@ export const buildInventory = async (): Promise<Inventory> => {
     urbanStudies,
     officialBoard,
     municipalServices,
+    jobOffers,
     taxonomies,
   ] = await Promise.all([
     buildPages(),
@@ -598,6 +674,7 @@ export const buildInventory = async (): Promise<Inventory> => {
     buildUrbanStudies(),
     buildOfficialBoard(),
     buildMunicipalServices(),
+    buildJobOffers(),
     buildTaxonomies(),
   ])
 
@@ -610,6 +687,7 @@ export const buildInventory = async (): Promise<Inventory> => {
     ...urbanStudies,
     ...officialBoard,
     ...municipalServices,
+    ...jobOffers,
   ].sort((a, b) => (b.modifiedAt ?? '').localeCompare(a.modifiedAt ?? ''))
 
   return { entries, taxonomies }
