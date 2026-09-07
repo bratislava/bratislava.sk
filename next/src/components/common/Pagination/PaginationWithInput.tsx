@@ -31,7 +31,7 @@ const PaginationWithInput = ({
   })
 
   return (
-    <nav>
+    <nav data-ai-crawl-exclude>
       <div className={cn('flex items-center justify-start gap-4')}>
         <Button
           variant="plain"

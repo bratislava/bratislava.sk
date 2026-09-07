@@ -21,6 +21,7 @@ const Waves = ({
   return (
     <div
       aria-hidden
+      data-ai-crawl-exclude
       style={{ backgroundColor, color: waveColor }}
       className={cn('overflow-hidden', className)}
     >

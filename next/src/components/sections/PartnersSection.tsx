@@ -24,7 +24,7 @@ const PartnersSection = ({ section }: Props) => {
   const count = filteredPartners.length
 
   return (
-    <SectionContainer>
+    <SectionContainer data-ai-crawl-exclude>
       <div className="flex flex-col gap-6 lg:gap-8">
         <SectionHeader title={title} titleLevel={titleLevel} text={text} />
 

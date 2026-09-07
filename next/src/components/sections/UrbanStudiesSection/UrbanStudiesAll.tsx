@@ -62,7 +62,7 @@ const UrbanStudiesAll = ({ section }: Props) => {
   })
 
   return (
-    <div className="flex flex-col gap-6">
+    <div data-ai-crawl-exclude className="flex flex-col gap-6">
       <div className="flex flex-col gap-6">
         <SectionHeader title={title} text={text} titleLevel={titleLevel} />
 

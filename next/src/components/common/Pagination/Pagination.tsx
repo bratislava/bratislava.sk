@@ -35,7 +35,7 @@ const Pagination = ({ currentPage, totalCount, onPageChange = () => {} }: Pagina
   })
 
   return (
-    <nav>
+    <nav data-ai-crawl-exclude>
       <ul
         className="flex flex-wrap items-center justify-center gap-1 lg:gap-2"
         data-cy="pagination"

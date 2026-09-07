@@ -28,7 +28,7 @@ const LatestNews = ({ leftArticle, rightArticle, otherArticles, newsPageLink }: 
     [leftArticle, rightArticle, ...otherArticles].filter(isDefined).slice(0, 6) ?? []
 
   return (
-    <div className="flex flex-col gap-y-14">
+    <div data-ai-crawl-exclude className="flex flex-col gap-y-14">
       <ResponsiveCarousel
         className="lg:hidden"
         hasVerticalPadding={false}

@@ -55,7 +55,7 @@ const HomePageSearch = ({ isOpen, setOpen }: HomePageSearchProps) => {
   }, [router, input, t])
 
   return (
-    <div ref={ref} className="relative">
+    <div ref={ref} data-ai-crawl-exclude className="relative">
       <div
         className={cn(
           isOpen ? 'md:w-[634px]' : 'md:w-[444px]',

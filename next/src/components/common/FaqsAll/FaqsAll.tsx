@@ -91,7 +91,7 @@ const FaqsAll = ({ accordionTitleLevel = 'h2' }: { accordionTitleLevel?: Accordi
   }
 
   return (
-    <div className="flex flex-col gap-4">
+    <div data-ai-crawl-exclude className="flex flex-col gap-4">
       <SearchBar
         ref={searchRef}
         placeholder={t('SearchPage.enterKeyword')}

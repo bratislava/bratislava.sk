@@ -208,7 +208,7 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
   const fetchingQueriesCount = useIsFetching({ queryKey: ['Search'] })
 
   return (
-    <div className="flex w-full flex-col gap-y-8">
+    <div data-ai-crawl-exclude className="flex w-full flex-col gap-y-8">
       {/* Filters */}
       <div className="flex flex-col gap-3 lg:gap-4">
         <SearchBar

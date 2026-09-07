@@ -38,6 +38,7 @@ const TableOfContents = ({ scrollOffset = DEFAULT_SCROLL_OFFSET, className }: Pr
 
   return (
     <div
+      data-ai-crawl-exclude
       className={cn(
         'flex flex-col overflow-hidden rounded-lg border border-border-passive-primary bg-background-passive-base px-6',
         className,

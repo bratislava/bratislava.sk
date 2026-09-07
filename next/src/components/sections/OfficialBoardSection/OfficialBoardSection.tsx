@@ -44,7 +44,7 @@ const OfficialBoardSection = () => {
   const fetchingQueriesCount = useIsFetching({ queryKey: ['Search'] })
 
   return (
-    <SectionContainer>
+    <SectionContainer data-ai-crawl-exclude>
       <div className="flex w-full flex-col gap-8">
         <SearchBar
           ref={searchRef}

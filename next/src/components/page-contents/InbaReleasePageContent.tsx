@@ -128,7 +128,7 @@ const InbaReleasePageContent = ({ inbaRelease }: Props) => {
         </div>
       </SectionContainer>
 
-      <SectionContainer className="py-10 md:py-18">
+      <SectionContainer data-ai-crawl-exclude className="py-10 md:py-18">
         <div className="flex flex-col gap-5 lg:gap-6">
           <Typography variant="h3" as="h2" id="clanky-v-tomto-cisle">
             {t('InbaRelease.articlesInThisRelease')}
