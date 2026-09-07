@@ -1,5 +1,6 @@
-import axios from 'axios'
 import type { NextApiRequest, NextApiResponse } from 'next'
+
+import { getNalgooJobOffers } from '@/src/services/nalgoo/server/getNalgooJobOffers'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'GET') {
@@ -7,11 +8,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   try {
-    const response = await axios.get(
-      `https://ats.nalgoo.com/api/v3/organizations/${process.env.NALGOO_API_KEY}/jobs`,
-    )
+    const jobOffers = await getNalgooJobOffers()
 
-    return res.status(200).json(response.data)
+    return res.status(200).json(jobOffers)
   } catch (error) {
     console.error('Nalgoo API error:', error)
 

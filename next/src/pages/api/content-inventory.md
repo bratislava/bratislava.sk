@@ -2,6 +2,10 @@
 
 Versions of the `/api/content-inventory` response, as returned in its `version` field.
 
+## 4
+
+- Add the `job-offer` type, listing the city's open positions from Nalgoo, with `job-offer.location`, `job-offer.salary`, `job-offer.salaryInfo` and `job-offer.employmentForms` - their `url` points to external page, and the offers returned without one are left out
+
 ## 3
 
 - Add `taxonomies` next to `items`, with `articleCategories`, `tags`, `assetCategories`, `regulationCategories`, `urbanStudyCategories`, `urbanStudyStates`, `officialBoardCategories` and `municipalServiceCategories`, each value as `{ title, slug, locale }`, the slug missing for the official board's categories, which GINIS only names - listed whole, unaffected by the filters and the pagination, and referenced from the entries by slug
