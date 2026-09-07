@@ -12,7 +12,7 @@ const PageLayout = ({ className, children }: PropsWithChildren<PageLayoutProps>)
   return (
     // Z-indices are set to create stacking contexts for easier z-index management.
     <div className={className}>
-      <header className="relative">
+      <header data-ai-crawl-exclude className="relative">
         <NavBar />
       </header>
 

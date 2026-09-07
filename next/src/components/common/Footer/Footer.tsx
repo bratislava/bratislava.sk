@@ -4,10 +4,10 @@ import MobileFooter from '@/src/components/common/Footer/MobileFooter'
 const Footer = () => {
   return (
     <>
-      <div className="hidden lg:block">
+      <div data-ai-crawl-exclude className="hidden lg:block">
         <DesktopFooter />
       </div>
-      <div className="lg:hidden">
+      <div data-ai-crawl-exclude className="lg:hidden">
         <MobileFooter />
       </div>
     </>
