@@ -27,7 +27,7 @@ const DisclosureHeader = ({ children, className }: DisclosureHeaderProps) => {
       className={cn('w-full text-left', disclosureStyles[variant].header, className)}
     >
       <div className="flex w-full justify-between">
-        <div className="flex flex-col gap-2">{children}</div>
+        {children}
         <Icon
           name="chevron-down"
           className={cn('self-center transition-transform duration-200 ease-in-out', {

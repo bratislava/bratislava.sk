@@ -1,12 +1,6 @@
-import { Typography } from '@bratislava/component-library'
-
 import { AccordionTitleLevel } from '@/src/components/cards/getCardTitleLevel'
-import Badge from '@/src/components/common/Badge/Badge'
-import Disclosure from '@/src/components/common/Disclosure/Disclosure'
 import DisclosureGroup from '@/src/components/common/Disclosure/DisclosureGroup'
-import DisclosureHeader from '@/src/components/common/Disclosure/DisclosureHeader'
-import DisclosurePanel from '@/src/components/common/Disclosure/DisclosurePanel'
-import Markdown from '@/src/components/formatting/Markdown/Markdown'
+import FaqDisclosure from '@/src/components/common/FaqDisclosure/FaqDisclosure'
 import { FaqCategoryEntityFragment, FaqEntityFragment } from '@/src/services/graphql'
 import { isDefined } from '@/src/utils/isDefined'
 
@@ -22,17 +16,7 @@ const FaqsGroup = ({ faqs, accordionTitleLevel = 'h2', faqCategories }: FaqsGrou
   return (
     <DisclosureGroup>
       {faqList?.filter(isDefined).map((faq) => (
-        <Disclosure key={faq.documentId} id={`disclosure-faq-${faq.documentId}`}>
-          <DisclosureHeader>
-            {faq.faqCategory?.title ? <Badge label={faq.faqCategory.title} /> : null}
-            <Typography variant="h4" as={accordionTitleLevel}>
-              {faq.title}
-            </Typography>
-          </DisclosureHeader>
-          <DisclosurePanel>
-            <Markdown content={faq.body} variant="accordion" />
-          </DisclosurePanel>
-        </Disclosure>
+        <FaqDisclosure key={faq.documentId} faq={faq} accordionTitleLevel={accordionTitleLevel} />
       ))}
     </DisclosureGroup>
   )

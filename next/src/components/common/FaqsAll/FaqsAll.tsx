@@ -4,14 +4,10 @@ import { useEffect, useRef, useState } from 'react'
 import { useDebounceValue } from 'usehooks-ts'
 
 import { AccordionTitleLevel } from '@/src/components/cards/getCardTitleLevel'
-import Badge from '@/src/components/common/Badge/Badge'
-import Disclosure from '@/src/components/common/Disclosure/Disclosure'
 import DisclosureGroup from '@/src/components/common/Disclosure/DisclosureGroup'
-import DisclosureHeader from '@/src/components/common/Disclosure/DisclosureHeader'
-import DisclosurePanel from '@/src/components/common/Disclosure/DisclosurePanel'
+import FaqDisclosure from '@/src/components/common/FaqDisclosure/FaqDisclosure'
 import PaginationWithInput from '@/src/components/common/Pagination/PaginationWithInput'
 import SelectField, { SelectItem } from '@/src/components/common/SelectField/SelectField'
-import Markdown from '@/src/components/formatting/Markdown/Markdown'
 import SearchBar from '@/src/components/sections/SearchSection/SearchBar'
 import { client } from '@/src/services/graphql/gql'
 import {
@@ -115,21 +111,13 @@ const FaqsAll = ({ accordionTitleLevel = 'h2' }: { accordionTitleLevel?: Accordi
 
       {data?.hits.length ? (
         <DisclosureGroup>
-          {data.hits.filter(isDefined).map((faq) => {
-            return (
-              <Disclosure key={faq.documentId} id={`disclosure-faq-${faq.documentId}`}>
-                <DisclosureHeader>
-                  {faq.faqCategory?.title && <Badge label={faq.faqCategory.title} />}
-                  <Typography variant="h4" as={accordionTitleLevel}>
-                    {faq.title}
-                  </Typography>
-                </DisclosureHeader>
-                <DisclosurePanel>
-                  <Markdown content={faq.body} variant="small" />
-                </DisclosurePanel>
-              </Disclosure>
-            )
-          })}
+          {data.hits.filter(isDefined).map((faq) => (
+            <FaqDisclosure
+              key={faq.documentId}
+              faq={faq}
+              accordionTitleLevel={accordionTitleLevel}
+            />
+          ))}
         </DisclosureGroup>
       ) : (
         <Typography>{t('ArticlesAll.noResults')}</Typography>

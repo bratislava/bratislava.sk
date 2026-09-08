@@ -28,8 +28,8 @@ const FaqsSection = ({ section }: Props) => {
           <FaqsAll accordionTitleLevel={accordionTitleLevel} />
         ) : (
           <FaqsGroup
-            faqs={faqs.filter(isDefined) ?? []}
-            faqCategories={faqCategories.filter(isDefined) ?? []}
+            faqs={faqs.filter(isDefined)}
+            faqCategories={faqCategories.filter(isDefined)}
             accordionTitleLevel={accordionTitleLevel}
           />
         )}
