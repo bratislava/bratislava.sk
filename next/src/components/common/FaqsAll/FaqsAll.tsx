@@ -1,6 +1,6 @@
 import { Typography } from '@bratislava/component-library'
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
-import { Fragment, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useDebounceValue } from 'usehooks-ts'
 
 import { AccordionTitleLevel } from '@/src/components/cards/getCardTitleLevel'
@@ -9,7 +9,6 @@ import Disclosure from '@/src/components/common/Disclosure/Disclosure'
 import DisclosureGroup from '@/src/components/common/Disclosure/DisclosureGroup'
 import DisclosureHeader from '@/src/components/common/Disclosure/DisclosureHeader'
 import DisclosurePanel from '@/src/components/common/Disclosure/DisclosurePanel'
-import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import PaginationWithInput from '@/src/components/common/Pagination/PaginationWithInput'
 import SelectField, { SelectItem } from '@/src/components/common/SelectField/SelectField'
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
@@ -115,23 +114,20 @@ const FaqsAll = ({ accordionTitleLevel = 'h2' }: { accordionTitleLevel?: Accordi
       </div>
 
       {data?.hits.length ? (
-        <DisclosureGroup className="rounded-xl border border-border-active-default bg-background-passive-base py-2">
-          {data.hits.filter(isDefined).map((faq, index) => {
+        <DisclosureGroup>
+          {data.hits.filter(isDefined).map((faq) => {
             return (
-              <Fragment key={faq.documentId}>
-                {index > 0 ? <HorizontalDivider className="mx-4 lg:mx-6" /> : null}
-                <Disclosure id={`disclosure-faq-${faq.documentId}`}>
-                  <DisclosureHeader className="p-4 ring-inset lg:px-6">
-                    {faq.faqCategory?.title && <Badge label={faq.faqCategory.title} />}
-                    <Typography variant="h4" as={accordionTitleLevel}>
-                      {faq.title}
-                    </Typography>
-                  </DisclosureHeader>
-                  <DisclosurePanel className="px-4 lg:px-6">
-                    <Markdown content={faq.body} variant="small" />
-                  </DisclosurePanel>
-                </Disclosure>
-              </Fragment>
+              <Disclosure key={faq.documentId} id={`disclosure-faq-${faq.documentId}`}>
+                <DisclosureHeader>
+                  {faq.faqCategory?.title && <Badge label={faq.faqCategory.title} />}
+                  <Typography variant="h4" as={accordionTitleLevel}>
+                    {faq.title}
+                  </Typography>
+                </DisclosureHeader>
+                <DisclosurePanel>
+                  <Markdown content={faq.body} variant="small" />
+                </DisclosurePanel>
+              </Disclosure>
             )
           })}
         </DisclosureGroup>

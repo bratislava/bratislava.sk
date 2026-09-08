@@ -1,9 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
-import { Fragment } from 'react'
 
 import { getCardTitleLevel, SectionTitleLevel } from '@/src/components/cards/getCardTitleLevel'
 import DisclosureGroup from '@/src/components/common/Disclosure/DisclosureGroup'
-import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import LoadingSpinner from '@/src/components/common/LoadingSpinner/LoadingSpinner'
 import OrganizationalStructureDisclosure from '@/src/components/common/OrganizationalStructure_Deprecated/OrganizationalStructureDisclosure_Deprecated'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
@@ -42,21 +40,14 @@ const OrganizationalStructure = ({ title, titleLevel }: OrganizationalStructureP
   return (
     <div className="flex flex-col">
       <SectionHeader title={title} titleLevel={titleLevel} />
-      <DisclosureGroup
-        className="rounded-xl border border-border-active-default bg-background-passive-base py-2"
-        data-cy="organizational-structure-container"
-      >
-        {data.groups.map((group, index) => {
-          return (
-            <Fragment key={group.id}>
-              {index > 0 ? <HorizontalDivider className="mx-4 lg:mx-6" /> : null}
-              <OrganizationalStructureDisclosure
-                group={group}
-                headerVariant={accordionTitleLevel}
-              />
-            </Fragment>
-          )
-        })}
+      <DisclosureGroup data-cy="organizational-structure-container">
+        {data.groups.map((group) => (
+          <OrganizationalStructureDisclosure
+            key={group.id}
+            group={group}
+            headerVariant={accordionTitleLevel}
+          />
+        ))}
       </DisclosureGroup>
     </div>
   )

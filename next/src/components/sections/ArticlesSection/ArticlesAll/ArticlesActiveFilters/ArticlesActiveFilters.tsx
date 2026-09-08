@@ -143,7 +143,7 @@ const ArticlesActiveFilters = ({
       </TagGroup>
       {/* Screen: mobile */}
       <TagGroup {...tagGroupProps} className="flex flex-col gap-4 lg:hidden">
-        <Disclosure>
+        <Disclosure variant="unstyled">
           <DisclosureHeader>{labelElement}</DisclosureHeader>
           <DisclosurePanel>
             <ArticlesActiveFiltersTagList {...tagListProps} />

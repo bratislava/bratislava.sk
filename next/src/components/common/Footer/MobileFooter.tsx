@@ -42,7 +42,7 @@ const MobileFooter = () => {
           <FooterContacts {...footer} />
         </div>
         <div>
-          <DisclosureGroup>
+          <DisclosureGroup variant="unstyled">
             {footer.columns?.filter(isDefined).map((column, index) => (
               <Fragment key={index}>
                 <HorizontalDivider />
