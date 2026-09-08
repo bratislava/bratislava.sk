@@ -23,7 +23,7 @@ const FaqDisclosure = ({ faq, accordionTitleLevel = 'h2' }: FaqDisclosureProps) 
       <DisclosureHeader>
         <div className="flex flex-col gap-2">
           {faq.faqCategory?.title ? <Badge label={faq.faqCategory.title} /> : null}
-          <Typography variant="h4" as={accordionTitleLevel}>
+          <Typography variant="h5" as={accordionTitleLevel}>
             {faq.title}
           </Typography>
         </div>
