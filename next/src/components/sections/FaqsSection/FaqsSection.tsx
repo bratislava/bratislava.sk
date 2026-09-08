@@ -18,19 +18,19 @@ const FaqsSection = ({ section }: Props) => {
   const { title, text, faqs, faqCategories, titleLevelFaqsSection: titleLevel, showAll } = section
 
   // If no section title is provided, accordions act as h2, otherwise they accommodate to section titleLevel
-  const accordionTitleLevel = title ? getCardTitleLevel(titleLevel) : 'h2'
+  const disclosureTitleLevel = title ? getCardTitleLevel(titleLevel) : 'h2'
 
   return (
     <SectionContainer>
       <div className="flex flex-col gap-6 lg:gap-12">
         <SectionHeader title={title} titleLevel={titleLevel} text={text} />
         {showAll ? (
-          <FaqsAll accordionTitleLevel={accordionTitleLevel} />
+          <FaqsAll disclosureTitleLevel={disclosureTitleLevel} />
         ) : (
           <FaqsGroup
             faqs={faqs.filter(isDefined)}
             faqCategories={faqCategories.filter(isDefined)}
-            accordionTitleLevel={accordionTitleLevel}
+            disclosureTitleLevel={disclosureTitleLevel}
           />
         )}
       </div>

@@ -26,7 +26,7 @@ type AccordionSectionProps = {
 const AccordionSection = ({ section }: AccordionSectionProps) => {
   const { title, institutions, flatText, titleLevelAccordionSection: titleLevel } = section
 
-  // If no section title is provided, accordions act as h2, otherwise they accommodate to section titleLevel
+  // If no section title is provided, disclosures act as h2, otherwise they accommodate to section titleLevel
   const disclosureTitleLevel = title ? getCardTitleLevel(titleLevel) : 'h2'
 
   return (

@@ -72,7 +72,7 @@ const DisclosureShowcase = () => {
       <Typography variant="h5">FaqDisclosure</Typography>
       <DisclosureGroup>
         {faqs.map((faq) => (
-          <FaqDisclosure key={faq.documentId} faq={faq} accordionTitleLevel="h3" />
+          <FaqDisclosure key={faq.documentId} faq={faq} disclosureTitleLevel="h3" />
         ))}
       </DisclosureGroup>
     </Wrapper>

@@ -1,6 +1,6 @@
 import { Typography } from '@bratislava/component-library'
 
-import { AccordionTitleLevel } from '@/src/components/cards/getCardTitleLevel'
+import { DisclosureTitleLevel } from '@/src/components/cards/getCardTitleLevel'
 import Badge from '@/src/components/common/Badge/Badge'
 import Disclosure from '@/src/components/common/Disclosure/Disclosure'
 import DisclosureHeader from '@/src/components/common/Disclosure/DisclosureHeader'
@@ -10,20 +10,20 @@ import { FaqEntityFragment } from '@/src/services/graphql'
 
 export type FaqDisclosureProps = {
   faq: FaqEntityFragment
-  accordionTitleLevel?: AccordionTitleLevel
+  disclosureTitleLevel?: DisclosureTitleLevel
 }
 
 /**
  * Single faq accordion item, used both in FaqsGroup and FaqsAll.
  */
 
-const FaqDisclosure = ({ faq, accordionTitleLevel = 'h2' }: FaqDisclosureProps) => {
+const FaqDisclosure = ({ faq, disclosureTitleLevel = 'h2' }: FaqDisclosureProps) => {
   return (
     <Disclosure id={`disclosure-faq-${faq.documentId}`}>
       <DisclosureHeader>
         <div className="flex flex-col gap-2">
           {faq.faqCategory?.title ? <Badge label={faq.faqCategory.title} /> : null}
-          <Typography variant="h5" as={accordionTitleLevel}>
+          <Typography variant="h5" as={disclosureTitleLevel}>
             {faq.title}
           </Typography>
         </div>

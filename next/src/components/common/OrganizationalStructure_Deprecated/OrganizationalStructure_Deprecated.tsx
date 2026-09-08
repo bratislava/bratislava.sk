@@ -35,7 +35,7 @@ const OrganizationalStructure = ({ title, titleLevel }: OrganizationalStructureP
     return <div className="whitespace-pre">{JSON.stringify(error, null, 2)}</div>
   }
 
-  const accordionTitleLevel = title ? getCardTitleLevel(titleLevel) : 'h2'
+  const disclosureTitleLevel = title ? getCardTitleLevel(titleLevel) : 'h2'
 
   return (
     <div className="flex flex-col">
@@ -45,7 +45,7 @@ const OrganizationalStructure = ({ title, titleLevel }: OrganizationalStructureP
           <OrganizationalStructureDisclosure
             key={group.id}
             group={group}
-            headerVariant={accordionTitleLevel}
+            headerVariant={disclosureTitleLevel}
           />
         ))}
       </DisclosureGroup>

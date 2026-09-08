@@ -3,7 +3,7 @@ import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import { useEffect, useRef, useState } from 'react'
 import { useDebounceValue } from 'usehooks-ts'
 
-import { AccordionTitleLevel } from '@/src/components/cards/getCardTitleLevel'
+import { DisclosureTitleLevel } from '@/src/components/cards/getCardTitleLevel'
 import DisclosureGroup from '@/src/components/common/Disclosure/DisclosureGroup'
 import PaginationWithInput from '@/src/components/common/Pagination/PaginationWithInput'
 import SelectField, { SelectItem } from '@/src/components/common/SelectField/SelectField'
@@ -19,11 +19,15 @@ import { isDefined } from '@/src/utils/isDefined'
 import { useLocale } from '@/src/utils/useLocale'
 import { useTranslation } from '@/src/utils/useTranslation'
 
+type Props = {
+  disclosureTitleLevel?: DisclosureTitleLevel
+}
+
 /**
  * TODO Figma link
  */
 
-const FaqsAll = ({ accordionTitleLevel = 'h2' }: { accordionTitleLevel?: AccordionTitleLevel }) => {
+const FaqsAll = ({ disclosureTitleLevel = 'h2' }: Props) => {
   const { t } = useTranslation()
   const locale = useLocale()
 
@@ -115,7 +119,7 @@ const FaqsAll = ({ accordionTitleLevel = 'h2' }: { accordionTitleLevel?: Accordi
             <FaqDisclosure
               key={faq.documentId}
               faq={faq}
-              accordionTitleLevel={accordionTitleLevel}
+              disclosureTitleLevel={disclosureTitleLevel}
             />
           ))}
         </DisclosureGroup>
