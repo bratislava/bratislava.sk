@@ -1,8 +1,8 @@
 import { getCardTitleLevel } from '@/src/components/cards/getCardTitleLevel'
-import FaqsAll from '@/src/components/common/FaqsAll/FaqsAll'
-import FaqsGroup from '@/src/components/common/FaqsGroup/FaqsGroup'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
+import FaqsAll from '@/src/components/sections/FaqsSection/FaqsAll'
+import FaqsGroup from '@/src/components/sections/FaqsSection/FaqsGroup'
 import { FaqsSectionFragment } from '@/src/services/graphql'
 import { isDefined } from '@/src/utils/isDefined'
 

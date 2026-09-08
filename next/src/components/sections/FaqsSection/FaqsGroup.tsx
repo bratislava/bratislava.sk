@@ -1,6 +1,6 @@
 import { AccordionTitleLevel } from '@/src/components/cards/getCardTitleLevel'
 import DisclosureGroup from '@/src/components/common/Disclosure/DisclosureGroup'
-import FaqDisclosure from '@/src/components/common/FaqDisclosure/FaqDisclosure'
+import FaqDisclosure from '@/src/components/sections/FaqsSection/FaqDisclosure'
 import { FaqCategoryEntityFragment, FaqEntityFragment } from '@/src/services/graphql'
 import { isDefined } from '@/src/utils/isDefined'
 

@@ -5,9 +5,9 @@ import { useDebounceValue } from 'usehooks-ts'
 
 import { AccordionTitleLevel } from '@/src/components/cards/getCardTitleLevel'
 import DisclosureGroup from '@/src/components/common/Disclosure/DisclosureGroup'
-import FaqDisclosure from '@/src/components/common/FaqDisclosure/FaqDisclosure'
 import PaginationWithInput from '@/src/components/common/Pagination/PaginationWithInput'
 import SelectField, { SelectItem } from '@/src/components/common/SelectField/SelectField'
+import FaqDisclosure from '@/src/components/sections/FaqsSection/FaqDisclosure'
 import SearchBar from '@/src/components/sections/SearchSection/SearchBar'
 import { client } from '@/src/services/graphql/gql'
 import {

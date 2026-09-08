@@ -5,7 +5,7 @@ import Disclosure from '@/src/components/common/Disclosure/Disclosure'
 import DisclosureGroup from '@/src/components/common/Disclosure/DisclosureGroup'
 import DisclosureHeader from '@/src/components/common/Disclosure/DisclosureHeader'
 import DisclosurePanel from '@/src/components/common/Disclosure/DisclosurePanel'
-import FaqDisclosure from '@/src/components/common/FaqDisclosure/FaqDisclosure'
+import FaqDisclosure from '@/src/components/sections/FaqsSection/FaqDisclosure'
 import Wrapper from '@/src/components/styleguide/Wrapper'
 import { FaqEntityFragment } from '@/src/services/graphql'
 
