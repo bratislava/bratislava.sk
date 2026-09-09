@@ -12,6 +12,14 @@ type DisclosureVariantStyles = {
   box: string
   header: string
   panel: string
+  /**
+   * Vertical padding of the panel content, applied to a wrapper inside the panel rather than to
+   * the panel itself. React Aria animates the panel by setting its height from "0px" to its scroll
+   * height, and with "box-sizing: border-box" a box never renders shorter than its own padding -
+   * vertical padding on the panel would stay visible as a strip when collapsed, therefore it's set
+   * on nested div.
+   */
+  panelInner: string
   /** Dividers rendered by DisclosureGroup between its children, `null` means no dividers */
   divider: string | null
 }
@@ -22,6 +30,7 @@ export const disclosureStyles: Record<DisclosureVariant, DisclosureVariantStyles
     box: 'rounded-xl border border-border-passive-primary bg-background-passive-base py-2',
     header: 'p-4 ring-inset lg:px-6',
     panel: 'px-4 lg:px-6',
+    panelInner: 'py-4',
     divider: 'mx-4 lg:mx-6',
   },
   /** No styles at all, for one-off cases styled by the consumer */
@@ -29,6 +38,7 @@ export const disclosureStyles: Record<DisclosureVariant, DisclosureVariantStyles
     box: '',
     header: '',
     panel: '',
+    panelInner: '',
     divider: null,
   },
 }
