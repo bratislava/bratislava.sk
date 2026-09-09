@@ -42,7 +42,7 @@ const MobileFooter = () => {
           <FooterContacts {...footer} />
         </div>
         <div>
-          <DisclosureGroup>
+          <DisclosureGroup variant="unstyled">
             {footer.columns?.filter(isDefined).map((column, index) => (
               <Fragment key={index}>
                 <HorizontalDivider />
@@ -52,7 +52,7 @@ const MobileFooter = () => {
                       {column.title}
                     </Typography>
                   </DisclosureHeader>
-                  <DisclosurePanel>
+                  <DisclosurePanel innerClassName="pb-4">
                     <div className="flex flex-col gap-3">
                       <FooterColumnLinks {...column} />
                     </div>

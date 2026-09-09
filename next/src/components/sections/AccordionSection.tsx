@@ -1,12 +1,10 @@
 import { Button, Typography } from '@bratislava/component-library'
-import { Fragment } from 'react'
 
 import { getCardTitleLevel } from '@/src/components/cards/getCardTitleLevel'
 import Disclosure from '@/src/components/common/Disclosure/Disclosure'
 import DisclosureGroup from '@/src/components/common/Disclosure/DisclosureGroup'
 import DisclosureHeader from '@/src/components/common/Disclosure/DisclosureHeader'
 import DisclosurePanel from '@/src/components/common/Disclosure/DisclosurePanel'
-import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import FileList from '@/src/components/common/FileList/FileList'
 import Institution from '@/src/components/common/Institution_Deprecated/Institution_Deprecated'
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
@@ -28,7 +26,7 @@ type AccordionSectionProps = {
 const AccordionSection = ({ section }: AccordionSectionProps) => {
   const { title, institutions, flatText, titleLevelAccordionSection: titleLevel } = section
 
-  // If no section title is provided, accordions act as h2, otherwise they accommodate to section titleLevel
+  // If no section title is provided, disclosures act as h2, otherwise they accommodate to section titleLevel
   const disclosureTitleLevel = title ? getCardTitleLevel(titleLevel) : 'h2'
 
   return (
@@ -37,52 +35,48 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
       <div className="flex flex-col gap-6 lg:gap-8">
         <SectionHeader title={title} titleLevel={titleLevel} />
         {flatText?.length ? (
-          <DisclosureGroup className="rounded-xl border border-border-active-default bg-background-passive-base py-2">
-            {flatText?.filter(isDefined).map((item, index) => (
-              <Fragment key={`disclosure-${item.category}-${index}`}>
-                {index > 0 ? <HorizontalDivider className="mx-4 lg:mx-6" /> : null}
+          <DisclosureGroup>
+            {flatText.filter(isDefined).map((item, index) => (
+              <Disclosure
+                key={`disclosure-${item.category}-${index}`}
+                id={`disclosure-${item.category}-${index}`}
+              >
+                <DisclosureHeader>
+                  <Typography variant="h5" as={disclosureTitleLevel}>
+                    {item?.category}
+                  </Typography>
+                </DisclosureHeader>
+                <DisclosurePanel>
+                  <Markdown content={item.content} variant="accordion" />
 
-                <Disclosure id={`disclosure-${item.category}-${index}`}>
-                  <DisclosureHeader className="p-4 ring-inset lg:px-6">
-                    <Typography variant="h5" as={disclosureTitleLevel}>
-                      {item?.category}
-                    </Typography>
-                  </DisclosureHeader>
-                  <DisclosurePanel className="px-4 lg:px-6">
-                    <Markdown content={item.content} variant="accordion" />
-
-                    {item.fileList?.filter(isDefined).length ? (
-                      <FileList files={item.fileList.filter(isDefined) ?? []} />
-                    ) : null}
-                    {item.moreLinkUrl || item.moreLinkPage ? (
-                      <Button
-                        variant="link"
-                        {...getLinkProps({
-                          label: item.moreLinkTitle,
-                          url: item.moreLinkUrl,
-                          page: item.moreLinkPage,
-                        })}
-                      />
-                    ) : null}
-                  </DisclosurePanel>
-                </Disclosure>
-              </Fragment>
+                  {item.fileList?.filter(isDefined).length ? (
+                    <FileList files={item.fileList.filter(isDefined)} />
+                  ) : null}
+                  {item.moreLinkUrl || item.moreLinkPage ? (
+                    <Button
+                      variant="link"
+                      {...getLinkProps({
+                        label: item.moreLinkTitle,
+                        url: item.moreLinkUrl,
+                        page: item.moreLinkPage,
+                      })}
+                    />
+                  ) : null}
+                </DisclosurePanel>
+              </Disclosure>
             ))}
           </DisclosureGroup>
         ) : null}
 
-        {groupInstitutionsByCategory(institutions?.filter(isDefined) ?? []).map((institution, index) => (
-          <DisclosureGroup
-            key={`disclosure-${institution.category}-${index}`}
-            className="rounded-xl border border-border-active-default bg-background-passive-base py-2"
-          >
-            <Disclosure id={`disclosure-${institution.category}-${index}`}>
-              <DisclosureHeader className="p-4 ring-inset lg:px-6">
+        {groupInstitutionsByCategory(institutions?.filter(isDefined) ?? []).map(
+          (institution, index) => (
+            <Disclosure key={`disclosure-${institution.category}-${index}`}>
+              <DisclosureHeader>
                 <Typography variant="h5" as={disclosureTitleLevel}>
                   {institution?.category}
                 </Typography>
               </DisclosureHeader>
-              <DisclosurePanel className="px-4 lg:px-6">
+              <DisclosurePanel>
                 <div className="flex flex-col gap-4">
                   {institution.items.filter(isDefined).map((file, itemIndex) => (
                     <Institution
@@ -99,8 +93,8 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
                 </div>
               </DisclosurePanel>
             </Disclosure>
-          </DisclosureGroup>
-        ))}
+          ),
+        )}
       </div>
     </SectionContainer>
   )

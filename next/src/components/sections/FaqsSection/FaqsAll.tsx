@@ -1,18 +1,13 @@
 import { Typography } from '@bratislava/component-library'
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
-import { Fragment, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useDebounceValue } from 'usehooks-ts'
 
-import { AccordionTitleLevel } from '@/src/components/cards/getCardTitleLevel'
-import Badge from '@/src/components/common/Badge/Badge'
-import Disclosure from '@/src/components/common/Disclosure/Disclosure'
+import { DisclosureTitleLevel } from '@/src/components/cards/getCardTitleLevel'
 import DisclosureGroup from '@/src/components/common/Disclosure/DisclosureGroup'
-import DisclosureHeader from '@/src/components/common/Disclosure/DisclosureHeader'
-import DisclosurePanel from '@/src/components/common/Disclosure/DisclosurePanel'
-import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import PaginationWithInput from '@/src/components/common/Pagination/PaginationWithInput'
 import SelectField, { SelectItem } from '@/src/components/common/SelectField/SelectField'
-import Markdown from '@/src/components/formatting/Markdown/Markdown'
+import FaqDisclosure from '@/src/components/sections/FaqsSection/FaqDisclosure'
 import SearchBar from '@/src/components/sections/SearchSection/SearchBar'
 import { client } from '@/src/services/graphql/gql'
 import {
@@ -24,11 +19,15 @@ import { isDefined } from '@/src/utils/isDefined'
 import { useLocale } from '@/src/utils/useLocale'
 import { useTranslation } from '@/src/utils/useTranslation'
 
+type Props = {
+  disclosureTitleLevel?: DisclosureTitleLevel
+}
+
 /**
  * TODO Figma link
  */
 
-const FaqsAll = ({ accordionTitleLevel = 'h2' }: { accordionTitleLevel?: AccordionTitleLevel }) => {
+const FaqsAll = ({ disclosureTitleLevel = 'h2' }: Props) => {
   const { t } = useTranslation()
   const locale = useLocale()
 
@@ -115,25 +114,14 @@ const FaqsAll = ({ accordionTitleLevel = 'h2' }: { accordionTitleLevel?: Accordi
       </div>
 
       {data?.hits.length ? (
-        <DisclosureGroup className="rounded-xl border border-border-active-default bg-background-passive-base py-2">
-          {data.hits.filter(isDefined).map((faq, index) => {
-            return (
-              <Fragment key={faq.documentId}>
-                {index > 0 ? <HorizontalDivider className="mx-4 lg:mx-6" /> : null}
-                <Disclosure id={`disclosure-faq-${faq.documentId}`}>
-                  <DisclosureHeader className="p-4 ring-inset lg:px-6">
-                    {faq.faqCategory?.title && <Badge label={faq.faqCategory.title} />}
-                    <Typography variant="h4" as={accordionTitleLevel}>
-                      {faq.title}
-                    </Typography>
-                  </DisclosureHeader>
-                  <DisclosurePanel className="px-4 lg:px-6">
-                    <Markdown content={faq.body} variant="small" />
-                  </DisclosurePanel>
-                </Disclosure>
-              </Fragment>
-            )
-          })}
+        <DisclosureGroup>
+          {data.hits.filter(isDefined).map((faq) => (
+            <FaqDisclosure
+              key={faq.documentId}
+              faq={faq}
+              disclosureTitleLevel={disclosureTitleLevel}
+            />
+          ))}
         </DisclosureGroup>
       ) : (
         <Typography>{t('ArticlesAll.noResults')}</Typography>
