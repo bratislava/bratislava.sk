@@ -25,6 +25,7 @@ import { isDefined } from '@/src/utils/isDefined'
 
 import { FETCH_CHUNK_SIZE } from './config'
 import {
+  FaqInventoryData,
   Inventory,
   InventoryContact,
   InventoryContactType,
@@ -139,8 +140,9 @@ const getBase = <TType extends InventoryType>(
         /** Only for content hosted elsewhere, i.e. the city account - everything else lives on this website. */
         siteUrl?: string
       }
-    // Content that is not addressed by a path under a site root, i.e. the job offers Nalgoo hosts.
-    | { url: string }
+    // Content that is not addressed by a path under a site root - the job offers Nalgoo hosts, and the FAQs, which
+    // are rendered inside other pages and so have no url at all.
+    | { url: string | null }
   ),
 ): InventoryEntryBase & { type: TType } => ({
   id: getEntryId(type, entry.documentId),
@@ -611,6 +613,30 @@ const buildJobOffers = async (): Promise<InventoryEntry[]> => {
     .filter(isDefined)
 }
 
+/**
+ * FAQs have no page of their own - they are rendered inside the pages listing them, so an entry carries no url and the
+ * question and the answer alone.
+ */
+const buildFaqs = async (): Promise<InventoryEntry[]> => {
+  const faqs = await fetchAll((variables) =>
+    client.FaqsInventory(variables).then((result) => result.faqs),
+  )
+
+  return faqs.map((faq) => ({
+    ...getBase('faq', {
+      ...faq,
+      url: null,
+      owner: getOwner(faq.adminGroups),
+      addedAt: faq.publishedAt,
+      modifiedAt: faq.updatedAt,
+    }),
+    faq: getTypeData<FaqInventoryData>({
+      body: getFirstNonEmpty(faq.body),
+      category: getCategory(faq.faqCategory),
+    }),
+  }))
+}
+
 /** A taxonomy is only its identity here - what it is filed with is on the entries, which name it by its slug. */
 const getTaxonomy = (values: ({ title: string; slug: string } | null)[]): InventoryTaxonomy[] =>
   values.filter(isDefined).map((value) => ({ title: value.title, slug: value.slug }))
@@ -644,6 +670,7 @@ const buildTaxonomies = async (): Promise<InventoryTaxonomies> => {
     regulationCategories: getTaxonomy(taxonomies.regulationCategories),
     urbanStudyCategories: getTaxonomy(taxonomies.urbanStudyCategories),
     urbanStudyStates: getTaxonomy(taxonomies.urbanStudyStates),
+    faqCategories: getTaxonomy(taxonomies.faqCategories),
   }
 }
 
@@ -664,6 +691,7 @@ export const buildInventory = async (): Promise<Inventory> => {
     officialBoard,
     municipalServices,
     jobOffers,
+    faqs,
     taxonomies,
   ] = await Promise.all([
     buildPages(),
@@ -675,6 +703,7 @@ export const buildInventory = async (): Promise<Inventory> => {
     buildOfficialBoard(),
     buildMunicipalServices(),
     buildJobOffers(),
+    buildFaqs(),
     buildTaxonomies(),
   ])
 
@@ -688,6 +717,7 @@ export const buildInventory = async (): Promise<Inventory> => {
     ...officialBoard,
     ...municipalServices,
     ...jobOffers,
+    ...faqs,
   ].sort((a, b) => (b.modifiedAt ?? '').localeCompare(a.modifiedAt ?? ''))
 
   return { entries, taxonomies }

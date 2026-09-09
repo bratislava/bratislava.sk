@@ -361,7 +361,7 @@ fragment FaqsSection on ComponentSectionsFaqs {
     ...FaqEntity
   }
   faqCategories {
-    ...FaqCategoryEntity
+    ...FaqCategoryWithFaqsEntity
   }
   showAll
   titleLevelFaqsSection: titleLevel

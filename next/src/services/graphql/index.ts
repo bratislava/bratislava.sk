@@ -8239,12 +8239,24 @@ export type FaqCategoryEntityFragment = {
   documentId: string
   title: string
   slug: string
+}
+
+export type FaqCategoryWithFaqsEntityFragment = {
+  __typename?: 'FaqCategory'
+  documentId: string
+  title: string
+  slug: string
   faqs: Array<{
     __typename?: 'Faq'
     documentId: string
     title: string
     body?: string | null
-    faqCategory?: { __typename?: 'FaqCategory'; title: string } | null
+    faqCategory?: {
+      __typename?: 'FaqCategory'
+      documentId: string
+      title: string
+      slug: string
+    } | null
   } | null>
 }
 
@@ -8253,7 +8265,12 @@ export type FaqEntityFragment = {
   documentId: string
   title: string
   body?: string | null
-  faqCategory?: { __typename?: 'FaqCategory'; title: string } | null
+  faqCategory?: {
+    __typename?: 'FaqCategory'
+    documentId: string
+    title: string
+    slug: string
+  } | null
 }
 
 export type FaqCategoriesQueryVariables = Exact<{
@@ -8275,8 +8292,64 @@ export type FaqCategoriesQuery = {
       documentId: string
       title: string
       body?: string | null
-      faqCategory?: { __typename?: 'FaqCategory'; title: string } | null
+      faqCategory?: {
+        __typename?: 'FaqCategory'
+        documentId: string
+        title: string
+        slug: string
+      } | null
     } | null>
+  } | null>
+}
+
+export type FaqInventoryEntityFragment = {
+  __typename?: 'Faq'
+  updatedAt?: any | null
+  publishedAt?: any | null
+  documentId: string
+  title: string
+  body?: string | null
+  adminGroups: Array<{
+    __typename?: 'AdminGroup'
+    documentId: string
+    slug: string
+    title: string
+  } | null>
+  faqCategory?: {
+    __typename?: 'FaqCategory'
+    documentId: string
+    title: string
+    slug: string
+  } | null
+}
+
+export type FaqsInventoryQueryVariables = Exact<{
+  start?: InputMaybe<Scalars['Int']['input']>
+  limit?: InputMaybe<Scalars['Int']['input']>
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
+}>
+
+export type FaqsInventoryQuery = {
+  __typename?: 'Query'
+  faqs: Array<{
+    __typename?: 'Faq'
+    updatedAt?: any | null
+    publishedAt?: any | null
+    documentId: string
+    title: string
+    body?: string | null
+    adminGroups: Array<{
+      __typename?: 'AdminGroup'
+      documentId: string
+      slug: string
+      title: string
+    } | null>
+    faqCategory?: {
+      __typename?: 'FaqCategory'
+      documentId: string
+      title: string
+      slug: string
+    } | null
   } | null>
 }
 
@@ -12507,7 +12580,12 @@ export type PageEntityFragment = {
           documentId: string
           title: string
           body?: string | null
-          faqCategory?: { __typename?: 'FaqCategory'; title: string } | null
+          faqCategory?: {
+            __typename?: 'FaqCategory'
+            documentId: string
+            title: string
+            slug: string
+          } | null
         } | null>
         faqCategories: Array<{
           __typename?: 'FaqCategory'
@@ -12519,7 +12597,12 @@ export type PageEntityFragment = {
             documentId: string
             title: string
             body?: string | null
-            faqCategory?: { __typename?: 'FaqCategory'; title: string } | null
+            faqCategory?: {
+              __typename?: 'FaqCategory'
+              documentId: string
+              title: string
+              slug: string
+            } | null
           } | null>
         } | null>
       }
@@ -14336,7 +14419,12 @@ export type PageByPathQuery = {
             documentId: string
             title: string
             body?: string | null
-            faqCategory?: { __typename?: 'FaqCategory'; title: string } | null
+            faqCategory?: {
+              __typename?: 'FaqCategory'
+              documentId: string
+              title: string
+              slug: string
+            } | null
           } | null>
           faqCategories: Array<{
             __typename?: 'FaqCategory'
@@ -14348,7 +14436,12 @@ export type PageByPathQuery = {
               documentId: string
               title: string
               body?: string | null
-              faqCategory?: { __typename?: 'FaqCategory'; title: string } | null
+              faqCategory?: {
+                __typename?: 'FaqCategory'
+                documentId: string
+                title: string
+                slug: string
+              } | null
             } | null>
           } | null>
         }
@@ -16190,7 +16283,12 @@ export type Dev_AllPagesQuery = {
             documentId: string
             title: string
             body?: string | null
-            faqCategory?: { __typename?: 'FaqCategory'; title: string } | null
+            faqCategory?: {
+              __typename?: 'FaqCategory'
+              documentId: string
+              title: string
+              slug: string
+            } | null
           } | null>
           faqCategories: Array<{
             __typename?: 'FaqCategory'
@@ -16202,7 +16300,12 @@ export type Dev_AllPagesQuery = {
               documentId: string
               title: string
               body?: string | null
-              faqCategory?: { __typename?: 'FaqCategory'; title: string } | null
+              faqCategory?: {
+                __typename?: 'FaqCategory'
+                documentId: string
+                title: string
+                slug: string
+              } | null
             } | null>
           } | null>
         }
@@ -18949,7 +19052,12 @@ export type FaqsSectionFragment = {
     documentId: string
     title: string
     body?: string | null
-    faqCategory?: { __typename?: 'FaqCategory'; title: string } | null
+    faqCategory?: {
+      __typename?: 'FaqCategory'
+      documentId: string
+      title: string
+      slug: string
+    } | null
   } | null>
   faqCategories: Array<{
     __typename?: 'FaqCategory'
@@ -18961,7 +19069,12 @@ export type FaqsSectionFragment = {
       documentId: string
       title: string
       body?: string | null
-      faqCategory?: { __typename?: 'FaqCategory'; title: string } | null
+      faqCategory?: {
+        __typename?: 'FaqCategory'
+        documentId: string
+        title: string
+        slug: string
+      } | null
     } | null>
   } | null>
 }
@@ -20528,7 +20641,12 @@ type Sections_ComponentSectionsFaqs_Fragment = {
     documentId: string
     title: string
     body?: string | null
-    faqCategory?: { __typename?: 'FaqCategory'; title: string } | null
+    faqCategory?: {
+      __typename?: 'FaqCategory'
+      documentId: string
+      title: string
+      slug: string
+    } | null
   } | null>
   faqCategories: Array<{
     __typename?: 'FaqCategory'
@@ -20540,7 +20658,12 @@ type Sections_ComponentSectionsFaqs_Fragment = {
       documentId: string
       title: string
       body?: string | null
-      faqCategory?: { __typename?: 'FaqCategory'; title: string } | null
+      faqCategory?: {
+        __typename?: 'FaqCategory'
+        documentId: string
+        title: string
+        slug: string
+      } | null
     } | null>
   } | null>
 }
@@ -22210,6 +22333,7 @@ export type TaxonomiesInventoryQuery = {
     slug: string
   } | null>
   urbanStudyStates: Array<{ __typename?: 'UrbanStudyState'; title: string; slug: string } | null>
+  faqCategories: Array<{ __typename?: 'FaqCategory'; title: string; slug: string } | null>
 }
 
 export const ArticleSlugEntityFragmentDoc = gql`
@@ -22417,6 +22541,36 @@ export const AssetInventoryEntityFragmentDoc = gql`
   ${AdminGroupSlugEntityFragmentDoc}
   ${AssetCategoryEntityFragmentDoc}
   ${UploadFileEntityFragmentDoc}
+`
+export const FaqCategoryEntityFragmentDoc = gql`
+  fragment FaqCategoryEntity on FaqCategory {
+    documentId
+    title
+    slug
+  }
+`
+export const FaqEntityFragmentDoc = gql`
+  fragment FaqEntity on Faq {
+    documentId
+    title
+    body
+    faqCategory {
+      ...FaqCategoryEntity
+    }
+  }
+  ${FaqCategoryEntityFragmentDoc}
+`
+export const FaqInventoryEntityFragmentDoc = gql`
+  fragment FaqInventoryEntity on Faq {
+    ...FaqEntity
+    updatedAt
+    publishedAt
+    adminGroups {
+      ...AdminGroupSlugEntity
+    }
+  }
+  ${FaqEntityFragmentDoc}
+  ${AdminGroupSlugEntityFragmentDoc}
 `
 export const UploadFileFragmentDoc = gql`
   fragment UploadFile on UploadFile {
@@ -23372,25 +23526,14 @@ export const RegulationsSectionFragmentDoc = gql`
   }
   ${RegulationEntityFragmentDoc}
 `
-export const FaqEntityFragmentDoc = gql`
-  fragment FaqEntity on Faq {
-    documentId
-    title
-    body
-    faqCategory {
-      title
-    }
-  }
-`
-export const FaqCategoryEntityFragmentDoc = gql`
-  fragment FaqCategoryEntity on FaqCategory {
-    documentId
-    title
-    slug
+export const FaqCategoryWithFaqsEntityFragmentDoc = gql`
+  fragment FaqCategoryWithFaqsEntity on FaqCategory {
+    ...FaqCategoryEntity
     faqs {
       ...FaqEntity
     }
   }
+  ${FaqCategoryEntityFragmentDoc}
   ${FaqEntityFragmentDoc}
 `
 export const FaqsSectionFragmentDoc = gql`
@@ -23401,13 +23544,13 @@ export const FaqsSectionFragmentDoc = gql`
       ...FaqEntity
     }
     faqCategories {
-      ...FaqCategoryEntity
+      ...FaqCategoryWithFaqsEntity
     }
     showAll
     titleLevelFaqsSection: titleLevel
   }
   ${FaqEntityFragmentDoc}
-  ${FaqCategoryEntityFragmentDoc}
+  ${FaqCategoryWithFaqsEntityFragmentDoc}
 `
 export const PartnerBlockFragmentDoc = gql`
   fragment PartnerBlock on ComponentBlocksPartner {
@@ -24308,10 +24451,18 @@ export const AssetsInventoryDocument = gql`
 export const FaqCategoriesDocument = gql`
   query FaqCategories($locale: I18NLocaleCode, $sort: [String] = ["title"]) {
     faqCategories(pagination: { limit: -1 }, locale: $locale, sort: $sort) {
-      ...FaqCategoryEntity
+      ...FaqCategoryWithFaqsEntity
     }
   }
-  ${FaqCategoryEntityFragmentDoc}
+  ${FaqCategoryWithFaqsEntityFragmentDoc}
+`
+export const FaqsInventoryDocument = gql`
+  query FaqsInventory($start: Int = 0, $limit: Int = 100, $locale: I18NLocaleCode = "sk") {
+    faqs(locale: $locale, sort: "id:asc", pagination: { start: $start, limit: $limit }) {
+      ...FaqInventoryEntity
+    }
+  }
+  ${FaqInventoryEntityFragmentDoc}
 `
 export const AllFilesDocument = gql`
   query allFiles($locale: I18NLocaleCode) {
@@ -24711,6 +24862,10 @@ export const TaxonomiesInventoryDocument = gql`
       title
       slug
     }
+    faqCategories(locale: $locale, sort: "title", pagination: { limit: $limit }) {
+      title
+      slug
+    }
   }
 `
 
@@ -24949,6 +25104,21 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             ...wrappedRequestHeaders,
           }),
         'FaqCategories',
+        'query',
+        variables,
+      )
+    },
+    FaqsInventory(
+      variables?: FaqsInventoryQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<FaqsInventoryQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<FaqsInventoryQuery>(FaqsInventoryDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'FaqsInventory',
         'query',
         variables,
       )

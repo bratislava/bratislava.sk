@@ -9,13 +9,13 @@ import DisclosureHeader from '@/src/components/common/Disclosure/DisclosureHeade
 import DisclosurePanel from '@/src/components/common/Disclosure/DisclosurePanel'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
-import { FaqCategoryEntityFragment, FaqEntityFragment } from '@/src/services/graphql'
+import { FaqCategoryWithFaqsEntityFragment, FaqEntityFragment } from '@/src/services/graphql'
 import { isDefined } from '@/src/utils/isDefined'
 
 export type FaqsGroupProps = {
   faqs?: FaqEntityFragment[]
   accordionTitleLevel?: AccordionTitleLevel
-  faqCategories?: FaqCategoryEntityFragment[]
+  faqCategories?: FaqCategoryWithFaqsEntityFragment[]
 }
 
 const FaqsGroup = ({ faqs, accordionTitleLevel = 'h2', faqCategories }: FaqsGroupProps) => {
