@@ -2,21 +2,42 @@ fragment FaqCategoryEntity on FaqCategory {
   documentId
   title
   slug
+}
+
+fragment FaqCategoryWithFaqsEntity on FaqCategory {
+  ...FaqCategoryEntity
   faqs {
     ...FaqEntity
   }
 }
+
 fragment FaqEntity on Faq {
   documentId
   title
   body
   faqCategory {
-    title
+    ...FaqCategoryEntity
   }
 }
 
 query FaqCategories($locale: I18NLocaleCode, $sort: [String] = ["title"]) {
   faqCategories(pagination: { limit: -1 }, locale: $locale, sort: $sort) {
-    ...FaqCategoryEntity
+    ...FaqCategoryWithFaqsEntity
+  }
+}
+
+# Used by the /api/content-inventory endpoint.
+fragment FaqInventoryEntity on Faq {
+  ...FaqEntity
+  updatedAt
+  publishedAt
+  adminGroups {
+    ...AdminGroupSlugEntity
+  }
+}
+
+query FaqsInventory($start: Int = 0, $limit: Int = 100, $locale: I18NLocaleCode = "sk") {
+  faqs(locale: $locale, sort: "id:asc", pagination: { start: $start, limit: $limit }) {
+    ...FaqInventoryEntity
   }
 }

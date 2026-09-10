@@ -2,6 +2,10 @@
 
 Versions of the `/api/content-inventory` response, as returned in its `version` field.
 
+## 5
+
+- Add the `faq` type, listing the frequently asked questions, with the question as the entry's `title`, the answer as `faq.body` in markdown and `faq.category` naming the category it is filed under, listed whole in `taxonomies.faqCategories` - they are rendered inside the pages that list them, so their `url` is always null
+
 ## 4
 
 - Add the `job-offer` type, listing the city's open positions from Nalgoo, with `job-offer.location`, `job-offer.salary`, `job-offer.salaryInfo` and `job-offer.employmentForms` - their `url` points to external page, and the offers returned without one are left out
