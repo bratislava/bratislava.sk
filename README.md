@@ -20,6 +20,25 @@ Each sub-project contains README which should get you up and running. More docum
 
 - in case of using `podman` use command `docker-compose up postgres`
 
+## Local installation
+
+Follow the user guide in folders `/strapi` and `/next`. In both of them the local dev setup is `cp .env.example .env.local`.
+
+`REVALIDATE_SECRET_TOKEN` can be any string, it just has to be the same in `strapi/.env.local` and `next/.env.local` - Strapi uses it to authorize its revalidation requests to Next.
+
+### Meilisearch
+
+After initial `docker compose up` you have to set keys for meilisearch for both the Strapi and Next. To get them, run the command below:
+
+```
+curl --request GET \
+  --url http://localhost:7700/keys \
+  --header 'Authorization: Bearer masterKey' \
+  --header 'Content-Type: application/json' | json_pp
+```
+
+Then use "Default Admin API Key" for strapi in `strapi/.env.local` as `MEILISEARCH_ADMIN_API_KEY` and "Default Search API Key" in `next/.env.local` file as `NEXT_PUBLIC_MEILISEARCH_SEARCH_API_KEY`.
+
 ## Acknowledgments
 
 This project utilizes the [iframe-resizer](https://github.com/davidjbradshaw/iframe-resizer) library, which is an open-source project developed by [David J. Bradshaw](https://github.com/davidjbradshaw). We are grateful for the work that has been put into this library and its contribution to the open-source community.

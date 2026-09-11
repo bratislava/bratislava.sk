@@ -6,13 +6,14 @@ This readme should get you up & running.
 
 You need `node` and `npm` installed locally.
 
-To install dependencies run:
+Install dependencies and create `.env.local` file which is .gitignored and used for local dev:
 
 ```
 npm install
+cp .env.example .env.local
 ```
 
-For CMS setup see `strapi` directory. You can also run the project against production strapi - this is the default setup. If you want to run against local strapi, you need to set `NEXT_PUBLIC_STRAPI_URL` in `.env.local` file.
+For CMS setup see `strapi` directory. `.env.example` points to a local Strapi - if you want to run against the deployed Strapi instead, uncomment the alternative `NEXT_PUBLIC_STRAPI_URL` (and `NEXT_PUBLIC_MEILISEARCH_*`) values in your `.env.local`.
 
 ## Run project locally
 
@@ -20,13 +21,13 @@ For CMS setup see `strapi` directory. You can also run the project against produ
 npm run dev
 ```
 
-By default this connects you to the production Strapi instance - this is all you need for much of the FE development or bugfixes. If you need to edit anything on the side of Strapi, it's still recommended that you start from seeded data instead of an empty database - read more in the `../strapi/README.md` or the [relevant docs](https://bratislava.github.io/docs/recipes/load-strapi-db-in-local-dev).
+Running against the deployed Strapi is all you need for much of the FE development or bugfixes. If you need to edit anything on the side of Strapi, run it locally and start from seeded data instead of an empty database - read more in the `../strapi/README.md` or the [relevant docs](https://bratislava.github.io/docs/recipes/load-strapi-db-in-local-dev).
 
 ## Meilisearch
 
 We're using [Meilisearch](https://www.meilisearch.com/) as our search engine - for search to work, Next & Strapi needs to connect to a running meilisearch instance. You can develop most of the page without this, but if you need to work with search follow [the guide on our docs page](https://bratislava.github.io/docs/bratislava.sk/meilisearch-setup).
 
-You can also setup local meilisearch instance using `docker compose` - see `docker-compose.yml` in the root of the repo and set your `.env.development.local` vars accordingly.
+You can also setup local meilisearch instance using `docker compose` - see `docker-compose.yml` and the Meilisearch section in the README in the root of the repo, and set your `.env.local` vars accordingly.
 
 ## Generate GraphQL
 
