@@ -3,6 +3,7 @@ resources:
   - secrets/msal.secret.yml
   - secrets/starz-ecomail.secret.yml
   - secrets/nalgoo.secret.yml
+  - secrets/content-inventory.secret.yml
 configMapGenerator:
   - name: ${BUILD_REPOSITORY_NAME}-env
     namespace: ${NAMESPACE}
