@@ -1,6 +1,6 @@
 {
   "envs": {
-    "STRAPI_CPU_REQUESTS": "100m",
+    "STRAPI_CPU_REQUESTS": "0",
     "STRAPI_MEMORY_REQUESTS": "1Gi",
     "STRAPI_CPU_LIMITS": "1",
     "STRAPI_MEMORY_LIMITS": "2Gi",
