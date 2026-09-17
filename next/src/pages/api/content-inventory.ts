@@ -74,6 +74,26 @@ const handler = async (
     return
   }
 
+  const apiKey = process.env.CONTENT_INVENTORY_API_KEY
+
+  if (!apiKey) {
+    // eslint-disable-next-line no-console
+    console.error('Content inventory: missing environment variable CONTENT_INVENTORY_API_KEY.')
+    response.status(500).json({ error: 'Endpoint is not configured' })
+
+    return
+  }
+
+  // The consumers are machines, the key is passed as a bearer token and never as a query parameter, which would leak it
+  // into the access logs.
+  if (request.headers.authorization !== `Bearer ${apiKey}`) {
+    // Set standard HTTP challenge header. Server sends it with 401 to say how client must authenticate. 401 without WWW-Authenticate violates RFC 7235 §3.1.
+    response.setHeader('WWW-Authenticate', 'Bearer')
+    response.status(401).json({ error: 'Invalid or missing API key' })
+
+    return
+  }
+
   const parsedParams = loadSearchParams(request.query)
   const invalidParams = getInvalidParams(request, parsedParams)
 
