@@ -43,7 +43,7 @@ const OrganizationalStructureDisclosure = ({
         <Typography variant={headerVariant}>{group.displayName}</Typography>
       </DisclosureHeader>
       <DisclosurePanel data-cy="organizational-structure-accordion-content">
-        <div className="flex flex-col gap-4 px-4 lg:px-6">
+        <div className="flex flex-col gap-4">
           {group.users.length > 0 && <OrganizationalStructureAccordionCards users={group.users} />}
           {group.groups.length > 0 && (
             <DisclosureGroup>
