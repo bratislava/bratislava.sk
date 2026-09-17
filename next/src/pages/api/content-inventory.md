@@ -4,6 +4,7 @@ Versions of the `/api/content-inventory` response, as returned in its `version` 
 
 ## 5
 
+- Require the api key - every request must carry it as `Authorization: Bearer <CONTENT_INVENTORY_API_KEY>`, the requests without it are answered with 401
 - Add the `faq` type, listing the frequently asked questions, with the question as the entry's `title`, the answer as `faq.body` in markdown and `faq.category` naming the category it is filed under, listed whole in `taxonomies.faqCategories` - they are rendered inside the pages that list them, so their `url` is always null
 
 ## 4
