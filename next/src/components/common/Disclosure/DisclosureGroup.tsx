@@ -1,10 +1,22 @@
+import { Children, Fragment, isValidElement, ReactNode } from 'react'
 import {
   DisclosureGroup as RACDisclosureGroup,
   DisclosureGroupProps as RACDisclosureGroupProps,
 } from 'react-aria-components'
 
-interface DisclosureGroupProps extends RACDisclosureGroupProps {
-  children: React.ReactNode
+import {
+  disclosureStyles,
+  DisclosureVariant,
+} from '@/src/components/common/Disclosure/disclosureStyles'
+import { DisclosureVariantContext } from '@/src/components/common/Disclosure/DisclosureVariantContext'
+import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
+import cn from '@/src/utils/cn'
+
+interface DisclosureGroupProps extends Omit<RACDisclosureGroupProps, 'className'> {
+  children: ReactNode
+  className?: string
+  /** Variant is passed down to all Disclosure parts inside. */
+  variant?: DisclosureVariant
 }
 
 /**
@@ -13,13 +25,33 @@ interface DisclosureGroupProps extends RACDisclosureGroupProps {
 
 const DisclosureGroup = ({
   children,
+  variant = 'boxed',
   allowsMultipleExpanded = true,
+  className,
   ...props
 }: DisclosureGroupProps) => {
+  const { box: boxStyles, divider: dividerStyles } = disclosureStyles[variant]
+
+  const childrenWithDividers =
+    dividerStyles === null
+      ? children
+      : Children.toArray(children).map((child, index) => (
+          <Fragment key={isValidElement(child) ? child.key : index}>
+            {index > 0 ? <HorizontalDivider className={dividerStyles} /> : null}
+            {child}
+          </Fragment>
+        ))
+
   return (
-    <RACDisclosureGroup allowsMultipleExpanded={allowsMultipleExpanded} {...props}>
-      {children}
-    </RACDisclosureGroup>
+    <DisclosureVariantContext.Provider value={variant}>
+      <RACDisclosureGroup
+        allowsMultipleExpanded={allowsMultipleExpanded}
+        {...props}
+        className={cn(boxStyles, className)}
+      >
+        {childrenWithDividers}
+      </RACDisclosureGroup>
+    </DisclosureVariantContext.Provider>
   )
 }
 
