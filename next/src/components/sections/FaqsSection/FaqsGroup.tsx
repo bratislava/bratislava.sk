@@ -1,13 +1,13 @@
 import { DisclosureTitleLevel } from '@/src/components/cards/getCardTitleLevel'
 import DisclosureGroup from '@/src/components/common/Disclosure/DisclosureGroup'
 import FaqDisclosure from '@/src/components/sections/FaqsSection/FaqDisclosure'
-import { FaqCategoryEntityFragment, FaqEntityFragment } from '@/src/services/graphql'
+import { FaqCategoryWithFaqsEntityFragment, FaqEntityFragment } from '@/src/services/graphql'
 import { isDefined } from '@/src/utils/isDefined'
 
 export type FaqsGroupProps = {
   faqs?: FaqEntityFragment[]
   disclosureTitleLevel?: DisclosureTitleLevel
-  faqCategories?: FaqCategoryEntityFragment[]
+  faqCategories?: FaqCategoryWithFaqsEntityFragment[]
 }
 
 const FaqsGroup = ({ faqs, disclosureTitleLevel = 'h2', faqCategories }: FaqsGroupProps) => {

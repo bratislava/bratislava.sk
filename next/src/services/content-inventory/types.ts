@@ -1,4 +1,4 @@
-/** Every content type that has its own url on the website, i.e. everything the inventory can list. */
+/** Every content type the inventory can list, i.e. everything the website publishes. */
 export const inventoryTypes = [
   'page',
   'article',
@@ -9,6 +9,7 @@ export const inventoryTypes = [
   'official-board',
   'municipal-service',
   'job-offer',
+  'faq',
 ] as const
 
 export type InventoryType = (typeof inventoryTypes)[number]
@@ -40,7 +41,7 @@ export type InventoryFile = {
 export type InventoryEntryBase = {
   /** Unique key, `${type}:${documentId}`. */
   id: string
-  /** Absolute. Null only for content whose host page could not be resolved. */
+  /** Absolute. Null for content that has no page of its own, i.e. the FAQs, and for an unresolved host page. */
   url: string | null
   /** As shown to a visitor. */
   title: string
@@ -230,6 +231,17 @@ export type JobOfferInventoryData = {
   employmentForms?: string[]
 }
 
+/**
+ * FAQs are rendered inside the pages that list them, so an entry carries the question as its `title` and the answer
+ * here, in the markdown the editor wrote.
+ */
+export type FaqInventoryData = {
+  /** The answer, as markdown. */
+  body?: string
+  /** The slug of the single category the question is filed under. */
+  category?: string
+}
+
 /** What one build of the inventory produces - the entries plus the taxonomies listed next to them. */
 export type Inventory = {
   entries: InventoryEntry[]
@@ -250,6 +262,7 @@ export type InventoryEntry =
       'municipal-service'?: MunicipalServiceInventoryData
     })
   | (InventoryEntryBase & { type: 'job-offer'; 'job-offer'?: JobOfferInventoryData })
+  | (InventoryEntryBase & { type: 'faq'; faq?: FaqInventoryData })
 
 /**
  * One value of a taxonomy, listed alongside the entries so a consumer sees the whole taxonomy and not only the values
@@ -279,6 +292,8 @@ export type InventoryTaxonomies = {
   officialBoardCategories: InventoryTaxonomy[]
   /** The city account's categories, i.e. what `municipal-service.categories` name. */
   municipalServiceCategories: InventoryTaxonomy[]
+  /** What `faq.category` names. */
+  faqCategories: InventoryTaxonomy[]
 }
 
 /** Reduced entry returned for `?fields=url`, meant for cheap diffing (including detecting removals). */
