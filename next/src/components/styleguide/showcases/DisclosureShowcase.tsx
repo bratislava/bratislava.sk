@@ -17,7 +17,11 @@ const faqs: FaqEntityFragment[] = [
     documentId: 'showcase-faq-1',
     title: 'Faq with a category badge',
     body: LOREM,
-    faqCategory: { title: 'Category' },
+    faqCategory: {
+      documentId: 'showcase-faq-category-1',
+      title: 'Category',
+      slug: 'showcase-faq-category-1',
+    },
   },
   {
     documentId: 'showcase-faq-2',
