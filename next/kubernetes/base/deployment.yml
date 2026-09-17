@@ -36,6 +36,8 @@ spec:
                 name: bratislava-strapi-revalidate-secret
             - secretRef:
                 name: nalgoo-secret
+            - secretRef:
+                name: ${BUILD_REPOSITORY_NAME}-content-inventory-secret
             - configMapRef:
                 name: ${BUILD_REPOSITORY_NAME}-env
           readinessProbe:
