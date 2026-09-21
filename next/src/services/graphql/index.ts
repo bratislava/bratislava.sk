@@ -1899,6 +1899,7 @@ export type ComponentSectionsAssets = {
   allowCollapsingDocuments?: Maybe<Scalars['Boolean']['output']>
   assets: Array<Maybe<Asset>>
   assets_connection?: Maybe<AssetRelationResponseCollection>
+  displayOrder?: Maybe<Enum_Componentsectionsassets_Displayorder>
   id: Scalars['ID']['output']
   showAll?: Maybe<Scalars['Boolean']['output']>
   text?: Maybe<Scalars['String']['output']>
@@ -1922,6 +1923,7 @@ export type ComponentSectionsAssetsFiltersInput = {
   allowCollapsingDocuments?: InputMaybe<BooleanFilterInput>
   and?: InputMaybe<Array<InputMaybe<ComponentSectionsAssetsFiltersInput>>>
   assets?: InputMaybe<AssetFiltersInput>
+  displayOrder?: InputMaybe<StringFilterInput>
   not?: InputMaybe<ComponentSectionsAssetsFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsAssetsFiltersInput>>>
   showAll?: InputMaybe<BooleanFilterInput>
@@ -1933,6 +1935,7 @@ export type ComponentSectionsAssetsFiltersInput = {
 export type ComponentSectionsAssetsInput = {
   allowCollapsingDocuments?: InputMaybe<Scalars['Boolean']['input']>
   assets?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
+  displayOrder?: InputMaybe<Enum_Componentsectionsassets_Displayorder>
   id?: InputMaybe<Scalars['ID']['input']>
   showAll?: InputMaybe<Scalars['Boolean']['input']>
   text?: InputMaybe<Scalars['String']['input']>
@@ -3588,6 +3591,11 @@ export enum Enum_Componentsectionsalert_Alertvariant {
 export enum Enum_Componentsectionsannouncementbanner_Variant {
   Dark = 'dark',
   Inverted = 'inverted',
+}
+
+export enum Enum_Componentsectionsassets_Displayorder {
+  Default = 'default',
+  Reversed = 'reversed',
 }
 
 export enum Enum_Componentsectionsassets_Titlelevel {
@@ -12215,6 +12223,7 @@ export type PageEntityFragment = {
         text?: string | null
         showAll?: boolean | null
         allowCollapsingDocuments?: boolean | null
+        displayOrder?: Enum_Componentsectionsassets_Displayorder | null
         titleLevelAssetsSection?: Enum_Componentsectionsassets_Titlelevel | null
         assets: Array<{
           __typename: 'Asset'
@@ -14051,6 +14060,7 @@ export type PageByPathQuery = {
           text?: string | null
           showAll?: boolean | null
           allowCollapsingDocuments?: boolean | null
+          displayOrder?: Enum_Componentsectionsassets_Displayorder | null
           titleLevelAssetsSection?: Enum_Componentsectionsassets_Titlelevel | null
           assets: Array<{
             __typename: 'Asset'
@@ -15915,6 +15925,7 @@ export type Dev_AllPagesQuery = {
           text?: string | null
           showAll?: boolean | null
           allowCollapsingDocuments?: boolean | null
+          displayOrder?: Enum_Componentsectionsassets_Displayorder | null
           titleLevelAssetsSection?: Enum_Componentsectionsassets_Titlelevel | null
           assets: Array<{
             __typename: 'Asset'
@@ -19163,6 +19174,7 @@ export type AssetsSectionFragment = {
   text?: string | null
   showAll?: boolean | null
   allowCollapsingDocuments?: boolean | null
+  displayOrder?: Enum_Componentsectionsassets_Displayorder | null
   titleLevelAssetsSection?: Enum_Componentsectionsassets_Titlelevel | null
   assets: Array<{
     __typename: 'Asset'
@@ -20279,6 +20291,7 @@ type Sections_ComponentSectionsAssets_Fragment = {
   text?: string | null
   showAll?: boolean | null
   allowCollapsingDocuments?: boolean | null
+  displayOrder?: Enum_Componentsectionsassets_Displayorder | null
   titleLevelAssetsSection?: Enum_Componentsectionsassets_Titlelevel | null
   assets: Array<{
     __typename: 'Asset'
@@ -23601,6 +23614,7 @@ export const AssetsSectionFragmentDoc = gql`
     showAll
     allowCollapsingDocuments
     titleLevelAssetsSection: titleLevel
+    displayOrder
   }
   ${AssetEntityFragmentDoc}
 `

@@ -40,6 +40,7 @@ const AssetsSection = ({ section }: Props) => {
     showAll,
     allowCollapsingDocuments,
     titleLevelAssetsSection: titleLevel,
+    displayOrder,
   } = section
 
   if (showAll) {
@@ -63,7 +64,7 @@ const AssetsSection = ({ section }: Props) => {
 
         <div className="flex flex-col rounded-lg border py-2">
           <ul id={listId}>
-            {assetsToShow
+            {(displayOrder === 'reversed' ? assetsToShow.toReversed() : assetsToShow)
               .map((asset, index) => {
                 const { title: assetTitle, files, assetCategory, updatedAt, documentId } = asset
 
