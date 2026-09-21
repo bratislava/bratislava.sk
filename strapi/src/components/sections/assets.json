@@ -16,6 +16,14 @@
       "type": "boolean",
       "default": false
     },
+    "displayOrder": {
+      "type": "enumeration",
+      "default": "default",
+      "enum": [
+        "default",
+        "reversed"
+      ]
+    },
     "assets": {
       "type": "relation",
       "relation": "oneToMany",

@@ -62,6 +62,20 @@
           "sortable": true
         }
       },
+      "displayOrder": {
+        "edit": {
+          "label": "Poradie dokumentov",
+          "description": "Predvolený stav zobrazí dokumenty v rovnakom poradí ako ich vidieť v strapi",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "displayOrder",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "assets": {
         "edit": {
           "label": "Dokumenty",
@@ -139,6 +153,10 @@
         [
           {
             "name": "allowCollapsingDocuments",
+            "size": 6
+          },
+          {
+            "name": "displayOrder",
             "size": 6
           }
         ],

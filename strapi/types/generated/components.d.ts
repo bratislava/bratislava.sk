@@ -682,6 +682,8 @@ export interface SectionsAssets extends Struct.ComponentSchema {
   attributes: {
     allowCollapsingDocuments: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>
     assets: Schema.Attribute.Relation<'oneToMany', 'api::asset.asset'>
+    displayOrder: Schema.Attribute.Enumeration<['default', 'reversed']> &
+      Schema.Attribute.DefaultTo<'default'>
     showAll: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
     text: Schema.Attribute.Text
     title: Schema.Attribute.String & Schema.Attribute.DefaultTo<'Dokumenty'>
