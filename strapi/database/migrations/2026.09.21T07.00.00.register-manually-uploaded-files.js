@@ -42,13 +42,12 @@
 
 const filesToRegister = [
   {
-    name: 'test.pdf',
-    hash: 'test',
+    name: 'test-1gb.pdf',
+    hash: 'test-1gb_070f8aaaf4',
     ext: '.pdf',
     mime: 'application/pdf',
-    // 583 B
-    size: 0.58,
-    url: 'https://bratislavask.s3.bratislava.sk/upload/test.pdf',
+    size: 999999.89,
+    url: 'https://bratislavask.s3.bratislava.sk/upload/test-1gb_070f8aaaf4.pdf',
     provider: 'aws-s3',
   },
 ]
