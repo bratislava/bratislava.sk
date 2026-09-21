@@ -52,6 +52,10 @@ const AssetsSection = ({ section }: Props) => {
   }
 
   const filteredAssets = assets.filter(isDefined)
+  if (displayOrder === 'reversed') {
+    filteredAssets.reverse()
+  }
+
   const assetsToShow = filteredAssets.slice(
     0,
     isCollapsed || !allowCollapsingDocuments ? filteredAssets.length : COLLAPSE_THRESHOLD,
@@ -64,7 +68,7 @@ const AssetsSection = ({ section }: Props) => {
 
         <div className="flex flex-col rounded-lg border py-2">
           <ul id={listId}>
-            {(displayOrder === 'reversed' ? assetsToShow.toReversed() : assetsToShow)
+            {assetsToShow
               .map((asset, index) => {
                 const { title: assetTitle, files, assetCategory, updatedAt, documentId } = asset
 
