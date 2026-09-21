@@ -1,43 +1,30 @@
 'use strict'
 
 /**
- * This migration script is usually used for large files that were uploaded to the MinIO bucket manually.
- * It registers these files into the media library, so they can be picked in the admin panel.
+ * DO NOT DELETE THIS FILE
  *
- * Nothing is uploaded here - the objects must already exist in the bucket under the `upload` root path (see
- * `config/env/production/plugins.ts`). The migration only creates the matching `files` rows in db.
+ * This migration script takes manually uploaded files to MinIO and registers them into the Strapi media library.
+ * Usually used fot large files that cannot be uploaded via Strapi admin.
  *
- * `hash` and `ext` must together match the object key (`upload/<hash><ext>`) - the provider builds the key from them,
- * never from `url`, so a mismatch means that removing the file from the media library deletes the wrong object or
- * nothing at all.
- * Strapi stores `size` in kilobytes (`bytesToKbytes`: bytes / 1000, rounded to two decimals).
- * Files are placed at the media library root (`folderPath` `/`, no folder relation).
- * `width`, `height` and `formats` stay empty, so images registered this way have no thumbnails - the admin panel falls
- * back to the original file. Registering images or videos with this script was not tested. It's mainly for documents.
- *
- * This file is plain JS on purpose - the migration runner only globs `*.{js,sql}` and reads a named `up` export.
- *
- * How to add a new file:
- *  - Upload the file with the `k8minio` helper (`minio.sh` in the `k8-helpers` repo). It reads the MinIO credentials
- *    from the cluster, gives the key a slugified name with a random suffix, refuses to overwrite an existing key, and
- *    prints exactly the fields below. Keep the helper's default `--prefix upload/`, the `upload/<hash><ext>` layout is
- *    what the provider recomposes on delete.
- *  - Paste the printed `name`, `hash`, `ext`, `mime`, `size` and `url` into a new `filesToRegister` entry and add
- *    `provider: 'aws-s3'`, it is the same for the whole bucket.
- *    - Check that the object is really served as the reported `mime` (`curl -sI <url>`) - the helper reads it with
- *      `file --mime-type`, while `mc` sets the stored Content-Type from the extension, and the two can disagree for
- *      less common formats.
- *    - Without the helper, upload the file by hand, compose the url (see `config/env/production/plugins.ts`), take
- *      the size from `curl -sI <url>` (`Content-Length`) and convert it to kilobytes as explained above.
- *  - Copy this file to a new one with a current timestamp in its name, and keep only the new entries in
- *    `filesToRegister` there. Migrations run once per file name, so editing this one has no effect on environments
- *    that already ran it.
+ * Notes:
+ *  - Strapi stores `size` in kilobytes (`bytesToKbytes`: bytes / 1000, rounded to two decimals).
+ *  - Files are placed at the media library root (`folderPath` `/`, no folder relation).
+ *  - Registering images or videos with this script is not supported (`width`, `height` and `formats` stay empty).
  *  - Entries whose `url` is already in the db table are skipped, so re-running against a partially seeded database is
  *    safe.
- *  - Commit and deploy. The file should be added to db on Strapi startup.
+ *  - All environments (dev, staging and prod) share one bucket.
  *
- * Urls are hardcoded - dev, staging and prod share one bucket (`MINIO_BUCKET` and `MINIO_PUBLIC_ENDPOINT` live in
- * `kubernetes/base/.env`, only the credentials differ per environment), so the same url is valid everywhere.
+ * How to add a new file:
+ *  - Upload the file using `mc` (MinIO Client) library https://github.com/minio/mc. You can use a prompt like this to get
+ *    proper commands, or try to use previously AI generated script /strapi/scripts/dev/upload-to-minio.sh.
+ *    > Using https://github.com/minio/mc, upload the file ./file.pdf to https://s3.bratislava.sk/bratislavask/upload/.
+ *    > Slugify and generate unique suffix for it and check that there is no conflicting files in target location before uploading.
+ *    > Do this using minio credentials you'll get by kubectl from staging cluster bratislava-strapi in standalone namespace.
+ *  - Get the size, compute it in kilobytes, and get the mime type (`curl -sI <url>`)
+ *  - Add a new entry to `filesToRegister` array with `name`, `hash`, `ext`, `mime`, `size`, `url` and `provider: 'aws-s3'`
+ *  - Rename this migration file to use current timestamp, and keep only the new entries in `filesToRegister`.
+ *    Migrations run once per file name per environment.
+ *  - Commit and deploy. The file should be added to db on Strapi startup.
  */
 
 const filesToRegister = [
