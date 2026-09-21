@@ -18,12 +18,17 @@
  * This file is plain JS on purpose - the migration runner only globs `*.{js,sql}` and reads a named `up` export.
  *
  * How to add a new file:
- *  - Upload the file to minio bucket using minio cli (or minio web ui).
- *    - Make sure it uses proper MIME type.
- *    - Preferably, use random alphanumeric string in file name to mimic Strapi behaviour: file-name_r4nD0m5tr1nG.ext
- *  - Get file data:
- *    - Compose the file's url (see `config/env/production/plugins.ts`)
- *    - Get file size - use HEAD request (`curl -sI <url>`) instead of guessing. Compute size in kilobytes.
+ *  - Upload the file with the `k8minio` helper (`minio.sh` in the `k8-helpers` repo). It reads the MinIO credentials
+ *    from the cluster, gives the key a slugified name with a random suffix, refuses to overwrite an existing key, and
+ *    prints exactly the fields below. Keep the helper's default `--prefix upload/`, the `upload/<hash><ext>` layout is
+ *    what the provider recomposes on delete.
+ *  - Paste the printed `name`, `hash`, `ext`, `mime`, `size` and `url` into a new `filesToRegister` entry and add
+ *    `provider: 'aws-s3'`, it is the same for the whole bucket.
+ *    - Check that the object is really served as the reported `mime` (`curl -sI <url>`) - the helper reads it with
+ *      `file --mime-type`, while `mc` sets the stored Content-Type from the extension, and the two can disagree for
+ *      less common formats.
+ *    - Without the helper, upload the file by hand, compose the url (see `config/env/production/plugins.ts`), take
+ *      the size from `curl -sI <url>` (`Content-Length`) and convert it to kilobytes as explained above.
  *  - Copy this file to a new one with a current timestamp in its name, and keep only the new entries in
  *    `filesToRegister` there. Migrations run once per file name, so editing this one has no effect on environments
  *    that already ran it.
