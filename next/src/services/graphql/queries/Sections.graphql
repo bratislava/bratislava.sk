@@ -402,6 +402,7 @@ fragment AssetsSection on ComponentSectionsAssets {
   showAll
   allowCollapsingDocuments
   titleLevelAssetsSection: titleLevel
+  displayOrder
 }
 
 fragment PageCardsItemBlock on ComponentBlocksPageCardsItem {

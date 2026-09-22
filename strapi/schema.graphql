@@ -1503,6 +1503,7 @@ type ComponentSectionsAssets {
   allowCollapsingDocuments: Boolean
   assets(filters: AssetFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Asset]!
   assets_connection(filters: AssetFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): AssetRelationResponseCollection
+  displayOrder: ENUM_COMPONENTSECTIONSASSETS_DISPLAYORDER
   id: ID!
   showAll: Boolean
   text: String
@@ -1514,6 +1515,7 @@ input ComponentSectionsAssetsFiltersInput {
   allowCollapsingDocuments: BooleanFilterInput
   and: [ComponentSectionsAssetsFiltersInput]
   assets: AssetFiltersInput
+  displayOrder: StringFilterInput
   not: ComponentSectionsAssetsFiltersInput
   or: [ComponentSectionsAssetsFiltersInput]
   showAll: BooleanFilterInput
@@ -1525,6 +1527,7 @@ input ComponentSectionsAssetsFiltersInput {
 input ComponentSectionsAssetsInput {
   allowCollapsingDocuments: Boolean
   assets: [ID]
+  displayOrder: ENUM_COMPONENTSECTIONSASSETS_DISPLAYORDER
   id: ID
   showAll: Boolean
   text: String
@@ -2868,6 +2871,11 @@ enum ENUM_COMPONENTSECTIONSALERT_ALERTVARIANT {
 enum ENUM_COMPONENTSECTIONSANNOUNCEMENTBANNER_VARIANT {
   dark
   inverted
+}
+
+enum ENUM_COMPONENTSECTIONSASSETS_DISPLAYORDER {
+  assetsSection_displayOrder_default
+  assetsSection_displayOrder_reversed
 }
 
 enum ENUM_COMPONENTSECTIONSASSETS_TITLELEVEL {

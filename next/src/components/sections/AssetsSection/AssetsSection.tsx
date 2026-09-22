@@ -9,7 +9,10 @@ import Icon from '@/src/components/common/Icon/Icon'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
 import AssetsAll from '@/src/components/sections/AssetsSection/AssetsAll'
-import { AssetsSectionFragment } from '@/src/services/graphql'
+import {
+  AssetsSectionFragment,
+  Enum_Componentsectionsassets_Displayorder,
+} from '@/src/services/graphql'
 import { formatDate } from '@/src/utils/formatDate'
 import { formatFileExtension } from '@/src/utils/formatFileExtension'
 import { formatFileSize } from '@/src/utils/formatFileSize'
@@ -40,6 +43,7 @@ const AssetsSection = ({ section }: Props) => {
     showAll,
     allowCollapsingDocuments,
     titleLevelAssetsSection: titleLevel,
+    displayOrder,
   } = section
 
   if (showAll) {
@@ -51,6 +55,12 @@ const AssetsSection = ({ section }: Props) => {
   }
 
   const filteredAssets = assets.filter(isDefined)
+  if (
+    displayOrder === Enum_Componentsectionsassets_Displayorder.AssetsSectionDisplayOrderReversed
+  ) {
+    filteredAssets.reverse()
+  }
+
   const assetsToShow = filteredAssets.slice(
     0,
     isCollapsed || !allowCollapsingDocuments ? filteredAssets.length : COLLAPSE_THRESHOLD,
