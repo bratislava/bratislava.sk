@@ -19,10 +19,7 @@
     "displayOrder": {
       "type": "enumeration",
       "default": "default",
-      "enum": [
-        "default",
-        "reversed"
-      ]
+      "enum": ["assetsSection.displayOrder.default", "assetsSection.displayOrder.reversed"]
     },
     "assets": {
       "type": "relation",
@@ -42,10 +39,7 @@
     "titleLevel": {
       "type": "enumeration",
       "default": "h2",
-      "enum": [
-        "h2",
-        "h3"
-      ]
+      "enum": ["h2", "h3"]
     },
     "allowCollapsingDocuments": {
       "type": "boolean",

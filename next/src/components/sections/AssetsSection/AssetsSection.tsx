@@ -52,7 +52,7 @@ const AssetsSection = ({ section }: Props) => {
   }
 
   const filteredAssets = assets.filter(isDefined)
-  if (displayOrder === 'reversed') {
+  if (displayOrder === 'assetsSection.displayOrder.reversed') {
     filteredAssets.reverse()
   }
 

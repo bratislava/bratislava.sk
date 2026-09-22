@@ -3594,8 +3594,8 @@ export enum Enum_Componentsectionsannouncementbanner_Variant {
 }
 
 export enum Enum_Componentsectionsassets_Displayorder {
-  Default = 'default',
-  Reversed = 'reversed',
+  AssetsSectionDisplayOrderDefault = 'assetsSection_displayOrder_default',
+  AssetsSectionDisplayOrderReversed = 'assetsSection_displayOrder_reversed',
 }
 
 export enum Enum_Componentsectionsassets_Titlelevel {

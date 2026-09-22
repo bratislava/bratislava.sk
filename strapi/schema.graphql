@@ -2874,8 +2874,8 @@ enum ENUM_COMPONENTSECTIONSANNOUNCEMENTBANNER_VARIANT {
 }
 
 enum ENUM_COMPONENTSECTIONSASSETS_DISPLAYORDER {
-  default
-  reversed
+  assetsSection_displayOrder_default
+  assetsSection_displayOrder_reversed
 }
 
 enum ENUM_COMPONENTSECTIONSASSETS_TITLELEVEL {

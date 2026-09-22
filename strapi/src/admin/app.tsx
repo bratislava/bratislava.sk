@@ -88,6 +88,10 @@ export default {
         'columnsSection.imageVariant.imageOriginalSize': 'Obrázky s vlastnou veľkosťou',
         'columnsSection.responsiveLayout.slider': 'Slider',
         'columnsSection.responsiveLayout.oneColumn': 'Pod sebou',
+
+        // Order
+        'assetsSection.displayOrder.default': 'Predvolené',
+        'assetsSection.displayOrder.reversed': 'Obrátené',
       },
       en: {
         // Used in columns section
@@ -95,6 +99,10 @@ export default {
         'columnsSection.imageVariant.imageOriginalSize': 'Obrázky s vlastnou veľkosťou',
         'columnsSection.responsiveLayout.slider': 'Slider',
         'columnsSection.responsiveLayout.oneColumn': 'Pod sebou',
+
+        // Order
+        'assetsSection.displayOrder.default': 'Predvolené',
+        'assetsSection.displayOrder.reversed': 'Obrátené',
       },
     },
   },
