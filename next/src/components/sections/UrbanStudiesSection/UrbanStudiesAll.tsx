@@ -8,11 +8,13 @@ import PaginationWithInput from '@/src/components/common/Pagination/PaginationWi
 import SectionHeader from '@/src/components/layouts/SectionHeader'
 import SearchBar from '@/src/components/sections/SearchSection/SearchBar'
 import SearchResultCard from '@/src/components/sections/SearchSection/SearchResultCard'
+import UrbanStudiesFilterGroup from '@/src/components/sections/UrbanStudiesSection/UrbanStudiesFilterGroup'
+import { useUrbanStudiesFilters } from '@/src/components/sections/UrbanStudiesSection/useUrbanStudiesFilters'
 import { UrbanStudiesSectionFragment } from '@/src/services/graphql'
 import {
   getUrbanStudiesQueryKey,
-  urbanStudiesDefaultFilters,
   urbanStudiesFetcher,
+  UrbanStudiesFilters,
 } from '@/src/services/meili/fetchers/urbanStudiesFetcher'
 import { isDefined } from '@/src/utils/isDefined'
 import { useTranslation } from '@/src/utils/useTranslation'
@@ -22,25 +24,26 @@ type Props = {
 }
 
 /**
- * Searchable, paginated list of all urban studies. Mirrors AssetsAll, but urban studies have no
- * category/author filters, so only full-text search + pagination is provided.
+ * Searchable, paginated list of all urban studies with category and state filters. Mirrors AssetsAll.
  */
 const UrbanStudiesAll = ({ section }: Props) => {
   const { t } = useTranslation()
 
   const { title, text, titleLevelUrbanStudiesSection: titleLevel } = section
 
+  const { filters, setFilters, setSearch, setPage } = useUrbanStudiesFilters()
+
   const [input, setInput] = useState('')
   const [debouncedInput] = useDebounceValue(input, 300)
-  const [search, setSearch] = useState(urbanStudiesDefaultFilters.search)
-  const [page, setPage] = useState(urbanStudiesDefaultFilters.page)
+
+  const handleFiltersChange = (newFilters: UrbanStudiesFilters) => {
+    setFilters({ ...newFilters, page: 1 })
+  }
 
   useEffect(() => {
     setSearch(debouncedInput)
     setPage(1)
-  }, [debouncedInput])
-
-  const filters = { search, page, pageSize: urbanStudiesDefaultFilters.pageSize }
+  }, [debouncedInput, setSearch, setPage])
 
   const { data, isPending } = useQuery({
     queryKey: getUrbanStudiesQueryKey(filters),
@@ -52,7 +55,7 @@ const UrbanStudiesAll = ({ section }: Props) => {
 
   useEffect(() => {
     searchRef.current?.scrollIntoView({ behavior: 'smooth' })
-  }, [filters.page])
+  }, [filters.page, filters.pageSize])
 
   const currentResultsCount = data?.hits.length ?? 0
   const totalCount = data?.estimatedTotalHits ?? 0
@@ -74,6 +77,8 @@ const UrbanStudiesAll = ({ section }: Props) => {
           setSearchQuery={setSearch}
           isLoading={isPending}
         />
+
+        <UrbanStudiesFilterGroup filters={filters} onFiltersChange={handleFiltersChange} />
       </div>
 
       {data?.hits?.length ? (

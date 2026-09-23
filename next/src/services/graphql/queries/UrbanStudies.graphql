@@ -105,3 +105,15 @@ query UrbanStudiesInventory($start: Int = 0, $limit: Int = 100) {
     ...UrbanStudyInventoryEntity
   }
 }
+
+query UrbanStudyCategories {
+  urbanStudyCategories(sort: "title", pagination: { limit: -1 }) {
+    ...UrbanStudyCategoryEntity
+  }
+}
+
+query UrbanStudyStates {
+  urbanStudyStates(sort: "title", pagination: { limit: -1 }) {
+    ...UrbanStudyStateEntity
+  }
+}

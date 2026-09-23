@@ -22312,6 +22312,30 @@ export type UrbanStudiesInventoryQuery = {
   } | null>
 }
 
+export type UrbanStudyCategoriesQueryVariables = Exact<{ [key: string]: never }>
+
+export type UrbanStudyCategoriesQuery = {
+  __typename?: 'Query'
+  urbanStudyCategories: Array<{
+    __typename?: 'UrbanStudyCategory'
+    documentId: string
+    slug: string
+    title: string
+  } | null>
+}
+
+export type UrbanStudyStatesQueryVariables = Exact<{ [key: string]: never }>
+
+export type UrbanStudyStatesQuery = {
+  __typename?: 'Query'
+  urbanStudyStates: Array<{
+    __typename?: 'UrbanStudyState'
+    documentId: string
+    slug: string
+    title: string
+  } | null>
+}
+
 export type TaxonomiesInventoryQueryVariables = Exact<{
   limit?: InputMaybe<Scalars['Int']['input']>
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
@@ -24836,6 +24860,22 @@ export const UrbanStudiesInventoryDocument = gql`
   }
   ${UrbanStudyInventoryEntityFragmentDoc}
 `
+export const UrbanStudyCategoriesDocument = gql`
+  query UrbanStudyCategories {
+    urbanStudyCategories(sort: "title", pagination: { limit: -1 }) {
+      ...UrbanStudyCategoryEntity
+    }
+  }
+  ${UrbanStudyCategoryEntityFragmentDoc}
+`
+export const UrbanStudyStatesDocument = gql`
+  query UrbanStudyStates {
+    urbanStudyStates(sort: "title", pagination: { limit: -1 }) {
+      ...UrbanStudyStateEntity
+    }
+  }
+  ${UrbanStudyStateEntityFragmentDoc}
+`
 export const TaxonomiesInventoryDocument = gql`
   query TaxonomiesInventory($limit: Int = -1, $locale: I18NLocaleCode = "sk") {
     articleCategories(locale: $locale, sort: "title", pagination: { limit: $limit }) {
@@ -25544,6 +25584,36 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             ...wrappedRequestHeaders,
           }),
         'UrbanStudiesInventory',
+        'query',
+        variables,
+      )
+    },
+    UrbanStudyCategories(
+      variables?: UrbanStudyCategoriesQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<UrbanStudyCategoriesQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<UrbanStudyCategoriesQuery>(UrbanStudyCategoriesDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'UrbanStudyCategories',
+        'query',
+        variables,
+      )
+    },
+    UrbanStudyStates(
+      variables?: UrbanStudyStatesQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<UrbanStudyStatesQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<UrbanStudyStatesQuery>(UrbanStudyStatesDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'UrbanStudyStates',
         'query',
         variables,
       )
