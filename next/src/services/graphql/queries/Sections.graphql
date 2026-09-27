@@ -622,6 +622,40 @@ fragment IframeTabsSection on ComponentSectionsIframeTabs {
   titleLevelIframeTabsSection: titleLevel
 }
 
+fragment ProcessTimelineStep on ComponentBlocksProcessTimelineStep {
+  id
+  title
+  period
+  substeps {
+    ...ProcessTimelineSubstep
+  }
+}
+
+fragment ProcessTimelineSubstep on ComponentBlocksProcessTimelineSubstep {
+  id
+  title
+  period
+  content
+  primaryButton {
+    ...CommonLink
+  }
+  secondaryButton {
+    ...CommonLink
+  }
+}
+
+fragment ProcessTimelineSection on ComponentSectionsProcessTimeline {
+  title
+  titleLevelProcessTimelineSection: titleLevel
+  text
+  currentStep
+  currentSubstep
+  showBanner
+  steps {
+    ...ProcessTimelineStep
+  }
+}
+
 fragment Sections on PageSectionsDynamicZone {
   __typename
 
@@ -783,6 +817,10 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsPageCards {
     ...PageCardsSection
+  }
+
+  ... on ComponentSectionsProcessTimeline {
+    ...ProcessTimelineSection
   }
 }
 

@@ -1304,6 +1304,66 @@ export type ComponentBlocksPartnerInput = {
   url?: InputMaybe<Scalars['String']['input']>
 }
 
+export type ComponentBlocksProcessTimelineStep = {
+  __typename?: 'ComponentBlocksProcessTimelineStep'
+  id: Scalars['ID']['output']
+  period: Scalars['String']['output']
+  substeps?: Maybe<Array<Maybe<ComponentBlocksProcessTimelineSubstep>>>
+  title: Scalars['String']['output']
+}
+
+export type ComponentBlocksProcessTimelineStepSubstepsArgs = {
+  filters?: InputMaybe<ComponentBlocksProcessTimelineSubstepFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ComponentBlocksProcessTimelineStepFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentBlocksProcessTimelineStepFiltersInput>>>
+  not?: InputMaybe<ComponentBlocksProcessTimelineStepFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentBlocksProcessTimelineStepFiltersInput>>>
+  period?: InputMaybe<StringFilterInput>
+  substeps?: InputMaybe<ComponentBlocksProcessTimelineSubstepFiltersInput>
+  title?: InputMaybe<StringFilterInput>
+}
+
+export type ComponentBlocksProcessTimelineStepInput = {
+  id?: InputMaybe<Scalars['ID']['input']>
+  period?: InputMaybe<Scalars['String']['input']>
+  substeps?: InputMaybe<Array<InputMaybe<ComponentBlocksProcessTimelineSubstepInput>>>
+  title?: InputMaybe<Scalars['String']['input']>
+}
+
+export type ComponentBlocksProcessTimelineSubstep = {
+  __typename?: 'ComponentBlocksProcessTimelineSubstep'
+  content?: Maybe<Scalars['String']['output']>
+  id: Scalars['ID']['output']
+  period: Scalars['String']['output']
+  primaryButton?: Maybe<ComponentBlocksCommonLink>
+  secondaryButton?: Maybe<ComponentBlocksCommonLink>
+  title: Scalars['String']['output']
+}
+
+export type ComponentBlocksProcessTimelineSubstepFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentBlocksProcessTimelineSubstepFiltersInput>>>
+  content?: InputMaybe<StringFilterInput>
+  not?: InputMaybe<ComponentBlocksProcessTimelineSubstepFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentBlocksProcessTimelineSubstepFiltersInput>>>
+  period?: InputMaybe<StringFilterInput>
+  primaryButton?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
+  secondaryButton?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
+  title?: InputMaybe<StringFilterInput>
+}
+
+export type ComponentBlocksProcessTimelineSubstepInput = {
+  content?: InputMaybe<Scalars['String']['input']>
+  id?: InputMaybe<Scalars['ID']['input']>
+  period?: InputMaybe<Scalars['String']['input']>
+  primaryButton?: InputMaybe<ComponentBlocksCommonLinkInput>
+  secondaryButton?: InputMaybe<ComponentBlocksCommonLinkInput>
+  title?: InputMaybe<Scalars['String']['input']>
+}
+
 export type ComponentBlocksProsAndConsCard = {
   __typename?: 'ComponentBlocksProsAndConsCard'
   id: Scalars['ID']['output']
@@ -3025,6 +3085,48 @@ export type ComponentSectionsPartnersInput = {
   titleLevel?: InputMaybe<Enum_Componentsectionspartners_Titlelevel>
 }
 
+export type ComponentSectionsProcessTimeline = {
+  __typename?: 'ComponentSectionsProcessTimeline'
+  currentStep?: Maybe<Scalars['Int']['output']>
+  currentSubstep?: Maybe<Scalars['Int']['output']>
+  id: Scalars['ID']['output']
+  showBanner?: Maybe<Scalars['Boolean']['output']>
+  steps?: Maybe<Array<Maybe<ComponentBlocksProcessTimelineStep>>>
+  text?: Maybe<Scalars['String']['output']>
+  title?: Maybe<Scalars['String']['output']>
+  titleLevel?: Maybe<Enum_Componentsectionsprocesstimeline_Titlelevel>
+}
+
+export type ComponentSectionsProcessTimelineStepsArgs = {
+  filters?: InputMaybe<ComponentBlocksProcessTimelineStepFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ComponentSectionsProcessTimelineFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentSectionsProcessTimelineFiltersInput>>>
+  currentStep?: InputMaybe<IntFilterInput>
+  currentSubstep?: InputMaybe<IntFilterInput>
+  not?: InputMaybe<ComponentSectionsProcessTimelineFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentSectionsProcessTimelineFiltersInput>>>
+  showBanner?: InputMaybe<BooleanFilterInput>
+  steps?: InputMaybe<ComponentBlocksProcessTimelineStepFiltersInput>
+  text?: InputMaybe<StringFilterInput>
+  title?: InputMaybe<StringFilterInput>
+  titleLevel?: InputMaybe<StringFilterInput>
+}
+
+export type ComponentSectionsProcessTimelineInput = {
+  currentStep?: InputMaybe<Scalars['Int']['input']>
+  currentSubstep?: InputMaybe<Scalars['Int']['input']>
+  id?: InputMaybe<Scalars['ID']['input']>
+  showBanner?: InputMaybe<Scalars['Boolean']['input']>
+  steps?: InputMaybe<Array<InputMaybe<ComponentBlocksProcessTimelineStepInput>>>
+  text?: InputMaybe<Scalars['String']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
+  titleLevel?: InputMaybe<Enum_Componentsectionsprocesstimeline_Titlelevel>
+}
+
 export type ComponentSectionsProsAndConsSection = {
   __typename?: 'ComponentSectionsProsAndConsSection'
   cons: ComponentBlocksProsAndConsCard
@@ -3737,6 +3839,11 @@ export enum Enum_Componentsectionspartners_Titlelevel {
   H3 = 'h3',
 }
 
+export enum Enum_Componentsectionsprocesstimeline_Titlelevel {
+  H2 = 'h2',
+  H3 = 'h3',
+}
+
 export enum Enum_Componentsectionsprosandconssection_Textalign {
   Center = 'center',
   Left = 'left',
@@ -4214,6 +4321,8 @@ export type GenericMorph =
   | ComponentBlocksPageCardsItem
   | ComponentBlocksPageLink
   | ComponentBlocksPartner
+  | ComponentBlocksProcessTimelineStep
+  | ComponentBlocksProcessTimelineSubstep
   | ComponentBlocksProsAndConsCard
   | ComponentBlocksStarzLandingPageBanner
   | ComponentBlocksSubnavigationLink
@@ -4265,6 +4374,7 @@ export type GenericMorph =
   | ComponentSectionsOrganizationalStructure
   | ComponentSectionsPageCards
   | ComponentSectionsPartners
+  | ComponentSectionsProcessTimeline
   | ComponentSectionsProsAndConsSection
   | ComponentSectionsRegulations
   | ComponentSectionsStarzLandingPage
@@ -5470,6 +5580,7 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsOrganizationalStructure
   | ComponentSectionsPageCards
   | ComponentSectionsPartners
+  | ComponentSectionsProcessTimeline
   | ComponentSectionsProsAndConsSection
   | ComponentSectionsRegulations
   | ComponentSectionsStarzLandingPage
@@ -8477,6 +8588,7 @@ export type AllFilesQuery = {
             logo: { __typename?: 'UploadFile'; documentId: string }
           } | null>
         }
+      | { __typename?: 'ComponentSectionsProcessTimeline' }
       | { __typename?: 'ComponentSectionsProsAndConsSection' }
       | { __typename?: 'ComponentSectionsRegulations' }
       | { __typename?: 'ComponentSectionsStarzLandingPage' }
@@ -13074,6 +13186,104 @@ export type PageEntityFragment = {
         } | null>
       }
     | {
+        __typename: 'ComponentSectionsProcessTimeline'
+        title?: string | null
+        text?: string | null
+        currentStep?: number | null
+        currentSubstep?: number | null
+        showBanner?: boolean | null
+        titleLevelProcessTimelineSection?: Enum_Componentsectionsprocesstimeline_Titlelevel | null
+        steps?: Array<{
+          __typename?: 'ComponentBlocksProcessTimelineStep'
+          id: string
+          title: string
+          period: string
+          substeps?: Array<{
+            __typename?: 'ComponentBlocksProcessTimelineSubstep'
+            id: string
+            title: string
+            period: string
+            content?: string | null
+            primaryButton?: {
+              __typename?: 'ComponentBlocksCommonLink'
+              label?: string | null
+              url?: string | null
+              analyticsId?: string | null
+              page?: {
+                __typename?: 'Page'
+                documentId: string
+                title: string
+                locale?: string | null
+                path?: string | null
+              } | null
+              article?: {
+                __typename: 'Article'
+                documentId: string
+                slug: string
+                title: string
+                locale?: string | null
+              } | null
+              inbaRelease?: {
+                __typename?: 'InbaRelease'
+                documentId: string
+                title: string
+                slug: string
+              } | null
+              regulation?: {
+                __typename?: 'Regulation'
+                documentId: string
+                slug: string
+                titleText?: string | null
+              } | null
+              asset?: {
+                __typename: 'Asset'
+                documentId: string
+                slug: string
+                title: string
+              } | null
+            } | null
+            secondaryButton?: {
+              __typename?: 'ComponentBlocksCommonLink'
+              label?: string | null
+              url?: string | null
+              analyticsId?: string | null
+              page?: {
+                __typename?: 'Page'
+                documentId: string
+                title: string
+                locale?: string | null
+                path?: string | null
+              } | null
+              article?: {
+                __typename: 'Article'
+                documentId: string
+                slug: string
+                title: string
+                locale?: string | null
+              } | null
+              inbaRelease?: {
+                __typename?: 'InbaRelease'
+                documentId: string
+                title: string
+                slug: string
+              } | null
+              regulation?: {
+                __typename?: 'Regulation'
+                documentId: string
+                slug: string
+                titleText?: string | null
+              } | null
+              asset?: {
+                __typename: 'Asset'
+                documentId: string
+                slug: string
+                title: string
+              } | null
+            } | null
+          } | null> | null
+        } | null> | null
+      }
+    | {
         __typename: 'ComponentSectionsProsAndConsSection'
         title?: string | null
         text?: string | null
@@ -14927,6 +15137,104 @@ export type PageByPathQuery = {
               name: string
             }
           } | null>
+        }
+      | {
+          __typename: 'ComponentSectionsProcessTimeline'
+          title?: string | null
+          text?: string | null
+          currentStep?: number | null
+          currentSubstep?: number | null
+          showBanner?: boolean | null
+          titleLevelProcessTimelineSection?: Enum_Componentsectionsprocesstimeline_Titlelevel | null
+          steps?: Array<{
+            __typename?: 'ComponentBlocksProcessTimelineStep'
+            id: string
+            title: string
+            period: string
+            substeps?: Array<{
+              __typename?: 'ComponentBlocksProcessTimelineSubstep'
+              id: string
+              title: string
+              period: string
+              content?: string | null
+              primaryButton?: {
+                __typename?: 'ComponentBlocksCommonLink'
+                label?: string | null
+                url?: string | null
+                analyticsId?: string | null
+                page?: {
+                  __typename?: 'Page'
+                  documentId: string
+                  title: string
+                  locale?: string | null
+                  path?: string | null
+                } | null
+                article?: {
+                  __typename: 'Article'
+                  documentId: string
+                  slug: string
+                  title: string
+                  locale?: string | null
+                } | null
+                inbaRelease?: {
+                  __typename?: 'InbaRelease'
+                  documentId: string
+                  title: string
+                  slug: string
+                } | null
+                regulation?: {
+                  __typename?: 'Regulation'
+                  documentId: string
+                  slug: string
+                  titleText?: string | null
+                } | null
+                asset?: {
+                  __typename: 'Asset'
+                  documentId: string
+                  slug: string
+                  title: string
+                } | null
+              } | null
+              secondaryButton?: {
+                __typename?: 'ComponentBlocksCommonLink'
+                label?: string | null
+                url?: string | null
+                analyticsId?: string | null
+                page?: {
+                  __typename?: 'Page'
+                  documentId: string
+                  title: string
+                  locale?: string | null
+                  path?: string | null
+                } | null
+                article?: {
+                  __typename: 'Article'
+                  documentId: string
+                  slug: string
+                  title: string
+                  locale?: string | null
+                } | null
+                inbaRelease?: {
+                  __typename?: 'InbaRelease'
+                  documentId: string
+                  title: string
+                  slug: string
+                } | null
+                regulation?: {
+                  __typename?: 'Regulation'
+                  documentId: string
+                  slug: string
+                  titleText?: string | null
+                } | null
+                asset?: {
+                  __typename: 'Asset'
+                  documentId: string
+                  slug: string
+                  title: string
+                } | null
+              } | null
+            } | null> | null
+          } | null> | null
         }
       | {
           __typename: 'ComponentSectionsProsAndConsSection'
@@ -16794,6 +17102,104 @@ export type Dev_AllPagesQuery = {
           } | null>
         }
       | {
+          __typename: 'ComponentSectionsProcessTimeline'
+          title?: string | null
+          text?: string | null
+          currentStep?: number | null
+          currentSubstep?: number | null
+          showBanner?: boolean | null
+          titleLevelProcessTimelineSection?: Enum_Componentsectionsprocesstimeline_Titlelevel | null
+          steps?: Array<{
+            __typename?: 'ComponentBlocksProcessTimelineStep'
+            id: string
+            title: string
+            period: string
+            substeps?: Array<{
+              __typename?: 'ComponentBlocksProcessTimelineSubstep'
+              id: string
+              title: string
+              period: string
+              content?: string | null
+              primaryButton?: {
+                __typename?: 'ComponentBlocksCommonLink'
+                label?: string | null
+                url?: string | null
+                analyticsId?: string | null
+                page?: {
+                  __typename?: 'Page'
+                  documentId: string
+                  title: string
+                  locale?: string | null
+                  path?: string | null
+                } | null
+                article?: {
+                  __typename: 'Article'
+                  documentId: string
+                  slug: string
+                  title: string
+                  locale?: string | null
+                } | null
+                inbaRelease?: {
+                  __typename?: 'InbaRelease'
+                  documentId: string
+                  title: string
+                  slug: string
+                } | null
+                regulation?: {
+                  __typename?: 'Regulation'
+                  documentId: string
+                  slug: string
+                  titleText?: string | null
+                } | null
+                asset?: {
+                  __typename: 'Asset'
+                  documentId: string
+                  slug: string
+                  title: string
+                } | null
+              } | null
+              secondaryButton?: {
+                __typename?: 'ComponentBlocksCommonLink'
+                label?: string | null
+                url?: string | null
+                analyticsId?: string | null
+                page?: {
+                  __typename?: 'Page'
+                  documentId: string
+                  title: string
+                  locale?: string | null
+                  path?: string | null
+                } | null
+                article?: {
+                  __typename: 'Article'
+                  documentId: string
+                  slug: string
+                  title: string
+                  locale?: string | null
+                } | null
+                inbaRelease?: {
+                  __typename?: 'InbaRelease'
+                  documentId: string
+                  title: string
+                  slug: string
+                } | null
+                regulation?: {
+                  __typename?: 'Regulation'
+                  documentId: string
+                  slug: string
+                  titleText?: string | null
+                } | null
+                asset?: {
+                  __typename: 'Asset'
+                  documentId: string
+                  slug: string
+                  title: string
+                } | null
+              } | null
+            } | null> | null
+          } | null> | null
+        }
+      | {
           __typename: 'ComponentSectionsProsAndConsSection'
           title?: string | null
           text?: string | null
@@ -17522,6 +17928,7 @@ export type PageInventoryEntityFragment = {
     | { __typename: 'ComponentSectionsOrganizationalStructure' }
     | { __typename: 'ComponentSectionsPageCards' }
     | { __typename: 'ComponentSectionsPartners' }
+    | { __typename: 'ComponentSectionsProcessTimeline' }
     | { __typename: 'ComponentSectionsProsAndConsSection' }
     | {
         __typename: 'ComponentSectionsRegulations'
@@ -17710,6 +18117,7 @@ export type PagesInventoryQuery = {
       | { __typename: 'ComponentSectionsOrganizationalStructure' }
       | { __typename: 'ComponentSectionsPageCards' }
       | { __typename: 'ComponentSectionsPartners' }
+      | { __typename: 'ComponentSectionsProcessTimeline' }
       | { __typename: 'ComponentSectionsProsAndConsSection' }
       | {
           __typename: 'ComponentSectionsRegulations'
@@ -20018,6 +20426,249 @@ export type IframeTabsSectionFragment = {
   } | null>
 }
 
+export type ProcessTimelineStepFragment = {
+  __typename?: 'ComponentBlocksProcessTimelineStep'
+  id: string
+  title: string
+  period: string
+  substeps?: Array<{
+    __typename?: 'ComponentBlocksProcessTimelineSubstep'
+    id: string
+    title: string
+    period: string
+    content?: string | null
+    primaryButton?: {
+      __typename?: 'ComponentBlocksCommonLink'
+      label?: string | null
+      url?: string | null
+      analyticsId?: string | null
+      page?: {
+        __typename?: 'Page'
+        documentId: string
+        title: string
+        locale?: string | null
+        path?: string | null
+      } | null
+      article?: {
+        __typename: 'Article'
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+      } | null
+      inbaRelease?: {
+        __typename?: 'InbaRelease'
+        documentId: string
+        title: string
+        slug: string
+      } | null
+      regulation?: {
+        __typename?: 'Regulation'
+        documentId: string
+        slug: string
+        titleText?: string | null
+      } | null
+      asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
+    } | null
+    secondaryButton?: {
+      __typename?: 'ComponentBlocksCommonLink'
+      label?: string | null
+      url?: string | null
+      analyticsId?: string | null
+      page?: {
+        __typename?: 'Page'
+        documentId: string
+        title: string
+        locale?: string | null
+        path?: string | null
+      } | null
+      article?: {
+        __typename: 'Article'
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+      } | null
+      inbaRelease?: {
+        __typename?: 'InbaRelease'
+        documentId: string
+        title: string
+        slug: string
+      } | null
+      regulation?: {
+        __typename?: 'Regulation'
+        documentId: string
+        slug: string
+        titleText?: string | null
+      } | null
+      asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
+    } | null
+  } | null> | null
+}
+
+export type ProcessTimelineSubstepFragment = {
+  __typename?: 'ComponentBlocksProcessTimelineSubstep'
+  id: string
+  title: string
+  period: string
+  content?: string | null
+  primaryButton?: {
+    __typename?: 'ComponentBlocksCommonLink'
+    label?: string | null
+    url?: string | null
+    analyticsId?: string | null
+    page?: {
+      __typename?: 'Page'
+      documentId: string
+      title: string
+      locale?: string | null
+      path?: string | null
+    } | null
+    article?: {
+      __typename: 'Article'
+      documentId: string
+      slug: string
+      title: string
+      locale?: string | null
+    } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      documentId: string
+      title: string
+      slug: string
+    } | null
+    regulation?: {
+      __typename?: 'Regulation'
+      documentId: string
+      slug: string
+      titleText?: string | null
+    } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
+  } | null
+  secondaryButton?: {
+    __typename?: 'ComponentBlocksCommonLink'
+    label?: string | null
+    url?: string | null
+    analyticsId?: string | null
+    page?: {
+      __typename?: 'Page'
+      documentId: string
+      title: string
+      locale?: string | null
+      path?: string | null
+    } | null
+    article?: {
+      __typename: 'Article'
+      documentId: string
+      slug: string
+      title: string
+      locale?: string | null
+    } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      documentId: string
+      title: string
+      slug: string
+    } | null
+    regulation?: {
+      __typename?: 'Regulation'
+      documentId: string
+      slug: string
+      titleText?: string | null
+    } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
+  } | null
+}
+
+export type ProcessTimelineSectionFragment = {
+  __typename?: 'ComponentSectionsProcessTimeline'
+  title?: string | null
+  text?: string | null
+  currentStep?: number | null
+  currentSubstep?: number | null
+  showBanner?: boolean | null
+  titleLevelProcessTimelineSection?: Enum_Componentsectionsprocesstimeline_Titlelevel | null
+  steps?: Array<{
+    __typename?: 'ComponentBlocksProcessTimelineStep'
+    id: string
+    title: string
+    period: string
+    substeps?: Array<{
+      __typename?: 'ComponentBlocksProcessTimelineSubstep'
+      id: string
+      title: string
+      period: string
+      content?: string | null
+      primaryButton?: {
+        __typename?: 'ComponentBlocksCommonLink'
+        label?: string | null
+        url?: string | null
+        analyticsId?: string | null
+        page?: {
+          __typename?: 'Page'
+          documentId: string
+          title: string
+          locale?: string | null
+          path?: string | null
+        } | null
+        article?: {
+          __typename: 'Article'
+          documentId: string
+          slug: string
+          title: string
+          locale?: string | null
+        } | null
+        inbaRelease?: {
+          __typename?: 'InbaRelease'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        regulation?: {
+          __typename?: 'Regulation'
+          documentId: string
+          slug: string
+          titleText?: string | null
+        } | null
+        asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
+      } | null
+      secondaryButton?: {
+        __typename?: 'ComponentBlocksCommonLink'
+        label?: string | null
+        url?: string | null
+        analyticsId?: string | null
+        page?: {
+          __typename?: 'Page'
+          documentId: string
+          title: string
+          locale?: string | null
+          path?: string | null
+        } | null
+        article?: {
+          __typename: 'Article'
+          documentId: string
+          slug: string
+          title: string
+          locale?: string | null
+        } | null
+        inbaRelease?: {
+          __typename?: 'InbaRelease'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        regulation?: {
+          __typename?: 'Regulation'
+          documentId: string
+          slug: string
+          titleText?: string | null
+        } | null
+        asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
+      } | null
+    } | null> | null
+  } | null> | null
+}
+
 type Sections_ComponentSectionsAccordion_Fragment = {
   __typename: 'ComponentSectionsAccordion'
   title?: string | null
@@ -21156,6 +21807,95 @@ type Sections_ComponentSectionsPartners_Fragment = {
   } | null>
 }
 
+type Sections_ComponentSectionsProcessTimeline_Fragment = {
+  __typename: 'ComponentSectionsProcessTimeline'
+  title?: string | null
+  text?: string | null
+  currentStep?: number | null
+  currentSubstep?: number | null
+  showBanner?: boolean | null
+  titleLevelProcessTimelineSection?: Enum_Componentsectionsprocesstimeline_Titlelevel | null
+  steps?: Array<{
+    __typename?: 'ComponentBlocksProcessTimelineStep'
+    id: string
+    title: string
+    period: string
+    substeps?: Array<{
+      __typename?: 'ComponentBlocksProcessTimelineSubstep'
+      id: string
+      title: string
+      period: string
+      content?: string | null
+      primaryButton?: {
+        __typename?: 'ComponentBlocksCommonLink'
+        label?: string | null
+        url?: string | null
+        analyticsId?: string | null
+        page?: {
+          __typename?: 'Page'
+          documentId: string
+          title: string
+          locale?: string | null
+          path?: string | null
+        } | null
+        article?: {
+          __typename: 'Article'
+          documentId: string
+          slug: string
+          title: string
+          locale?: string | null
+        } | null
+        inbaRelease?: {
+          __typename?: 'InbaRelease'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        regulation?: {
+          __typename?: 'Regulation'
+          documentId: string
+          slug: string
+          titleText?: string | null
+        } | null
+        asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
+      } | null
+      secondaryButton?: {
+        __typename?: 'ComponentBlocksCommonLink'
+        label?: string | null
+        url?: string | null
+        analyticsId?: string | null
+        page?: {
+          __typename?: 'Page'
+          documentId: string
+          title: string
+          locale?: string | null
+          path?: string | null
+        } | null
+        article?: {
+          __typename: 'Article'
+          documentId: string
+          slug: string
+          title: string
+          locale?: string | null
+        } | null
+        inbaRelease?: {
+          __typename?: 'InbaRelease'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        regulation?: {
+          __typename?: 'Regulation'
+          documentId: string
+          slug: string
+          titleText?: string | null
+        } | null
+        asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
+      } | null
+    } | null> | null
+  } | null> | null
+}
+
 type Sections_ComponentSectionsProsAndConsSection_Fragment = {
   __typename: 'ComponentSectionsProsAndConsSection'
   title?: string | null
@@ -21686,6 +22426,7 @@ export type SectionsFragment =
   | Sections_ComponentSectionsOrganizationalStructure_Fragment
   | Sections_ComponentSectionsPageCards_Fragment
   | Sections_ComponentSectionsPartners_Fragment
+  | Sections_ComponentSectionsProcessTimeline_Fragment
   | Sections_ComponentSectionsProsAndConsSection_Fragment
   | Sections_ComponentSectionsRegulations_Fragment
   | Sections_ComponentSectionsStarzLandingPage_Fragment
@@ -23955,6 +24696,46 @@ export const PageCardsSectionFragmentDoc = gql`
   }
   ${PageCardsItemBlockFragmentDoc}
 `
+export const ProcessTimelineSubstepFragmentDoc = gql`
+  fragment ProcessTimelineSubstep on ComponentBlocksProcessTimelineSubstep {
+    id
+    title
+    period
+    content
+    primaryButton {
+      ...CommonLink
+    }
+    secondaryButton {
+      ...CommonLink
+    }
+  }
+  ${CommonLinkFragmentDoc}
+`
+export const ProcessTimelineStepFragmentDoc = gql`
+  fragment ProcessTimelineStep on ComponentBlocksProcessTimelineStep {
+    id
+    title
+    period
+    substeps {
+      ...ProcessTimelineSubstep
+    }
+  }
+  ${ProcessTimelineSubstepFragmentDoc}
+`
+export const ProcessTimelineSectionFragmentDoc = gql`
+  fragment ProcessTimelineSection on ComponentSectionsProcessTimeline {
+    title
+    titleLevelProcessTimelineSection: titleLevel
+    text
+    currentStep
+    currentSubstep
+    showBanner
+    steps {
+      ...ProcessTimelineStep
+    }
+  }
+  ${ProcessTimelineStepFragmentDoc}
+`
 export const SectionsFragmentDoc = gql`
   fragment Sections on PageSectionsDynamicZone {
     __typename
@@ -24075,6 +24856,9 @@ export const SectionsFragmentDoc = gql`
     ... on ComponentSectionsPageCards {
       ...PageCardsSection
     }
+    ... on ComponentSectionsProcessTimeline {
+      ...ProcessTimelineSection
+    }
   }
   ${DividerSectionFragmentDoc}
   ${TextWithImageSectionFragmentDoc}
@@ -24115,6 +24899,7 @@ export const SectionsFragmentDoc = gql`
   ${JobOffersSectionFragmentDoc}
   ${IframeTabsSectionFragmentDoc}
   ${PageCardsSectionFragmentDoc}
+  ${ProcessTimelineSectionFragmentDoc}
 `
 export const SidebarsFragmentDoc = gql`
   fragment Sidebars on PageSidebarDynamicZone {

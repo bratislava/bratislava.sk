@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_blocks_process_timeline_substeps",
+  "info": {
+    "displayName": "processTimelineSubstep"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "period": {
+      "type": "string",
+      "required": true
+    },
+    "content": {
+      "type": "richtext"
+    },
+    "primaryButton": {
+      "type": "component",
+      "component": "blocks.common-link",
+      "repeatable": false
+    },
+    "secondaryButton": {
+      "type": "component",
+      "component": "blocks.common-link",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}

@@ -1,0 +1,39 @@
+{
+  "collectionName": "components_sections_process_timelines",
+  "info": {
+    "displayName": "Harmonogram procesu"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "titleLevel": {
+      "type": "enumeration",
+      "default": "h2",
+      "enum": [
+        "h2",
+        "h3"
+      ]
+    },
+    "text": {
+      "type": "text"
+    },
+    "currentStep": {
+      "type": "integer"
+    },
+    "currentSubstep": {
+      "type": "integer"
+    },
+    "showBanner": {
+      "type": "boolean",
+      "default": true
+    },
+    "steps": {
+      "type": "component",
+      "component": "blocks.process-timeline-step",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}
