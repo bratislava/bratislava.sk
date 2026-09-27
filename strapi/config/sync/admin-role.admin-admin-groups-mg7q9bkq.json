@@ -1774,6 +1774,7 @@
           "fullTitle",
           "effectiveFrom",
           "category",
+          "regulationCategory",
           "isFullTextRegulation",
           "mainDocument",
           "attachments",
@@ -1785,7 +1786,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "b584cdyosl2424mxuewtaxw5",
+      "documentId": "rdww8yr59diipsku9v2ttooh",
       "locale": null
     },
     {
@@ -1817,6 +1818,7 @@
           "fullTitle",
           "effectiveFrom",
           "category",
+          "regulationCategory",
           "isFullTextRegulation",
           "mainDocument",
           "attachments",
@@ -1828,7 +1830,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "q909a657kwk34rqp1stfs45c",
+      "documentId": "ln3idcbnb0wv95rylddauaoo",
       "locale": null
     },
     {
@@ -1842,6 +1844,7 @@
           "fullTitle",
           "effectiveFrom",
           "category",
+          "regulationCategory",
           "isFullTextRegulation",
           "mainDocument",
           "attachments",
@@ -1853,7 +1856,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "wy8l65uoi5kz8btvrn78chpu",
+      "documentId": "qj6my41715qiw8tsictrp6xj",
       "locale": null
     },
     {
