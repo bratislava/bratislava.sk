@@ -82,20 +82,24 @@ const ProcessTimelineSubstep = ({ substep, stepIndex, substepIndex, titleLevel =
       </div>
       <Disclosure
         id={getSubstepDisclosureId(substep)}
-        className="w-full rounded-lg p-4 expanded:bg-background-passive-primary"
+        className="w-full rounded-lg p-4 expanded:bg-background-passive-primary expanded:pb-2"
       >
         <DisclosureHeader>
-          <div className="flex w-full flex-col gap-3 pr-6 lg:flex-row-reverse lg:justify-between">
-            <Typography variant="h5" as="span">
-              {period}
-            </Typography>
+          <div className="flex w-full flex-col-reverse gap-3 pr-6 lg:flex-row lg:justify-between">
             <Typography variant="h5" as={titleLevel}>
               {title}
+            </Typography>
+            <Typography variant="h5" as="span">
+              {period}
             </Typography>
             {statusAria ? <span className="sr-only">{statusAria}</span> : null}
           </div>
         </DisclosureHeader>
-        <DisclosurePanel>
+        <DisclosurePanel
+          // additional paddings ensure that focus rings of buttons are fully visible
+          className="-mx-2 px-2"
+          innerClassName="pb-2"
+        >
           <div className="flex flex-col gap-6 pt-3">
             {content ? <Markdown content={content} variant="accordion" /> : null}
 

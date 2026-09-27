@@ -28,7 +28,12 @@ const ProcessTimelineStep = ({ step, stepIndex, titleLevel = 'h2' }: Props) => {
   const { currentItem } = useProcessTimeline()
 
   return (
-    <div id={getStepAnchorId(step)} className="flex flex-col gap-2 py-4 lg:gap-4 lg:py-6">
+    <div
+      id={getStepAnchorId(step)}
+      // tabIndex={-1} lets the banner move focus here when the current item is a step
+      tabIndex={-1}
+      className="flex flex-col gap-2 py-4 outline-none lg:gap-4 lg:py-6"
+    >
       {/* Screen: Desktop */}
       <div className="max-lg:hidden">
         <div className="flex items-center gap-8">

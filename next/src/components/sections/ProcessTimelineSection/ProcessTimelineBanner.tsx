@@ -37,7 +37,12 @@ const ProcessTimelineBanner = () => {
       flushSync(() => disclosureTriggerButton.click())
     }
 
-    currentItemElement?.scrollIntoView({ block: 'center' })
+    currentItemElement?.scrollIntoView({ block: 'start' })
+
+    // Move focus along with the scroll, so keyboard and screen reader users continue from there.
+    // For a substep, focus its disclosure trigger, for a step the step itself (tabIndex={-1}).
+    const focusTarget = currentItem.disclosureId ? disclosureTriggerButton : currentItemElement
+    focusTarget?.focus({ preventScroll: true })
   }
 
   return (
