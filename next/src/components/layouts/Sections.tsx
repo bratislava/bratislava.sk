@@ -31,6 +31,7 @@ import OpeningHoursSection from '@/src/components/sections/OpeningHoursSection'
 import OrganizationalStructureSection from '@/src/components/sections/OrganizationalStructureSection'
 import PageCardsSection from '@/src/components/sections/PageCardsSection/PageCardsSection'
 import PartnersSection from '@/src/components/sections/PartnersSection'
+import ProcessTimelineSection from '@/src/components/sections/ProcessTimelineSection/ProcessTimelineSection'
 import ProsAndConsSection from '@/src/components/sections/ProsAndConsSection'
 import RegulationsSection from '@/src/components/sections/RegulationsSection'
 import StarzLandingPageSection from '@/src/components/sections/StarzLandingPageSection'
@@ -170,6 +171,9 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
 
     case 'ComponentSectionsPageCards':
       return <PageCardsSection section={section} />
+
+    case 'ComponentSectionsProcessTimeline':
+      return <ProcessTimelineSection section={section} />
 
     default:
       return null
