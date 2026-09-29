@@ -60,9 +60,11 @@ const ProcessTimelineBanner = () => {
           </>
         ) : null}
       </div>
+
       <Typography variant="h4" as="p" className="grow">
         {title}
       </Typography>
+
       <Button
         variant="plain"
         onPress={scrollToCurrentSubstep}

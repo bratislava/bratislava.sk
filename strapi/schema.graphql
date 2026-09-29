@@ -2440,6 +2440,7 @@ input ComponentSectionsPartnersInput {
 }
 
 type ComponentSectionsProcessTimeline {
+  contentUnderBanner: String
   currentStep: Int
   currentSubstep: Int
   id: ID!
@@ -2452,6 +2453,7 @@ type ComponentSectionsProcessTimeline {
 
 input ComponentSectionsProcessTimelineFiltersInput {
   and: [ComponentSectionsProcessTimelineFiltersInput]
+  contentUnderBanner: StringFilterInput
   currentStep: IntFilterInput
   currentSubstep: IntFilterInput
   not: ComponentSectionsProcessTimelineFiltersInput
@@ -2464,6 +2466,7 @@ input ComponentSectionsProcessTimelineFiltersInput {
 }
 
 input ComponentSectionsProcessTimelineInput {
+  contentUnderBanner: String
   currentStep: Int
   currentSubstep: Int
   id: ID

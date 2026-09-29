@@ -29,6 +29,9 @@
       "type": "boolean",
       "default": true
     },
+    "contentUnderBanner": {
+      "type": "richtext"
+    },
     "steps": {
       "type": "component",
       "component": "blocks.process-timeline-step",

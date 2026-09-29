@@ -2,6 +2,7 @@ import { Fragment } from 'react/jsx-runtime'
 
 import { DisclosureTitleLevel } from '@/src/components/cards/getCardTitleLevel'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
+import Markdown from '@/src/components/formatting/Markdown/Markdown'
 import ProcessTimelineBanner from '@/src/components/sections/ProcessTimelineSection/ProcessTimelineBanner'
 import {
   ProcessTimelineProvider,
@@ -13,6 +14,7 @@ import { ProcessTimelineStepFragment } from '@/src/services/graphql'
 type ProcessTimelineContentProps = {
   stepTitleLevel?: DisclosureTitleLevel
   showBanner?: boolean | null
+  contentUnderBanner?: string | null
 }
 
 type ProcessTimelineProps = ProcessTimelineContentProps & {
@@ -24,12 +26,14 @@ type ProcessTimelineProps = ProcessTimelineContentProps & {
 const ProcessTimelineContent = ({
   stepTitleLevel = 'h2',
   showBanner,
+  contentUnderBanner,
 }: ProcessTimelineContentProps) => {
   const { steps } = useProcessTimeline()
 
   return (
     <div className="flex flex-col gap-6 lg:gap-10">
       {showBanner ? <ProcessTimelineBanner /> : null}
+      {contentUnderBanner ? <Markdown variant="accordion" content={contentUnderBanner} /> : null}
       <ol className="flex flex-col">
         {steps.map((step, stepIndex) => (
           <Fragment key={step.id}>
@@ -50,6 +54,7 @@ const ProcessTimeline = ({
   currentSubstep,
   stepTitleLevel,
   showBanner,
+  contentUnderBanner,
 }: ProcessTimelineProps) => {
   return (
     <ProcessTimelineProvider
@@ -57,7 +62,11 @@ const ProcessTimeline = ({
       currentStep={currentStep}
       currentSubstep={currentSubstep}
     >
-      <ProcessTimelineContent stepTitleLevel={stepTitleLevel} showBanner={showBanner} />
+      <ProcessTimelineContent
+        stepTitleLevel={stepTitleLevel}
+        showBanner={showBanner}
+        contentUnderBanner={contentUnderBanner}
+      />
     </ProcessTimelineProvider>
   )
 }

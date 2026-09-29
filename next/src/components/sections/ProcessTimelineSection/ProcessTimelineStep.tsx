@@ -42,12 +42,12 @@ const ProcessTimelineStep = ({ step, stepIndex, titleLevel = 'h2' }: Props) => {
               {stepNumber}
             </Typography>
           </div>
-          <div className="flex flex-row gap-6">
-            <Typography variant="h4" as="span">
-              {period}
-            </Typography>
+          <div className="flex w-full flex-row justify-between gap-6">
             <Typography variant="h4" as={titleLevel}>
               {title}
+            </Typography>
+            <Typography variant="h4" as="span" className="pr-4">
+              {period}
             </Typography>
           </div>
         </div>

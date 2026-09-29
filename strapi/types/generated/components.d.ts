@@ -1246,6 +1246,7 @@ export interface SectionsProcessTimeline extends Struct.ComponentSchema {
     displayName: 'Harmonogram procesu'
   }
   attributes: {
+    contentUnderBanner: Schema.Attribute.RichText
     currentStep: Schema.Attribute.Integer
     currentSubstep: Schema.Attribute.Integer
     showBanner: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>

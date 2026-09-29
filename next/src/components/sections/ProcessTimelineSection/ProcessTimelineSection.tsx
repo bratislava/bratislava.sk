@@ -21,6 +21,7 @@ const ProcessTimelineSection = ({ section }: Props) => {
     currentStep,
     currentSubstep,
     showBanner,
+    contentUnderBanner,
     steps,
   } = section
 
@@ -38,6 +39,7 @@ const ProcessTimelineSection = ({ section }: Props) => {
             currentSubstep={currentSubstep}
             stepTitleLevel={stepTitleLevel}
             showBanner={showBanner}
+            contentUnderBanner={contentUnderBanner}
           />
         ) : null}
       </div>

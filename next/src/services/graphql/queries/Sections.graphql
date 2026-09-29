@@ -648,6 +648,7 @@ fragment ProcessTimelineSection on ComponentSectionsProcessTimeline {
   title
   titleLevelProcessTimelineSection: titleLevel
   text
+  contentUnderBanner
   currentStep
   currentSubstep
   showBanner

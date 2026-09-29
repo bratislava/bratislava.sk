@@ -36,7 +36,7 @@
       },
       "text": {
         "edit": {
-          "label": "Text",
+          "label": "Text medzi nadpisom a bannerom",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -88,6 +88,20 @@
           "label": "showBanner",
           "searchable": true,
           "sortable": true
+        }
+      },
+      "contentUnderBanner": {
+        "edit": {
+          "label": "Text pod bannerom (v rámci možností richtextu tu používame iba odseky, zvýraznenie písma a odkazy)",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "contentUnderBanner",
+          "searchable": false,
+          "sortable": false
         }
       },
       "steps": {
@@ -156,10 +170,18 @@
           {
             "name": "currentSubstep",
             "size": 2
-          },
+          }
+        ],
+        [
           {
             "name": "showBanner",
-            "size": 8
+            "size": 3
+          }
+        ],
+        [
+          {
+            "name": "contentUnderBanner",
+            "size": 12
           }
         ],
         [

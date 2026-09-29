@@ -62,9 +62,13 @@ const ProcessTimelineSubstep = ({ substep, stepIndex, substepIndex, titleLevel =
           />
         )}
         {isThisSubstepCurrent ? (
-          <div className="flex size-7 shrink-0 items-center justify-center rounded-full border-2 border-content-active-primary-default bg-white">
-            <div aria-hidden className="size-4 rounded-full bg-content-active-primary-default" />
-          </div>
+          // <div className="flex size-7 shrink-0 items-center justify-center rounded-full border-2 border-content-active-primary-default bg-white">
+          //   <div aria-hidden className="size-4 rounded-full bg-content-active-primary-default" />
+          // </div>
+          <div
+            aria-hidden
+            className="size-7 shrink-0 rounded-full border-2 border-content-active-primary-default bg-content-active-primary-default bg-clip-content p-1"
+          />
         ) : isThisSubstepFinished ? (
           <div className="flex size-7 shrink-0 items-center justify-center rounded-full bg-background-success-default text-content-passive-inverted-primary">
             <Icon name="check" className="size-5" />
@@ -82,7 +86,7 @@ const ProcessTimelineSubstep = ({ substep, stepIndex, substepIndex, titleLevel =
       </div>
       <Disclosure
         id={getSubstepDisclosureId(substep)}
-        className="w-full rounded-lg p-4 expanded:bg-background-passive-primary expanded:pb-2"
+        className="w-full rounded-lg p-4 expanded:mb-4 expanded:bg-background-passive-primary expanded:pb-2"
       >
         <DisclosureHeader>
           <div className="flex w-full flex-col-reverse gap-3 pr-6 lg:flex-row lg:justify-between">

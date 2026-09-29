@@ -3087,6 +3087,7 @@ export type ComponentSectionsPartnersInput = {
 
 export type ComponentSectionsProcessTimeline = {
   __typename?: 'ComponentSectionsProcessTimeline'
+  contentUnderBanner?: Maybe<Scalars['String']['output']>
   currentStep?: Maybe<Scalars['Int']['output']>
   currentSubstep?: Maybe<Scalars['Int']['output']>
   id: Scalars['ID']['output']
@@ -3105,6 +3106,7 @@ export type ComponentSectionsProcessTimelineStepsArgs = {
 
 export type ComponentSectionsProcessTimelineFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<ComponentSectionsProcessTimelineFiltersInput>>>
+  contentUnderBanner?: InputMaybe<StringFilterInput>
   currentStep?: InputMaybe<IntFilterInput>
   currentSubstep?: InputMaybe<IntFilterInput>
   not?: InputMaybe<ComponentSectionsProcessTimelineFiltersInput>
@@ -3117,6 +3119,7 @@ export type ComponentSectionsProcessTimelineFiltersInput = {
 }
 
 export type ComponentSectionsProcessTimelineInput = {
+  contentUnderBanner?: InputMaybe<Scalars['String']['input']>
   currentStep?: InputMaybe<Scalars['Int']['input']>
   currentSubstep?: InputMaybe<Scalars['Int']['input']>
   id?: InputMaybe<Scalars['ID']['input']>
@@ -13189,6 +13192,7 @@ export type PageEntityFragment = {
         __typename: 'ComponentSectionsProcessTimeline'
         title?: string | null
         text?: string | null
+        contentUnderBanner?: string | null
         currentStep?: number | null
         currentSubstep?: number | null
         showBanner?: boolean | null
@@ -15142,6 +15146,7 @@ export type PageByPathQuery = {
           __typename: 'ComponentSectionsProcessTimeline'
           title?: string | null
           text?: string | null
+          contentUnderBanner?: string | null
           currentStep?: number | null
           currentSubstep?: number | null
           showBanner?: boolean | null
@@ -17105,6 +17110,7 @@ export type Dev_AllPagesQuery = {
           __typename: 'ComponentSectionsProcessTimeline'
           title?: string | null
           text?: string | null
+          contentUnderBanner?: string | null
           currentStep?: number | null
           currentSubstep?: number | null
           showBanner?: boolean | null
@@ -20584,6 +20590,7 @@ export type ProcessTimelineSectionFragment = {
   __typename?: 'ComponentSectionsProcessTimeline'
   title?: string | null
   text?: string | null
+  contentUnderBanner?: string | null
   currentStep?: number | null
   currentSubstep?: number | null
   showBanner?: boolean | null
@@ -21811,6 +21818,7 @@ type Sections_ComponentSectionsProcessTimeline_Fragment = {
   __typename: 'ComponentSectionsProcessTimeline'
   title?: string | null
   text?: string | null
+  contentUnderBanner?: string | null
   currentStep?: number | null
   currentSubstep?: number | null
   showBanner?: boolean | null
@@ -24727,6 +24735,7 @@ export const ProcessTimelineSectionFragmentDoc = gql`
     title
     titleLevelProcessTimelineSection: titleLevel
     text
+    contentUnderBanner
     currentStep
     currentSubstep
     showBanner
