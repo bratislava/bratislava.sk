@@ -46,7 +46,7 @@ const LandingPageSection = ({ section }: Props) => {
             variant={bannerColorVariant ?? Enum_Componentsectionsbanner_Variant.Color}
           />
         ) : landingPageImage ? (
-          <div className="relative aspect-272/162 w-full overflow-hidden rounded-2xl lg:aspect-384/158">
+          <div className="relative aspect-272/162 w-full overflow-hidden rounded-2xl">
             <StrapiImage image={landingPageImage} sizes="100vw" className="object-cover" fill />
           </div>
         ) : null}
