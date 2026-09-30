@@ -338,6 +338,32 @@ export interface BlocksPartner extends Struct.ComponentSchema {
   }
 }
 
+export interface BlocksProcessTimelineStep extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_process_timeline_steps'
+  info: {
+    displayName: 'processTimelineStep'
+  }
+  attributes: {
+    period: Schema.Attribute.String & Schema.Attribute.Required
+    substeps: Schema.Attribute.Component<'blocks.process-timeline-substep', true>
+    title: Schema.Attribute.String & Schema.Attribute.Required
+  }
+}
+
+export interface BlocksProcessTimelineSubstep extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_process_timeline_substeps'
+  info: {
+    displayName: 'processTimelineSubstep'
+  }
+  attributes: {
+    content: Schema.Attribute.RichText
+    period: Schema.Attribute.String & Schema.Attribute.Required
+    primaryButton: Schema.Attribute.Component<'blocks.common-link', false>
+    secondaryButton: Schema.Attribute.Component<'blocks.common-link', false>
+    title: Schema.Attribute.String & Schema.Attribute.Required
+  }
+}
+
 export interface BlocksProsAndConsCard extends Struct.ComponentSchema {
   collectionName: 'components_blocks_pros_and_cons_cards'
   info: {
@@ -1061,6 +1087,10 @@ export interface SectionsLandingPage extends Struct.ComponentSchema {
         },
         number
       >
+    cardLinksLayout: Schema.Attribute.Enumeration<
+      ['landingPageSection.cardLinksLayout.carousel', 'landingPageSection.cardLinksLayout.wrap']
+    > &
+      Schema.Attribute.DefaultTo<'landingPageSection.cardLinksLayout.carousel'>
     image: Schema.Attribute.Media<'images'>
     variant: Schema.Attribute.Enumeration<['banner', 'image']> &
       Schema.Attribute.Required &
@@ -1208,6 +1238,23 @@ export interface SectionsPartners extends Struct.ComponentSchema {
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'ratio 4:1'>
     partners: Schema.Attribute.Component<'blocks.partner', true> & Schema.Attribute.Required
+    text: Schema.Attribute.Text
+    title: Schema.Attribute.String
+    titleLevel: Schema.Attribute.Enumeration<['h2', 'h3']> & Schema.Attribute.DefaultTo<'h2'>
+  }
+}
+
+export interface SectionsProcessTimeline extends Struct.ComponentSchema {
+  collectionName: 'components_sections_process_timelines'
+  info: {
+    displayName: 'Harmonogram procesu'
+  }
+  attributes: {
+    contentUnderBanner: Schema.Attribute.RichText
+    currentStep: Schema.Attribute.Integer
+    currentSubstep: Schema.Attribute.Integer
+    showBanner: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>
+    steps: Schema.Attribute.Component<'blocks.process-timeline-step', true>
     text: Schema.Attribute.Text
     title: Schema.Attribute.String
     titleLevel: Schema.Attribute.Enumeration<['h2', 'h3']> & Schema.Attribute.DefaultTo<'h2'>
@@ -1435,6 +1482,8 @@ declare module '@strapi/strapi' {
       'blocks.page-cards-item': BlocksPageCardsItem
       'blocks.page-link': BlocksPageLink
       'blocks.partner': BlocksPartner
+      'blocks.process-timeline-step': BlocksProcessTimelineStep
+      'blocks.process-timeline-substep': BlocksProcessTimelineSubstep
       'blocks.pros-and-cons-card': BlocksProsAndConsCard
       'blocks.starz-landing-page-banner': BlocksStarzLandingPageBanner
       'blocks.subnavigation-link': BlocksSubnavigationLink
@@ -1486,6 +1535,7 @@ declare module '@strapi/strapi' {
       'sections.organizational-structure': SectionsOrganizationalStructure
       'sections.page-cards': SectionsPageCards
       'sections.partners': SectionsPartners
+      'sections.process-timeline': SectionsProcessTimeline
       'sections.pros-and-cons-section': SectionsProsAndConsSection
       'sections.regulations': SectionsRegulations
       'sections.starz-landing-page': SectionsStarzLandingPage

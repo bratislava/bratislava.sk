@@ -1,0 +1,103 @@
+{
+  "key": "plugin_content_manager_configuration_components::blocks.process-timeline-step",
+  "value": {
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "relationOpenMode": "modal",
+      "mainField": "title",
+      "defaultSortBy": "title",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "title": {
+        "edit": {
+          "label": "Nadpis fázy",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "Text fázy",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "period": {
+        "edit": {
+          "label": "Obdobie fázy",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "period",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "substeps": {
+        "edit": {
+          "label": "Kroky",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "substeps",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "documentId": {
+        "edit": {},
+        "list": {
+          "label": "documentId",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "list": ["id", "title", "period", "substeps"],
+      "edit": [
+        [
+          {
+            "name": "title",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "period",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "substeps",
+            "size": 12
+          }
+        ]
+      ]
+    },
+    "uid": "blocks.process-timeline-step",
+    "isComponent": true
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

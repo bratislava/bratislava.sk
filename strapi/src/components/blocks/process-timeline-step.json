@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_blocks_process_timeline_steps",
+  "info": {
+    "displayName": "processTimelineStep"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "period": {
+      "type": "string",
+      "required": true
+    },
+    "substeps": {
+      "type": "component",
+      "component": "blocks.process-timeline-substep",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

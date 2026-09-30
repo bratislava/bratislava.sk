@@ -1,15 +1,15 @@
 {
-  "key": "plugin_content_manager_configuration_components::sections.landing-page",
+  "key": "plugin_content_manager_configuration_components::blocks.process-timeline-substep",
   "value": {
     "settings": {
       "bulkable": true,
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "documentId",
-      "defaultSortBy": "documentId",
-      "defaultSortOrder": "ASC",
-      "relationOpenMode": "modal"
+      "relationOpenMode": "modal",
+      "mainField": "title",
+      "defaultSortBy": "title",
+      "defaultSortOrder": "ASC"
     },
     "metadatas": {
       "id": {
@@ -20,76 +20,74 @@
           "sortable": false
         }
       },
-      "variant": {
+      "title": {
         "edit": {
-          "label": "Variant",
+          "label": "Nadpis kroku",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "variant",
+          "label": "title",
           "searchable": true,
           "sortable": true
         }
       },
-      "banner": {
+      "period": {
         "edit": {
-          "label": "Banner",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "title"
-        },
-        "list": {
-          "label": "banner",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "image": {
-        "edit": {
-          "label": "Obrázok",
+          "label": "Obdobie kroku",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "image",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "cardLinks": {
-        "edit": {
-          "label": "Odkazy",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "label"
-        },
-        "list": {
-          "label": "cardLinks",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "cardLinksLayout": {
-        "edit": {
-          "label": "Layout kariet s odkazmi na mobilnom zobrazení",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "cardLinksLayout",
+          "label": "period",
           "searchable": true,
           "sortable": true
+        }
+      },
+      "content": {
+        "edit": {
+          "label": "Obsah kroku",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "content",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "primaryButton": {
+        "edit": {
+          "label": "Primárny button",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "primaryButton",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "secondaryButton": {
+        "edit": {
+          "label": "Sekundárny button",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "secondaryButton",
+          "searchable": false,
+          "sortable": false
         }
       },
       "documentId": {
@@ -102,46 +100,41 @@
       }
     },
     "layouts": {
+      "list": ["id", "title", "period", "primaryButton"],
       "edit": [
         [
           {
-            "name": "variant",
+            "name": "title",
             "size": 12
           }
         ],
         [
           {
-            "name": "banner",
+            "name": "period",
             "size": 12
           }
         ],
         [
           {
-            "name": "image",
+            "name": "content",
             "size": 12
           }
         ],
         [
           {
-            "name": "cardLinks",
+            "name": "primaryButton",
             "size": 12
           }
         ],
         [
           {
-            "name": "cardLinksLayout",
-            "size": 6
+            "name": "secondaryButton",
+            "size": 12
           }
         ]
-      ],
-      "list": [
-        "id",
-        "banner",
-        "cardLinks",
-        "variant"
       ]
     },
-    "uid": "sections.landing-page",
+    "uid": "blocks.process-timeline-substep",
     "isComponent": true
   },
   "type": "object",
