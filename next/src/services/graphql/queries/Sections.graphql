@@ -535,6 +535,7 @@ fragment LandingPageSection on ComponentSectionsLandingPage {
   cardLinks {
     ...CardLink
   }
+  cardLinksLayout
 }
 
 fragment OpeningHoursSection on ComponentSectionsOpeningHours {

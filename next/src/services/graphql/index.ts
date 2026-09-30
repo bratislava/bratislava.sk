@@ -2763,6 +2763,7 @@ export type ComponentSectionsLandingPage = {
   __typename?: 'ComponentSectionsLandingPage'
   banner?: Maybe<ComponentBlocksLandingPageBanner>
   cardLinks?: Maybe<Array<Maybe<ComponentBlocksCardLink>>>
+  cardLinksLayout?: Maybe<Enum_Componentsectionslandingpage_Cardlinkslayout>
   id: Scalars['ID']['output']
   image?: Maybe<UploadFile>
   variant: Enum_Componentsectionslandingpage_Variant
@@ -2778,6 +2779,7 @@ export type ComponentSectionsLandingPageFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<ComponentSectionsLandingPageFiltersInput>>>
   banner?: InputMaybe<ComponentBlocksLandingPageBannerFiltersInput>
   cardLinks?: InputMaybe<ComponentBlocksCardLinkFiltersInput>
+  cardLinksLayout?: InputMaybe<StringFilterInput>
   not?: InputMaybe<ComponentSectionsLandingPageFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsLandingPageFiltersInput>>>
   variant?: InputMaybe<StringFilterInput>
@@ -2786,6 +2788,7 @@ export type ComponentSectionsLandingPageFiltersInput = {
 export type ComponentSectionsLandingPageInput = {
   banner?: InputMaybe<ComponentBlocksLandingPageBannerInput>
   cardLinks?: InputMaybe<Array<InputMaybe<ComponentBlocksCardLinkInput>>>
+  cardLinksLayout?: InputMaybe<Enum_Componentsectionslandingpage_Cardlinkslayout>
   id?: InputMaybe<Scalars['ID']['input']>
   image?: InputMaybe<Scalars['ID']['input']>
   variant?: InputMaybe<Enum_Componentsectionslandingpage_Variant>
@@ -3799,6 +3802,11 @@ export enum Enum_Componentsectionsinbareleases_Variant {
 export enum Enum_Componentsectionsjoboffers_Titlelevel {
   H2 = 'h2',
   H3 = 'h3',
+}
+
+export enum Enum_Componentsectionslandingpage_Cardlinkslayout {
+  LandingPageSectionCardLinksLayoutCarousel = 'landingPageSection_cardLinksLayout_carousel',
+  LandingPageSectionCardLinksLayoutWrap = 'landingPageSection_cardLinksLayout_wrap',
 }
 
 export enum Enum_Componentsectionslandingpage_Variant {
@@ -12842,6 +12850,7 @@ export type PageEntityFragment = {
       }
     | {
         __typename: 'ComponentSectionsLandingPage'
+        cardLinksLayout?: Enum_Componentsectionslandingpage_Cardlinkslayout | null
         landingPageVariant: Enum_Componentsectionslandingpage_Variant
         landingPageBanner?: {
           __typename?: 'ComponentBlocksLandingPageBanner'
@@ -14781,6 +14790,7 @@ export type PageByPathQuery = {
         }
       | {
           __typename: 'ComponentSectionsLandingPage'
+          cardLinksLayout?: Enum_Componentsectionslandingpage_Cardlinkslayout | null
           landingPageVariant: Enum_Componentsectionslandingpage_Variant
           landingPageBanner?: {
             __typename?: 'ComponentBlocksLandingPageBanner'
@@ -16745,6 +16755,7 @@ export type Dev_AllPagesQuery = {
         }
       | {
           __typename: 'ComponentSectionsLandingPage'
+          cardLinksLayout?: Enum_Componentsectionslandingpage_Cardlinkslayout | null
           landingPageVariant: Enum_Componentsectionslandingpage_Variant
           landingPageBanner?: {
             __typename?: 'ComponentBlocksLandingPageBanner'
@@ -20020,6 +20031,7 @@ export type StarzLandingPageSectionFragment = {
 
 export type LandingPageSectionFragment = {
   __typename?: 'ComponentSectionsLandingPage'
+  cardLinksLayout?: Enum_Componentsectionslandingpage_Cardlinkslayout | null
   landingPageVariant: Enum_Componentsectionslandingpage_Variant
   landingPageBanner?: {
     __typename?: 'ComponentBlocksLandingPageBanner'
@@ -21460,6 +21472,7 @@ type Sections_ComponentSectionsJobOffers_Fragment = {
 
 type Sections_ComponentSectionsLandingPage_Fragment = {
   __typename: 'ComponentSectionsLandingPage'
+  cardLinksLayout?: Enum_Componentsectionslandingpage_Cardlinkslayout | null
   landingPageVariant: Enum_Componentsectionslandingpage_Variant
   landingPageBanner?: {
     __typename?: 'ComponentBlocksLandingPageBanner'
@@ -24549,6 +24562,7 @@ export const LandingPageSectionFragmentDoc = gql`
     cardLinks {
       ...CardLink
     }
+    cardLinksLayout
   }
   ${UploadImageEntityFragmentDoc}
   ${CommonLinkFragmentDoc}

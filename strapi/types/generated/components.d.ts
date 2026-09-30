@@ -1087,6 +1087,10 @@ export interface SectionsLandingPage extends Struct.ComponentSchema {
         },
         number
       >
+    cardLinksLayout: Schema.Attribute.Enumeration<
+      ['landingPageSection.cardLinksLayout.carousel', 'landingPageSection.cardLinksLayout.wrap']
+    > &
+      Schema.Attribute.DefaultTo<'landingPageSection.cardLinksLayout.carousel'>
     image: Schema.Attribute.Media<'images'>
     variant: Schema.Attribute.Enumeration<['banner', 'image']> &
       Schema.Attribute.Required &

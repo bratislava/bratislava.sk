@@ -78,6 +78,20 @@
           "sortable": false
         }
       },
+      "cardLinksLayout": {
+        "edit": {
+          "label": "Layout kariet s odkazmi na mobilnom zobrazení",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "cardLinksLayout",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "documentId": {
         "edit": {},
         "list": {
@@ -111,6 +125,12 @@
           {
             "name": "cardLinks",
             "size": 12
+          }
+        ],
+        [
+          {
+            "name": "cardLinksLayout",
+            "size": 6
           }
         ]
       ],

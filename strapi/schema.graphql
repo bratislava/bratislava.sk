@@ -2169,6 +2169,7 @@ input ComponentSectionsJobOffersInput {
 type ComponentSectionsLandingPage {
   banner: ComponentBlocksLandingPageBanner
   cardLinks(filters: ComponentBlocksCardLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksCardLink]
+  cardLinksLayout: ENUM_COMPONENTSECTIONSLANDINGPAGE_CARDLINKSLAYOUT
   id: ID!
   image: UploadFile
   variant: ENUM_COMPONENTSECTIONSLANDINGPAGE_VARIANT!
@@ -2178,6 +2179,7 @@ input ComponentSectionsLandingPageFiltersInput {
   and: [ComponentSectionsLandingPageFiltersInput]
   banner: ComponentBlocksLandingPageBannerFiltersInput
   cardLinks: ComponentBlocksCardLinkFiltersInput
+  cardLinksLayout: StringFilterInput
   not: ComponentSectionsLandingPageFiltersInput
   or: [ComponentSectionsLandingPageFiltersInput]
   variant: StringFilterInput
@@ -2186,6 +2188,7 @@ input ComponentSectionsLandingPageFiltersInput {
 input ComponentSectionsLandingPageInput {
   banner: ComponentBlocksLandingPageBannerInput
   cardLinks: [ComponentBlocksCardLinkInput]
+  cardLinksLayout: ENUM_COMPONENTSECTIONSLANDINGPAGE_CARDLINKSLAYOUT
   id: ID
   image: ID
   variant: ENUM_COMPONENTSECTIONSLANDINGPAGE_VARIANT
@@ -3064,6 +3067,11 @@ enum ENUM_COMPONENTSECTIONSINBARELEASES_VARIANT {
 enum ENUM_COMPONENTSECTIONSJOBOFFERS_TITLELEVEL {
   h2
   h3
+}
+
+enum ENUM_COMPONENTSECTIONSLANDINGPAGE_CARDLINKSLAYOUT {
+  landingPageSection_cardLinksLayout_carousel
+  landingPageSection_cardLinksLayout_wrap
 }
 
 enum ENUM_COMPONENTSECTIONSLANDINGPAGE_VARIANT {

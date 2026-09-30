@@ -83,26 +83,26 @@ export default {
         'i18n.CMEditViewBulkLocale.publish-title': 'Publikovať viaceré jazyky',
         'i18n.CMEditViewBulkLocale.unpublish-title': 'Odpublikovať viaceré jazyky',
 
-        // Used in columns section
+        // Sections enums
+        'assetsSection.displayOrder.default': 'Predvolené',
+        'assetsSection.displayOrder.reversed': 'Obrátené',
         'columnsSection.imageVariant.withCircleBackground': 'Piktogramy na kruhovom pozadí',
         'columnsSection.imageVariant.imageOriginalSize': 'Obrázky s vlastnou veľkosťou',
         'columnsSection.responsiveLayout.slider': 'Slider',
         'columnsSection.responsiveLayout.oneColumn': 'Pod sebou',
-
-        // Order
-        'assetsSection.displayOrder.default': 'Predvolené',
-        'assetsSection.displayOrder.reversed': 'Obrátené',
+        'landingPageSection.cardLinksLayout.carousel': 'Carousel',
+        'landingPageSection.cardLinksLayout.wrap': 'Zalomiť',
       },
       en: {
-        // Used in columns section
+        // Sections enums
+        'assetsSection.displayOrder.default': 'Predvolené',
+        'assetsSection.displayOrder.reversed': 'Obrátené',
         'columnsSection.imageVariant.withCircleBackground': 'Piktogramy na kruhovom pozadí',
         'columnsSection.imageVariant.imageOriginalSize': 'Obrázky s vlastnou veľkosťou',
         'columnsSection.responsiveLayout.slider': 'Slider',
         'columnsSection.responsiveLayout.oneColumn': 'Pod sebou',
-
-        // Order
-        'assetsSection.displayOrder.default': 'Predvolené',
-        'assetsSection.displayOrder.reversed': 'Obrátené',
+        'landingPageSection.cardLinksLayout.carousel': 'Carousel',
+        'landingPageSection.cardLinksLayout.wrap': 'Wrap',
       },
     },
   },
