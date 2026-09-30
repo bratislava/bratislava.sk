@@ -62,9 +62,6 @@ const ProcessTimelineSubstep = ({ substep, stepIndex, substepIndex, titleLevel =
           />
         )}
         {isThisSubstepCurrent ? (
-          // <div className="flex size-7 shrink-0 items-center justify-center rounded-full border-2 border-content-active-primary-default bg-white">
-          //   <div aria-hidden className="size-4 rounded-full bg-content-active-primary-default" />
-          // </div>
           <div
             aria-hidden
             className="size-7 shrink-0 rounded-full border-2 border-content-active-primary-default bg-content-active-primary-default bg-clip-content p-1"
