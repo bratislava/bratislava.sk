@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Add basic label
-        uses: andymckay/labeler@1.0.4
+        uses: andymckay/labeler@e6c4322d0397f3240f0e7e30a33b5c5df2d39e90 # 1.0.4
         with:
           add-labels: 'pr: needs review :pray:'
 
@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Add approve labels
-        uses: andymckay/labeler@1.0.4
+        uses: andymckay/labeler@e6c4322d0397f3240f0e7e30a33b5c5df2d39e90 # 1.0.4
         with:
           add-labels: 'pr: fix & ship :ship:'
           remove-labels: 'pr: needs review :pray:, pr: needs work :hammer_and_wrench:'
@@ -30,7 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Add needs-work labels
-        uses: andymckay/labeler@1.0.4
+        uses: andymckay/labeler@e6c4322d0397f3240f0e7e30a33b5c5df2d39e90 # 1.0.4
         with:
           add-labels: 'pr: needs work :hammer_and_wrench:'
           remove-labels: 'pr: fix & ship :ship:, pr: needs review :pray:'
