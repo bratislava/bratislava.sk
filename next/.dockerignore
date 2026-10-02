@@ -14,9 +14,6 @@ npm.debug.log
 .env.deployment
 .env.deployment.local
 .env.development.local
-.env.bratiska-cli-build.dev
-.env.bratiska-cli-build.staging
-.env.bratiska-cli-build.prod
 misc
 .idea
 .nvmrc
