@@ -41,7 +41,7 @@ const PageCardsSection = ({ section }: Props) => {
                 showImage={!!showThumbnails}
                 imageClassName="aspect-280/158"
                 buttonText={card.buttonText}
-                linkProps={getLinkProps({ page: card.page })}
+                linkProps={getLinkProps({ page: card.page, label: card.title })}
               />
             </li>
           ))}
