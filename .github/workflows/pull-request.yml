@@ -1,0 +1,29 @@
+name: Pull Request
+on:
+  pull_request:
+    branches:
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  # Both images are built with the real production target and never pushed, so
+  # a PR fails on anything that would break the deploy build - including type
+  # errors, which `next build` reports.
+  build-next:
+    name: Build Next
+    uses: ./.github/workflows/build-next.yml
+    secrets: inherit
+    with:
+      directory: next/
+      image: harbor.bratislava.sk/standalone/bratislava-next
+
+  build-strapi:
+    name: Build Strapi
+    uses: ./.github/workflows/build-single-image.yml
+    secrets: inherit
+    with:
+      directory: strapi/
+      image: harbor.bratislava.sk/standalone/bratislava-strapi
