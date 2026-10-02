@@ -3,7 +3,7 @@ on: [pull_request]
 jobs:
   validate:
     name: Validate typescript
-    uses: bratislava/github-actions/.github/workflows/validate-typescript.yml@stable
+    uses: bratislava/github-actions/.github/workflows/validate-typescript.yml@v2.4.0
     with:
       directory: './next'
       node: '24.16.0'
