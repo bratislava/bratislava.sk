@@ -13,6 +13,11 @@ import {
   relatedArticlesFetcher,
 } from '@/src/services/meili/fetchers/relatedArticlesFetcher'
 import {
+  getUrbanStudiesQueryKey,
+  getUrbanStudiesSectionFilters,
+  urbanStudiesFetcher,
+} from '@/src/services/meili/fetchers/urbanStudiesFetcher'
+import {
   getMsGraphStructureQueryKey,
   msGraphStructureFetcher,
 } from '@/src/services/ms-graph/fetchers/msGraphStructure.fetcher'
@@ -77,6 +82,24 @@ export const prefetchPageSections = async (page: PageEntityFragment, locale: str
       queryFn: () => getTootootEvents(),
     })
   }
+
+  const urbanStudiesFilters = (page.sections ?? []).flatMap((section) => {
+    if (section?.__typename !== 'ComponentSectionsUrbanStudies') {
+      return []
+    }
+    const filters = getUrbanStudiesSectionFilters(section)
+
+    return filters ? [filters] : []
+  })
+
+  await Promise.all(
+    urbanStudiesFilters.map((filters) =>
+      queryClient.prefetchQuery({
+        queryKey: getUrbanStudiesQueryKey(filters),
+        queryFn: () => urbanStudiesFetcher(filters),
+      }),
+    ),
+  )
 
   await queryClient.prefetchQuery({
     queryKey: getRelatedArticlesQueryKey(page, locale),
