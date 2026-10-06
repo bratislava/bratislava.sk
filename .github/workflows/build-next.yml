@@ -1,0 +1,124 @@
+name: Build Next
+# Two modes, selected by the `cluster` input:
+#   - CI (cluster == ''): build the final image, do not push.
+#   - Deploy (cluster != ''): reuse an existing commit image or build+push it
+#     and re-tag it for the cluster. The infrastructure deploy is triggered
+#     separately by the caller (deploy.yml).
+#
+# Next.js bakes the environment into the build, so the image, tags and Docker
+# cache are environment-specific (the `-<cluster>` flavor suffix) and cannot be
+# reused across clusters.
+on:
+  workflow_call:
+    inputs:
+      directory:
+        description: "Base dir where whole app is located."
+        type: string
+        required: true
+      image:
+        description: "Full image name including registry/repository for Docker cache."
+        type: string
+        required: true
+      cluster:
+        description: >-
+          Target cluster (development, staging, production). Empty = CI build
+          only (no push). When set, the image is built/pushed and re-tagged for
+          the cluster, ready for the caller to trigger the infrastructure deploy.
+        type: string
+        required: false
+        default: ""
+    secrets:
+      DOCKER_REGISTRY_USERNAME:
+        required: true
+      DOCKER_REGISTRY_PASSWORD:
+        required: true
+      HARBOR_REGISTRY_PASSWORD:
+        required: true
+
+permissions:
+  contents: read
+
+env:
+  REGISTRY: harbor.bratislava.sk
+  REGISTRY_USERNAME: robot$github_actions
+
+jobs:
+  build:
+    name: Build Next
+    runs-on: bratislava
+    env:
+      # Per-cluster deploy tag prefix (empty in CI) and the per-environment
+      # flavor suffix that keeps each cluster's image and cache separate.
+      CLUSTER_PREFIX: ${{ inputs.cluster != '' && format('{0}-', inputs.cluster) || '' }}
+      # CI builds have no cluster; they still need an environment to bake in,
+      # and that image is never pushed. Development, because `next build`
+      # prerenders against that environment's live Strapi, and dev is where a
+      # PR's Strapi schema changes can be deployed (dev-strapi* tag) before
+      # the PR is merged.
+      ENV_NAME: ${{ inputs.cluster != '' && inputs.cluster || 'development' }}
+      ENV_SUFFIX: -${{ inputs.cluster != '' && inputs.cluster || 'development' }}
+    defaults:
+      run:
+        working-directory: ${{ inputs.directory }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+
+      - name: Resolve short SHA
+        id: sha
+        run: echo "short_sha=${GITHUB_SHA:0:7}" >> "$GITHUB_OUTPUT"
+
+      - name: Prepare Next.js build env
+        shell: bash
+        run: |
+          # Promote the committed build env file to .env.production.local so
+          # docker build picks up this cluster's NEXT_PUBLIC_* values.
+          source_env_file=".env.build.$ENV_NAME"
+          if [[ ! -f "$source_env_file" ]]; then
+            echo "::error file=$source_env_file::Missing $source_env_file in $PWD (allowed clusters: development, staging, production)"
+            exit 1
+          fi
+          cp "$source_env_file" .env.production.local
+
+      - name: Set up Docker build
+        uses: bratislava/github-actions/.github/actions/setup-docker-build@v3.0.0
+        with:
+          docker_registry_username: ${{ secrets.DOCKER_REGISTRY_USERNAME }}
+          docker_registry_password: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
+          harbor_registry: ${{ env.REGISTRY }}
+          harbor_registry_username: ${{ env.REGISTRY_USERNAME }}
+          harbor_registry_password: ${{ secrets.HARBOR_REGISTRY_PASSWORD }}
+
+      - name: Docker metadata
+        id: meta
+        uses: bratislava/github-actions/.github/actions/docker-metadata@v3.0.0
+        with:
+          image: ${{ inputs.image }}
+          prefix: ${{ env.CLUSTER_PREFIX }}
+          suffix: ${{ env.ENV_SUFFIX }}
+
+      # Deploy mode only: reuse the per-env commit image across clusters. If it
+      # already exists, re-tag it for this cluster and skip the build below.
+      - name: Check for existing image
+        if: ${{ inputs.cluster != '' }}
+        id: existing
+        uses: bratislava/github-actions/.github/actions/check-existing-image@v3.0.0
+        with:
+          existing_tag: ${{ inputs.image }}:${{ steps.sha.outputs.short_sha }}${{ env.ENV_SUFFIX }}
+          new_tag: ${{ inputs.image }}:${{ env.CLUSTER_PREFIX }}${{ steps.sha.outputs.short_sha }}${{ env.ENV_SUFFIX }}
+
+      - name: Build image
+        if: ${{ inputs.cluster == '' || steps.existing.outputs.found != 'true' }}
+        uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
+        with:
+          context: ${{ inputs.directory }}
+          target: prod
+          push: ${{ inputs.cluster != '' }}
+          tags: ${{ steps.meta.outputs.tags }}
+          cache-from: ${{ steps.meta.outputs.cache_from }}
+          cache-to: ${{ steps.meta.outputs.cache_to }}
+          build-args: |
+            GIT_COMMIT=${{ github.sha }}

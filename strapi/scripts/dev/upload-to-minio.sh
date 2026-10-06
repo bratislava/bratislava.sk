@@ -6,7 +6,7 @@
 #   set -a && . ./.env.local && set +a && ./scripts/upload-to-minio.sh ./big-file.pdf
 set -euo pipefail
 
-# bucket coordinates - fixed, dev, staging and prod share one bucket (kubernetes/base/.env), and `upload` is the
+# bucket coordinates - fixed, dev, staging and prod share one bucket (strapi/.env.deploy.<cluster>), and `upload` is the
 # provider's rootPath (config/env/production/plugins.ts)
 ENDPOINT=https://s3.bratislava.sk
 PUBLIC_ENDPOINT=https://bratislavask.s3.bratislava.sk

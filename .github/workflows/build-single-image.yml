@@ -1,0 +1,103 @@
+name: Build Single Image
+# Generic single-final-image build for services with one prod stage and no
+# test/validation stages (strapi).
+#
+# Two modes, selected by the `cluster` input:
+#   - CI (cluster == ''): build the final image, do not push.
+#   - Deploy (cluster != ''): reuse an existing commit image or build+push it
+#     and re-tag it for the cluster. The infrastructure deploy is triggered
+#     separately by the caller (deploy.yml).
+on:
+  workflow_call:
+    inputs:
+      directory:
+        description: "Base dir where whole app is located."
+        type: string
+        required: true
+      image:
+        description: "Full image name including registry/repository."
+        type: string
+        required: true
+      cluster:
+        description: >-
+          Target cluster (development, staging, production). Empty = CI build
+          only (no push). When set, the image is built/pushed and re-tagged for
+          the cluster, ready for the caller to trigger the infrastructure deploy.
+        type: string
+        required: false
+        default: ""
+    secrets:
+      DOCKER_REGISTRY_USERNAME:
+        required: true
+      DOCKER_REGISTRY_PASSWORD:
+        required: true
+      HARBOR_REGISTRY_PASSWORD:
+        required: true
+
+permissions:
+  contents: read
+
+env:
+  REGISTRY: harbor.bratislava.sk
+  REGISTRY_USERNAME: robot$github_actions
+
+jobs:
+  build:
+    name: Build
+    runs-on: bratislava
+    env:
+      # In deploy mode, the cluster-prefixed sha tag is the per-cluster deploy
+      # tag. Empty in CI so docker-metadata emits only the plain commit tag.
+      CLUSTER_PREFIX: ${{ inputs.cluster != '' && format('{0}-', inputs.cluster) || '' }}
+    defaults:
+      run:
+        working-directory: ${{ inputs.directory }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+
+      - name: Resolve short SHA
+        id: sha
+        run: echo "short_sha=${GITHUB_SHA:0:7}" >> "$GITHUB_OUTPUT"
+
+      - name: Set up Docker build
+        uses: bratislava/github-actions/.github/actions/setup-docker-build@v3.0.0
+        with:
+          docker_registry_username: ${{ secrets.DOCKER_REGISTRY_USERNAME }}
+          docker_registry_password: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
+          harbor_registry: ${{ env.REGISTRY }}
+          harbor_registry_username: ${{ env.REGISTRY_USERNAME }}
+          harbor_registry_password: ${{ secrets.HARBOR_REGISTRY_PASSWORD }}
+
+      - name: Docker metadata
+        id: meta
+        uses: bratislava/github-actions/.github/actions/docker-metadata@v3.0.0
+        with:
+          image: ${{ inputs.image }}
+          prefix: ${{ env.CLUSTER_PREFIX }}
+
+      # Deploy mode only: reuse the commit image across clusters. If it already
+      # exists, re-tag it for this cluster and skip the build below.
+      - name: Check for existing image
+        if: ${{ inputs.cluster != '' }}
+        id: existing
+        uses: bratislava/github-actions/.github/actions/check-existing-image@v3.0.0
+        with:
+          existing_tag: ${{ inputs.image }}:${{ steps.sha.outputs.short_sha }}
+          new_tag: ${{ inputs.image }}:${{ env.CLUSTER_PREFIX }}${{ steps.sha.outputs.short_sha }}
+
+      - name: Build image
+        if: ${{ inputs.cluster == '' || steps.existing.outputs.found != 'true' }}
+        uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
+        with:
+          context: ${{ inputs.directory }}
+          target: prod
+          push: ${{ inputs.cluster != '' }}
+          tags: ${{ steps.meta.outputs.tags }}
+          cache-from: ${{ steps.meta.outputs.cache_from }}
+          cache-to: ${{ steps.meta.outputs.cache_to }}
+          build-args: |
+            GIT_COMMIT=${{ github.sha }}
