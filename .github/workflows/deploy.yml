@@ -94,8 +94,6 @@ jobs:
     with:
       cluster: ${{ needs.resolve.outputs.cluster }}
       app: bratislava.sk/strapi
-      # TODO: drop before merge - infra#397 (bratislava.sk units) is not on master yet.
-      dispatch_ref: mpinter/marianum.sk-setup-validation
 
   # ---- Next: build+push against the deployed Strapi, then deploy ----
   # When Strapi is out of scope (a *-next tag) deploy-strapi is skipped, which
@@ -120,5 +118,3 @@ jobs:
     with:
       cluster: ${{ needs.resolve.outputs.cluster }}
       app: bratislava.sk/next
-      # TODO: drop before merge - infra#397 (bratislava.sk units) is not on master yet.
-      dispatch_ref: mpinter/marianum.sk-setup-validation
