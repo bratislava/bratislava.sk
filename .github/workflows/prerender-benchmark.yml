@@ -141,15 +141,27 @@ jobs:
           echo "### Local Strapi ($ENV_NAME, \`$TAG\`)" >> "$GITHUB_STEP_SUMMARY"
           echo "- Image pull: $(( $(date +%s) - start ))s" >> "$GITHUB_STEP_SUMMARY"
 
-      # Check the Meilisearch host/key stored in core_store work from here (the
-      # same /stats call the plugin makes on boot), using node and pg from the
-      # Strapi image itself.
-      - name: Check stored Meilisearch credentials
+      # On boot the meilisearch plugin drops every content type that is both in
+      # the stored indexed list and in the app, unless the stored Meilisearch
+      # answers with its index. Start only when there is nothing to drop, or
+      # the stored Meilisearch is reachable from here. Uses node and pg from
+      # the Strapi image itself.
+      - name: Check Meilisearch plugin is safe to boot
         run: |
           docker run --rm -i \
             -e DATABASE_HOST -e DATABASE_PORT -e DATABASE_NAME -e DATABASE_USERNAME -e DATABASE_PASSWORD \
             "$STRAPI_LOCAL_IMAGE" node - <<'EOF'
+          const fs = require('node:fs')
+          const path = require('node:path')
           const { Client } = require('pg')
+
+          const appContentTypes = () => {
+            const apiDir = 'dist/src/api'
+            return fs.readdirSync(apiDir).flatMap((api) => {
+              const dir = path.join(apiDir, api, 'content-types')
+              return fs.existsSync(dir) ? fs.readdirSync(dir).map((name) => `api::${api}.${name}`) : []
+            })
+          }
 
           const main = async () => {
             const db = new Client({
@@ -161,32 +173,41 @@ jobs:
             })
             await db.connect()
             const { rows } = await db.query(
-              'SELECT key, value FROM strapi_core_store_settings WHERE key = ANY($1)',
-              [['plugin_meilisearch_meilisearch_host', 'plugin_meilisearch_meilisearch_api_key']],
+              "SELECT key, value FROM strapi_core_store_settings WHERE key LIKE 'plugin_meilisearch_%'",
             )
             await db.end()
 
             const read = (key) => {
-              const value = rows.find((row) => row.key === key)?.value
-              return value ? JSON.parse(value) : ''
+              const value = rows.find((row) => row.key === `plugin_meilisearch_meilisearch_${key}`)?.value
+              return value ? JSON.parse(value) : undefined
             }
-            const host = read('plugin_meilisearch_meilisearch_host')
-            const apiKey = read('plugin_meilisearch_meilisearch_api_key')
-            if (!host) throw new Error('No Meilisearch host stored in core_store')
+            const host = read('host') ?? ''
+            const apiKey = read('api_key') ?? ''
+            const indexed = read('indexed_content_types') ?? []
 
-            const response = await fetch(`${host.replace(/\/+$/, '')}/stats`, {
+            const contentTypes = appContentTypes()
+            if (!contentTypes.length) throw new Error('No content types found in the image')
+            // Plugin content types are not listed above, so treat them as present.
+            const atRisk = indexed.filter((uid) => contentTypes.includes(uid) || !uid.startsWith('api::'))
+            console.log(`Stored Meilisearch host: ${host || '(none)'}`)
+            console.log(`Indexed content types: ${indexed.join(', ') || '(none)'}`)
+            if (!atRisk.length) {
+              console.log('None of them exist in the app, nothing the plugin could drop')
+              return
+            }
+
+            const baseUrl = /^https?:\/\//.test(host) ? host : `http://${host}`
+            const response = await fetch(`${baseUrl.replace(/\/+$/, '')}/stats`, {
               headers: apiKey ? { Authorization: `Bearer ${apiKey}` } : {},
               signal: AbortSignal.timeout(10_000),
             })
-            if (!response.ok) throw new Error(`${host}/stats returned ${response.status}`)
+            if (!response.ok) throw new Error(`${baseUrl}/stats returned ${response.status}`)
             const { indexes } = await response.json()
-            if (!Object.keys(indexes ?? {}).length) throw new Error(`${host} has no indexes`)
-
-            console.log(`Meilisearch ${host} reachable, indexes: ${Object.keys(indexes).join(', ')}`)
+            console.log(`Meilisearch reachable, indexes: ${Object.keys(indexes ?? {}).join(', ')}`)
           }
 
           main().catch((error) => {
-            console.error(`Refusing to start a local Strapi: ${error.message}`)
+            console.error(`Refusing to start a local Strapi, the meilisearch plugin could drop indexed content types: ${error.message}`)
             process.exit(1)
           })
           EOF
