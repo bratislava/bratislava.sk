@@ -10,11 +10,11 @@ name: Prerender benchmark
 #
 # The local Strapi is effectively one more replica of the deployed one, and
 # boots with the same side effects as a pod restart. One of them needs care:
-# the meilisearch plugin writes its configured host/key into the shared
-# core_store (which the live pod reads its credentials from), and drops every
-# indexed content type from it when Meilisearch is unreachable. So the local
-# Strapi gets exactly the host/key the live pod stored, and only starts if that
-# Meilisearch answers from the runner.
+# the meilisearch plugin reads its host/key from the shared core_store, and
+# drops every indexed content type from it when Meilisearch is unreachable.
+# Like the live pod, the local Strapi gets no MEILISEARCH_* env (that would
+# overwrite the stored values), and it only starts if the stored Meilisearch
+# answers from the runner.
 #
 # Needs repository secrets PRERENDER_DB_PASSWORD_<ENVIRONMENT> (and optionally
 # PRERENDER_DB_USERNAME_<ENVIRONMENT>, default `bratislava`), e.g.
@@ -141,12 +141,12 @@ jobs:
           echo "### Local Strapi ($ENV_NAME, \`$TAG\`)" >> "$GITHUB_STEP_SUMMARY"
           echo "- Image pull: $(( $(date +%s) - start ))s" >> "$GITHUB_STEP_SUMMARY"
 
-      # Read the Meilisearch host/key the live pod stored and check they work
-      # from here (the same /stats call the plugin makes on boot), using node
-      # and pg from the Strapi image itself.
-      - name: Resolve Meilisearch credentials
+      # Check the Meilisearch host/key stored in core_store work from here (the
+      # same /stats call the plugin makes on boot), using node and pg from the
+      # Strapi image itself.
+      - name: Check stored Meilisearch credentials
         run: |
-          creds=$(docker run --rm -i \
+          docker run --rm -i \
             -e DATABASE_HOST -e DATABASE_PORT -e DATABASE_NAME -e DATABASE_USERNAME -e DATABASE_PASSWORD \
             "$STRAPI_LOCAL_IMAGE" node - <<'EOF'
           const { Client } = require('pg')
@@ -182,7 +182,7 @@ jobs:
             const { indexes } = await response.json()
             if (!Object.keys(indexes ?? {}).length) throw new Error(`${host} has no indexes`)
 
-            console.log(JSON.stringify({ host, apiKey }))
+            console.log(`Meilisearch ${host} reachable, indexes: ${Object.keys(indexes).join(', ')}`)
           }
 
           main().catch((error) => {
@@ -190,15 +190,6 @@ jobs:
             process.exit(1)
           })
           EOF
-          )
-          host=$(jq -r .host <<< "$creds")
-          key=$(jq -r .apiKey <<< "$creds")
-          echo "::add-mask::$key"
-          echo "Meilisearch host: $host"
-          {
-            echo "MEILISEARCH_HOST=$host"
-            echo "MEILISEARCH_ADMIN_API_KEY=$key"
-          } >> "$GITHUB_ENV"
 
       # BuildKit RUN steps reach the local Strapi by IP: the builder container
       # joins the same network as Strapi.
@@ -216,7 +207,6 @@ jobs:
           docker run -d --name "$STRAPI" --network "$NET" \
             --env-file "strapi/.env.deploy.$ENV_NAME" \
             -e DATABASE_HOST -e DATABASE_PORT -e DATABASE_NAME -e DATABASE_USERNAME -e DATABASE_PASSWORD \
-            -e MEILISEARCH_HOST -e MEILISEARCH_ADMIN_API_KEY \
             -e APP_KEYS="$(openssl rand -base64 16),$(openssl rand -base64 16)" \
             -e ADMIN_JWT_SECRET="$(openssl rand -base64 16)" \
             -e API_TOKEN_SALT="$(openssl rand -base64 16)" \
