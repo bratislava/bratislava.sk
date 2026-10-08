@@ -21,7 +21,8 @@ name: Prerender benchmark
 # PRERENDER_DB_PASSWORD_DEVELOPMENT.
 on:
   # Runs on the PR that changes this file, so it can be tried before merging
-  # (workflow_dispatch only sees workflows on the default branch).
+  # (workflow_dispatch only sees workflows on the default branch). Defaults to
+  # staging: the development CNPG LoadBalancer is not provisioned yet.
   pull_request:
     paths:
       - .github/workflows/prerender-benchmark.yml
@@ -34,7 +35,7 @@ on:
           - development
           - staging
           - production
-        default: development
+        default: staging
       strapi_image_tag:
         description: Strapi image tag. Empty = newest `<environment>-*` tag, i.e. the deployed one.
         type: string
@@ -49,7 +50,7 @@ env:
   REGISTRY_USERNAME: robot$github_actions
   NEXT_IMAGE: harbor.bratislava.sk/standalone/bratislava-next
   STRAPI_IMAGE: harbor.bratislava.sk/standalone/bratislava-strapi
-  ENV_NAME: ${{ inputs.environment || 'development' }}
+  ENV_NAME: ${{ inputs.environment || 'staging' }}
 
 jobs:
   live:
@@ -91,11 +92,11 @@ jobs:
       NET: prerender-${{ github.run_id }}
       STRAPI: prerender-strapi-${{ github.run_id }}
       BUILDER: prerender-${{ github.run_id }}
-      DATABASE_HOST: ${{ (inputs.environment == 'production' && '10.10.30.111') || (inputs.environment == 'staging' && '10.10.30.94') || '10.10.30.63' }}
+      DATABASE_HOST: ${{ (inputs.environment == 'production' && '10.10.30.111') || (inputs.environment == 'development' && '10.10.30.63') || '10.10.30.94' }}
       DATABASE_PORT: "5432"
       DATABASE_NAME: bratislava
-      DATABASE_USERNAME: ${{ secrets[format('PRERENDER_DB_USERNAME_{0}', inputs.environment || 'development')] || 'bratislava' }}
-      DATABASE_PASSWORD: ${{ secrets[format('PRERENDER_DB_PASSWORD_{0}', inputs.environment || 'development')] }}
+      DATABASE_USERNAME: ${{ secrets[format('PRERENDER_DB_USERNAME_{0}', inputs.environment || 'staging')] || 'bratislava' }}
+      DATABASE_PASSWORD: ${{ secrets[format('PRERENDER_DB_PASSWORD_{0}', inputs.environment || 'staging')] }}
     steps:
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
