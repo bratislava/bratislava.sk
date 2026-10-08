@@ -1,0 +1,249 @@
+name: Prerender benchmark
+# Prototype: how much faster is `next build` prerendering against a throwaway
+# Strapi on the runner than against the environment's live Strapi?
+#
+# Two jobs run the same Next build stage (forced rebuild, nothing pushed):
+#   - live:  against NEXT_PUBLIC_STRAPI_URL of the environment (today's setup)
+#   - local: against a Strapi container on the runner, backed by a snapshot of
+#            the environment's database, dumped over the CNPG LoadBalancer IP.
+#
+# The local Strapi never connects to the environment database itself. A second
+# Strapi on the shared database is not read-only: on boot it ALTERs the schema
+# whenever its code differs from the deployed one, and the meilisearch plugin
+# drops every indexed content type from core_store when it cannot reach
+# Meilisearch. On a snapshot both only hit the throwaway copy.
+#
+# Needs repository secrets PRERENDER_DB_PASSWORD_<ENVIRONMENT> (and optionally
+# PRERENDER_DB_USERNAME_<ENVIRONMENT>, default `bratislava`), e.g.
+# PRERENDER_DB_PASSWORD_DEVELOPMENT. A read-only role is enough.
+on:
+  # Runs on the PR that changes this file, so it can be tried before merging
+  # (workflow_dispatch only sees workflows on the default branch).
+  pull_request:
+    paths:
+      - .github/workflows/prerender-benchmark.yml
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Environment whose Strapi data is used for prerendering.
+        type: choice
+        options:
+          - development
+          - staging
+          - production
+        default: development
+
+permissions:
+  contents: read
+
+env:
+  REGISTRY: harbor.bratislava.sk
+  REGISTRY_USERNAME: robot$github_actions
+  NEXT_IMAGE: harbor.bratislava.sk/standalone/bratislava-next
+  STRAPI_IMAGE: harbor.bratislava.sk/standalone/bratislava-strapi
+  ENV_NAME: ${{ inputs.environment || 'development' }}
+
+jobs:
+  live:
+    name: Next build against live Strapi
+    runs-on: bratislava
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 1
+
+      - name: Prepare Next.js build env
+        run: cp "next/.env.build.$ENV_NAME" next/.env.production.local
+
+      - name: Set up Docker build
+        uses: bratislava/github-actions/.github/actions/setup-docker-build@v3.0.0
+        with:
+          docker_registry_username: ${{ secrets.DOCKER_REGISTRY_USERNAME }}
+          docker_registry_password: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
+          harbor_registry: ${{ env.REGISTRY }}
+          harbor_registry_username: ${{ env.REGISTRY_USERNAME }}
+          harbor_registry_password: ${{ secrets.HARBOR_REGISTRY_PASSWORD }}
+
+      - name: Build Next
+        run: |
+          start=$(date +%s)
+          docker buildx build next/ \
+            --target build \
+            --no-cache-filter build \
+            --cache-from "type=registry,ref=$NEXT_IMAGE:cache-master-$ENV_NAME" \
+            --output type=cacheonly \
+            --progress plain
+          echo "### Live Strapi ($ENV_NAME): Next build stage took $(( $(date +%s) - start ))s" >> "$GITHUB_STEP_SUMMARY"
+
+  local:
+    name: Next build against local Strapi
+    runs-on: bratislava
+    env:
+      NET: prerender-${{ github.run_id }}
+      PG: prerender-pg-${{ github.run_id }}
+      STRAPI: prerender-strapi-${{ github.run_id }}
+      BUILDER: prerender-${{ github.run_id }}
+      SRC_DB_HOST: ${{ inputs.environment == 'production' && '10.10.30.111' || inputs.environment == 'staging' && '10.10.30.94' || '10.10.30.63' }}
+      SRC_DB_NAME: bratislava
+      SRC_DB_USER: ${{ secrets[format('PRERENDER_DB_USERNAME_{0}', inputs.environment || 'development')] || 'bratislava' }}
+      SRC_DB_PASSWORD: ${{ secrets[format('PRERENDER_DB_PASSWORD_{0}', inputs.environment || 'development')] }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 1
+
+      - name: Resolve short SHA
+        id: sha
+        run: echo "short_sha=${GITHUB_SHA:0:7}" >> "$GITHUB_OUTPUT"
+
+      - name: Prepare Next.js build env
+        run: cp "next/.env.build.$ENV_NAME" next/.env.production.local
+
+      - name: Set up Docker build
+        uses: bratislava/github-actions/.github/actions/setup-docker-build@v3.0.0
+        with:
+          docker_registry_username: ${{ secrets.DOCKER_REGISTRY_USERNAME }}
+          docker_registry_password: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
+          harbor_registry: ${{ env.REGISTRY }}
+          harbor_registry_username: ${{ env.REGISTRY_USERNAME }}
+          harbor_registry_password: ${{ secrets.HARBOR_REGISTRY_PASSWORD }}
+
+      # BuildKit RUN steps reach the local Strapi by IP: the builder container
+      # joins the same network as Postgres and Strapi.
+      - name: Create network and builder
+        run: |
+          docker network create "$NET"
+          docker buildx create --name "$BUILDER" --driver docker-container --driver-opt "network=$NET"
+
+      - name: Start local Postgres
+        run: |
+          if [[ -z "$SRC_DB_PASSWORD" ]]; then
+            echo "::error::Missing secret PRERENDER_DB_PASSWORD_${ENV_NAME^^}"
+            exit 1
+          fi
+          # pg_dump must not be older than the server, so match its major version.
+          major=$(docker run --rm -e PGPASSWORD="$SRC_DB_PASSWORD" postgres:17 \
+            psql -h "$SRC_DB_HOST" -U "$SRC_DB_USER" -d "$SRC_DB_NAME" -tAc 'SHOW server_version_num')
+          major=$(( major / 10000 ))
+          echo "PG_IMAGE=postgres:$major" >> "$GITHUB_ENV"
+          echo "Source server is PostgreSQL $major"
+
+          docker run -d --name "$PG" --network "$NET" \
+            -e POSTGRES_USER=strapi -e POSTGRES_PASSWORD=strapi -e POSTGRES_DB=strapi \
+            "postgres:$major" \
+            -c fsync=off -c synchronous_commit=off -c full_page_writes=off
+          # The entrypoint's init server has no TCP listener, so wait for TCP.
+          for _ in $(seq 60); do
+            docker exec "$PG" pg_isready -h 127.0.0.1 -U strapi -q && exit 0
+            sleep 1
+          done
+          docker logs "$PG"
+          exit 1
+
+      - name: Snapshot database
+        run: |
+          start=$(date +%s)
+          # Session and token tables are not needed for rendering.
+          docker run --rm --network "$NET" \
+            -e PGPASSWORD="$SRC_DB_PASSWORD" \
+            -e SRC_DB_HOST -e SRC_DB_USER -e SRC_DB_NAME -e PG \
+            "$PG_IMAGE" bash -o pipefail -c '
+              pg_dump -h "$SRC_DB_HOST" -U "$SRC_DB_USER" -d "$SRC_DB_NAME" \
+                --no-owner --no-privileges \
+                --exclude-table-data="strapi_sessions" \
+                --exclude-table-data="strapi_api_token*" \
+                --exclude-table-data="strapi_transfer_token*" \
+              | PGPASSWORD=strapi psql -q -v ON_ERROR_STOP=1 -h "$PG" -U strapi -d strapi
+            '
+          took=$(( $(date +%s) - start ))
+          size=$(docker exec "$PG" psql -U strapi -d strapi -tAc "SELECT pg_size_pretty(pg_database_size('strapi'))")
+          pages=$(docker exec "$PG" psql -U strapi -d strapi -tAc "SELECT count(*) FROM pages")
+          echo "### Local Strapi ($ENV_NAME)" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Database snapshot: ${took}s ($size, $pages page rows)" >> "$GITHUB_STEP_SUMMARY"
+
+      # Reuse the commit image if this commit was already built, otherwise
+      # build it. Not part of the timing: in the deploy pipeline it exists.
+      - name: Get Strapi image
+        run: |
+          image="$STRAPI_IMAGE:${{ steps.sha.outputs.short_sha }}"
+          if ! docker pull "$image"; then
+            image=prerender-strapi:local
+            docker buildx build strapi/ \
+              --builder "$BUILDER" \
+              --target prod \
+              --cache-from "type=registry,ref=$STRAPI_IMAGE:cache-master" \
+              --tag "$image" \
+              --load \
+              --progress plain
+          fi
+          echo "STRAPI_LOCAL_IMAGE=$image" >> "$GITHUB_ENV"
+
+      - name: Start local Strapi
+        run: |
+          start=$(date +%s)
+          # Non-secret env as deployed, real secrets replaced: this instance
+          # only serves public GraphQL reads during the build. Meilisearch
+          # points nowhere, so the plugin cannot touch the real index.
+          docker run -d --name "$STRAPI" --network "$NET" \
+            --env-file "strapi/.env.deploy.$ENV_NAME" \
+            -e DATABASE_HOST="$PG" -e DATABASE_PORT=5432 \
+            -e DATABASE_NAME=strapi -e DATABASE_USERNAME=strapi -e DATABASE_PASSWORD=strapi \
+            -e APP_KEYS="$(openssl rand -base64 16),$(openssl rand -base64 16)" \
+            -e ADMIN_JWT_SECRET="$(openssl rand -base64 16)" \
+            -e API_TOKEN_SALT="$(openssl rand -base64 16)" \
+            -e JWT_SECRET="$(openssl rand -base64 16)" \
+            -e TRANSFER_TOKEN_SALT="$(openssl rand -base64 16)" \
+            -e MEILISEARCH_HOST=http://127.0.0.1:1 \
+            -e MEILISEARCH_ADMIN_API_KEY=unused \
+            -e MAILGUN_API_KEY=unused \
+            -e REVALIDATE_SECRET_TOKEN=unused \
+            -e REVALIDATE_NEXT_URL=http://127.0.0.1:1 \
+            "$STRAPI_LOCAL_IMAGE"
+
+          for _ in $(seq 300); do
+            if docker exec "$STRAPI" wget -q --spider http://127.0.0.1:1337/_health 2>/dev/null; then
+              echo "- Strapi boot: $(( $(date +%s) - start ))s" >> "$GITHUB_STEP_SUMMARY"
+              ip=$(docker inspect -f "{{(index .NetworkSettings.Networks \"$NET\").IPAddress}}" "$STRAPI")
+              echo "STRAPI_PRERENDER_URL=http://$ip:1337" >> "$GITHUB_ENV"
+              exit 0
+            fi
+            if [[ "$(docker inspect -f '{{.State.Running}}' "$STRAPI")" != "true" ]]; then
+              break
+            fi
+            sleep 1
+          done
+          docker logs "$STRAPI"
+          exit 1
+
+      - name: Smoke test local Strapi
+        run: |
+          docker exec "$STRAPI" wget -qO- \
+            --header 'Content-Type: application/json' \
+            --post-data '{"query":"{ pages(locale: \"sk\", pagination: { limit: 3 }) { title } }"}' \
+            http://127.0.0.1:1337/graphql
+
+      - name: Build Next
+        run: |
+          start=$(date +%s)
+          docker buildx build next/ \
+            --builder "$BUILDER" \
+            --target build \
+            --no-cache-filter build \
+            --build-arg STRAPI_PRERENDER_URL \
+            --cache-from "type=registry,ref=$NEXT_IMAGE:cache-master-$ENV_NAME" \
+            --output type=cacheonly \
+            --progress plain
+          echo "- Next build stage: $(( $(date +%s) - start ))s" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Strapi logs
+        if: ${{ !cancelled() }}
+        run: docker logs --tail 200 "$STRAPI" || true
+
+      - name: Clean up
+        if: always()
+        run: |
+          docker rm -f "$STRAPI" "$PG" || true
+          docker buildx rm "$BUILDER" || true
+          docker network rm "$NET" || true
