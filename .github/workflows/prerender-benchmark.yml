@@ -217,7 +217,11 @@ jobs:
       # joins the same network as Strapi.
       - name: Create network and builder
         run: |
-          docker network create "$NET"
+          # User-defined networks don't inherit the daemon MTU, and the
+          # default 1500 breaks TLS from the builder on these runners.
+          mtu=$(docker network inspect bridge -f '{{index .Options "com.docker.network.driver.mtu"}}')
+          echo "Default bridge MTU: ${mtu:-unset}"
+          docker network create ${mtu:+--opt com.docker.network.driver.mtu="$mtu"} "$NET"
           docker buildx create --name "$BUILDER" --driver docker-container --driver-opt "network=$NET"
 
       - name: Start local Strapi
