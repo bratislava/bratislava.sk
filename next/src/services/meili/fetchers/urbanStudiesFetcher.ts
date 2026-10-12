@@ -35,18 +35,20 @@ export const getUrbanStudiesQueryKey = (filters: UrbanStudiesFilters) => [
 export const getUrbanStudiesSectionFilters = (
   section: UrbanStudiesSectionFragment,
 ): UrbanStudiesFilters | null => {
-  const categories = section.categories.filter(isDefined).map((category) => category.slug)
-  const state = section.stateUrbanStudiesSection?.slug
+  const { categories, stateUrbanStudiesSection: state, showAll, urbanStudies } = section
+
+  const categoriesSlugs = categories.filter(isDefined).map((category) => category.slug)
+  const stateSlug = state?.slug
 
   // "Show all" variant fetches on its own, manually selected studies alone need no fetch
   if (
-    section.showAll ||
-    (section.urbanStudies.filter(isDefined).length > 0 && !categories.length && !state)
+    showAll ||
+    (urbanStudies.filter(isDefined).length > 0 && !categoriesSlugs.length && !stateSlug)
   ) {
     return null
   }
 
-  return { ...urbanStudiesDefaultFilters, state, categories }
+  return { ...urbanStudiesDefaultFilters, state: stateSlug, categories: categoriesSlugs }
 }
 
 export const urbanStudiesFetcher = (filters: UrbanStudiesFilters) => {
