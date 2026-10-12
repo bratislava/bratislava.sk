@@ -11,6 +11,7 @@ import { isDefined } from '@/src/utils/isDefined'
 
 export type LinksProps = {
   title: string | null | undefined
+  text?: string | null | undefined
   titleLevel?: SectionTitleLevel | null | undefined
   pageLinks: LinksSectionFragment['pageLinks']
   className?: string
@@ -20,10 +21,10 @@ export type LinksProps = {
  * TODO Figma link
  */
 
-const Links = ({ title, titleLevel, pageLinks, className }: LinksProps) => {
+const Links = ({ title, text, titleLevel, pageLinks, className }: LinksProps) => {
   return (
     <div className={cn('flex w-full flex-col gap-6', className)}>
-      <SectionHeader title={title} titleLevel={titleLevel} />
+      <SectionHeader title={title} titleLevel={titleLevel} text={text} />
 
       <ul className="flex flex-col rounded-lg border py-2">
         {pageLinks?.filter(isDefined).map((pageLink, index) => {

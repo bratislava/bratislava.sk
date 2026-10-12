@@ -34,6 +34,20 @@
           "sortable": true
         }
       },
+      "text": {
+        "edit": {
+          "label": "Text",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "text",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "pageLinks": {
         "edit": {
           "label": "Odkazy",
@@ -82,6 +96,12 @@
         [
           {
             "name": "title",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "text",
             "size": 12
           }
         ],

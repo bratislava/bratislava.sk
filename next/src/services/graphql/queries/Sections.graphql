@@ -150,6 +150,7 @@ fragment NarrowTextSection on ComponentSectionsNarrowText {
 
 fragment LinksSection on ComponentSectionsLinks {
   title
+  text
   pageLinks(pagination: { limit: -1 }) {
     ...PageLink
   }
@@ -182,6 +183,7 @@ fragment ComponentAccordionItemsInstitution on ComponentAccordionItemsInstitutio
 
 fragment AccordionSection on ComponentSectionsAccordion {
   title
+  text
   institutions(pagination: { limit: -1 }) {
     ...ComponentAccordionItemsInstitution
   }
@@ -224,6 +226,7 @@ fragment NumericalListSection on ComponentSectionsNumericalList {
 
 fragment OrganizationalStructureSection on ComponentSectionsOrganizationalStructure {
   title
+  text
 }
 
 fragment ProsAndConsCardComponent on ComponentBlocksProsAndConsCard {

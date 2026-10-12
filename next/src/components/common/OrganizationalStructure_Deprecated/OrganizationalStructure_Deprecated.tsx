@@ -12,6 +12,7 @@ import {
 
 export type OrganizationalStructureProps = {
   title?: string | null
+  text?: string | null
   titleLevel?: SectionTitleLevel | null | undefined
 }
 
@@ -20,7 +21,7 @@ export type OrganizationalStructureProps = {
  */
 
 // TODO add search
-const OrganizationalStructure = ({ title, titleLevel }: OrganizationalStructureProps) => {
+const OrganizationalStructure = ({ title, text, titleLevel }: OrganizationalStructureProps) => {
   const { data, isPending, isError, error } = useQuery({
     queryKey: getMsGraphStructureQueryKey(),
     queryFn: () => msGraphStructureFetcher(),
@@ -39,7 +40,7 @@ const OrganizationalStructure = ({ title, titleLevel }: OrganizationalStructureP
 
   return (
     <div className="flex flex-col">
-      <SectionHeader title={title} titleLevel={titleLevel} />
+      <SectionHeader title={title} titleLevel={titleLevel} text={text} />
       <DisclosureGroup data-cy="organizational-structure-container">
         {data.groups.map((group) => (
           <OrganizationalStructureDisclosure
