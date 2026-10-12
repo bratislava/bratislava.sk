@@ -227,6 +227,12 @@
         ],
         [
           {
+            "name": "titleLevel",
+            "size": 6
+          }
+        ],
+        [
+          {
             "name": "description",
             "size": 12
           }
@@ -289,12 +295,6 @@
           {
             "name": "directionsContact",
             "size": 12
-          }
-        ],
-        [
-          {
-            "name": "titleLevel",
-            "size": 6
           }
         ]
       ]

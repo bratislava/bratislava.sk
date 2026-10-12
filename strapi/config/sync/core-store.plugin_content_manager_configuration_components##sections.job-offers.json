@@ -21,7 +21,7 @@
       },
       "title": {
         "edit": {
-          "label": "Názov",
+          "label": "Nadpis",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -50,7 +50,7 @@
       "titleLevel": {
         "edit": {
           "label": "Úroveň nadpisu sekcie",
-          "description": "",
+          "description": "Úroveň nadpisu meníme na h3 iba ak je to potrebné sémanticky. Nikdy ju nemeníme len kvôli vizuálnej veľkosti nadpisu.",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -75,8 +75,10 @@
         [
           {
             "name": "title",
-            "size": 6
-          },
+            "size": 12
+          }
+        ],
+        [
           {
             "name": "titleLevel",
             "size": 6

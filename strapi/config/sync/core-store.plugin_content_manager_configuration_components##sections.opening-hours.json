@@ -113,6 +113,12 @@
         ],
         [
           {
+            "name": "titleLevel",
+            "size": 6
+          }
+        ],
+        [
+          {
             "name": "text",
             "size": 12
           }
@@ -127,12 +133,6 @@
           {
             "name": "alertMessage",
             "size": 12
-          }
-        ],
-        [
-          {
-            "name": "titleLevel",
-            "size": 6
           }
         ]
       ]

@@ -100,12 +100,23 @@
       }
     },
     "layouts": {
-      "list": ["id", "title", "text", "iframesHeight"],
+      "list": [
+        "id",
+        "title",
+        "text",
+        "iframesHeight"
+      ],
       "edit": [
         [
           {
             "name": "title",
             "size": 12
+          }
+        ],
+        [
+          {
+            "name": "titleLevel",
+            "size": 6
           }
         ],
         [
@@ -123,12 +134,6 @@
         [
           {
             "name": "iframes",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "titleLevel",
             "size": 12
           }
         ]

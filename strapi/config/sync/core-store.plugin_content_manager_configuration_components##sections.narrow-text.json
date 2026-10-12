@@ -22,7 +22,7 @@
       },
       "content": {
         "edit": {
-          "label": "content",
+          "label": "Text",
           "description": "",
           "placeholder": "",
           "visible": true,

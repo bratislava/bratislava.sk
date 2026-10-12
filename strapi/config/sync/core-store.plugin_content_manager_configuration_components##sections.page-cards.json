@@ -22,7 +22,7 @@
       },
       "title": {
         "edit": {
-          "label": "Názov",
+          "label": "Nadpis",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -92,11 +92,15 @@
           {
             "name": "title",
             "size": 12
-          },
+          }
+        ],
+        [
           {
             "name": "description",
             "size": 12
-          },
+          }
+        ],
+        [
           {
             "name": "showThumbnails",
             "size": 12
