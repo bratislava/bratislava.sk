@@ -10,6 +10,7 @@ import UrbanStudiesAll from '@/src/components/sections/UrbanStudiesSection/Urban
 import { UrbanStudiesSectionFragment } from '@/src/services/graphql'
 import {
   getUrbanStudiesQueryKey,
+  getUrbanStudiesSectionFilters,
   urbanStudiesDefaultFilters,
   urbanStudiesFetcher,
 } from '@/src/services/meili/fetchers/urbanStudiesFetcher'
@@ -32,27 +33,16 @@ const UrbanStudiesSection = ({ section }: Props) => {
     urbanStudies: urbanStudiesFromStrapi,
     showAll,
     titleLevelUrbanStudiesSection: titleLevel,
-    categories,
-    stateUrbanStudiesSection: state,
   } = section
-  const categorySlugs = categories.filter(isDefined).map((category) => category.slug)
 
-  const filters = {
-    ...urbanStudiesDefaultFilters,
-    state: state?.slug,
-    categories: categorySlugs,
-  }
+  const sectionFilters = getUrbanStudiesSectionFilters(section)
+  const filters = sectionFilters ?? urbanStudiesDefaultFilters
 
   const { data } = useQuery({
     queryKey: getUrbanStudiesQueryKey(filters),
     queryFn: () => urbanStudiesFetcher(filters),
     placeholderData: keepPreviousData,
-    enabled:
-      // don't fetch if section contains only manually selected urban studies and no other filters
-      !(
-        urbanStudiesFromStrapi.length > 0 &&
-        [...categorySlugs, state].filter(isDefined).length === 0
-      ),
+    enabled: sectionFilters !== null,
     select: (response) => response.hits,
   })
 

@@ -1,3 +1,4 @@
+import { UrbanStudiesSectionFragment } from '@/src/services/graphql'
 import { isDefined } from '@/src/utils/isDefined'
 
 import { meiliClient } from '../meiliClient'
@@ -25,6 +26,30 @@ export const getUrbanStudiesQueryKey = (filters: UrbanStudiesFilters) => [
   'UrbanStudies',
   filters,
 ]
+
+/**
+ * Filters the section fetches with on its first render, or null if it doesn't fetch at all
+ * (it shows all urban studies with its own search, or only manually selected ones).
+ * Used both by the section and for prefetching.
+ */
+export const getUrbanStudiesSectionFilters = (
+  section: UrbanStudiesSectionFragment,
+): UrbanStudiesFilters | null => {
+  const { categories, stateUrbanStudiesSection: state, showAll, urbanStudies } = section
+
+  const categoriesSlugs = categories.filter(isDefined).map((category) => category.slug)
+  const stateSlug = state?.slug
+
+  // "Show all" variant fetches on its own, manually selected studies alone need no fetch
+  if (
+    showAll ||
+    (urbanStudies.filter(isDefined).length > 0 && !categoriesSlugs.length && !stateSlug)
+  ) {
+    return null
+  }
+
+  return { ...urbanStudiesDefaultFilters, state: stateSlug, categories: categoriesSlugs }
+}
 
 export const urbanStudiesFetcher = (filters: UrbanStudiesFilters) => {
   return meiliClient
