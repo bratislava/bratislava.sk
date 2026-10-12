@@ -1412,6 +1412,7 @@ type ComponentSectionsAccordion {
   flatText(filters: ComponentAccordionItemsFlatTextFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentAccordionItemsFlatText]
   id: ID!
   institutions(filters: ComponentAccordionItemsInstitutionFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentAccordionItemsInstitution]
+  text: String
   title: String
   titleLevel: ENUM_COMPONENTSECTIONSACCORDION_TITLELEVEL
 }
@@ -1422,6 +1423,7 @@ input ComponentSectionsAccordionFiltersInput {
   institutions: ComponentAccordionItemsInstitutionFiltersInput
   not: ComponentSectionsAccordionFiltersInput
   or: [ComponentSectionsAccordionFiltersInput]
+  text: StringFilterInput
   title: StringFilterInput
   titleLevel: StringFilterInput
 }
@@ -1430,6 +1432,7 @@ input ComponentSectionsAccordionInput {
   flatText: [ComponentAccordionItemsFlatTextInput]
   id: ID
   institutions: [ComponentAccordionItemsInstitutionInput]
+  text: String
   title: String
   titleLevel: ENUM_COMPONENTSECTIONSACCORDION_TITLELEVEL
 }
@@ -2197,6 +2200,7 @@ input ComponentSectionsLandingPageInput {
 type ComponentSectionsLinks {
   id: ID!
   pageLinks(filters: ComponentBlocksPageLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksPageLink]
+  text: String
   title: String
   titleLevel: ENUM_COMPONENTSECTIONSLINKS_TITLELEVEL
 }
@@ -2206,6 +2210,7 @@ input ComponentSectionsLinksFiltersInput {
   not: ComponentSectionsLinksFiltersInput
   or: [ComponentSectionsLinksFiltersInput]
   pageLinks: ComponentBlocksPageLinkFiltersInput
+  text: StringFilterInput
   title: StringFilterInput
   titleLevel: StringFilterInput
 }
@@ -2213,6 +2218,7 @@ input ComponentSectionsLinksFiltersInput {
 input ComponentSectionsLinksInput {
   id: ID
   pageLinks: [ComponentBlocksPageLinkInput]
+  text: String
   title: String
   titleLevel: ENUM_COMPONENTSECTIONSLINKS_TITLELEVEL
 }
@@ -2372,6 +2378,7 @@ input ComponentSectionsOpeningHoursInput {
 
 type ComponentSectionsOrganizationalStructure {
   id: ID!
+  text: String
   title: String
 }
 
@@ -2379,11 +2386,13 @@ input ComponentSectionsOrganizationalStructureFiltersInput {
   and: [ComponentSectionsOrganizationalStructureFiltersInput]
   not: ComponentSectionsOrganizationalStructureFiltersInput
   or: [ComponentSectionsOrganizationalStructureFiltersInput]
+  text: StringFilterInput
   title: StringFilterInput
 }
 
 input ComponentSectionsOrganizationalStructureInput {
   id: ID
+  text: String
   title: String
 }
 

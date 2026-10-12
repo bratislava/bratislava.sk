@@ -99,11 +99,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "text"
-      ],
+      "list": ["id", "title", "text"],
       "edit": [
         [
           {

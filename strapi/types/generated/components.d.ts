@@ -626,6 +626,7 @@ export interface SectionsAccordion extends Struct.ComponentSchema {
   attributes: {
     flatText: Schema.Attribute.Component<'accordion-items.flat-text', true>
     institutions: Schema.Attribute.Component<'accordion-items.institution', true>
+    text: Schema.Attribute.Text
     title: Schema.Attribute.String
     titleLevel: Schema.Attribute.Enumeration<['h2', 'h3']> & Schema.Attribute.DefaultTo<'h2'>
   }
@@ -1105,6 +1106,7 @@ export interface SectionsLinks extends Struct.ComponentSchema {
   }
   attributes: {
     pageLinks: Schema.Attribute.Component<'blocks.page-link', true>
+    text: Schema.Attribute.Text
     title: Schema.Attribute.String
     titleLevel: Schema.Attribute.Enumeration<['h2', 'h3']> & Schema.Attribute.DefaultTo<'h2'>
   }
@@ -1210,6 +1212,7 @@ export interface SectionsOrganizationalStructure extends Struct.ComponentSchema 
     icon: 'address-book'
   }
   attributes: {
+    text: Schema.Attribute.Text
     title: Schema.Attribute.String
   }
 }

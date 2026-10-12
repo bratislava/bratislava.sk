@@ -86,18 +86,15 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "subtitle",
-        "documentId"
-      ],
+      "list": ["id", "title", "subtitle", "documentId"],
       "edit": [
         [
           {
             "name": "title",
             "size": 12
-          },
+          }
+        ],
+        [
           {
             "name": "subtitle",
             "size": 12

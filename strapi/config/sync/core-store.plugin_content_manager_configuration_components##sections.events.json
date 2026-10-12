@@ -6,8 +6,8 @@
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "documentId",
-      "defaultSortBy": "documentId",
+      "mainField": "title",
+      "defaultSortBy": "title",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -103,19 +103,16 @@
           {
             "name": "eventPages",
             "size": 12
-          },
+          }
+        ],
+        [
           {
             "name": "titleLevel",
             "size": 6
           }
         ]
       ],
-      "list": [
-        "id",
-        "title",
-        "text",
-        "eventPages"
-      ]
+      "list": ["id", "title", "text", "eventPages"]
     },
     "uid": "sections.events",
     "isComponent": true

@@ -105,19 +105,14 @@
             "size": 12
           }
         ],
-        [          
+        [
           {
             "name": "titleLevel",
             "size": 6
           }
         ]
       ],
-      "list": [
-        "id",
-        "title",
-        "text",
-        "facilityPages"
-      ]
+      "list": ["id", "title", "text", "facilityPages"]
     },
     "uid": "sections.facilities",
     "isComponent": true

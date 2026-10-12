@@ -9,6 +9,9 @@
     "title": {
       "type": "string"
     },
+    "text": {
+      "type": "text"
+    },
     "institutions": {
       "type": "component",
       "component": "accordion-items.institution",

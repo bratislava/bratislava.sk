@@ -103,7 +103,9 @@
           {
             "name": "text",
             "size": 12
-          },
+          }
+        ],
+        [
           {
             "name": "variant",
             "size": 6

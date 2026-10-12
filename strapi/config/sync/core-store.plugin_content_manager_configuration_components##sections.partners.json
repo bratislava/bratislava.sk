@@ -99,12 +99,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "text",
-        "partners"
-      ],
+      "list": ["id", "title", "text", "partners"],
       "edit": [
         [
           {
@@ -128,7 +123,9 @@
           {
             "name": "logoRatio",
             "size": 6
-          },
+          }
+        ],
+        [
           {
             "name": "titleLevel",
             "size": 6

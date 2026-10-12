@@ -22,7 +22,7 @@
       },
       "title": {
         "edit": {
-          "label": "title",
+          "label": "Nadpis",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -30,6 +30,20 @@
         },
         "list": {
           "label": "title",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "text": {
+        "edit": {
+          "label": "Text",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "text",
           "searchable": true,
           "sortable": true
         }
@@ -53,7 +67,13 @@
         [
           {
             "name": "title",
-            "size": 6
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "text",
+            "size": 12
           }
         ]
       ]

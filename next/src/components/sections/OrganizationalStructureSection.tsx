@@ -9,7 +9,7 @@ type OrganizationalStructureSectionProps = {
 const OrganizationalStructureSection = ({ section }: OrganizationalStructureSectionProps) => {
   return (
     <SectionContainer>
-      <OrganizationalStructure title={section.title} />
+      <OrganizationalStructure title={section.title} text={section.text} />
     </SectionContainer>
   )
 }

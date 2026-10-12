@@ -11,6 +11,7 @@ const LinksSection = ({ section }: LinksSectionProps) => {
     <SectionContainer>
       <Links
         title={section.title}
+        text={section.text}
         titleLevel={section.titleLevelLinksSection}
         pageLinks={section.pageLinks}
       />

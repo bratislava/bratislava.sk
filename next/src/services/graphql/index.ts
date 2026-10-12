@@ -1745,6 +1745,7 @@ export type ComponentSectionsAccordion = {
   flatText?: Maybe<Array<Maybe<ComponentAccordionItemsFlatText>>>
   id: Scalars['ID']['output']
   institutions?: Maybe<Array<Maybe<ComponentAccordionItemsInstitution>>>
+  text?: Maybe<Scalars['String']['output']>
   title?: Maybe<Scalars['String']['output']>
   titleLevel?: Maybe<Enum_Componentsectionsaccordion_Titlelevel>
 }
@@ -1767,6 +1768,7 @@ export type ComponentSectionsAccordionFiltersInput = {
   institutions?: InputMaybe<ComponentAccordionItemsInstitutionFiltersInput>
   not?: InputMaybe<ComponentSectionsAccordionFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsAccordionFiltersInput>>>
+  text?: InputMaybe<StringFilterInput>
   title?: InputMaybe<StringFilterInput>
   titleLevel?: InputMaybe<StringFilterInput>
 }
@@ -1775,6 +1777,7 @@ export type ComponentSectionsAccordionInput = {
   flatText?: InputMaybe<Array<InputMaybe<ComponentAccordionItemsFlatTextInput>>>
   id?: InputMaybe<Scalars['ID']['input']>
   institutions?: InputMaybe<Array<InputMaybe<ComponentAccordionItemsInstitutionInput>>>
+  text?: InputMaybe<Scalars['String']['input']>
   title?: InputMaybe<Scalars['String']['input']>
   titleLevel?: InputMaybe<Enum_Componentsectionsaccordion_Titlelevel>
 }
@@ -2798,6 +2801,7 @@ export type ComponentSectionsLinks = {
   __typename?: 'ComponentSectionsLinks'
   id: Scalars['ID']['output']
   pageLinks?: Maybe<Array<Maybe<ComponentBlocksPageLink>>>
+  text?: Maybe<Scalars['String']['output']>
   title?: Maybe<Scalars['String']['output']>
   titleLevel?: Maybe<Enum_Componentsectionslinks_Titlelevel>
 }
@@ -2813,6 +2817,7 @@ export type ComponentSectionsLinksFiltersInput = {
   not?: InputMaybe<ComponentSectionsLinksFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsLinksFiltersInput>>>
   pageLinks?: InputMaybe<ComponentBlocksPageLinkFiltersInput>
+  text?: InputMaybe<StringFilterInput>
   title?: InputMaybe<StringFilterInput>
   titleLevel?: InputMaybe<StringFilterInput>
 }
@@ -2820,6 +2825,7 @@ export type ComponentSectionsLinksFiltersInput = {
 export type ComponentSectionsLinksInput = {
   id?: InputMaybe<Scalars['ID']['input']>
   pageLinks?: InputMaybe<Array<InputMaybe<ComponentBlocksPageLinkInput>>>
+  text?: InputMaybe<Scalars['String']['input']>
   title?: InputMaybe<Scalars['String']['input']>
   titleLevel?: InputMaybe<Enum_Componentsectionslinks_Titlelevel>
 }
@@ -3004,6 +3010,7 @@ export type ComponentSectionsOpeningHoursInput = {
 export type ComponentSectionsOrganizationalStructure = {
   __typename?: 'ComponentSectionsOrganizationalStructure'
   id: Scalars['ID']['output']
+  text?: Maybe<Scalars['String']['output']>
   title?: Maybe<Scalars['String']['output']>
 }
 
@@ -3011,11 +3018,13 @@ export type ComponentSectionsOrganizationalStructureFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<ComponentSectionsOrganizationalStructureFiltersInput>>>
   not?: InputMaybe<ComponentSectionsOrganizationalStructureFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsOrganizationalStructureFiltersInput>>>
+  text?: InputMaybe<StringFilterInput>
   title?: InputMaybe<StringFilterInput>
 }
 
 export type ComponentSectionsOrganizationalStructureInput = {
   id?: InputMaybe<Scalars['ID']['input']>
+  text?: InputMaybe<Scalars['String']['input']>
   title?: InputMaybe<Scalars['String']['input']>
 }
 
@@ -12083,6 +12092,7 @@ export type PageEntityFragment = {
     | {
         __typename: 'ComponentSectionsAccordion'
         title?: string | null
+        text?: string | null
         titleLevelAccordionSection?: Enum_Componentsectionsaccordion_Titlelevel | null
         institutions?: Array<{
           __typename?: 'ComponentAccordionItemsInstitution'
@@ -13051,6 +13061,7 @@ export type PageEntityFragment = {
     | {
         __typename: 'ComponentSectionsLinks'
         title?: string | null
+        text?: string | null
         titleLevelLinksSection?: Enum_Componentsectionslinks_Titlelevel | null
         pageLinks?: Array<{
           __typename?: 'ComponentBlocksPageLink'
@@ -13153,7 +13164,11 @@ export type PageEntityFragment = {
           text?: string | null
         } | null
       }
-    | { __typename: 'ComponentSectionsOrganizationalStructure'; title?: string | null }
+    | {
+        __typename: 'ComponentSectionsOrganizationalStructure'
+        title?: string | null
+        text?: string | null
+      }
     | {
         __typename: 'ComponentSectionsPageCards'
         description?: string | null
@@ -14020,6 +14035,7 @@ export type PageByPathQuery = {
       | {
           __typename: 'ComponentSectionsAccordion'
           title?: string | null
+          text?: string | null
           titleLevelAccordionSection?: Enum_Componentsectionsaccordion_Titlelevel | null
           institutions?: Array<{
             __typename?: 'ComponentAccordionItemsInstitution'
@@ -15006,6 +15022,7 @@ export type PageByPathQuery = {
       | {
           __typename: 'ComponentSectionsLinks'
           title?: string | null
+          text?: string | null
           titleLevelLinksSection?: Enum_Componentsectionslinks_Titlelevel | null
           pageLinks?: Array<{
             __typename?: 'ComponentBlocksPageLink'
@@ -15108,7 +15125,11 @@ export type PageByPathQuery = {
             text?: string | null
           } | null
         }
-      | { __typename: 'ComponentSectionsOrganizationalStructure'; title?: string | null }
+      | {
+          __typename: 'ComponentSectionsOrganizationalStructure'
+          title?: string | null
+          text?: string | null
+        }
       | {
           __typename: 'ComponentSectionsPageCards'
           description?: string | null
@@ -15985,6 +16006,7 @@ export type Dev_AllPagesQuery = {
       | {
           __typename: 'ComponentSectionsAccordion'
           title?: string | null
+          text?: string | null
           titleLevelAccordionSection?: Enum_Componentsectionsaccordion_Titlelevel | null
           institutions?: Array<{
             __typename?: 'ComponentAccordionItemsInstitution'
@@ -16971,6 +16993,7 @@ export type Dev_AllPagesQuery = {
       | {
           __typename: 'ComponentSectionsLinks'
           title?: string | null
+          text?: string | null
           titleLevelLinksSection?: Enum_Componentsectionslinks_Titlelevel | null
           pageLinks?: Array<{
             __typename?: 'ComponentBlocksPageLink'
@@ -17073,7 +17096,11 @@ export type Dev_AllPagesQuery = {
             text?: string | null
           } | null
         }
-      | { __typename: 'ComponentSectionsOrganizationalStructure'; title?: string | null }
+      | {
+          __typename: 'ComponentSectionsOrganizationalStructure'
+          title?: string | null
+          text?: string | null
+        }
       | {
           __typename: 'ComponentSectionsPageCards'
           description?: string | null
@@ -18990,6 +19017,7 @@ export type NarrowTextSectionFragment = {
 export type LinksSectionFragment = {
   __typename?: 'ComponentSectionsLinks'
   title?: string | null
+  text?: string | null
   titleLevelLinksSection?: Enum_Componentsectionslinks_Titlelevel | null
   pageLinks?: Array<{
     __typename?: 'ComponentBlocksPageLink'
@@ -19051,6 +19079,7 @@ export type ComponentAccordionItemsInstitutionFragment = {
 export type AccordionSectionFragment = {
   __typename?: 'ComponentSectionsAccordion'
   title?: string | null
+  text?: string | null
   titleLevelAccordionSection?: Enum_Componentsectionsaccordion_Titlelevel | null
   institutions?: Array<{
     __typename?: 'ComponentAccordionItemsInstitution'
@@ -19137,6 +19166,7 @@ export type NumericalListSectionFragment = {
 export type OrganizationalStructureSectionFragment = {
   __typename?: 'ComponentSectionsOrganizationalStructure'
   title?: string | null
+  text?: string | null
 }
 
 export type ProsAndConsCardComponentFragment = {
@@ -20694,6 +20724,7 @@ export type ProcessTimelineSectionFragment = {
 type Sections_ComponentSectionsAccordion_Fragment = {
   __typename: 'ComponentSectionsAccordion'
   title?: string | null
+  text?: string | null
   titleLevelAccordionSection?: Enum_Componentsectionsaccordion_Titlelevel | null
   institutions?: Array<{
     __typename?: 'ComponentAccordionItemsInstitution'
@@ -21670,6 +21701,7 @@ type Sections_ComponentSectionsLandingPage_Fragment = {
 type Sections_ComponentSectionsLinks_Fragment = {
   __typename: 'ComponentSectionsLinks'
   title?: string | null
+  text?: string | null
   titleLevelLinksSection?: Enum_Componentsectionslinks_Titlelevel | null
   pageLinks?: Array<{
     __typename?: 'ComponentBlocksPageLink'
@@ -21784,6 +21816,7 @@ type Sections_ComponentSectionsOpeningHours_Fragment = {
 type Sections_ComponentSectionsOrganizationalStructure_Fragment = {
   __typename: 'ComponentSectionsOrganizationalStructure'
   title?: string | null
+  text?: string | null
 }
 
 type Sections_ComponentSectionsPageCards_Fragment = {
@@ -23985,6 +24018,7 @@ export const NarrowTextSectionFragmentDoc = gql`
 export const LinksSectionFragmentDoc = gql`
   fragment LinksSection on ComponentSectionsLinks {
     title
+    text
     pageLinks(pagination: { limit: -1 }) {
       ...PageLink
     }
@@ -24033,6 +24067,7 @@ export const ComponentAccordionItemsFlatTextFragmentDoc = gql`
 export const AccordionSectionFragmentDoc = gql`
   fragment AccordionSection on ComponentSectionsAccordion {
     title
+    text
     institutions(pagination: { limit: -1 }) {
       ...ComponentAccordionItemsInstitution
     }
@@ -24126,6 +24161,7 @@ export const InbaReleasesSectionFragmentDoc = gql`
 export const OrganizationalStructureSectionFragmentDoc = gql`
   fragment OrganizationalStructureSection on ComponentSectionsOrganizationalStructure {
     title
+    text
   }
 `
 export const ProsAndConsCardComponentFragmentDoc = gql`

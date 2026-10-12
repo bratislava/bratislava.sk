@@ -112,12 +112,7 @@
           }
         ]
       ],
-      "list": [
-        "id",
-        "title",
-        "documentId",
-        "titleLevel"
-      ]
+      "list": ["id", "title", "documentId", "titleLevel"]
     },
     "isComponent": true
   },

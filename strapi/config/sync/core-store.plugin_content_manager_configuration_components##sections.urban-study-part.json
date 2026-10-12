@@ -82,7 +82,9 @@
           {
             "name": "title",
             "size": 12
-          },
+          }
+        ],
+        [
           {
             "name": "text",
             "size": 12

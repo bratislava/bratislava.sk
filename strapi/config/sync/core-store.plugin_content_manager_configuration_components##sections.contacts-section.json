@@ -212,12 +212,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "addressContacts",
-        "documentId"
-      ],
+      "list": ["id", "title", "addressContacts", "documentId"],
       "edit": [
         [
           {

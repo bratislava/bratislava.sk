@@ -24,7 +24,7 @@ type AccordionSectionProps = {
  */
 
 const AccordionSection = ({ section }: AccordionSectionProps) => {
-  const { title, institutions, flatText, titleLevelAccordionSection: titleLevel } = section
+  const { title, text, institutions, flatText, titleLevelAccordionSection: titleLevel } = section
 
   // If no section title is provided, disclosures act as h2, otherwise they accommodate to section titleLevel
   const disclosureTitleLevel = title ? getCardTitleLevel(titleLevel) : 'h2'
@@ -33,7 +33,7 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
     <SectionContainer>
       {/* TODO Correct spacing between SectionHeader and remaining content */}
       <div className="flex flex-col gap-6 lg:gap-8">
-        <SectionHeader title={title} titleLevel={titleLevel} />
+        <SectionHeader title={title} titleLevel={titleLevel} text={text} />
         {flatText?.length ? (
           <DisclosureGroup>
             {flatText.filter(isDefined).map((item, index) => (
