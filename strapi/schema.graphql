@@ -5116,6 +5116,7 @@ type UrbanStudy {
   createdAt: DateTime
   customPublishedAt: DateTime
   documentId: ID!
+  fullTitle: String
   links(filters: ComponentBlocksCommonLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksCommonLink]
   preparedBy: String
   procuredBy: String
@@ -5202,6 +5203,7 @@ input UrbanStudyFiltersInput {
   createdAt: DateTimeFilterInput
   customPublishedAt: DateTimeFilterInput
   documentId: IDFilterInput
+  fullTitle: StringFilterInput
   links: ComponentBlocksCommonLinkFiltersInput
   not: UrbanStudyFiltersInput
   or: [UrbanStudyFiltersInput]
@@ -5222,6 +5224,7 @@ input UrbanStudyInput {
   approvalText: String
   body: String
   customPublishedAt: DateTime
+  fullTitle: String
   links: [ComponentBlocksCommonLinkInput]
   locale: String
   preparedBy: String

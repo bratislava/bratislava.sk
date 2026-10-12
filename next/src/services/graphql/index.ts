@@ -6964,6 +6964,7 @@ export type UrbanStudy = {
   createdAt?: Maybe<Scalars['DateTime']['output']>
   customPublishedAt?: Maybe<Scalars['DateTime']['output']>
   documentId: Scalars['ID']['output']
+  fullTitle?: Maybe<Scalars['String']['output']>
   links?: Maybe<Array<Maybe<ComponentBlocksCommonLink>>>
   preparedBy?: Maybe<Scalars['String']['output']>
   procuredBy?: Maybe<Scalars['String']['output']>
@@ -7094,6 +7095,7 @@ export type UrbanStudyFiltersInput = {
   createdAt?: InputMaybe<DateTimeFilterInput>
   customPublishedAt?: InputMaybe<DateTimeFilterInput>
   documentId?: InputMaybe<IdFilterInput>
+  fullTitle?: InputMaybe<StringFilterInput>
   links?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
   not?: InputMaybe<UrbanStudyFiltersInput>
   or?: InputMaybe<Array<InputMaybe<UrbanStudyFiltersInput>>>
@@ -7114,6 +7116,7 @@ export type UrbanStudyInput = {
   approvalText?: InputMaybe<Scalars['String']['input']>
   body?: InputMaybe<Scalars['String']['input']>
   customPublishedAt?: InputMaybe<Scalars['DateTime']['input']>
+  fullTitle?: InputMaybe<Scalars['String']['input']>
   links?: InputMaybe<Array<InputMaybe<ComponentBlocksCommonLinkInput>>>
   locale?: InputMaybe<Scalars['String']['input']>
   preparedBy?: InputMaybe<Scalars['String']['input']>
@@ -22615,6 +22618,7 @@ export type UrbanStudySlugEntityFragment = {
 
 export type UrbanStudyEntityFragment = {
   __typename: 'UrbanStudy'
+  fullTitle?: string | null
   publishedAt?: any | null
   updatedAt?: any | null
   year?: string | null
@@ -22791,6 +22795,7 @@ export type UrbanStudyBySlugQuery = {
   __typename?: 'Query'
   urbanStudies: Array<{
     __typename: 'UrbanStudy'
+    fullTitle?: string | null
     publishedAt?: any | null
     updatedAt?: any | null
     year?: string | null
@@ -25087,6 +25092,7 @@ export const UrbanStudyPartFragmentDoc = gql`
 export const UrbanStudyEntityFragmentDoc = gql`
   fragment UrbanStudyEntity on UrbanStudy {
     ...UrbanStudySlugEntity
+    fullTitle
     publishedAt
     updatedAt
     year
