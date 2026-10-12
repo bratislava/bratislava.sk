@@ -13,6 +13,10 @@
           "title",
           "slug",
           "contentManagedBy",
+          "submenuPages.title",
+          "submenuPages.url",
+          "submenuPages.page",
+          "submenuPages.analyticsId",
           "landingPage",
           "articles",
           "pages",
@@ -22,7 +26,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "m43a3ffz1zog2nbxewzh64ks",
+      "documentId": "x58kykribw4tv4e59el409ms",
       "locale": null
     },
     {

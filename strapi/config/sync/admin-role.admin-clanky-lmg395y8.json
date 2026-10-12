@@ -97,6 +97,7 @@
           "files.title",
           "files.media",
           "gallery",
+          "adminGroups",
           "inbaRelease"
         ],
         "locales": [
@@ -106,7 +107,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "dcon210shzjviy950320zrzo",
+      "documentId": "wz6o5wyraubl9wopcbooktsu",
       "locale": null
     },
     {

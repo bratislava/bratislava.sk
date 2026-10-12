@@ -1781,12 +1781,13 @@
           "amendments",
           "amending",
           "cancellation",
-          "cancelling"
+          "cancelling",
+          "urbanStudies"
         ]
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "rdww8yr59diipsku9v2ttooh",
+      "documentId": "fgjkby95be9yjxcjdjeesy1t",
       "locale": null
     },
     {
@@ -1825,12 +1826,13 @@
           "amendments",
           "amending",
           "cancellation",
-          "cancelling"
+          "cancelling",
+          "urbanStudies"
         ]
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "ln3idcbnb0wv95rylddauaoo",
+      "documentId": "bog1h9q40yfnta0ta0sxhxdc",
       "locale": null
     },
     {
@@ -1851,12 +1853,13 @@
           "amendments",
           "amending",
           "cancellation",
-          "cancelling"
+          "cancelling",
+          "urbanStudies"
         ]
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "qj6my41715qiw8tsictrp6xj",
+      "documentId": "byd7z8l1y80plwn9iw7jq9dw",
       "locale": null
     },
     {
@@ -2053,6 +2056,7 @@
         "fields": [
           "title",
           "slug",
+          "fullTitle",
           "year",
           "urbanStudyState",
           "urbanStudyCategory",
@@ -2078,7 +2082,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "knirosmzml6a4lrwzk58i4eg",
+      "documentId": "x1wwbtyg2abx7vnr1nk1c5wf",
       "locale": null
     },
     {
@@ -2106,6 +2110,7 @@
         "fields": [
           "title",
           "slug",
+          "fullTitle",
           "year",
           "urbanStudyState",
           "urbanStudyCategory",
@@ -2131,7 +2136,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "ma564ro0v1451k1xgmismhds",
+      "documentId": "nswdco4cd9sy7sp40hw9i1rb",
       "locale": null
     },
     {
@@ -2141,6 +2146,7 @@
         "fields": [
           "title",
           "slug",
+          "fullTitle",
           "year",
           "urbanStudyState",
           "urbanStudyCategory",
@@ -2166,7 +2172,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "hfyjy7xscmerh9zj42l6bo8l",
+      "documentId": "dgfrxdj969v8f826v73odoj5",
       "locale": null
     },
     {
