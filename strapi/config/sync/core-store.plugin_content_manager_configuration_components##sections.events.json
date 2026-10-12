@@ -95,12 +95,6 @@
         ],
         [
           {
-            "name": "titleLevel",
-            "size": 6
-          }
-        ],
-        [
-          {
             "name": "text",
             "size": 12
           }
@@ -110,14 +104,15 @@
             "name": "eventPages",
             "size": 12
           }
+        ],
+        [
+          {
+            "name": "titleLevel",
+            "size": 6
+          }
         ]
       ],
-      "list": [
-        "id",
-        "title",
-        "text",
-        "eventPages"
-      ]
+      "list": ["id", "title", "text", "eventPages"]
     },
     "uid": "sections.events",
     "isComponent": true

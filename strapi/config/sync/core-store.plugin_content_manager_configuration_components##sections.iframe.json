@@ -152,12 +152,6 @@
         ],
         [
           {
-            "name": "titleLevel",
-            "size": 6
-          }
-        ],
-        [
-          {
             "name": "text",
             "size": 12
           }
@@ -191,14 +185,15 @@
             "name": "allowGeolocation",
             "size": 6
           }
+        ],
+        [
+          {
+            "name": "titleLevel",
+            "size": 6
+          }
         ]
       ],
-      "list": [
-        "id",
-        "url",
-        "iframeTitle",
-        "titleLevel"
-      ]
+      "list": ["id", "url", "iframeTitle", "titleLevel"]
     },
     "isComponent": true
   },

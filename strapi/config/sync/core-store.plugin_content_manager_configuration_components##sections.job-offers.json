@@ -80,23 +80,18 @@
         ],
         [
           {
-            "name": "titleLevel",
-            "size": 6
+            "name": "text",
+            "size": 12
           }
         ],
         [
           {
-            "name": "text",
-            "size": 12
+            "name": "titleLevel",
+            "size": 6
           }
         ]
       ],
-      "list": [
-        "id",
-        "title",
-        "text",
-        "titleLevel"
-      ]
+      "list": ["id", "title", "text", "titleLevel"]
     },
     "uid": "sections.job-offers",
     "isComponent": true

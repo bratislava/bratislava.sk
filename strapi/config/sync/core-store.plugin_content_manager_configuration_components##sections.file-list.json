@@ -86,23 +86,12 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "text",
-        "documentId"
-      ],
+      "list": ["id", "title", "text", "documentId"],
       "edit": [
         [
           {
             "name": "title",
             "size": 12
-          }
-        ],
-        [
-          {
-            "name": "titleLevel",
-            "size": 6
           }
         ],
         [
@@ -115,6 +104,12 @@
           {
             "name": "fileList",
             "size": 12
+          }
+        ],
+        [
+          {
+            "name": "titleLevel",
+            "size": 6
           }
         ]
       ]

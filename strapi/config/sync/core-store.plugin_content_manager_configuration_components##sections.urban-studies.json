@@ -140,12 +140,6 @@
         ],
         [
           {
-            "name": "titleLevel",
-            "size": 6
-          }
-        ],
-        [
-          {
             "name": "text",
             "size": 12
           }
@@ -165,6 +159,12 @@
           },
           {
             "name": "categories",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "titleLevel",
             "size": 6
           }
         ]

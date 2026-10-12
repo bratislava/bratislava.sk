@@ -96,12 +96,6 @@
         ],
         [
           {
-            "name": "titleLevel",
-            "size": 6
-          }
-        ],
-        [
-          {
             "name": "subtitle",
             "size": 12
           }
@@ -110,6 +104,12 @@
           {
             "name": "videos",
             "size": 12
+          }
+        ],
+        [
+          {
+            "name": "titleLevel",
+            "size": 6
           }
         ]
       ]

@@ -99,22 +99,12 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "text"
-      ],
+      "list": ["id", "title", "text"],
       "edit": [
         [
           {
             "name": "title",
             "size": 12
-          }
-        ],
-        [
-          {
-            "name": "titleLevel",
-            "size": 6
           }
         ],
         [
@@ -133,6 +123,12 @@
           {
             "name": "alertMessage",
             "size": 12
+          }
+        ],
+        [
+          {
+            "name": "titleLevel",
+            "size": 6
           }
         ]
       ]

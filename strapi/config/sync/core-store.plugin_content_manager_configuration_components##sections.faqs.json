@@ -125,12 +125,6 @@
         ],
         [
           {
-            "name": "titleLevel",
-            "size": 6
-          }
-        ],
-        [
-          {
             "name": "text",
             "size": 12
           }
@@ -152,14 +146,15 @@
             "name": "faqCategories",
             "size": 6
           }
+        ],
+        [
+          {
+            "name": "titleLevel",
+            "size": 6
+          }
         ]
       ],
-      "list": [
-        "id",
-        "title",
-        "text",
-        "faqs"
-      ]
+      "list": ["id", "title", "text", "faqs"]
     },
     "isComponent": true
   },

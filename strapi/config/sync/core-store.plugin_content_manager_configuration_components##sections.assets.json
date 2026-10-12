@@ -138,12 +138,6 @@
         ],
         [
           {
-            "name": "titleLevel",
-            "size": 6
-          }
-        ],
-        [
-          {
             "name": "text",
             "size": 12
           }
@@ -169,15 +163,15 @@
             "name": "assets",
             "size": 12
           }
+        ],
+        [
+          {
+            "name": "titleLevel",
+            "size": 6
+          }
         ]
       ],
-      "list": [
-        "id",
-        "title",
-        "text",
-        "showAll",
-        "allowCollapsingDocuments"
-      ]
+      "list": ["id", "title", "text", "showAll", "allowCollapsingDocuments"]
     },
     "uid": "sections.assets",
     "isComponent": true

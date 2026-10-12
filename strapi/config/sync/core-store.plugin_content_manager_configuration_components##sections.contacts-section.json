@@ -212,23 +212,12 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "addressContacts",
-        "documentId"
-      ],
+      "list": ["id", "title", "addressContacts", "documentId"],
       "edit": [
         [
           {
             "name": "title",
             "size": 12
-          }
-        ],
-        [
-          {
-            "name": "titleLevel",
-            "size": 6
           }
         ],
         [
@@ -295,6 +284,12 @@
           {
             "name": "directionsContact",
             "size": 12
+          }
+        ],
+        [
+          {
+            "name": "titleLevel",
+            "size": 6
           }
         ]
       ]
