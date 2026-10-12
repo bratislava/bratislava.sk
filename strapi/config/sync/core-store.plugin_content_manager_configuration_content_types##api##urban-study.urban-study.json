@@ -48,6 +48,20 @@
           "sortable": true
         }
       },
+      "fullTitle": {
+        "edit": {
+          "label": "Úplný názov",
+          "description": "Bude zobrazený v rámci detailov na stránke územnej štúdie.",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "fullTitle",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "year": {
         "edit": {
           "label": "Rok",
@@ -183,7 +197,8 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": true,
+          "mainField": "title"
         },
         "list": {
           "label": "urbanStudyParts",
@@ -197,7 +212,8 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": true,
+          "mainField": "label"
         },
         "list": {
           "label": "links",
@@ -273,15 +289,22 @@
       }
     },
     "layouts": {
-      "list": ["id", "title", "slug", "year", "updatedAt"],
       "edit": [
         [
           {
             "name": "title",
             "size": 12
-          },
+          }
+        ],
+        [
           {
             "name": "slug",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "fullTitle",
             "size": 12
           }
         ],
@@ -349,7 +372,8 @@
             "size": 12
           }
         ]
-      ]
+      ],
+      "list": ["id", "title", "slug", "year", "updatedAt"]
     },
     "uid": "api::urban-study.urban-study"
   },

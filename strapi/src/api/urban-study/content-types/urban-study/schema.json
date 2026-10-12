@@ -20,6 +20,9 @@
       "targetField": "title",
       "required": true
     },
+    "fullTitle": {
+      "type": "text"
+    },
     "year": {
       "type": "string"
     },

@@ -35,6 +35,7 @@ fragment UrbanStudySlugEntity on UrbanStudy {
 
 fragment UrbanStudyEntity on UrbanStudy {
   ...UrbanStudySlugEntity
+  fullTitle
   publishedAt
   updatedAt
   year

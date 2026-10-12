@@ -38,6 +38,7 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
 
   const {
     title,
+    fullTitle,
     year,
     urbanStudyCategory,
     procuredBy,
@@ -62,6 +63,7 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
   }, [title, urbanStudiesPage])
 
   const detailItems = [
+    { label: t('UrbanStudyPageContent.fullTitle'), value: fullTitle },
     { label: t('UrbanStudyPageContent.type'), value: urbanStudyCategoryLabel },
     { label: t('UrbanStudyPageContent.year'), value: year },
     { label: t('UrbanStudyPageContent.procuredBy'), value: procuredBy },
