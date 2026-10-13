@@ -64,7 +64,7 @@ jobs:
         run: echo "short_sha=${GITHUB_SHA:0:7}" >> "$GITHUB_OUTPUT"
 
       - name: Set up Docker build
-        uses: bratislava/github-actions/.github/actions/setup-docker-build@v3.0.0
+        uses: bratislava/github-actions/.github/actions/setup-docker-build@7a3c849b65c1edbea5c3a95fd29952ae1f3e1412 # v3.0.1
         with:
           docker_registry_username: ${{ secrets.DOCKER_REGISTRY_USERNAME }}
           docker_registry_password: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
@@ -74,7 +74,7 @@ jobs:
 
       - name: Docker metadata
         id: meta
-        uses: bratislava/github-actions/.github/actions/docker-metadata@v3.0.0
+        uses: bratislava/github-actions/.github/actions/docker-metadata@7a3c849b65c1edbea5c3a95fd29952ae1f3e1412 # v3.0.1
         with:
           image: ${{ inputs.image }}
           prefix: ${{ env.CLUSTER_PREFIX }}
@@ -84,7 +84,7 @@ jobs:
       - name: Check for existing image
         if: ${{ inputs.cluster != '' }}
         id: existing
-        uses: bratislava/github-actions/.github/actions/check-existing-image@v3.0.0
+        uses: bratislava/github-actions/.github/actions/check-existing-image@7a3c849b65c1edbea5c3a95fd29952ae1f3e1412 # v3.0.1
         with:
           existing_tag: ${{ inputs.image }}:${{ steps.sha.outputs.short_sha }}
           new_tag: ${{ inputs.image }}:${{ env.CLUSTER_PREFIX }}${{ steps.sha.outputs.short_sha }}
