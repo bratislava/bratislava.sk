@@ -89,7 +89,7 @@ jobs:
     name: Strapi
     needs: [resolve, build-strapi]
     if: needs.resolve.outputs.strapi == 'true'
-    uses: bratislava/github-actions/.github/workflows/trigger-infra-deploy.yml@v3.0.0
+    uses: bratislava/github-actions/.github/workflows/trigger-infra-deploy.yml@v3.0.1
     secrets: inherit
     with:
       cluster: ${{ needs.resolve.outputs.cluster }}
@@ -113,7 +113,7 @@ jobs:
     name: Next
     needs: [resolve, build-next]
     if: ${{ !failure() && !cancelled() && needs.resolve.outputs.next == 'true' }}
-    uses: bratislava/github-actions/.github/workflows/trigger-infra-deploy.yml@v3.0.0
+    uses: bratislava/github-actions/.github/workflows/trigger-infra-deploy.yml@v3.0.1
     secrets: inherit
     with:
       cluster: ${{ needs.resolve.outputs.cluster }}
