@@ -488,29 +488,6 @@ fragment FacilitiesSection on ComponentSectionsFacilities {
   }
   titleLevelFacilitiesSection: titleLevel
 }
-fragment StarzLandingPageSection on ComponentSectionsStarzLandingPage {
-  banner {
-    title
-    content
-    contentPosition
-    variant
-    media {
-      ...UploadImageEntity
-    }
-    primaryLink {
-      ...CommonLink
-    }
-    secondaryLink {
-      ...CommonLink
-    }
-    tertiaryLink {
-      ...CommonLink
-    }
-  }
-  cardLinks {
-    ...CardLink
-  }
-}
 
 fragment LandingPageSection on ComponentSectionsLandingPage {
   landingPageVariant: variant
@@ -784,10 +761,6 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsLandingPage {
     ...LandingPageSection
-  }
-
-  ... on ComponentSectionsStarzLandingPage {
-    ...StarzLandingPageSection
   }
 
   ... on ComponentSectionsOpeningHours {

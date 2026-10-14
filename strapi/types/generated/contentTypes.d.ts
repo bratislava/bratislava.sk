@@ -1205,7 +1205,6 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'sections.pros-and-cons-section',
         'sections.facilities',
         'sections.columned-text',
-        'sections.starz-landing-page',
         'sections.columns',
         'sections.columns-list',
         'sections.file-list',

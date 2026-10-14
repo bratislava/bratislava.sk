@@ -34,7 +34,6 @@ import PartnersSection from '@/src/components/sections/PartnersSection'
 import ProcessTimelineSection from '@/src/components/sections/ProcessTimelineSection/ProcessTimelineSection'
 import ProsAndConsSection from '@/src/components/sections/ProsAndConsSection'
 import RegulationsSection from '@/src/components/sections/RegulationsSection'
-import StarzLandingPageSection from '@/src/components/sections/StarzLandingPageSection'
 import TextWithImageOverlappedSection from '@/src/components/sections/TextWithImageOverlappedSection'
 import TextWithImageSection from '@/src/components/sections/TextWithImageSection'
 import TootootEventsSection from '@/src/components/sections/TootootEventsSection'
@@ -138,9 +137,6 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
 
     case 'ComponentSectionsFacilities':
       return <FacilitiesSection section={section} />
-
-    case 'ComponentSectionsStarzLandingPage':
-      return <StarzLandingPageSection section={section} />
 
     case 'ComponentSectionsOpeningHours':
       return <OpeningHoursSection section={section} />
