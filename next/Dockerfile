@@ -10,6 +10,9 @@ RUN --mount=type=cache,target=/build/.cache/npm \
 
 FROM install AS build
 COPY . ./
+# Optional server-only Strapi URL used for prerendering (see src/services/graphql/gql.ts).
+# Build stage only, so it never reaches the runtime image.
+ARG STRAPI_PRERENDER_URL
 RUN --mount=type=cache,target=/build/.cache/npm \
     npm run build \
  && npm prune --production

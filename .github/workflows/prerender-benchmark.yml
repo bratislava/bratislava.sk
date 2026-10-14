@@ -1,0 +1,288 @@
+name: Prerender benchmark
+# Prototype: how much faster is `next build` prerendering against a Strapi
+# container on the runner than against the environment's live Strapi?
+#
+# Two jobs run the same Next build stage (forced rebuild, nothing pushed):
+#   - live:  against NEXT_PUBLIC_STRAPI_URL of the environment (today's setup)
+#   - local: against the environment's deployed Strapi image, started on the
+#            runner and connected to the environment database over the CNPG
+#            LoadBalancer IP.
+#
+# The local Strapi is effectively one more replica of the deployed one, and
+# boots with the same side effects as a pod restart. One of them needs care:
+# the meilisearch plugin reads its host/key from the shared core_store, and
+# drops every indexed content type from it when Meilisearch is unreachable.
+# Like the live pod, the local Strapi gets no MEILISEARCH_* env (that would
+# overwrite the stored values), and it only starts if the stored Meilisearch
+# answers from the runner.
+#
+# Needs repository secrets PRERENDER_DB_PASSWORD_<ENVIRONMENT> (and optionally
+# PRERENDER_DB_USERNAME_<ENVIRONMENT>, default `bratislava`), e.g.
+# PRERENDER_DB_PASSWORD_DEVELOPMENT.
+on:
+  # Runs on the PR that changes this file, so it can be tried before merging
+  # (workflow_dispatch only sees workflows on the default branch). Defaults to
+  # staging: the development CNPG LoadBalancer is not provisioned yet.
+  pull_request:
+    paths:
+      - .github/workflows/prerender-benchmark.yml
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Environment whose Strapi is used for prerendering.
+        type: choice
+        options:
+          - development
+          - staging
+          - production
+        default: staging
+      strapi_image_tag:
+        description: Strapi image tag. Empty = newest `<environment>-*` tag, i.e. the deployed one.
+        type: string
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+env:
+  REGISTRY: harbor.bratislava.sk
+  REGISTRY_USERNAME: robot$github_actions
+  NEXT_IMAGE: harbor.bratislava.sk/standalone/bratislava-next
+  STRAPI_IMAGE: harbor.bratislava.sk/standalone/bratislava-strapi
+  ENV_NAME: ${{ inputs.environment || 'staging' }}
+
+jobs:
+  live:
+    name: Next build against live Strapi
+    runs-on: bratislava
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 1
+
+      - name: Prepare Next.js build env
+        run: cp "next/.env.build.$ENV_NAME" next/.env.production.local
+
+      - name: Set up Docker build
+        uses: bratislava/github-actions/.github/actions/setup-docker-build@v3.0.0
+        with:
+          docker_registry_username: ${{ secrets.DOCKER_REGISTRY_USERNAME }}
+          docker_registry_password: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
+          harbor_registry: ${{ env.REGISTRY }}
+          harbor_registry_username: ${{ env.REGISTRY_USERNAME }}
+          harbor_registry_password: ${{ secrets.HARBOR_REGISTRY_PASSWORD }}
+
+      - name: Build Next
+        run: |
+          start=$(date +%s)
+          docker buildx build next/ \
+            --target build \
+            --no-cache-filter build \
+            --cache-from "type=registry,ref=$NEXT_IMAGE:cache-master-$ENV_NAME" \
+            --output type=cacheonly \
+            --progress plain
+          echo "### Live Strapi ($ENV_NAME): Next build stage took $(( $(date +%s) - start ))s" >> "$GITHUB_STEP_SUMMARY"
+
+  local:
+    name: Next build against local Strapi
+    runs-on: bratislava
+    env:
+      NET: prerender-${{ github.run_id }}
+      STRAPI: prerender-strapi-${{ github.run_id }}
+      BUILDER: prerender-${{ github.run_id }}
+      DATABASE_HOST: ${{ (inputs.environment == 'production' && '10.10.30.111') || (inputs.environment == 'development' && '10.10.30.63') || '10.10.30.94' }}
+      DATABASE_PORT: "5432"
+      DATABASE_NAME: bratislava
+      DATABASE_USERNAME: ${{ secrets[format('PRERENDER_DB_USERNAME_{0}', inputs.environment || 'staging')] || 'bratislava' }}
+      DATABASE_PASSWORD: ${{ secrets[format('PRERENDER_DB_PASSWORD_{0}', inputs.environment || 'staging')] }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 1
+
+      - name: Prepare Next.js build env
+        run: cp "next/.env.build.$ENV_NAME" next/.env.production.local
+
+      - name: Set up Docker build
+        uses: bratislava/github-actions/.github/actions/setup-docker-build@v3.0.0
+        with:
+          docker_registry_username: ${{ secrets.DOCKER_REGISTRY_USERNAME }}
+          docker_registry_password: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
+          harbor_registry: ${{ env.REGISTRY }}
+          harbor_registry_username: ${{ env.REGISTRY_USERNAME }}
+          harbor_registry_password: ${{ secrets.HARBOR_REGISTRY_PASSWORD }}
+
+      # Same rule as the infra repo's harbor_image module: the newest tag with
+      # the environment prefix is what is deployed.
+      - name: Pull Strapi image
+        env:
+          HARBOR_PASSWORD: ${{ secrets.HARBOR_REGISTRY_PASSWORD }}
+          TAG: ${{ inputs.strapi_image_tag }}
+        run: |
+          if [[ -z "$DATABASE_PASSWORD" ]]; then
+            echo "::error::Missing secret PRERENDER_DB_PASSWORD_${ENV_NAME^^}"
+            exit 1
+          fi
+          if [[ -z "$TAG" ]]; then
+            TAG=$(curl -fsS -u "$REGISTRY_USERNAME:$HARBOR_PASSWORD" \
+              "https://$REGISTRY/api/v2.0/projects/standalone/repositories/bratislava-strapi/artifacts?with_tag=true&page_size=100" \
+              | jq -r --arg prefix "$ENV_NAME" \
+                '[.[].tags // [] | .[] | select(.name | startswith($prefix))] | sort_by(.push_time) | last | .name // empty')
+          fi
+          if [[ -z "$TAG" ]]; then
+            echo "::error::No $ENV_NAME-* Strapi image found"
+            exit 1
+          fi
+          start=$(date +%s)
+          docker pull "$STRAPI_IMAGE:$TAG"
+          echo "STRAPI_LOCAL_IMAGE=$STRAPI_IMAGE:$TAG" >> "$GITHUB_ENV"
+          echo "### Local Strapi ($ENV_NAME, \`$TAG\`)" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Image pull: $(( $(date +%s) - start ))s" >> "$GITHUB_STEP_SUMMARY"
+
+      # On boot the meilisearch plugin drops every content type that is both in
+      # the stored indexed list and in the app, unless the stored Meilisearch
+      # answers with its index. Start only when there is nothing to drop, or
+      # the stored Meilisearch is reachable from here. Uses node and pg from
+      # the Strapi image itself.
+      - name: Check Meilisearch plugin is safe to boot
+        run: |
+          docker run --rm -i \
+            -e DATABASE_HOST -e DATABASE_PORT -e DATABASE_NAME -e DATABASE_USERNAME -e DATABASE_PASSWORD \
+            "$STRAPI_LOCAL_IMAGE" node - <<'EOF'
+          const fs = require('node:fs')
+          const path = require('node:path')
+          const { Client } = require('pg')
+
+          const appContentTypes = () => {
+            const apiDir = 'dist/src/api'
+            return fs.readdirSync(apiDir).flatMap((api) => {
+              const dir = path.join(apiDir, api, 'content-types')
+              return fs.existsSync(dir) ? fs.readdirSync(dir).map((name) => `api::${api}.${name}`) : []
+            })
+          }
+
+          const main = async () => {
+            const db = new Client({
+              host: process.env.DATABASE_HOST,
+              port: Number(process.env.DATABASE_PORT),
+              database: process.env.DATABASE_NAME,
+              user: process.env.DATABASE_USERNAME,
+              password: process.env.DATABASE_PASSWORD,
+            })
+            await db.connect()
+            const { rows } = await db.query(
+              "SELECT key, value FROM strapi_core_store_settings WHERE key LIKE 'plugin_meilisearch_%'",
+            )
+            await db.end()
+
+            const read = (key) => {
+              const value = rows.find((row) => row.key === `plugin_meilisearch_meilisearch_${key}`)?.value
+              return value ? JSON.parse(value) : undefined
+            }
+            const host = read('host') ?? ''
+            const apiKey = read('api_key') ?? ''
+            const indexed = read('indexed_content_types') ?? []
+
+            const contentTypes = appContentTypes()
+            if (!contentTypes.length) throw new Error('No content types found in the image')
+            // Plugin content types are not listed above, so treat them as present.
+            const atRisk = indexed.filter((uid) => contentTypes.includes(uid) || !uid.startsWith('api::'))
+            console.log(`Stored Meilisearch host: ${host || '(none)'}`)
+            console.log(`Indexed content types: ${indexed.join(', ') || '(none)'}`)
+            if (!atRisk.length) {
+              console.log('None of them exist in the app, nothing the plugin could drop')
+              return
+            }
+
+            const baseUrl = /^https?:\/\//.test(host) ? host : `http://${host}`
+            const response = await fetch(`${baseUrl.replace(/\/+$/, '')}/stats`, {
+              headers: apiKey ? { Authorization: `Bearer ${apiKey}` } : {},
+              signal: AbortSignal.timeout(10_000),
+            })
+            if (!response.ok) throw new Error(`${baseUrl}/stats returned ${response.status}`)
+            const { indexes } = await response.json()
+            console.log(`Meilisearch reachable, indexes: ${Object.keys(indexes ?? {}).join(', ')}`)
+          }
+
+          main().catch((error) => {
+            console.error(`Refusing to start a local Strapi, the meilisearch plugin could drop indexed content types: ${error.message}`)
+            process.exit(1)
+          })
+          EOF
+
+      # BuildKit RUN steps reach the local Strapi by IP: the builder container
+      # joins the same network as Strapi.
+      - name: Create network and builder
+        run: |
+          # User-defined networks don't inherit the daemon MTU, and the
+          # default 1500 breaks TLS from the builder on these runners.
+          mtu=$(docker network inspect bridge -f '{{index .Options "com.docker.network.driver.mtu"}}')
+          echo "Default bridge MTU: ${mtu:-unset}"
+          docker network create ${mtu:+--opt com.docker.network.driver.mtu="$mtu"} "$NET"
+          docker buildx create --name "$BUILDER" --driver docker-container --driver-opt "network=$NET"
+
+      - name: Start local Strapi
+        run: |
+          start=$(date +%s)
+          # Non-secret env as deployed. The internal secrets are random: this
+          # instance only serves public GraphQL reads, nothing it signs or
+          # hashes is ever stored.
+          docker run -d --name "$STRAPI" --network "$NET" \
+            --env-file "strapi/.env.deploy.$ENV_NAME" \
+            -e DATABASE_HOST -e DATABASE_PORT -e DATABASE_NAME -e DATABASE_USERNAME -e DATABASE_PASSWORD \
+            -e APP_KEYS="$(openssl rand -base64 16),$(openssl rand -base64 16)" \
+            -e ADMIN_JWT_SECRET="$(openssl rand -base64 16)" \
+            -e API_TOKEN_SALT="$(openssl rand -base64 16)" \
+            -e JWT_SECRET="$(openssl rand -base64 16)" \
+            -e TRANSFER_TOKEN_SALT="$(openssl rand -base64 16)" \
+            -e MAILGUN_API_KEY=unused \
+            "$STRAPI_LOCAL_IMAGE"
+
+          for _ in $(seq 300); do
+            if docker exec "$STRAPI" wget -q --spider http://127.0.0.1:1337/_health 2>/dev/null; then
+              echo "- Strapi boot: $(( $(date +%s) - start ))s" >> "$GITHUB_STEP_SUMMARY"
+              ip=$(docker inspect -f "{{(index .NetworkSettings.Networks \"$NET\").IPAddress}}" "$STRAPI")
+              echo "STRAPI_PRERENDER_URL=http://$ip:1337" >> "$GITHUB_ENV"
+              exit 0
+            fi
+            if [[ "$(docker inspect -f '{{.State.Running}}' "$STRAPI")" != "true" ]]; then
+              break
+            fi
+            sleep 1
+          done
+          docker logs "$STRAPI"
+          exit 1
+
+      - name: Smoke test local Strapi
+        run: |
+          docker exec "$STRAPI" wget -qO- \
+            --header 'Content-Type: application/json' \
+            --post-data '{"query":"{ pages(locale: \"sk\", pagination: { limit: 3 }) { title } }"}' \
+            http://127.0.0.1:1337/graphql
+
+      - name: Build Next
+        run: |
+          start=$(date +%s)
+          docker buildx build next/ \
+            --builder "$BUILDER" \
+            --target build \
+            --no-cache-filter build \
+            --build-arg STRAPI_PRERENDER_URL \
+            --cache-from "type=registry,ref=$NEXT_IMAGE:cache-master-$ENV_NAME" \
+            --output type=cacheonly \
+            --progress plain
+          echo "- Next build stage: $(( $(date +%s) - start ))s" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Strapi logs
+        if: ${{ !cancelled() }}
+        run: docker logs --tail 200 "$STRAPI" || true
+
+      - name: Clean up
+        if: always()
+        run: |
+          docker rm -f "$STRAPI" || true
+          docker buildx rm "$BUILDER" || true
+          docker network rm "$NET" || true
