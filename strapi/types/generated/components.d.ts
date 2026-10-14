@@ -376,27 +376,6 @@ export interface BlocksProsAndConsCard extends Struct.ComponentSchema {
   }
 }
 
-export interface BlocksStarzLandingPageBanner extends Struct.ComponentSchema {
-  collectionName: 'components_blocks_starz_landing_page_banners'
-  info: {
-    displayName: 'STaRZ Landing Page Banner'
-  }
-  attributes: {
-    content: Schema.Attribute.String
-    contentPosition: Schema.Attribute.Enumeration<['left', 'right']> &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'left'>
-    media: Schema.Attribute.Media<'images' | 'files'> & Schema.Attribute.Required
-    primaryLink: Schema.Attribute.Component<'blocks.common-link', false>
-    secondaryLink: Schema.Attribute.Component<'blocks.common-link', false>
-    tertiaryLink: Schema.Attribute.Component<'blocks.common-link', false>
-    title: Schema.Attribute.String & Schema.Attribute.Required
-    variant: Schema.Attribute.Enumeration<['color', 'dark', 'white_condensed']> &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'white_condensed'>
-  }
-}
-
 export interface BlocksSubnavigationLink extends Struct.ComponentSchema {
   collectionName: 'components_blocks_subnavigation_links'
   info: {
@@ -1293,18 +1272,6 @@ export interface SectionsRegulations extends Struct.ComponentSchema {
   }
 }
 
-export interface SectionsStarzLandingPage extends Struct.ComponentSchema {
-  collectionName: 'components_sections_starz_landing_pages'
-  info: {
-    displayName: 'STaRZ Landing Page'
-  }
-  attributes: {
-    banner: Schema.Attribute.Component<'blocks.starz-landing-page-banner', false> &
-      Schema.Attribute.Required
-    cardLinks: Schema.Attribute.Component<'blocks.card-link', true>
-  }
-}
-
 export interface SectionsSubnavigation extends Struct.ComponentSchema {
   collectionName: 'components_sections_subnavigations'
   info: {
@@ -1488,7 +1455,6 @@ declare module '@strapi/strapi' {
       'blocks.process-timeline-step': BlocksProcessTimelineStep
       'blocks.process-timeline-substep': BlocksProcessTimelineSubstep
       'blocks.pros-and-cons-card': BlocksProsAndConsCard
-      'blocks.starz-landing-page-banner': BlocksStarzLandingPageBanner
       'blocks.subnavigation-link': BlocksSubnavigationLink
       'blocks.top-services-item': BlocksTopServicesItem
       'blocks.urban-study-part-item': BlocksUrbanStudyPartItem
@@ -1541,7 +1507,6 @@ declare module '@strapi/strapi' {
       'sections.process-timeline': SectionsProcessTimeline
       'sections.pros-and-cons-section': SectionsProsAndConsSection
       'sections.regulations': SectionsRegulations
-      'sections.starz-landing-page': SectionsStarzLandingPage
       'sections.subnavigation': SectionsSubnavigation
       'sections.text-with-image': SectionsTextWithImage
       'sections.text-with-image-overlapped': SectionsTextWithImageOverlapped

@@ -1391,44 +1391,6 @@ export type ComponentBlocksProsAndConsCardInput = {
   title?: InputMaybe<Scalars['String']['input']>
 }
 
-export type ComponentBlocksStarzLandingPageBanner = {
-  __typename?: 'ComponentBlocksStarzLandingPageBanner'
-  content?: Maybe<Scalars['String']['output']>
-  contentPosition: Enum_Componentblocksstarzlandingpagebanner_Contentposition
-  id: Scalars['ID']['output']
-  media: UploadFile
-  primaryLink?: Maybe<ComponentBlocksCommonLink>
-  secondaryLink?: Maybe<ComponentBlocksCommonLink>
-  tertiaryLink?: Maybe<ComponentBlocksCommonLink>
-  title: Scalars['String']['output']
-  variant: Enum_Componentblocksstarzlandingpagebanner_Variant
-}
-
-export type ComponentBlocksStarzLandingPageBannerFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentBlocksStarzLandingPageBannerFiltersInput>>>
-  content?: InputMaybe<StringFilterInput>
-  contentPosition?: InputMaybe<StringFilterInput>
-  not?: InputMaybe<ComponentBlocksStarzLandingPageBannerFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentBlocksStarzLandingPageBannerFiltersInput>>>
-  primaryLink?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
-  secondaryLink?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
-  tertiaryLink?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
-  title?: InputMaybe<StringFilterInput>
-  variant?: InputMaybe<StringFilterInput>
-}
-
-export type ComponentBlocksStarzLandingPageBannerInput = {
-  content?: InputMaybe<Scalars['String']['input']>
-  contentPosition?: InputMaybe<Enum_Componentblocksstarzlandingpagebanner_Contentposition>
-  id?: InputMaybe<Scalars['ID']['input']>
-  media?: InputMaybe<Scalars['ID']['input']>
-  primaryLink?: InputMaybe<ComponentBlocksCommonLinkInput>
-  secondaryLink?: InputMaybe<ComponentBlocksCommonLinkInput>
-  tertiaryLink?: InputMaybe<ComponentBlocksCommonLinkInput>
-  title?: InputMaybe<Scalars['String']['input']>
-  variant?: InputMaybe<Enum_Componentblocksstarzlandingpagebanner_Variant>
-}
-
 export type ComponentBlocksSubnavigationLink = {
   __typename?: 'ComponentBlocksSubnavigationLink'
   analyticsId?: Maybe<Scalars['String']['output']>
@@ -3206,33 +3168,6 @@ export type ComponentSectionsRegulationsInput = {
   showAll?: InputMaybe<Scalars['Boolean']['input']>
 }
 
-export type ComponentSectionsStarzLandingPage = {
-  __typename?: 'ComponentSectionsStarzLandingPage'
-  banner: ComponentBlocksStarzLandingPageBanner
-  cardLinks?: Maybe<Array<Maybe<ComponentBlocksCardLink>>>
-  id: Scalars['ID']['output']
-}
-
-export type ComponentSectionsStarzLandingPageCardLinksArgs = {
-  filters?: InputMaybe<ComponentBlocksCardLinkFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type ComponentSectionsStarzLandingPageFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentSectionsStarzLandingPageFiltersInput>>>
-  banner?: InputMaybe<ComponentBlocksStarzLandingPageBannerFiltersInput>
-  cardLinks?: InputMaybe<ComponentBlocksCardLinkFiltersInput>
-  not?: InputMaybe<ComponentSectionsStarzLandingPageFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentSectionsStarzLandingPageFiltersInput>>>
-}
-
-export type ComponentSectionsStarzLandingPageInput = {
-  banner?: InputMaybe<ComponentBlocksStarzLandingPageBannerInput>
-  cardLinks?: InputMaybe<Array<InputMaybe<ComponentBlocksCardLinkInput>>>
-  id?: InputMaybe<Scalars['ID']['input']>
-}
-
 export type ComponentSectionsSubnavigation = {
   __typename?: 'ComponentSectionsSubnavigation'
   id: Scalars['ID']['output']
@@ -3606,17 +3541,6 @@ export enum Enum_Componentblockslandingpagebanner_Contentposition {
 }
 
 export enum Enum_Componentblockslandingpagebanner_Variant {
-  Color = 'color',
-  Dark = 'dark',
-  WhiteCondensed = 'white_condensed',
-}
-
-export enum Enum_Componentblocksstarzlandingpagebanner_Contentposition {
-  Left = 'left',
-  Right = 'right',
-}
-
-export enum Enum_Componentblocksstarzlandingpagebanner_Variant {
   Color = 'color',
   Dark = 'dark',
   WhiteCondensed = 'white_condensed',
@@ -4344,7 +4268,6 @@ export type GenericMorph =
   | ComponentBlocksProcessTimelineStep
   | ComponentBlocksProcessTimelineSubstep
   | ComponentBlocksProsAndConsCard
-  | ComponentBlocksStarzLandingPageBanner
   | ComponentBlocksSubnavigationLink
   | ComponentBlocksTopServicesItem
   | ComponentBlocksUrbanStudyPartItem
@@ -4397,7 +4320,6 @@ export type GenericMorph =
   | ComponentSectionsProcessTimeline
   | ComponentSectionsProsAndConsSection
   | ComponentSectionsRegulations
-  | ComponentSectionsStarzLandingPage
   | ComponentSectionsSubnavigation
   | ComponentSectionsTextWithImage
   | ComponentSectionsTextWithImageOverlapped
@@ -5603,7 +5525,6 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsProcessTimeline
   | ComponentSectionsProsAndConsSection
   | ComponentSectionsRegulations
-  | ComponentSectionsStarzLandingPage
   | ComponentSectionsTextWithImage
   | ComponentSectionsTextWithImageOverlapped
   | ComponentSectionsTootootEvents
@@ -8614,7 +8535,6 @@ export type AllFilesQuery = {
       | { __typename?: 'ComponentSectionsProcessTimeline' }
       | { __typename?: 'ComponentSectionsProsAndConsSection' }
       | { __typename?: 'ComponentSectionsRegulations' }
-      | { __typename?: 'ComponentSectionsStarzLandingPage' }
       | {
           __typename?: 'ComponentSectionsTextWithImage'
           imageSrc: { __typename?: 'UploadFile'; documentId: string }
@@ -13432,191 +13352,6 @@ export type PageEntityFragment = {
         } | null>
       }
     | {
-        __typename: 'ComponentSectionsStarzLandingPage'
-        banner: {
-          __typename?: 'ComponentBlocksStarzLandingPageBanner'
-          title: string
-          content?: string | null
-          contentPosition: Enum_Componentblocksstarzlandingpagebanner_Contentposition
-          variant: Enum_Componentblocksstarzlandingpagebanner_Variant
-          media: {
-            __typename?: 'UploadFile'
-            documentId: string
-            url: string
-            width?: number | null
-            height?: number | null
-            caption?: string | null
-            alternativeText?: string | null
-            name: string
-          }
-          primaryLink?: {
-            __typename?: 'ComponentBlocksCommonLink'
-            label?: string | null
-            url?: string | null
-            analyticsId?: string | null
-            page?: {
-              __typename?: 'Page'
-              documentId: string
-              title: string
-              locale?: string | null
-              path?: string | null
-            } | null
-            article?: {
-              __typename: 'Article'
-              documentId: string
-              slug: string
-              title: string
-              locale?: string | null
-            } | null
-            inbaRelease?: {
-              __typename?: 'InbaRelease'
-              documentId: string
-              title: string
-              slug: string
-            } | null
-            regulation?: {
-              __typename?: 'Regulation'
-              documentId: string
-              slug: string
-              titleText?: string | null
-            } | null
-            asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
-          } | null
-          secondaryLink?: {
-            __typename?: 'ComponentBlocksCommonLink'
-            label?: string | null
-            url?: string | null
-            analyticsId?: string | null
-            page?: {
-              __typename?: 'Page'
-              documentId: string
-              title: string
-              locale?: string | null
-              path?: string | null
-            } | null
-            article?: {
-              __typename: 'Article'
-              documentId: string
-              slug: string
-              title: string
-              locale?: string | null
-            } | null
-            inbaRelease?: {
-              __typename?: 'InbaRelease'
-              documentId: string
-              title: string
-              slug: string
-            } | null
-            regulation?: {
-              __typename?: 'Regulation'
-              documentId: string
-              slug: string
-              titleText?: string | null
-            } | null
-            asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
-          } | null
-          tertiaryLink?: {
-            __typename?: 'ComponentBlocksCommonLink'
-            label?: string | null
-            url?: string | null
-            analyticsId?: string | null
-            page?: {
-              __typename?: 'Page'
-              documentId: string
-              title: string
-              locale?: string | null
-              path?: string | null
-            } | null
-            article?: {
-              __typename: 'Article'
-              documentId: string
-              slug: string
-              title: string
-              locale?: string | null
-            } | null
-            inbaRelease?: {
-              __typename?: 'InbaRelease'
-              documentId: string
-              title: string
-              slug: string
-            } | null
-            regulation?: {
-              __typename?: 'Regulation'
-              documentId: string
-              slug: string
-              titleText?: string | null
-            } | null
-            asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
-          } | null
-        }
-        cardLinks?: Array<{
-          __typename?: 'ComponentBlocksCardLink'
-          label?: string | null
-          subtext?: string | null
-          url?: string | null
-          analyticsId?: string | null
-          media?: {
-            __typename?: 'UploadFile'
-            documentId: string
-            url: string
-            width?: number | null
-            height?: number | null
-            caption?: string | null
-            alternativeText?: string | null
-            name: string
-          } | null
-          page?: {
-            __typename?: 'Page'
-            documentId: string
-            title: string
-            locale?: string | null
-            path?: string | null
-            pageBackgroundImage?: {
-              __typename?: 'UploadFile'
-              documentId: string
-              url: string
-            } | null
-          } | null
-          article?: {
-            __typename: 'Article'
-            perex?: string | null
-            addedAt: any
-            documentId: string
-            slug: string
-            title: string
-            locale?: string | null
-            coverMedia?: {
-              __typename?: 'UploadFile'
-              documentId: string
-              url: string
-              width?: number | null
-              height?: number | null
-              caption?: string | null
-              alternativeText?: string | null
-              name: string
-            } | null
-            articleCategory?: {
-              __typename?: 'ArticleCategory'
-              documentId: string
-              title: string
-              slug: string
-            } | null
-            tags: Array<{
-              __typename?: 'Tag'
-              documentId: string
-              title: string
-              slug: string
-              pageCategory?: {
-                __typename?: 'PageCategory'
-                documentId: string
-                title?: string | null
-                color?: Enum_Pagecategory_Color | null
-              } | null
-            } | null>
-          } | null
-        } | null> | null
-      }
-    | {
         __typename: 'ComponentSectionsTextWithImage'
         content?: string | null
         imagePosition: Enum_Componentsectionstextwithimage_Imageposition
@@ -15393,206 +15128,6 @@ export type PageByPathQuery = {
           } | null>
         }
       | {
-          __typename: 'ComponentSectionsStarzLandingPage'
-          banner: {
-            __typename?: 'ComponentBlocksStarzLandingPageBanner'
-            title: string
-            content?: string | null
-            contentPosition: Enum_Componentblocksstarzlandingpagebanner_Contentposition
-            variant: Enum_Componentblocksstarzlandingpagebanner_Variant
-            media: {
-              __typename?: 'UploadFile'
-              documentId: string
-              url: string
-              width?: number | null
-              height?: number | null
-              caption?: string | null
-              alternativeText?: string | null
-              name: string
-            }
-            primaryLink?: {
-              __typename?: 'ComponentBlocksCommonLink'
-              label?: string | null
-              url?: string | null
-              analyticsId?: string | null
-              page?: {
-                __typename?: 'Page'
-                documentId: string
-                title: string
-                locale?: string | null
-                path?: string | null
-              } | null
-              article?: {
-                __typename: 'Article'
-                documentId: string
-                slug: string
-                title: string
-                locale?: string | null
-              } | null
-              inbaRelease?: {
-                __typename?: 'InbaRelease'
-                documentId: string
-                title: string
-                slug: string
-              } | null
-              regulation?: {
-                __typename?: 'Regulation'
-                documentId: string
-                slug: string
-                titleText?: string | null
-              } | null
-              asset?: {
-                __typename: 'Asset'
-                documentId: string
-                slug: string
-                title: string
-              } | null
-            } | null
-            secondaryLink?: {
-              __typename?: 'ComponentBlocksCommonLink'
-              label?: string | null
-              url?: string | null
-              analyticsId?: string | null
-              page?: {
-                __typename?: 'Page'
-                documentId: string
-                title: string
-                locale?: string | null
-                path?: string | null
-              } | null
-              article?: {
-                __typename: 'Article'
-                documentId: string
-                slug: string
-                title: string
-                locale?: string | null
-              } | null
-              inbaRelease?: {
-                __typename?: 'InbaRelease'
-                documentId: string
-                title: string
-                slug: string
-              } | null
-              regulation?: {
-                __typename?: 'Regulation'
-                documentId: string
-                slug: string
-                titleText?: string | null
-              } | null
-              asset?: {
-                __typename: 'Asset'
-                documentId: string
-                slug: string
-                title: string
-              } | null
-            } | null
-            tertiaryLink?: {
-              __typename?: 'ComponentBlocksCommonLink'
-              label?: string | null
-              url?: string | null
-              analyticsId?: string | null
-              page?: {
-                __typename?: 'Page'
-                documentId: string
-                title: string
-                locale?: string | null
-                path?: string | null
-              } | null
-              article?: {
-                __typename: 'Article'
-                documentId: string
-                slug: string
-                title: string
-                locale?: string | null
-              } | null
-              inbaRelease?: {
-                __typename?: 'InbaRelease'
-                documentId: string
-                title: string
-                slug: string
-              } | null
-              regulation?: {
-                __typename?: 'Regulation'
-                documentId: string
-                slug: string
-                titleText?: string | null
-              } | null
-              asset?: {
-                __typename: 'Asset'
-                documentId: string
-                slug: string
-                title: string
-              } | null
-            } | null
-          }
-          cardLinks?: Array<{
-            __typename?: 'ComponentBlocksCardLink'
-            label?: string | null
-            subtext?: string | null
-            url?: string | null
-            analyticsId?: string | null
-            media?: {
-              __typename?: 'UploadFile'
-              documentId: string
-              url: string
-              width?: number | null
-              height?: number | null
-              caption?: string | null
-              alternativeText?: string | null
-              name: string
-            } | null
-            page?: {
-              __typename?: 'Page'
-              documentId: string
-              title: string
-              locale?: string | null
-              path?: string | null
-              pageBackgroundImage?: {
-                __typename?: 'UploadFile'
-                documentId: string
-                url: string
-              } | null
-            } | null
-            article?: {
-              __typename: 'Article'
-              perex?: string | null
-              addedAt: any
-              documentId: string
-              slug: string
-              title: string
-              locale?: string | null
-              coverMedia?: {
-                __typename?: 'UploadFile'
-                documentId: string
-                url: string
-                width?: number | null
-                height?: number | null
-                caption?: string | null
-                alternativeText?: string | null
-                name: string
-              } | null
-              articleCategory?: {
-                __typename?: 'ArticleCategory'
-                documentId: string
-                title: string
-                slug: string
-              } | null
-              tags: Array<{
-                __typename?: 'Tag'
-                documentId: string
-                title: string
-                slug: string
-                pageCategory?: {
-                  __typename?: 'PageCategory'
-                  documentId: string
-                  title?: string | null
-                  color?: Enum_Pagecategory_Color | null
-                } | null
-              } | null>
-            } | null
-          } | null> | null
-        }
-      | {
           __typename: 'ComponentSectionsTextWithImage'
           content?: string | null
           imagePosition: Enum_Componentsectionstextwithimage_Imageposition
@@ -17364,206 +16899,6 @@ export type Dev_AllPagesQuery = {
           } | null>
         }
       | {
-          __typename: 'ComponentSectionsStarzLandingPage'
-          banner: {
-            __typename?: 'ComponentBlocksStarzLandingPageBanner'
-            title: string
-            content?: string | null
-            contentPosition: Enum_Componentblocksstarzlandingpagebanner_Contentposition
-            variant: Enum_Componentblocksstarzlandingpagebanner_Variant
-            media: {
-              __typename?: 'UploadFile'
-              documentId: string
-              url: string
-              width?: number | null
-              height?: number | null
-              caption?: string | null
-              alternativeText?: string | null
-              name: string
-            }
-            primaryLink?: {
-              __typename?: 'ComponentBlocksCommonLink'
-              label?: string | null
-              url?: string | null
-              analyticsId?: string | null
-              page?: {
-                __typename?: 'Page'
-                documentId: string
-                title: string
-                locale?: string | null
-                path?: string | null
-              } | null
-              article?: {
-                __typename: 'Article'
-                documentId: string
-                slug: string
-                title: string
-                locale?: string | null
-              } | null
-              inbaRelease?: {
-                __typename?: 'InbaRelease'
-                documentId: string
-                title: string
-                slug: string
-              } | null
-              regulation?: {
-                __typename?: 'Regulation'
-                documentId: string
-                slug: string
-                titleText?: string | null
-              } | null
-              asset?: {
-                __typename: 'Asset'
-                documentId: string
-                slug: string
-                title: string
-              } | null
-            } | null
-            secondaryLink?: {
-              __typename?: 'ComponentBlocksCommonLink'
-              label?: string | null
-              url?: string | null
-              analyticsId?: string | null
-              page?: {
-                __typename?: 'Page'
-                documentId: string
-                title: string
-                locale?: string | null
-                path?: string | null
-              } | null
-              article?: {
-                __typename: 'Article'
-                documentId: string
-                slug: string
-                title: string
-                locale?: string | null
-              } | null
-              inbaRelease?: {
-                __typename?: 'InbaRelease'
-                documentId: string
-                title: string
-                slug: string
-              } | null
-              regulation?: {
-                __typename?: 'Regulation'
-                documentId: string
-                slug: string
-                titleText?: string | null
-              } | null
-              asset?: {
-                __typename: 'Asset'
-                documentId: string
-                slug: string
-                title: string
-              } | null
-            } | null
-            tertiaryLink?: {
-              __typename?: 'ComponentBlocksCommonLink'
-              label?: string | null
-              url?: string | null
-              analyticsId?: string | null
-              page?: {
-                __typename?: 'Page'
-                documentId: string
-                title: string
-                locale?: string | null
-                path?: string | null
-              } | null
-              article?: {
-                __typename: 'Article'
-                documentId: string
-                slug: string
-                title: string
-                locale?: string | null
-              } | null
-              inbaRelease?: {
-                __typename?: 'InbaRelease'
-                documentId: string
-                title: string
-                slug: string
-              } | null
-              regulation?: {
-                __typename?: 'Regulation'
-                documentId: string
-                slug: string
-                titleText?: string | null
-              } | null
-              asset?: {
-                __typename: 'Asset'
-                documentId: string
-                slug: string
-                title: string
-              } | null
-            } | null
-          }
-          cardLinks?: Array<{
-            __typename?: 'ComponentBlocksCardLink'
-            label?: string | null
-            subtext?: string | null
-            url?: string | null
-            analyticsId?: string | null
-            media?: {
-              __typename?: 'UploadFile'
-              documentId: string
-              url: string
-              width?: number | null
-              height?: number | null
-              caption?: string | null
-              alternativeText?: string | null
-              name: string
-            } | null
-            page?: {
-              __typename?: 'Page'
-              documentId: string
-              title: string
-              locale?: string | null
-              path?: string | null
-              pageBackgroundImage?: {
-                __typename?: 'UploadFile'
-                documentId: string
-                url: string
-              } | null
-            } | null
-            article?: {
-              __typename: 'Article'
-              perex?: string | null
-              addedAt: any
-              documentId: string
-              slug: string
-              title: string
-              locale?: string | null
-              coverMedia?: {
-                __typename?: 'UploadFile'
-                documentId: string
-                url: string
-                width?: number | null
-                height?: number | null
-                caption?: string | null
-                alternativeText?: string | null
-                name: string
-              } | null
-              articleCategory?: {
-                __typename?: 'ArticleCategory'
-                documentId: string
-                title: string
-                slug: string
-              } | null
-              tags: Array<{
-                __typename?: 'Tag'
-                documentId: string
-                title: string
-                slug: string
-                pageCategory?: {
-                  __typename?: 'PageCategory'
-                  documentId: string
-                  title?: string | null
-                  color?: Enum_Pagecategory_Color | null
-                } | null
-              } | null>
-            } | null
-          } | null> | null
-        }
-      | {
           __typename: 'ComponentSectionsTextWithImage'
           content?: string | null
           imagePosition: Enum_Componentsectionstextwithimage_Imageposition
@@ -17987,7 +17322,6 @@ export type PageInventoryEntityFragment = {
           effectiveFrom: any
         } | null>
       }
-    | { __typename: 'ComponentSectionsStarzLandingPage' }
     | { __typename: 'ComponentSectionsTextWithImage' }
     | { __typename: 'ComponentSectionsTextWithImageOverlapped' }
     | { __typename: 'ComponentSectionsTootootEvents' }
@@ -18176,7 +17510,6 @@ export type PagesInventoryQuery = {
             effectiveFrom: any
           } | null>
         }
-      | { __typename: 'ComponentSectionsStarzLandingPage' }
       | { __typename: 'ComponentSectionsTextWithImage' }
       | { __typename: 'ComponentSectionsTextWithImageOverlapped' }
       | { __typename: 'ComponentSectionsTootootEvents' }
@@ -19878,188 +19211,6 @@ export type FacilitiesSectionFragment = {
     > | null
     pageBackgroundImage?: { __typename?: 'UploadFile'; documentId: string; url: string } | null
   } | null>
-}
-
-export type StarzLandingPageSectionFragment = {
-  __typename?: 'ComponentSectionsStarzLandingPage'
-  banner: {
-    __typename?: 'ComponentBlocksStarzLandingPageBanner'
-    title: string
-    content?: string | null
-    contentPosition: Enum_Componentblocksstarzlandingpagebanner_Contentposition
-    variant: Enum_Componentblocksstarzlandingpagebanner_Variant
-    media: {
-      __typename?: 'UploadFile'
-      documentId: string
-      url: string
-      width?: number | null
-      height?: number | null
-      caption?: string | null
-      alternativeText?: string | null
-      name: string
-    }
-    primaryLink?: {
-      __typename?: 'ComponentBlocksCommonLink'
-      label?: string | null
-      url?: string | null
-      analyticsId?: string | null
-      page?: {
-        __typename?: 'Page'
-        documentId: string
-        title: string
-        locale?: string | null
-        path?: string | null
-      } | null
-      article?: {
-        __typename: 'Article'
-        documentId: string
-        slug: string
-        title: string
-        locale?: string | null
-      } | null
-      inbaRelease?: {
-        __typename?: 'InbaRelease'
-        documentId: string
-        title: string
-        slug: string
-      } | null
-      regulation?: {
-        __typename?: 'Regulation'
-        documentId: string
-        slug: string
-        titleText?: string | null
-      } | null
-      asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
-    } | null
-    secondaryLink?: {
-      __typename?: 'ComponentBlocksCommonLink'
-      label?: string | null
-      url?: string | null
-      analyticsId?: string | null
-      page?: {
-        __typename?: 'Page'
-        documentId: string
-        title: string
-        locale?: string | null
-        path?: string | null
-      } | null
-      article?: {
-        __typename: 'Article'
-        documentId: string
-        slug: string
-        title: string
-        locale?: string | null
-      } | null
-      inbaRelease?: {
-        __typename?: 'InbaRelease'
-        documentId: string
-        title: string
-        slug: string
-      } | null
-      regulation?: {
-        __typename?: 'Regulation'
-        documentId: string
-        slug: string
-        titleText?: string | null
-      } | null
-      asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
-    } | null
-    tertiaryLink?: {
-      __typename?: 'ComponentBlocksCommonLink'
-      label?: string | null
-      url?: string | null
-      analyticsId?: string | null
-      page?: {
-        __typename?: 'Page'
-        documentId: string
-        title: string
-        locale?: string | null
-        path?: string | null
-      } | null
-      article?: {
-        __typename: 'Article'
-        documentId: string
-        slug: string
-        title: string
-        locale?: string | null
-      } | null
-      inbaRelease?: {
-        __typename?: 'InbaRelease'
-        documentId: string
-        title: string
-        slug: string
-      } | null
-      regulation?: {
-        __typename?: 'Regulation'
-        documentId: string
-        slug: string
-        titleText?: string | null
-      } | null
-      asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
-    } | null
-  }
-  cardLinks?: Array<{
-    __typename?: 'ComponentBlocksCardLink'
-    label?: string | null
-    subtext?: string | null
-    url?: string | null
-    analyticsId?: string | null
-    media?: {
-      __typename?: 'UploadFile'
-      documentId: string
-      url: string
-      width?: number | null
-      height?: number | null
-      caption?: string | null
-      alternativeText?: string | null
-      name: string
-    } | null
-    page?: {
-      __typename?: 'Page'
-      documentId: string
-      title: string
-      locale?: string | null
-      path?: string | null
-      pageBackgroundImage?: { __typename?: 'UploadFile'; documentId: string; url: string } | null
-    } | null
-    article?: {
-      __typename: 'Article'
-      perex?: string | null
-      addedAt: any
-      documentId: string
-      slug: string
-      title: string
-      locale?: string | null
-      coverMedia?: {
-        __typename?: 'UploadFile'
-        documentId: string
-        url: string
-        width?: number | null
-        height?: number | null
-        caption?: string | null
-        alternativeText?: string | null
-        name: string
-      } | null
-      articleCategory?: {
-        __typename?: 'ArticleCategory'
-        documentId: string
-        title: string
-        slug: string
-      } | null
-      tags: Array<{
-        __typename?: 'Tag'
-        documentId: string
-        title: string
-        slug: string
-        pageCategory?: {
-          __typename?: 'PageCategory'
-          documentId: string
-          title?: string | null
-          color?: Enum_Pagecategory_Color | null
-        } | null
-      } | null>
-    } | null
-  } | null> | null
 }
 
 export type LandingPageSectionFragment = {
@@ -22072,188 +21223,6 @@ type Sections_ComponentSectionsRegulations_Fragment = {
   } | null>
 }
 
-type Sections_ComponentSectionsStarzLandingPage_Fragment = {
-  __typename: 'ComponentSectionsStarzLandingPage'
-  banner: {
-    __typename?: 'ComponentBlocksStarzLandingPageBanner'
-    title: string
-    content?: string | null
-    contentPosition: Enum_Componentblocksstarzlandingpagebanner_Contentposition
-    variant: Enum_Componentblocksstarzlandingpagebanner_Variant
-    media: {
-      __typename?: 'UploadFile'
-      documentId: string
-      url: string
-      width?: number | null
-      height?: number | null
-      caption?: string | null
-      alternativeText?: string | null
-      name: string
-    }
-    primaryLink?: {
-      __typename?: 'ComponentBlocksCommonLink'
-      label?: string | null
-      url?: string | null
-      analyticsId?: string | null
-      page?: {
-        __typename?: 'Page'
-        documentId: string
-        title: string
-        locale?: string | null
-        path?: string | null
-      } | null
-      article?: {
-        __typename: 'Article'
-        documentId: string
-        slug: string
-        title: string
-        locale?: string | null
-      } | null
-      inbaRelease?: {
-        __typename?: 'InbaRelease'
-        documentId: string
-        title: string
-        slug: string
-      } | null
-      regulation?: {
-        __typename?: 'Regulation'
-        documentId: string
-        slug: string
-        titleText?: string | null
-      } | null
-      asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
-    } | null
-    secondaryLink?: {
-      __typename?: 'ComponentBlocksCommonLink'
-      label?: string | null
-      url?: string | null
-      analyticsId?: string | null
-      page?: {
-        __typename?: 'Page'
-        documentId: string
-        title: string
-        locale?: string | null
-        path?: string | null
-      } | null
-      article?: {
-        __typename: 'Article'
-        documentId: string
-        slug: string
-        title: string
-        locale?: string | null
-      } | null
-      inbaRelease?: {
-        __typename?: 'InbaRelease'
-        documentId: string
-        title: string
-        slug: string
-      } | null
-      regulation?: {
-        __typename?: 'Regulation'
-        documentId: string
-        slug: string
-        titleText?: string | null
-      } | null
-      asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
-    } | null
-    tertiaryLink?: {
-      __typename?: 'ComponentBlocksCommonLink'
-      label?: string | null
-      url?: string | null
-      analyticsId?: string | null
-      page?: {
-        __typename?: 'Page'
-        documentId: string
-        title: string
-        locale?: string | null
-        path?: string | null
-      } | null
-      article?: {
-        __typename: 'Article'
-        documentId: string
-        slug: string
-        title: string
-        locale?: string | null
-      } | null
-      inbaRelease?: {
-        __typename?: 'InbaRelease'
-        documentId: string
-        title: string
-        slug: string
-      } | null
-      regulation?: {
-        __typename?: 'Regulation'
-        documentId: string
-        slug: string
-        titleText?: string | null
-      } | null
-      asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
-    } | null
-  }
-  cardLinks?: Array<{
-    __typename?: 'ComponentBlocksCardLink'
-    label?: string | null
-    subtext?: string | null
-    url?: string | null
-    analyticsId?: string | null
-    media?: {
-      __typename?: 'UploadFile'
-      documentId: string
-      url: string
-      width?: number | null
-      height?: number | null
-      caption?: string | null
-      alternativeText?: string | null
-      name: string
-    } | null
-    page?: {
-      __typename?: 'Page'
-      documentId: string
-      title: string
-      locale?: string | null
-      path?: string | null
-      pageBackgroundImage?: { __typename?: 'UploadFile'; documentId: string; url: string } | null
-    } | null
-    article?: {
-      __typename: 'Article'
-      perex?: string | null
-      addedAt: any
-      documentId: string
-      slug: string
-      title: string
-      locale?: string | null
-      coverMedia?: {
-        __typename?: 'UploadFile'
-        documentId: string
-        url: string
-        width?: number | null
-        height?: number | null
-        caption?: string | null
-        alternativeText?: string | null
-        name: string
-      } | null
-      articleCategory?: {
-        __typename?: 'ArticleCategory'
-        documentId: string
-        title: string
-        slug: string
-      } | null
-      tags: Array<{
-        __typename?: 'Tag'
-        documentId: string
-        title: string
-        slug: string
-        pageCategory?: {
-          __typename?: 'PageCategory'
-          documentId: string
-          title?: string | null
-          color?: Enum_Pagecategory_Color | null
-        } | null
-      } | null>
-    } | null
-  } | null> | null
-}
-
 type Sections_ComponentSectionsTextWithImage_Fragment = {
   __typename: 'ComponentSectionsTextWithImage'
   content?: string | null
@@ -22486,7 +21455,6 @@ export type SectionsFragment =
   | Sections_ComponentSectionsProcessTimeline_Fragment
   | Sections_ComponentSectionsProsAndConsSection_Fragment
   | Sections_ComponentSectionsRegulations_Fragment
-  | Sections_ComponentSectionsStarzLandingPage_Fragment
   | Sections_ComponentSectionsTextWithImage_Fragment
   | Sections_ComponentSectionsTextWithImageOverlapped_Fragment
   | Sections_ComponentSectionsTootootEvents_Fragment
@@ -24609,34 +23577,6 @@ export const LandingPageSectionFragmentDoc = gql`
   ${CommonLinkFragmentDoc}
   ${CardLinkFragmentDoc}
 `
-export const StarzLandingPageSectionFragmentDoc = gql`
-  fragment StarzLandingPageSection on ComponentSectionsStarzLandingPage {
-    banner {
-      title
-      content
-      contentPosition
-      variant
-      media {
-        ...UploadImageEntity
-      }
-      primaryLink {
-        ...CommonLink
-      }
-      secondaryLink {
-        ...CommonLink
-      }
-      tertiaryLink {
-        ...CommonLink
-      }
-    }
-    cardLinks {
-      ...CardLink
-    }
-  }
-  ${UploadImageEntityFragmentDoc}
-  ${CommonLinkFragmentDoc}
-  ${CardLinkFragmentDoc}
-`
 export const OpeningHoursItemFragmentDoc = gql`
   fragment OpeningHoursItem on ComponentBlocksOpeningHoursItem {
     label
@@ -24893,9 +23833,6 @@ export const SectionsFragmentDoc = gql`
     ... on ComponentSectionsLandingPage {
       ...LandingPageSection
     }
-    ... on ComponentSectionsStarzLandingPage {
-      ...StarzLandingPageSection
-    }
     ... on ComponentSectionsOpeningHours {
       ...OpeningHoursSection
     }
@@ -24954,7 +23891,6 @@ export const SectionsFragmentDoc = gql`
   ${EventsSectionFragmentDoc}
   ${FacilitiesSectionFragmentDoc}
   ${LandingPageSectionFragmentDoc}
-  ${StarzLandingPageSectionFragmentDoc}
   ${OpeningHoursSectionFragmentDoc}
   ${NewsletterSectionFragmentDoc}
   ${ColumnsListSectionFragmentDoc}

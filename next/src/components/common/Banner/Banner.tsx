@@ -5,7 +5,6 @@ import Markdown from '@/src/components/formatting/Markdown/Markdown'
 import {
   CommonLinkFragment,
   Enum_Componentblockslandingpagebanner_Variant,
-  Enum_Componentblocksstarzlandingpagebanner_Variant,
   Enum_Componentsectionsbanner_Variant,
 } from '@/src/services/graphql'
 import cn from '@/src/utils/cn'
@@ -16,10 +15,7 @@ type BannerProps = {
   title: string
   content?: string | null
   contentPosition?: 'left' | 'right'
-  variant:
-    | Enum_Componentsectionsbanner_Variant
-    | Enum_Componentblocksstarzlandingpagebanner_Variant
-    | Enum_Componentblockslandingpagebanner_Variant
+  variant: Enum_Componentsectionsbanner_Variant | Enum_Componentblockslandingpagebanner_Variant
   imagePath?: string
   primaryLink?: CommonLinkFragment | null
   secondaryLink?: CommonLinkFragment | null
