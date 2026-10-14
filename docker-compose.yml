@@ -3,9 +3,9 @@ services:
   postgres:
     image: postgres:17
     environment:
-      POSTGRES_USER: strapi
+      POSTGRES_USER: bratislava
       POSTGRES_PASSWORD: password
-      POSTGRES_DB: strapi
+      POSTGRES_DB: bratislava
       PGPORT: 5432
     expose:
       - '5432'
