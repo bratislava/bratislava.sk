@@ -180,6 +180,8 @@ export type InbaReleaseInventoryData = {
 export type UrbanStudyInventoryData = {
   /** The year the study was released. */
   year?: string
+  /** The date the study was completed (processed), ISO date (YYYY-MM-DD). Only month and year are relevant. */
+  completionDate?: string
   /** The slug of the type of urban study. */
   category?: string
   /** The slug of the study state, (in progress, finished...) */

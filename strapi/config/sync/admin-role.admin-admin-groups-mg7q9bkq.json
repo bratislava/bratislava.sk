@@ -2060,7 +2060,7 @@
           "year",
           "urbanStudyState",
           "urbanStudyCategory",
-          "customPublishedAt",
+          "completionDate",
           "procuredBy",
           "preparedBy",
           "body",
@@ -2082,7 +2082,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "x1wwbtyg2abx7vnr1nk1c5wf",
+      "documentId": "jnny030soxf9stt1qh9kedr6",
       "locale": null
     },
     {
@@ -2114,7 +2114,7 @@
           "year",
           "urbanStudyState",
           "urbanStudyCategory",
-          "customPublishedAt",
+          "completionDate",
           "procuredBy",
           "preparedBy",
           "body",
@@ -2136,7 +2136,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "nswdco4cd9sy7sp40hw9i1rb",
+      "documentId": "ccqmirggwoa8q6jbzg7g2ivk",
       "locale": null
     },
     {
@@ -2150,7 +2150,7 @@
           "year",
           "urbanStudyState",
           "urbanStudyCategory",
-          "customPublishedAt",
+          "completionDate",
           "procuredBy",
           "preparedBy",
           "body",
@@ -2172,7 +2172,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "dgfrxdj969v8f826v73odoj5",
+      "documentId": "zelilf0qcet4nus3xvttpdb5",
       "locale": null
     },
     {

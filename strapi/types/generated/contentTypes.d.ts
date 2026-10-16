@@ -1507,10 +1507,10 @@ export interface ApiUrbanStudyUrbanStudy extends Struct.CollectionTypeSchema {
   attributes: {
     approvalText: Schema.Attribute.RichText
     body: Schema.Attribute.RichText
+    completionDate: Schema.Attribute.Date
     createdAt: Schema.Attribute.DateTime
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
-    customPublishedAt: Schema.Attribute.DateTime
-    fullTitle: Schema.Attribute.Text
+    fullTitle: Schema.Attribute.String
     links: Schema.Attribute.Component<'blocks.common-link', true>
     locale: Schema.Attribute.String & Schema.Attribute.Private
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::urban-study.urban-study'> &

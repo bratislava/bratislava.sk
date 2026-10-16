@@ -16,6 +16,7 @@ import {
   urbanStudiesFetcher,
   UrbanStudiesFilters,
 } from '@/src/services/meili/fetchers/urbanStudiesFetcher'
+import { formatMonthYear } from '@/src/utils/formatMonthYear'
 import { isDefined } from '@/src/utils/isDefined'
 import { useTranslation } from '@/src/utils/useTranslation'
 
@@ -93,9 +94,10 @@ const UrbanStudiesAll = ({ section }: Props) => {
                     data={{
                       title: urbanStudy.title,
                       linkHref: `/uzemne-studie/${urbanStudy.slug}`,
-                      metadata: [urbanStudy.urbanStudyCategory?.title, urbanStudy.year].filter(
-                        isDefined,
-                      ),
+                      metadata: [
+                        urbanStudy.urbanStudyCategory?.title,
+                        formatMonthYear(urbanStudy.completionDate) ?? urbanStudy.year,
+                      ].filter(isDefined),
                       customIconName: 'urban_study',
                     }}
                   />
