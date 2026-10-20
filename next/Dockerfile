@@ -8,8 +8,17 @@ ENV NPM_CONFIG_CACHE=/build/.cache/npm
 RUN --mount=type=cache,target=/build/.cache/npm \
     npm clean-install --include=dev
 
-FROM install AS build
+# Source tree with dev dependencies, without the Next.js build, so the CI
+# checks run as a fast standalone target. `build` layers on top of it.
+FROM install AS ci-base
 COPY . ./
+
+# Type check + ESLint. Either failing fails the stage.
+FROM ci-base AS lint
+RUN npm run typecheck \
+ && npm run lint
+
+FROM ci-base AS build
 RUN --mount=type=cache,target=/build/.cache/npm \
     npm run build \
  && npm prune --production

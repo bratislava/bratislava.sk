@@ -1,6 +1,7 @@
 name: Build Next
 # Two modes, selected by the `cluster` input:
-#   - CI (cluster == ''): build the final image, do not push.
+#   - CI (cluster == ''): run the dockerized type check + lint and build the
+#     final image, do not push.
 #   - Deploy (cluster != ''): reuse an existing commit image or build+push it
 #     and re-tag it for the cluster. The infrastructure deploy is triggered
 #     separately by the caller (deploy.yml).
@@ -91,6 +92,25 @@ jobs:
           harbor_registry: ${{ env.REGISTRY }}
           harbor_registry_username: ${{ env.REGISTRY_USERNAME }}
           harbor_registry_password: ${{ secrets.HARBOR_REGISTRY_PASSWORD }}
+
+      # CI mode only: dockerized type check + ESLint (the Dockerfile `lint`
+      # target). Either failing fails the job before the image build.
+      - name: Docker metadata (lint)
+        if: ${{ inputs.cluster == '' }}
+        id: meta-lint
+        uses: bratislava/github-actions/.github/actions/docker-metadata@7a3c849b65c1edbea5c3a95fd29952ae1f3e1412 # v3.0.1
+        with:
+          image: ${{ inputs.image }}
+          suffix: -lint
+
+      - name: Run type check + ESLint
+        if: ${{ inputs.cluster == '' }}
+        uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
+        with:
+          context: ${{ inputs.directory }}
+          target: lint
+          cache-from: ${{ steps.meta-lint.outputs.cache_from }}
+          cache-to: ${{ steps.meta-lint.outputs.cache_to }}
 
       - name: Docker metadata
         id: meta
