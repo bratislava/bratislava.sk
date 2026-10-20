@@ -32,7 +32,7 @@ const searchIndexSettings = {
     'urban-study.title',
     'urban-study.body',
     'urban-study.approvalText',
-    'urban-study.year',
+    'urban-study.completionDate',
     'inba-release.title',
     'regulation.regNumber',
     'regulation.titleText',
