@@ -435,6 +435,7 @@ fragment UrbanStudyCardEntity on UrbanStudy {
     ...UrbanStudyStateEntity
   }
   year
+  completionDate
   updatedAt
 }
 

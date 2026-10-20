@@ -32,7 +32,7 @@ const searchIndexSettings = {
     'urban-study.title',
     'urban-study.body',
     'urban-study.approvalText',
-    'urban-study.year',
+    'urban-study.completionDate',
     'inba-release.title',
     'regulation.regNumber',
     'regulation.titleText',
@@ -61,7 +61,7 @@ const searchIndexSettings = {
     'article.addedAtTimestamp',
     'asset.updatedAtTimestamp',
     'urban-study.updatedAtTimestamp',
-    'urban-study.customPublishedAtTimestamp',
+    'urban-study.completionDate', // completionDate is only date (e.g. 2025-12-01), so we can sort by it directly instead of creating timestamp
     'inba-release.releaseDate', // releaseDate is not datetime but only date (e.g. 2025-12-07), so we can sort by it directly instead of creating timestamp
     'regulation.effectiveFromTimestamp',
     'faq.publishedAtTimestamp',
@@ -138,9 +138,6 @@ const config = {
         // use (number) filters.
         publishedAtTimestamp: entry.publishedAt ? new Date(entry.publishedAt).getTime() : undefined,
         updatedAtTimestamp: entry.updatedAt ? new Date(entry.updatedAt).getTime() : undefined,
-        customPublishedAtTimestamp: entry.customPublishedAt
-          ? new Date(entry.customPublishedAt).getTime()
-          : undefined,
       }),
   },
   'inba-release': {

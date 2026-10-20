@@ -64,8 +64,8 @@
       },
       "year": {
         "edit": {
-          "label": "Rok",
-          "description": "",
+          "label": "Rok (toto pole bude odstránené)",
+          "description": "Toto pole bude odstránené a rok bude vypočítaný z dátumu spracovania.",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -106,16 +106,16 @@
           "sortable": true
         }
       },
-      "customPublishedAt": {
+      "completionDate": {
         "edit": {
-          "label": "customPublishedAt",
-          "description": "",
+          "label": "Dátum spracovania",
+          "description": "Presný dátum spracovania jednotlivé štúdie nemajú. Uvádza sa pri nich iba mesiac a rok. Nakoľko však Strapi takú možnosť neponúka, uvádzajte vždy prvý deň v mesiaci (napr. 1.7.2026), a na webe sa zobrazí iba mesiac a rok (07/2026).",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "customPublishedAt",
+          "label": "completionDate",
           "searchable": true,
           "sortable": true
         }
@@ -310,6 +310,10 @@
         ],
         [
           {
+            "name": "completionDate",
+            "size": 6
+          },
+          {
             "name": "year",
             "size": 6
           }
@@ -334,12 +338,6 @@
           {
             "name": "approvalText",
             "size": 12
-          }
-        ],
-        [
-          {
-            "name": "customPublishedAt",
-            "size": 6
           }
         ],
         [
@@ -373,7 +371,13 @@
           }
         ]
       ],
-      "list": ["id", "title", "slug", "year", "updatedAt"]
+      "list": [
+        "id",
+        "title",
+        "slug",
+        "year",
+        "updatedAt"
+      ]
     },
     "uid": "api::urban-study.urban-study"
   },

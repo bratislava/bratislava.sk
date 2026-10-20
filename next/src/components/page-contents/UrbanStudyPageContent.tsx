@@ -21,6 +21,7 @@ import { LinksSectionFragment, UrbanStudyEntityFragment } from '@/src/services/g
 import cn from '@/src/utils/cn'
 import { formatFileExtension } from '@/src/utils/formatFileExtension'
 import { formatFileSize } from '@/src/utils/formatFileSize'
+import { formatMonthYear } from '@/src/utils/formatMonthYear'
 import { isDefined } from '@/src/utils/isDefined'
 import { useLocale } from '@/src/utils/useLocale'
 
@@ -40,6 +41,7 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
     title,
     fullTitle,
     year,
+    completionDate,
     urbanStudyCategory,
     procuredBy,
     preparedBy,
@@ -51,6 +53,8 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
   } = urbanStudy
 
   const urbanStudyCategoryLabel = urbanStudyCategory?.title
+  // TODO Remove year fallback once year is removed from Strapi
+  const completionDateLabel = formatMonthYear(completionDate) ?? year
 
   const { general } = useGeneralContext()
   const urbanStudiesPage = general?.urbanStudiesPage
@@ -63,9 +67,9 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
   }, [title, urbanStudiesPage])
 
   const detailItems = [
-    { label: t('UrbanStudyPageContent.fullTitle'), value: fullTitle },
+    { label: t('UrbanStudyPageContent.fullTitle'), value: fullTitle ?? title },
     { label: t('UrbanStudyPageContent.type'), value: urbanStudyCategoryLabel },
-    { label: t('UrbanStudyPageContent.year'), value: year },
+    { label: t('UrbanStudyPageContent.completionDate'), value: completionDateLabel },
     { label: t('UrbanStudyPageContent.procuredBy'), value: procuredBy },
     { label: t('UrbanStudyPageContent.preparedBy'), value: preparedBy },
   ].filter((item) => !!item.value)
@@ -74,7 +78,7 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
   const filteredRegulations = regulations.filter(isDefined)
   const filteredLinks = links?.filter(isDefined) ?? []
 
-  const metadata = [urbanStudyCategoryLabel, year].filter(isDefined)
+  const metadata = [urbanStudyCategoryLabel, completionDateLabel].filter(isDefined)
 
   return (
     <>
@@ -181,15 +185,6 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
               )
             })}
 
-            {detailItems.length > 0 ? (
-              <div className="flex flex-col gap-4">
-                <Typography variant="h2" id={slugify(t('UrbanStudyPageContent.detailsTitle'))}>
-                  {t('UrbanStudyPageContent.detailsTitle')}
-                </Typography>
-                <DescriptionList items={detailItems} />
-              </div>
-            ) : null}
-
             {filteredRegulations.length > 0 ? (
               <Regulations regulations={filteredRegulations} />
             ) : null}
@@ -202,6 +197,15 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
                 // with getLinkProps used inside Links (typed for PageLink).
                 pageLinks={links as LinksSectionFragment['pageLinks']}
               />
+            ) : null}
+
+            {detailItems.length > 0 ? (
+              <div className="flex flex-col gap-4">
+                <Typography variant="h2" id={slugify(t('UrbanStudyPageContent.detailsTitle'))}>
+                  {t('UrbanStudyPageContent.detailsTitle')}
+                </Typography>
+                <DescriptionList items={detailItems} />
+              </div>
             ) : null}
           </div>
         </div>

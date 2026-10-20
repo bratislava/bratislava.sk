@@ -14,6 +14,7 @@ import {
   urbanStudiesDefaultFilters,
   urbanStudiesFetcher,
 } from '@/src/services/meili/fetchers/urbanStudiesFetcher'
+import { formatMonthYear } from '@/src/utils/formatMonthYear'
 import { isDefined } from '@/src/utils/isDefined'
 
 type Props = {
@@ -76,6 +77,7 @@ const UrbanStudiesSection = ({ section }: Props) => {
               title: urbanStudyTitle,
               urbanStudyCategory,
               year,
+              completionDate,
             } = urbanStudy
 
             return (
@@ -90,7 +92,10 @@ const UrbanStudiesSection = ({ section }: Props) => {
                     cardTitleLevel={getCardTitleLevel(titleLevel)}
                     linkHref={`/uzemne-studie/${slug}`}
                     className="px-4 lg:px-6"
-                    metadata={[urbanStudyCategory?.title, year].filter(isDefined)}
+                    metadata={[
+                      urbanStudyCategory?.title,
+                      formatMonthYear(completionDate) ?? year,
+                    ].filter(isDefined)}
                   />
                 </li>
               </Fragment>

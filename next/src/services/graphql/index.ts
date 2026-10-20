@@ -6891,8 +6891,8 @@ export type UrbanStudy = {
   __typename?: 'UrbanStudy'
   approvalText?: Maybe<Scalars['String']['output']>
   body?: Maybe<Scalars['String']['output']>
+  completionDate?: Maybe<Scalars['Date']['output']>
   createdAt?: Maybe<Scalars['DateTime']['output']>
-  customPublishedAt?: Maybe<Scalars['DateTime']['output']>
   documentId: Scalars['ID']['output']
   fullTitle?: Maybe<Scalars['String']['output']>
   links?: Maybe<Array<Maybe<ComponentBlocksCommonLink>>>
@@ -7022,8 +7022,8 @@ export type UrbanStudyFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<UrbanStudyFiltersInput>>>
   approvalText?: InputMaybe<StringFilterInput>
   body?: InputMaybe<StringFilterInput>
+  completionDate?: InputMaybe<DateFilterInput>
   createdAt?: InputMaybe<DateTimeFilterInput>
-  customPublishedAt?: InputMaybe<DateTimeFilterInput>
   documentId?: InputMaybe<IdFilterInput>
   fullTitle?: InputMaybe<StringFilterInput>
   links?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
@@ -7045,7 +7045,7 @@ export type UrbanStudyFiltersInput = {
 export type UrbanStudyInput = {
   approvalText?: InputMaybe<Scalars['String']['input']>
   body?: InputMaybe<Scalars['String']['input']>
-  customPublishedAt?: InputMaybe<Scalars['DateTime']['input']>
+  completionDate?: InputMaybe<Scalars['Date']['input']>
   fullTitle?: InputMaybe<Scalars['String']['input']>
   links?: InputMaybe<Array<InputMaybe<ComponentBlocksCommonLinkInput>>>
   locale?: InputMaybe<Scalars['String']['input']>
@@ -13495,6 +13495,7 @@ export type PageEntityFragment = {
         urbanStudies: Array<{
           __typename: 'UrbanStudy'
           year?: string | null
+          completionDate?: any | null
           updatedAt?: any | null
           documentId: string
           slug: string
@@ -15271,6 +15272,7 @@ export type PageByPathQuery = {
           urbanStudies: Array<{
             __typename: 'UrbanStudy'
             year?: string | null
+            completionDate?: any | null
             updatedAt?: any | null
             documentId: string
             slug: string
@@ -17042,6 +17044,7 @@ export type Dev_AllPagesQuery = {
           urbanStudies: Array<{
             __typename: 'UrbanStudy'
             year?: string | null
+            completionDate?: any | null
             updatedAt?: any | null
             documentId: string
             slug: string
@@ -19033,6 +19036,7 @@ export type PageCardsSectionFragment = {
 export type UrbanStudyCardEntityFragment = {
   __typename: 'UrbanStudy'
   year?: string | null
+  completionDate?: any | null
   updatedAt?: any | null
   documentId: string
   slug: string
@@ -19060,6 +19064,7 @@ export type UrbanStudiesSectionFragment = {
   urbanStudies: Array<{
     __typename: 'UrbanStudy'
     year?: string | null
+    completionDate?: any | null
     updatedAt?: any | null
     documentId: string
     slug: string
@@ -21370,6 +21375,7 @@ type Sections_ComponentSectionsUrbanStudies_Fragment = {
   urbanStudies: Array<{
     __typename: 'UrbanStudy'
     year?: string | null
+    completionDate?: any | null
     updatedAt?: any | null
     documentId: string
     slug: string
@@ -21623,6 +21629,7 @@ export type UrbanStudyEntityFragment = {
   publishedAt?: any | null
   updatedAt?: any | null
   year?: string | null
+  completionDate?: any | null
   procuredBy?: string | null
   preparedBy?: string | null
   body?: string | null
@@ -21800,6 +21807,7 @@ export type UrbanStudyBySlugQuery = {
     publishedAt?: any | null
     updatedAt?: any | null
     year?: string | null
+    completionDate?: any | null
     procuredBy?: string | null
     preparedBy?: string | null
     body?: string | null
@@ -21993,8 +22001,8 @@ export type UrbanStudyInventoryEntityFragment = {
   __typename: 'UrbanStudy'
   updatedAt?: any | null
   publishedAt?: any | null
-  customPublishedAt?: any | null
   year?: string | null
+  completionDate?: any | null
   documentId: string
   slug: string
   title: string
@@ -22048,8 +22056,8 @@ export type UrbanStudiesInventoryQuery = {
     __typename: 'UrbanStudy'
     updatedAt?: any | null
     publishedAt?: any | null
-    customPublishedAt?: any | null
     year?: string | null
+    completionDate?: any | null
     documentId: string
     slug: string
     title: string
@@ -23445,6 +23453,7 @@ export const UrbanStudyCardEntityFragmentDoc = gql`
       ...UrbanStudyStateEntity
     }
     year
+    completionDate
     updatedAt
   }
   ${UrbanStudySlugEntityFragmentDoc}
@@ -24068,6 +24077,7 @@ export const UrbanStudyEntityFragmentDoc = gql`
     publishedAt
     updatedAt
     year
+    completionDate
     urbanStudyCategory {
       ...UrbanStudyCategoryEntity
     }
@@ -24096,8 +24106,8 @@ export const UrbanStudyInventoryEntityFragmentDoc = gql`
     ...UrbanStudySlugEntity
     updatedAt
     publishedAt
-    customPublishedAt
     year
+    completionDate
     urbanStudyCategory {
       ...UrbanStudyCategoryEntity
     }

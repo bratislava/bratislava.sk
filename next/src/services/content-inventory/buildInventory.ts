@@ -459,7 +459,7 @@ const buildUrbanStudies = async (): Promise<InventoryEntry[]> => {
     ...getBase('urban-study', {
       ...urbanStudy,
       path: `/uzemne-studie/${urbanStudy.slug}`,
-      addedAt: urbanStudy.customPublishedAt ?? urbanStudy.publishedAt,
+      addedAt: urbanStudy.publishedAt,
       modifiedAt: urbanStudy.updatedAt,
       // The parts only group the files on the page, so the inventory flattens them into one list.
       files: getBlockFiles(
@@ -468,6 +468,7 @@ const buildUrbanStudies = async (): Promise<InventoryEntry[]> => {
     }),
     'urban-study': getTypeData({
       year: urbanStudy.year ?? undefined,
+      completionDate: urbanStudy.completionDate ?? undefined,
       category: getCategory(urbanStudy.urbanStudyCategory),
       state: getCategory(urbanStudy.urbanStudyState),
       regulations: getRegulationLinks(urbanStudy.regulations),

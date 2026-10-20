@@ -5054,8 +5054,8 @@ type UploadFileRelationResponseCollection {
 type UrbanStudy {
   approvalText: String
   body: String
+  completionDate: Date
   createdAt: DateTime
-  customPublishedAt: DateTime
   documentId: ID!
   fullTitle: String
   links(filters: ComponentBlocksCommonLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksCommonLink]
@@ -5141,8 +5141,8 @@ input UrbanStudyFiltersInput {
   and: [UrbanStudyFiltersInput]
   approvalText: StringFilterInput
   body: StringFilterInput
+  completionDate: DateFilterInput
   createdAt: DateTimeFilterInput
-  customPublishedAt: DateTimeFilterInput
   documentId: IDFilterInput
   fullTitle: StringFilterInput
   links: ComponentBlocksCommonLinkFiltersInput
@@ -5164,7 +5164,7 @@ input UrbanStudyFiltersInput {
 input UrbanStudyInput {
   approvalText: String
   body: String
-  customPublishedAt: DateTime
+  completionDate: Date
   fullTitle: String
   links: [ComponentBlocksCommonLinkInput]
   locale: String

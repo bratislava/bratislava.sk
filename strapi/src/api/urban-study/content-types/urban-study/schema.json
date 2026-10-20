@@ -21,7 +21,7 @@
       "required": true
     },
     "fullTitle": {
-      "type": "text"
+      "type": "string"
     },
     "year": {
       "type": "string"
@@ -37,8 +37,8 @@
       "target": "api::urban-study-category.urban-study-category",
       "inversedBy": "urbanStudies"
     },
-    "customPublishedAt": {
-      "type": "datetime"
+    "completionDate": {
+      "type": "date"
     },
     "procuredBy": {
       "type": "string",

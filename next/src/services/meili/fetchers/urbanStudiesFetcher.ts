@@ -63,7 +63,7 @@ export const urbanStudiesFetcher = (filters: UrbanStudiesFilters) => {
           ? [`urban-study.urbanStudyCategory.slug IN [${filters.categories.join(',')}]`]
           : null,
       ].filter(isDefined),
-      sort: ['urban-study.customPublishedAtTimestamp:desc'],
+      sort: ['urban-study.completionDate:desc'],
     })
     .then(unwrapFromSearchIndex('urban-study'))
 }

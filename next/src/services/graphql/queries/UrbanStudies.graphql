@@ -39,6 +39,7 @@ fragment UrbanStudyEntity on UrbanStudy {
   publishedAt
   updatedAt
   year
+  completionDate
   urbanStudyCategory {
     ...UrbanStudyCategoryEntity
   }
@@ -83,8 +84,8 @@ fragment UrbanStudyInventoryEntity on UrbanStudy {
   ...UrbanStudySlugEntity
   updatedAt
   publishedAt
-  customPublishedAt
   year
+  completionDate
   urbanStudyCategory {
     ...UrbanStudyCategoryEntity
   }
