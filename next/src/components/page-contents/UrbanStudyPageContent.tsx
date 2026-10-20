@@ -67,7 +67,7 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
   }, [title, urbanStudiesPage])
 
   const detailItems = [
-    { label: t('UrbanStudyPageContent.fullTitle'), value: fullTitle },
+    { label: t('UrbanStudyPageContent.fullTitle'), value: fullTitle ?? title },
     { label: t('UrbanStudyPageContent.type'), value: urbanStudyCategoryLabel },
     { label: t('UrbanStudyPageContent.completionDate'), value: completionDateLabel },
     { label: t('UrbanStudyPageContent.procuredBy'), value: procuredBy },
@@ -185,15 +185,6 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
               )
             })}
 
-            {detailItems.length > 0 ? (
-              <div className="flex flex-col gap-4">
-                <Typography variant="h2" id={slugify(t('UrbanStudyPageContent.detailsTitle'))}>
-                  {t('UrbanStudyPageContent.detailsTitle')}
-                </Typography>
-                <DescriptionList items={detailItems} />
-              </div>
-            ) : null}
-
             {filteredRegulations.length > 0 ? (
               <Regulations regulations={filteredRegulations} />
             ) : null}
@@ -206,6 +197,15 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
                 // with getLinkProps used inside Links (typed for PageLink).
                 pageLinks={links as LinksSectionFragment['pageLinks']}
               />
+            ) : null}
+
+            {detailItems.length > 0 ? (
+              <div className="flex flex-col gap-4">
+                <Typography variant="h2" id={slugify(t('UrbanStudyPageContent.detailsTitle'))}>
+                  {t('UrbanStudyPageContent.detailsTitle')}
+                </Typography>
+                <DescriptionList items={detailItems} />
+              </div>
             ) : null}
           </div>
         </div>
