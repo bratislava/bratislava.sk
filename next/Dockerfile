@@ -7,9 +7,14 @@ COPY ./package.json package-lock.json ./
 ENV NPM_CONFIG_CACHE=/build/.cache/npm
 RUN --mount=type=cache,target=/build/.cache/npm \
     npm clean-install --include=dev
+COPY . ./
+
+# Type check + ESLint. Either failing fails the stage.
+FROM install AS lint
+RUN npm run typecheck \
+ && npm run lint
 
 FROM install AS build
-COPY . ./
 RUN --mount=type=cache,target=/build/.cache/npm \
     npm run build \
  && npm prune --production

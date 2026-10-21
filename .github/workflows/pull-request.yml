@@ -11,7 +11,8 @@ permissions:
 jobs:
   # Both images are built with the real production target and never pushed, so
   # a PR fails on anything that would break the deploy build - including type
-  # errors, which `next build` reports.
+  # errors, which `next build` reports. Next's build also runs the dockerized
+  # type check + lint first (see build-next.yml).
   build-next:
     name: Build Next
     uses: ./.github/workflows/build-next.yml
