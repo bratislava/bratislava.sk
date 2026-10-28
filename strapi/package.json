@@ -35,13 +35,6 @@
     "strapi-plugin-meilisearch": "0.16.5",
     "styled-components": "6.3.12"
   },
-  "devDependencies": {
-    "@babel/core": "7.26.0",
-    "@babel/eslint-parser": "7.28.6",
-    "eslint": "8.57.0",
-    "eslint-config-prettier": "8.10.0",
-    "eslint-scope": "7.1.1"
-  },
   "engines": {
     "node": ">=24.22.x",
     "npm": ">=11.19.x"
