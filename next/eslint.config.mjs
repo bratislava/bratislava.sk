@@ -2,7 +2,7 @@ import { createNextConfig } from '@bratislava/eslint-config-next'
 
 export default [
   ...createNextConfig({
-    ignores: ['graphql/**', 'src/services/graphql/**'],
+    ignores: ['graphql/**', 'src/services/graphql/**', '**/*.md'],
   }),
   // https://github.com/bratislava/eslint-config/blob/b17b3028c67e639cf5cef183817f9087d6281d7e/packages/next/README.md#tailwind-css
   {
