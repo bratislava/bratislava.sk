@@ -1,5 +1,5 @@
 diff --git a/node_modules/@strapi/typescript-utils/dist/generators/common/models/schema.js b/node_modules/@strapi/typescript-utils/dist/generators/common/models/schema.js
-index 92d8a6e..3215496 100644
+index 62fe32c..12bbff5 100644
 --- a/node_modules/@strapi/typescript-utils/dist/generators/common/models/schema.js
 +++ b/node_modules/@strapi/typescript-utils/dist/generators/common/models/schema.js
 @@ -31,7 +31,7 @@ const { factory } = ts__namespace;

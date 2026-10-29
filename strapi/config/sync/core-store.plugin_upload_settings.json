@@ -3,7 +3,8 @@
   "value": {
     "sizeOptimization": true,
     "responsiveDimensions": false,
-    "autoOrientation": false
+    "autoOrientation": false,
+    "aiMetadata": true
   },
   "type": "object",
   "environment": null,

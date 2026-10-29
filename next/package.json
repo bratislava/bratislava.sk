@@ -18,7 +18,7 @@
     "parse-translations": "i18next-cli extract",
     "postbuild": "npm run sitemap-gen",
     "update-i18next": "npm install next-i18next@latest react-i18next@latest i18next@latest --save-exact && npm install i18next-cli@latest --save-dev --save-exact",
-    "update-markdown": "npm install remark-directive@latest remark-directive-rehype@latest remark-gfm@latest remark-supersub@latest",
+    "update-markdown": "npm install remark-gfm@latest remark-supersub@latest",
     "update-next": "npm install next@latest @next/third-parties@latest react@latest react-dom@latest sharp@latest --save-exact && npm install @types/react@latest @types/react-dom@latest typescript@latest --save-dev --save-exact",
     "update-react-aria": "npm install @internationalized/date@latest react-aria@latest react-aria-components@latest react-stately@latest tailwindcss-react-aria-components --save-exact",
     "update-tailwind": "npm install tailwind-merge@latest clsx@latest --save-exact && npm install tailwindcss@latest postcss@latest prettier-plugin-tailwindcss@latest --save-dev --save-exact",
@@ -31,15 +31,15 @@
   "dependencies": {
     "@azure/msal-node": "5.5.0",
     "@bratislava/component-library": "1.1.4",
-    "@bratislava/ginis-sdk": "2.3.0",
+    "@bratislava/ginis-sdk": "2.4.0",
     "@hookform/resolvers": "5.4.0",
     "@iframe-resizer/react": "5.5.9",
     "@internationalized/date": "3.12.2",
-    "@next/third-parties": "16.3.0",
+    "@next/third-parties": "16.4.3",
     "@radix-ui/react-navigation-menu": "1.2.22",
     "@sindresorhus/slugify": "3.0.0",
     "@tanstack/react-query": "5.101.4",
-    "axios": "1.19.0",
+    "axios": "1.20.0",
     "clsx": "2.1.1",
     "dotenv": "17.4.2",
     "focus-trap-react": "12.0.3",
@@ -50,7 +50,7 @@
     "i18next": "26.3.1",
     "lodash": "4.18.1",
     "meilisearch": "0.30.0",
-    "next": "16.3.0",
+    "next": "16.4.3",
     "next-i18next": "16.0.7",
     "next-plausible": "3.12.5",
     "next-sitemap": "4.2.3",
@@ -65,8 +65,6 @@
     "react-markdown": "10.1.0",
     "react-resize-detector": "12.3.0",
     "react-stately": "3.47.0",
-    "remark-directive": "4.0.0",
-    "remark-directive-rehype": "0.4.2",
     "remark-gfm": "4.0.1",
     "remark-supersub": "1.0.0",
     "remark-unwrap-images": "4.0.1",
@@ -88,7 +86,7 @@
     "@tailwindcss/postcss": "4.3.3",
     "@types/cookiebot-sdk": "2.43.5",
     "@types/lodash": "4.17.25",
-    "@types/node": "24.13.3",
+    "@types/node": "24.19.2",
     "@types/react": "19.2.18",
     "@types/react-dom": "19.2.4",
     "@types/rss": "0.0.32",
@@ -97,8 +95,7 @@
     "postcss": "8.5.25",
     "prettier": "3.8.3",
     "prettier-plugin-tailwindcss": "0.8.1",
-    "sass": "1.62.1",
-    "sharp": "0.35.3",
+    "sharp": "0.35.5",
     "tailwindcss": "4.3.3",
     "ts-node": "10.9.2",
     "tsc-alias": "1.9.1",
@@ -106,12 +103,12 @@
     "typescript": "5.8.2"
   },
   "engines": {
-    "node": ">=24.16.x",
-    "npm": ">=11.13.x"
+    "node": ">=24.22.x",
+    "npm": ">=11.19.x"
   },
   "volta": {
-    "node": "24.16.0",
-    "npm": "11.13.0"
+    "node": "24.22.1",
+    "npm": "11.19.1"
   },
   "overrides": {
     "@types/react": "19.2.18",
