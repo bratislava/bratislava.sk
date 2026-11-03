@@ -29,12 +29,12 @@
 
 const filesToRegister = [
   {
-    name: 'test-1gb.pdf',
-    hash: 'test-1gb_070f8aaaf4',
+    name: 'odvetvova-studia-skolstva-analyticka-cast-2025-pasporty.pdf',
+    hash: 'odvetvova-studia-skolstva-analyticka-cast-2025-pasporty_43321ddd52',
     ext: '.pdf',
     mime: 'application/pdf',
-    size: 999999.89,
-    url: 'https://bratislavask.s3.bratislava.sk/upload/test-1gb_070f8aaaf4.pdf',
+    size: 833342.17,
+    url: 'https://bratislavask.s3.bratislava.sk/upload/odvetvova-studia-skolstva-analyticka-cast-2025-pasporty_43321ddd52.pdf',
     provider: 'aws-s3',
   },
 ]
