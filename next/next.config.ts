@@ -1,3 +1,4 @@
+import { withCache } from '@mrjasonroy/cache-components-cache-handler'
 import type { NextConfig } from 'next'
 import { withPlausibleProxy } from 'next-plausible'
 
@@ -10,6 +11,9 @@ const nextConfig: NextConfig = {
   i18n: i18nextConfig.i18n as NextConfig['i18n'],
   reactStrictMode: true,
   images: {
+    // Optimized images go through the cacheHandler (Redis, set up by withCache below) instead of
+    // .next/cache/images on disk.
+    customCacheHandler: true,
     // After upgrading to Next.js 16, image loading from local IP addresses is blocked.
     // In our Kubernetes setup, S3 resolves to a local IP range (10.10.x.x),
     // which causes images to fail loading.
@@ -47,6 +51,10 @@ const nextConfig: NextConfig = {
       './node_modules/**/require.mjs',
       // tells Next to force-copy the config file into the standalone bundle for all routes, so the runtime require finds it at /home/node/app/next-i18next.config.js
       './next-i18next.config.js',
+      // The cache handler (see the export below) loads ioredis with a runtime require the tracer
+      // can't follow, so copy it and its dependencies into the bundle.
+      // Keep the package list in sync with ioredis's dependencies when upgrading it.
+      './node_modules/{ioredis,@ioredis/commands,cluster-key-slot,debug,ms,denque,redis-errors,redis-parser,standard-as-callback}/**',
     ],
   },
   turbopack: {
@@ -346,7 +354,12 @@ const nextConfig: NextConfig = {
   },
 }
 
-// https://github.com/4lejandrito/next-plausible#proxy-the-analytics-script
-export default withPlausibleProxy()({
-  ...nextConfig,
-})
+// ISR pages and optimized images go to the shared Redis (REDIS_URL, CACHE_KEY_PREFIX) instead of
+// .next on the pod's disk. Without REDIS_URL (local dev, CI builds) they stay in memory.
+// https://github.com/mrjasonroy/cache-components-cache-handler
+export default withCache(
+  // https://github.com/4lejandrito/next-plausible#proxy-the-analytics-script
+  withPlausibleProxy()({
+    ...nextConfig,
+  }),
+)
