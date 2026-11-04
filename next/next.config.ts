@@ -355,11 +355,13 @@ const nextConfig: NextConfig = {
 }
 
 // ISR pages and optimized images go to the shared Redis (REDIS_URL, CACHE_KEY_PREFIX) instead of
-// .next on the pod's disk. Without REDIS_URL (local dev, CI builds) they stay in memory.
+// .next on the pod's disk, kept at least 7 days (cache-handler.mjs). Without REDIS_URL (local dev,
+// CI builds) they stay in memory.
 // https://github.com/mrjasonroy/cache-components-cache-handler
 export default withCache(
   // https://github.com/4lejandrito/next-plausible#proxy-the-analytics-script
   withPlausibleProxy()({
     ...nextConfig,
   }),
+  { handlers: { page: './cache-handler.mjs' } },
 )
