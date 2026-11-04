@@ -1,0 +1,52 @@
+diff --git a/node_modules/strapi-plugin-meilisearch/dist/server/index.js b/node_modules/strapi-plugin-meilisearch/dist/server/index.js
+index 3f6890d..c1bb91a 100644
+--- a/node_modules/strapi-plugin-meilisearch/dist/server/index.js
++++ b/node_modules/strapi-plugin-meilisearch/dist/server/index.js
+@@ -682,7 +682,10 @@ async function registerDocumentMiddleware({ strapi: strapi2 }) {
+       const preActionSnapshotsByDocumentId = new Map(
+         preActionSnapshots.map((snapshot) => [snapshot.documentId, snapshot])
+       );
+-      result = await next();
++      result = await next().catch((error2) => {
++        error2.isFromNextMiddleware = true;
++        throw error2;
++      });
+       const documentIds = resolveDocumentIds({
+         actionParams: ctx?.params,
+         result,
+@@ -823,6 +826,9 @@ async function registerDocumentMiddleware({ strapi: strapi2 }) {
+       }
+       return result;
+     } catch (error2) {
++      if (error2?.isFromNextMiddleware) {
++        throw error2;
++      }
+       strapi2.log.error(
+         `Meilisearch document middleware error: ${error2.message}`
+       );
+diff --git a/node_modules/strapi-plugin-meilisearch/dist/server/index.mjs b/node_modules/strapi-plugin-meilisearch/dist/server/index.mjs
+index b908479..9efe665 100644
+--- a/node_modules/strapi-plugin-meilisearch/dist/server/index.mjs
++++ b/node_modules/strapi-plugin-meilisearch/dist/server/index.mjs
+@@ -681,7 +681,10 @@ async function registerDocumentMiddleware({ strapi: strapi2 }) {
+       const preActionSnapshotsByDocumentId = new Map(
+         preActionSnapshots.map((snapshot) => [snapshot.documentId, snapshot])
+       );
+-      result = await next();
++      result = await next().catch((error2) => {
++        error2.isFromNextMiddleware = true;
++        throw error2;
++      });
+       const documentIds = resolveDocumentIds({
+         actionParams: ctx?.params,
+         result,
+@@ -822,6 +825,9 @@ async function registerDocumentMiddleware({ strapi: strapi2 }) {
+       }
+       return result;
+     } catch (error2) {
++      if (error2?.isFromNextMiddleware) {
++        throw error2;
++      }
+       strapi2.log.error(
+         `Meilisearch document middleware error: ${error2.message}`
+       );
