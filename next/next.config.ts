@@ -1,3 +1,4 @@
+import { withCache } from '@mrjasonroy/cache-components-cache-handler'
 import type { NextConfig } from 'next'
 import { withPlausibleProxy } from 'next-plausible'
 
@@ -10,6 +11,9 @@ const nextConfig: NextConfig = {
   i18n: i18nextConfig.i18n as NextConfig['i18n'],
   reactStrictMode: true,
   images: {
+    // Optimized images go through the cacheHandler (Redis, set up by withCache below) instead of
+    // .next/cache/images on disk.
+    customCacheHandler: true,
     // After upgrading to Next.js 16, image loading from local IP addresses is blocked.
     // In our Kubernetes setup, S3 resolves to a local IP range (10.10.x.x),
     // which causes images to fail loading.
@@ -346,7 +350,10 @@ const nextConfig: NextConfig = {
   },
 }
 
-// https://github.com/4lejandrito/next-plausible#proxy-the-analytics-script
-export default withPlausibleProxy()({
-  ...nextConfig,
-})
+export default withCache(
+  // https://github.com/4lejandrito/next-plausible#proxy-the-analytics-script
+  withPlausibleProxy()({
+    ...nextConfig,
+  }),
+  { handlers: { page: './cache-handler.mjs' } },
+)
