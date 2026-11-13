@@ -46,7 +46,7 @@ env:
 jobs:
   build:
     name: Build Next
-    runs-on: bratislava
+    runs-on: bratislava-rootless
     env:
       # Per-cluster deploy tag prefix (empty in CI) and the per-environment
       # flavor suffix that keeps each cluster's image and cache separate.
@@ -85,7 +85,7 @@ jobs:
           cp "$source_env_file" .env.production.local
 
       - name: Set up Docker build
-        uses: bratislava/github-actions/.github/actions/setup-docker-build@7a3c849b65c1edbea5c3a95fd29952ae1f3e1412 # v3.0.1
+        uses: bratislava/github-actions/.github/actions/setup-docker-build@082c762862dd89c3e93652268b3e5416db7333a7 # v4.0.0
         with:
           docker_registry_username: ${{ secrets.DOCKER_REGISTRY_USERNAME }}
           docker_registry_password: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
@@ -98,7 +98,7 @@ jobs:
       - name: Docker metadata (lint)
         if: ${{ inputs.cluster == '' }}
         id: meta-lint
-        uses: bratislava/github-actions/.github/actions/docker-metadata@7a3c849b65c1edbea5c3a95fd29952ae1f3e1412 # v3.0.1
+        uses: bratislava/github-actions/.github/actions/docker-metadata@082c762862dd89c3e93652268b3e5416db7333a7 # v4.0.0
         with:
           image: ${{ inputs.image }}
           suffix: -lint
@@ -114,7 +114,7 @@ jobs:
 
       - name: Docker metadata
         id: meta
-        uses: bratislava/github-actions/.github/actions/docker-metadata@7a3c849b65c1edbea5c3a95fd29952ae1f3e1412 # v3.0.1
+        uses: bratislava/github-actions/.github/actions/docker-metadata@082c762862dd89c3e93652268b3e5416db7333a7 # v4.0.0
         with:
           image: ${{ inputs.image }}
           prefix: ${{ env.CLUSTER_PREFIX }}
@@ -125,7 +125,7 @@ jobs:
       - name: Check for existing image
         if: ${{ inputs.cluster != '' }}
         id: existing
-        uses: bratislava/github-actions/.github/actions/check-existing-image@7a3c849b65c1edbea5c3a95fd29952ae1f3e1412 # v3.0.1
+        uses: bratislava/github-actions/.github/actions/check-existing-image@082c762862dd89c3e93652268b3e5416db7333a7 # v4.0.0
         with:
           existing_tag: ${{ inputs.image }}:${{ steps.sha.outputs.short_sha }}${{ env.ENV_SUFFIX }}
           new_tag: ${{ inputs.image }}:${{ env.CLUSTER_PREFIX }}${{ steps.sha.outputs.short_sha }}${{ env.ENV_SUFFIX }}
