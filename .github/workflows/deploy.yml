@@ -82,7 +82,7 @@ jobs:
     secrets: inherit
     with:
       directory: strapi/
-      image: harbor.bratislava.sk/standalone/bratislava-strapi
+      image: harbor.bratislava.sk/bratislava.sk/bratislava-strapi
       cluster: ${{ needs.resolve.outputs.cluster }}
 
   deploy-strapi:
@@ -106,7 +106,7 @@ jobs:
     secrets: inherit
     with:
       directory: next/
-      image: harbor.bratislava.sk/standalone/bratislava-next
+      image: harbor.bratislava.sk/bratislava.sk/bratislava-next
       cluster: ${{ needs.resolve.outputs.cluster }}
 
   deploy-next:

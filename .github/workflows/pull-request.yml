@@ -19,7 +19,7 @@ jobs:
     secrets: inherit
     with:
       directory: next/
-      image: harbor.bratislava.sk/standalone/bratislava-next
+      image: harbor.bratislava.sk/bratislava.sk/bratislava-next
 
   build-strapi:
     name: Build Strapi
@@ -27,4 +27,4 @@ jobs:
     secrets: inherit
     with:
       directory: strapi/
-      image: harbor.bratislava.sk/standalone/bratislava-strapi
+      image: harbor.bratislava.sk/bratislava.sk/bratislava-strapi

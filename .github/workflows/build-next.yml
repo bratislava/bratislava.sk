@@ -33,15 +33,22 @@ on:
         required: true
       DOCKER_REGISTRY_PASSWORD:
         required: true
-      HARBOR_REGISTRY_PASSWORD:
-        required: true
+      # Exactly one pair is set: Actions runs get the push robot, Dependabot
+      # runs (which see only Dependabot secrets) the pull-only robot.
+      HARBOR_PUSH_USERNAME:
+        required: false
+      HARBOR_PUSH_PASSWORD:
+        required: false
+      HARBOR_PULL_USERNAME:
+        required: false
+      HARBOR_PULL_PASSWORD:
+        required: false
 
 permissions:
   contents: read
 
 env:
   REGISTRY: harbor.bratislava.sk
-  REGISTRY_USERNAME: robot$github_actions
 
 jobs:
   build:
@@ -90,8 +97,8 @@ jobs:
           docker_registry_username: ${{ secrets.DOCKER_REGISTRY_USERNAME }}
           docker_registry_password: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
           harbor_registry: ${{ env.REGISTRY }}
-          harbor_registry_username: ${{ env.REGISTRY_USERNAME }}
-          harbor_registry_password: ${{ secrets.HARBOR_REGISTRY_PASSWORD }}
+          harbor_registry_username: ${{ secrets.HARBOR_PUSH_USERNAME || secrets.HARBOR_PULL_USERNAME }}
+          harbor_registry_password: ${{ secrets.HARBOR_PUSH_PASSWORD || secrets.HARBOR_PULL_PASSWORD }}
 
       # CI mode only: dockerized type check + ESLint (the Dockerfile `lint`
       # target). Either failing fails the job before the image build.
@@ -110,7 +117,7 @@ jobs:
           context: ${{ inputs.directory }}
           target: lint
           cache-from: ${{ steps.meta-lint.outputs.cache_from }}
-          cache-to: ${{ steps.meta-lint.outputs.cache_to }}
+          cache-to: ${{ secrets.HARBOR_PUSH_USERNAME != '' && steps.meta-lint.outputs.cache_to || '' }}
 
       - name: Docker metadata
         id: meta
@@ -139,6 +146,6 @@ jobs:
           push: ${{ inputs.cluster != '' }}
           tags: ${{ steps.meta.outputs.tags }}
           cache-from: ${{ steps.meta.outputs.cache_from }}
-          cache-to: ${{ steps.meta.outputs.cache_to }}
+          cache-to: ${{ secrets.HARBOR_PUSH_USERNAME != '' && steps.meta.outputs.cache_to || '' }}
           build-args: |
             GIT_COMMIT=${{ github.sha }}
