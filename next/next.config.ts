@@ -342,6 +342,11 @@ const nextConfig: NextConfig = {
         destination: '/ochladsa',
         permanent: true,
       },
+      {
+        source: '/kultura-a-komunity/kulturne-dedicstvo-a-pamiatkova-starostlivost',
+        destination: '/kultura-a-komunity/umelecke-diela-a-kulturne-dedicstvo',
+        permanent: false,
+      },
     ]
   },
 }
