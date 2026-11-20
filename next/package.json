@@ -67,7 +67,7 @@
     "react-stately": "3.47.0",
     "remark-gfm": "4.0.1",
     "remark-supersub": "1.0.0",
-    "remark-unwrap-images": "4.0.1",
+    "remark-unwrap-images": "5.0.0",
     "rss": "1.2.2",
     "tailwind-merge": "3.6.0",
     "tailwind-scrollbar-hide": "4.0.0",
