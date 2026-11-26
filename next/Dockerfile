@@ -44,6 +44,8 @@ COPY --chown=node:node .env.*.local ./
 COPY --chown=node:node --from=build /build/.next/standalone ./
 COPY --chown=node:node --from=build /build/public ./public
 COPY --chown=node:node --from=build /build/.next/static ./.next/static
+# Build-time stamp the Redis cache handler checks prerendered pages against; standalone output omits it
+COPY --chown=node:node --from=build /build/.next/server/cache-handler-build.json ./.next/server/
 # sharp and its native binaries must be copied manually for standalone output to work
 # see https://github.com/vercel/next.js/discussions/40125
 # sharp >=0.33 distributes native binaries via separate @img/* packages
