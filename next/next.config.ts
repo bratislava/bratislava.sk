@@ -9,6 +9,9 @@ const nextConfig: NextConfig = {
   // to `boolean`, while Next's I18NConfig accepts only the literal `false`.
   i18n: i18nextConfig.i18n as NextConfig['i18n'],
   reactStrictMode: true,
+  experimental: {
+    agentUpgrade: 'security',
+  },
   images: {
     // After upgrading to Next.js 16, image loading from local IP addresses is blocked.
     // In our Kubernetes setup, S3 resolves to a local IP range (10.10.x.x),

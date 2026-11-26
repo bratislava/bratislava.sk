@@ -68,8 +68,8 @@ const GeneralPageContent = ({ page }: GeneralPageProps) => {
             },
           )}
         >
-          {page.showTableOfContents && <TableOfContentsSection />}
           {page.subnavigation ? <SubnavigationSection section={page.subnavigation} /> : null}
+          {page.showTableOfContents && <TableOfContentsSection />}
           <Sections sections={filteredSections} />
           <RelatedArticlesSection page={page} />
         </div>

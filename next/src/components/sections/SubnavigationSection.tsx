@@ -24,7 +24,11 @@ const SubnavigationSection = ({ section }: Props) => {
 
   return (
     <SectionContainer className="pt-6 lg:pt-16">
-      <SectionHeader title={t('SubnavigationSection.aria.title')} className="sr-only" />
+      <SectionHeader
+        title={t('SubnavigationSection.aria.title')}
+        className="sr-only"
+        excludeFromTableOfContents
+      />
       <div className="flex flex-col gap-6 lg:gap-16">
         <ul className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
           {filteredLinks.map((card) => {
